@@ -1,0 +1,9 @@
+div.login_box {
+    border: 1px solid black;
+    position: absolute;
+    width: 472px;
+    height: 355px;
+    top: 20%;
+    left: 35%;
+    right: 35%;
+}
