@@ -67,7 +67,7 @@ body {
     align-items: center;
     position: relative;
     font-family: Poppins, Roboto, sans-serif;
-    background-color: #12a300;
+    background-image: linear-gradient(#1bec00, #1d9e0d, #1bec00);
     background-size: 720%;
     box-sizing: border-box;
     text-align: center;
