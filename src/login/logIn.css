@@ -1,0 +1,32 @@
+div.login_box {
+    border: 1px solid black;
+    position: absolute;
+    width: 472px;
+    height: 355px;
+    top: 20%;
+    left: 35%;
+    right: 35%;
+    box-shadow: 10px 20px 20px #8080807a;
+}
+button.iEpNnQ {
+    font-family: Poppins, Roboto, sans-serif;
+    background-color: rgb(64, 169, 243);
+    background-size: 720%;
+    box-sizing: border-box;
+    text-align: center;
+    color: white;
+    font-weight: 600;
+    width: inherit;
+    user-select: none;
+    font-size: 0.875em;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+    outline: none;
+    border-width: 2px;
+    border-style: solid;
+    border-color: rgb(102, 185, 244);
+    border-image: initial;
+    border-radius: 4px;
+    text-decoration: none;
+    padding: 0.5em 0.7em;
+}
