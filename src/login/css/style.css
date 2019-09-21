@@ -2,14 +2,20 @@ body {
     background-color: #1e1e1e;
 }
 
-#top {
+/* head */
+.head {
     position: relative;
     height: 50px;
     margin-left: 10px;
     margin-top: 10px;
 }
-
-#title {
+.head button.home {
+    outline: none;
+    border-style: none;
+    background: none;
+    cursor: pointer;
+}
+.head span.title {
     position: absolute;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
     font-size: 15pt;
@@ -22,8 +28,56 @@ body {
     transform: translateY(-50%);
 }
 
-#login_box {
-    background-color: #ffffff;
+/* maincontent */
+.icon1 {
+	margin: 0 0 1em;
+	padding: .8em 1em;
+	background: rgba(255, 255, 255, 0.94);
+}
+.icon1 span.fa {
+    color: #222;
+    width: 22px;
+}
+.header-left-bottom input[type="email"] {
+    outline: none;
+    font-size: 15px;
+    color: #222;
+	border:none;
+    display: inline-block;
+    background: transparent;
+    letter-spacing: 1px;
+}
+.header-left-bottom input[type="password"]{
+	outline: none;
+	font-size: 15px;
+    color: #222;
+	border:none;
+	display: inline-block;
+	background: transparent;
+    letter-spacing: 1px;
+}
+
+.header-left-bottom p {
+    font-size: 20px;
+    color: #000;
+    display: inline-block;
+    width: 50%;
+    margin: 20px 0 0;
+    letter-spacing: 1px;
+    float: left;
+}
+
+.header-left-bottom p.right {
+	text-align: right;
+}
+.header-left-bottom p a {
+	font-size: 8pt;
+	color: #e2e2e2;
+	text-transform: uppercase;
+}
+
+.login_box {
+    background-color: #ffffff2c;
     display: flex;
     -webkit-box-pack: center;
     justify-content: center;
@@ -31,36 +85,29 @@ body {
     align-items: center;
     flex-direction: column;
     margin: 0px auto;
-    border-style: inset;
-    border-color: #ababab;
     border-radius: 10px;
     position: absolute;
     width: 350px;
-    height: 250px;
-    top: 40%;
+    height: 400px;
+    top: 25%;
     left: 35%;
     right: 35%;
-    box-shadow: -1px 4px 28px 0px rgba(255, 255, 255, 0.50);
+    box-shadow: -1px 4px 28px 0px rgba(0, 0, 0, 0.75);
 }
 
-#login_title {
-    position: relative;
+.login_title {
+    position: absolute;
+    top: -15%;
     text-align: center;
     font-size: 25pt;
-    color: #707070;
+    color: #ffffff;
     font-weight: 600;
     margin-bottom: 50px;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
-#home_button {
-    outline: none;
-    border-style: none;
-    background: none;
-    cursor: pointer;
-}
 
-#login_button {
+.login_button {
     display: flex;
     flex-direction: row;
     -webkit-box-pack: start;
@@ -68,6 +115,7 @@ body {
     -webkit-box-align: center;
     align-items: center;
     position: relative;
+    top: 15px;
     font-family: Poppins, Roboto, sans-serif;
     background-image: linear-gradient(#1bec00, #1d9e0d, #1bec00);
     background-size: 720%;
@@ -82,7 +130,13 @@ body {
     transition: all 0.3s ease 0s;
     outline: none;
     border: none;
-    border-radius: 4px;
     text-decoration: none;
-    padding: 0.5em 0.7em;
+    padding: .8em 3em;
+    letter-spacing: 1px;
 }
+
+.login_button:hover{
+    background-image: linear-gradient(#1cec00ce, #1d9e0dce, #1cec00ce);
+}
+
+/* foot */
