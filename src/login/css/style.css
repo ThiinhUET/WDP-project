@@ -90,8 +90,7 @@ body {
     width: 350px;
     height: 400px;
     top: 25%;
-    left: 35%;
-    right: 35%;
+    left: 50%; top: 55%; transform: translateX(-50%) translateY(-55%);
     box-shadow: -1px 4px 28px 0px rgba(0, 0, 0, 0.75);
 }
 
