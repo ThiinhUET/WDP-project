@@ -5,20 +5,26 @@ body {
 /* head */
 .head {
     position: relative;
-    height: 50px;
-    margin-left: 10px;
-    margin-top: 10px;
+    height: 30px;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+    margin-top: -5px;
+    margin-left: -5px;
+    margin-right: -5px;
+    padding: 10px;
 }
 .head button.home {
     outline: none;
     border-style: none;
     background: none;
     cursor: pointer;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
 }
 .head span.title {
     position: absolute;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-    font-size: 15pt;
+    font-family: Source Sans Pro,Open Sans,Segoe UI,sans-serif;
+    font-size: 14pt;
     font-weight: 600;
     color: #ffffff;
     border-left-style: groove;
@@ -29,16 +35,43 @@ body {
 }
 
 /* maincontent */
-.icon1 {
-	margin: 0 0 1em;
-	padding: .8em 1em;
+.maincontent {
+    position: absolute;
+    text-align: center;
+    top: 25%;
+    left: 50%; top: 55%; transform: translateX(-50%) translateY(-55%);
+}
+.login_title {
+    position: relative;
+    margin-bottom: 20px;
+    font-size: 25pt;
+    color: #ffffff;
+    font-weight: 600;
+    font-family: Source Sans Pro,Open Sans,Segoe UI,sans-serif;
+}
+.login_box {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff2c;
+    margin: 0px auto;
+    border-radius: 10px;
+    width: 350px;
+    height: 400px;
+    box-shadow: -1px 4px 28px 0px rgba(0, 0, 0, 0.75);
+}
+.box_input {
+    position: relative;
+    text-align: left;
+	margin: 0em 2em 1em;
+    padding: .8em 1em;
 	background: rgba(255, 255, 255, 0.94);
 }
-.icon1 span.fa {
+.box_input span.fa {
     color: #222;
     width: 22px;
 }
-.header-left-bottom input[type="email"] {
+.login_input input{
     outline: none;
     font-size: 15px;
     color: #222;
@@ -46,18 +79,31 @@ body {
     display: inline-block;
     background: transparent;
     letter-spacing: 1px;
+    width: 88%;
 }
-.header-left-bottom input[type="password"]{
-	outline: none;
-	font-size: 15px;
-    color: #222;
-	border:none;
-	display: inline-block;
-	background: transparent;
+.login_button {
+    position: relative;
+    top: 20px;
+    font-family: Source Sans Pro,Open Sans,Segoe UI,sans-serif;roboto,sans-serif;
+    background-image: linear-gradient(#1bec00, #1d9e0d, #1bec00);
+    color: white;
+    font-weight: 600;
+    user-select: none;
+    font-size: 0.875em;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+    outline: none;
+    border: none;
+    text-decoration: none;
+    padding: .8em 1em;
+    margin: 0em 2em 1em;
     letter-spacing: 1px;
 }
-
-.header-left-bottom p {
+.login_button:hover{
+    background-image: linear-gradient(#1cec00ce, #1d9e0dce, #1cec00ce);
+    background-color: #000;
+}
+.links p {
     font-size: 20px;
     color: #000;
     display: inline-block;
@@ -66,76 +112,19 @@ body {
     letter-spacing: 1px;
     float: left;
 }
-
-.header-left-bottom p.right {
-	text-align: right;
-}
-.header-left-bottom p a {
+.links p a {
 	font-size: 8pt;
 	color: #e2e2e2;
 	text-transform: uppercase;
 }
 
-.login_box {
-    background-color: #ffffff2c;
-    display: flex;
-    -webkit-box-pack: center;
-    justify-content: center;
-    -webkit-box-align: center;
-    align-items: center;
-    flex-direction: column;
-    margin: 0px auto;
-    border-radius: 10px;
-    position: absolute;
-    width: 350px;
-    height: 400px;
-    top: 25%;
-    left: 50%; top: 55%; transform: translateX(-50%) translateY(-55%);
-    box-shadow: -1px 4px 28px 0px rgba(0, 0, 0, 0.75);
-}
-
-.login_title {
-    position: absolute;
-    top: -15%;
-    text-align: center;
-    font-size: 25pt;
-    color: #ffffff;
-    font-weight: 600;
-    margin-bottom: 50px;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-}
-
-
-.login_button {
-    display: flex;
-    flex-direction: row;
-    -webkit-box-pack: start;
-    justify-content: flex-start;
-    -webkit-box-align: center;
-    align-items: center;
-    position: relative;
-    top: 15px;
-    font-family: Poppins, Roboto, sans-serif;
-    background-image: linear-gradient(#1bec00, #1d9e0d, #1bec00);
-    background-size: 720%;
-    box-sizing: border-box;
-    text-align: center;
-    color: white;
-    font-weight: 600;
-    width: none;
-    user-select: none;
-    font-size: 0.875em;
-    cursor: pointer;
-    transition: all 0.3s ease 0s;
-    outline: none;
-    border: none;
-    text-decoration: none;
-    padding: .8em 3em;
-    letter-spacing: 1px;
-}
-
-.login_button:hover{
-    background-image: linear-gradient(#1cec00ce, #1d9e0dce, #1cec00ce);
-}
-
 /* foot */
+.foot {
+    position: absolute;
+    color: #ffffff44;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 10pt;
+    bottom: 10px;
+    right: 10px;
+    text-align: center;
+}

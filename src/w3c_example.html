@@ -273,6 +273,34 @@ a.w3schoolslink:hover,a.w3schoolslink:active {
   margin-top:5px;
   height:90px;
 }
+/* head */
+.head {
+    position: relative;
+    background-color: #1e1e1e;
+    height: 40px;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+}
+.head button{
+    position: absolute;
+    text-decoration: none;
+    outline: none;
+    border-style: none;
+    background: none;
+    cursor: pointer;
+    font-size: 14pt;
+    font-family: Source Sans Pro,Open Sans,Segoe UI,sans-serif;
+    font-weight: 600;
+    color: #ffffff;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.head button.login {
+    border-left-style: groove;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding-left: 10px;
+    right: 0px;
+}
   .w3-dropdown-content {width:350px}
   
 @media screen and (max-width: 727px) {
@@ -371,15 +399,16 @@ body.darktheme ::-webkit-scrollbar-thumb:hover {background-color: #aaaaaa;}
 <![endif]-->
 </head>
 <body>
-
-<div id='tryitLeaderboard'>
-<!-- TryitLeaderboard -->
-
-  <!--<pre>try_it_leaderboard, all: [320,50][728,90][468,60]</pre>-->
-  <div id="snhb-try_it_leaderboard-0"></div>
-  <!-- adspace tryit-->
- 
+    
+<div class="head">
+    <button class="home">
+        <a style="text-decoration: none" href="/index.html"><img src="/assets/logo.png" width="40" height="40"></a>
+    </button>
+    <button class="login">
+        <a href="./login/login.html" style="text-decoration: none; color: #ffffff">Log In</a>
+    </button>
 </div>
+
 <script>globalURL = 'https://tryit.w3schools.com/code_datas.php';</script>
 <div id="saveModal" class="w3-modal" style="z-index:4">
   <div class="w3-modal-content">
