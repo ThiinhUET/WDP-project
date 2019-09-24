@@ -1,5 +1,6 @@
 body {
     background-color: #1e1e1e;
+    user-select: none;
 }
 
 /* head */
@@ -35,6 +36,68 @@ body {
 }
 
 /* maincontent */
+@font-face {
+    font-family: Reality Hyper;
+    src: url("./fonts/Reality Hyper Regular.ttf")
+}
+.title_code {
+    position: relative;
+    text-align: center;
+}
+.title_code .name {
+    color: #fff;
+    font-family: Reality Hyper; 
+    font-size: 36pt;
+}
+.title_code .other_name {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: right;
+    color: #0d9e5b;
+    font-family: Source Sans Pro,Open Sans,Segoe UI,sans-serif;
+    font-size: 32pt;
+}
+@keyframes Sidebar_rainbowBorder {
+    0%,to {background-image: linear-gradient(115deg,#cf3721,#f5be41,#258039,#31a9b8,#ffffff)}
+    20% {background-image: linear-gradient(115deg,#ffffff,#cf3721,#f5be41,#258039,#31a9b8)}
+    40% {background-image: linear-gradient(115deg,#31a9b8,#ffffff,#cf3721,#f5be41,#258039)}
+    60% {background-image: linear-gradient(115deg,#258039,#31a9b8,#ffffff,#cf3721,#f5be41)}
+    80% {background-image: linear-gradient(115deg,#f5be41,#258039,#31a9b8,#ffffff,#cf3721)}
+}
+.button_code {
+    position: absolute;
+    top: 30px;
+    left: 10px;
+    display: block;
+    background-image: linear-gradient(115deg,#cf3721,#f5be41,#258039,#31a9b8, #ffffff);
+    margin: 50px auto;
+    padding: 3px;
+    border-radius: 6px;
+    border-style: none;
+    box-sizing: border-box;
+    cursor: pointer;
+    font-weight: 600;
+    letter-spacing: 1px;
+    font-family: Source Sans Pro,Open Sans,Segoe UI,sans-serif;
+}
+.button_code a{
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+    border-radius: 3px;
+    background: #1e1e1e;
+    display: block;
+    font-size: 12pt;
+    align-items: center;
+    box-sizing: border-box;
+    height: 100%;
+    transition: background .5s ease;
+}
+.button_code:focus, .button_code:hover {
+    animation: Sidebar_rainbowBorder .5s linear infinite;
+    box-shadow: 0px 0px 15px 0px #0d9e5b;
+}
 
 /* foot */
 .foot {
@@ -43,6 +106,7 @@ body {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 10pt;
     bottom: 10px;
+    left: 10px;
     right: 10px;
     text-align: center;
 }
