@@ -67,7 +67,7 @@ body {
 }
 .button_code {
     position: absolute;
-    top: 30px;
+    top: 27px;
     left: 10px;
     display: block;
     background-image: linear-gradient(115deg,#cf3721,#f5be41,#258039,#31a9b8, #ffffff);
@@ -88,7 +88,7 @@ body {
     border-radius: 3px;
     background: #1e1e1e;
     display: block;
-    font-size: 12pt;
+    font-size: 14pt;
     align-items: center;
     box-sizing: border-box;
     height: 100%;
