@@ -56,7 +56,7 @@ body {
     margin: 0px auto;
     border-radius: 10px;
     width: 350px;
-    height: 400px;
+    height: 490px;
     box-shadow: 0px 0px 20px 2px rgba(0, 0, 0, 0.75);
 }
 .box_input {
@@ -82,9 +82,9 @@ body {
 }
 .login_button {
     position: relative;
-    top: 20px;
     font-family: Source Sans Pro,Open Sans,Segoe UI,sans-serif;
     background-image: linear-gradient(#1bec00, #1d9e0d, #1bec00);
+    margin: 0.5em 2em 0.5em;
     color: white;
     font-weight: 600;
     user-select: none;
@@ -95,7 +95,6 @@ body {
     border: none;
     text-decoration: none;
     padding: .8em 1em;
-    margin: 0em 2em 1em;
     letter-spacing: 1px;
 }
 .login_button:hover{
@@ -105,9 +104,9 @@ body {
 .links p {
     font-size: 20px;
     color: #000;
-    display: inline-block;
+    display: block;
     width: 50%;
-    margin: 20px 0 0;
+    margin: 0 auto;
     letter-spacing: 1px;
     float: left;
 }
