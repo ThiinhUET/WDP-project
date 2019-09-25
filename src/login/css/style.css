@@ -1,16 +1,14 @@
 body {
     background-color: #1e1e1e;
     user-select: none;
+    margin: 0 auto;
 }
 
 /* head */
 .head {
     position: relative;
     height: 30px;
-    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
-    margin-top: -5px;
-    margin-left: -5px;
-    margin-right: -5px;
+    box-shadow: 0px 0px 10px 0px #0d9e5b;
     padding: 10px;
 }
 .head button.home {
