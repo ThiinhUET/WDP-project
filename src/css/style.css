@@ -1,7 +1,14 @@
 body {
     background-color: #1e1e1e;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center center;
     user-select: none;
     margin: 0 auto;
+}
+
+#background {
+    position: absolute;
 }
 
 /* head */
@@ -9,10 +16,10 @@ body {
     position: relative;
     height: 30px;
     box-shadow: 0px 0px 10px 0px #0d9e5b;
-    padding: 10px;
+    padding: 10px 0px 10px 0px;
 }
-.head button{
-    position: absolute;
+.head button {
+    position: relative;
     text-decoration: none;
     outline: none;
     border-style: none;
@@ -21,16 +28,19 @@ body {
     font-size: 14pt;
     font-family: Source Sans Pro,Open Sans,Segoe UI,sans-serif;
     font-weight: 600;
-    color: #ffffff;
     top: 50%;
     transform: translateY(-50%);
+    float: left;
 }
 .head button.login {
-    border-left-style: groove;
-    margin-left: 10px;
-    margin-right: 10px;
-    padding-left: 10px;
-    right: 0px;
+    border-left-style: solid;
+    width: 120px;
+    float: right;
+}
+.head button.signup {
+    border-left-style: solid;
+    width: 120px;
+    float: right;
 }
 
 /* maincontent */
@@ -57,18 +67,18 @@ body {
     font-size: 32pt;
 }
 @keyframes Sidebar_rainbowBorder {
-    0%,to {background-image: linear-gradient(115deg,#cf3721,#f5be41,#258039,#31a9b8,#ffffff)}
-    20% {background-image: linear-gradient(115deg,#ffffff,#cf3721,#f5be41,#258039,#31a9b8)}
-    40% {background-image: linear-gradient(115deg,#31a9b8,#ffffff,#cf3721,#f5be41,#258039)}
-    60% {background-image: linear-gradient(115deg,#258039,#31a9b8,#ffffff,#cf3721,#f5be41)}
-    80% {background-image: linear-gradient(115deg,#f5be41,#258039,#31a9b8,#ffffff,#cf3721)}
+    0% {background-position: 87% 100%;}
+    25% {background-position: 10% 0%;}
+    50% {background-position: 87% 100%;}
+    75% {background-position: 10% 0%;}
+    100% {background-position: 87% 100%;}
 }
 .button_code {
     position: absolute;
     top: 27px;
     left: 10px;
     display: block;
-    background-image: linear-gradient(115deg,#cf3721,#f5be41,#258039,#31a9b8, #ffffff);
+    background-image: linear-gradient(115deg,#cf3721,#f5be41,#258039,#31a9b8);
     margin: 50px auto;
     padding: 3px;
     border-radius: 6px;
@@ -78,25 +88,24 @@ body {
     font-weight: 600;
     letter-spacing: 1px;
     font-family: Source Sans Pro,Open Sans,Segoe UI,sans-serif;
+    background-size: 400% 400%;
+    animation: Sidebar_rainbowBorder 3s ease-in-out infinite;
 }
 .button_code a{
     color: #fff;
     padding: 10px;
     text-align: center;
-    border-radius: 3px;
+    border-radius: 4px;
     background: #1e1e1e;
     display: block;
     font-size: 14pt;
     align-items: center;
     box-sizing: border-box;
     height: 100%;
-    transition: background .5s ease;
 }
-.button_code:focus, .button_code:hover {
-    animation: Sidebar_rainbowBorder .5s linear infinite;
+.button_code:hover {
     box-shadow: 0px 0px 15px 0px #0d9e5b;
 }
-
 /* foot */
 .foot {
     position: absolute;

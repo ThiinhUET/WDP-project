@@ -9,12 +9,17 @@
     <link rel ="stylesheet" type="text/css" href="./css/style.css">
 </head>
 <body>
+    <canvas id="background"></canvas>
+    <!-- content -->
     <div class="head">
         <button class="home">
             <a style="text-decoration: none" href="./index.html"><img src="/assets/logo.png" width="40" height="40"></a>
         </button>
         <button class="login">
-            <a href="./login/login.html" style="text-decoration: none; color: #ffffff">Log In</a>
+            <a href="./login/login.html" style="text-decoration: none; color: #ffffff"><span>Log In</span></a>
+        </button>
+        <button class="signup">
+                <a href="./signup/signup.html" style="text-decoration: none; color: #ffffff"><span>Sign Up</span></a>
         </button>
     </div>
     <div class="maincontent">
@@ -24,7 +29,7 @@
                 <div class="other_name">
                     <div>The online code editor</div>
                     <button class="button_code">
-                        <a href="./w3c_example.html" style="text-decoration: none">Start Coding</a>
+                        <a href="./w3c_example.html" style="text-decoration: none"><span>Start Coding</span></a>
                     </button>
                     <div style="font-size: 48pt">for Web</div>
                 </div>
@@ -38,5 +43,10 @@
         <span style="float: left">v1.0</span>
         <span style="float: right">© 2019 Web Development Platform | Develop by HoiThanhDucChuaTroi</span>
     </div>
+    <!-- partial -->
+    <script src='https://www.marcoguglie.it/Codepen/AnimatedHeaderBg/demo-1/js/EasePack.min.js'></script>
+    <script src='https://www.marcoguglie.it/Codepen/AnimatedHeaderBg/demo-1/js/rAF.js'></script>
+    <script src='https://www.marcoguglie.it/Codepen/AnimatedHeaderBg/demo-1/js/TweenLite.min.js'></script>
+    <script  src="./script/script.js"></script>
 </body>
 </html>

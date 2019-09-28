@@ -1,7 +1,15 @@
 body {
     background-color: #1e1e1e;
+    background: #1e1e1e;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center center;
     user-select: none;
     margin: 0 auto;
+}
+
+#background {
+    position: absolute;
 }
 
 /* head */
@@ -9,28 +17,39 @@ body {
     position: relative;
     height: 30px;
     box-shadow: 0px 0px 10px 0px #0d9e5b;
-    padding: 10px;
+    padding: 10px 0px 10px 0px;
 }
-.head button.home {
+.head button {
+    position: relative;
+    text-decoration: none;
     outline: none;
     border-style: none;
     background: none;
     cursor: pointer;
-    position: relative;
+    font-size: 14pt;
+    font-family: Source Sans Pro,Open Sans,Segoe UI,sans-serif;
+    font-weight: 600;
     top: 50%;
     transform: translateY(-50%);
+    float: left;
+}
+.head button.home {
+    padding-right: 20px;
 }
 .head span.title {
-    position: absolute;
+    position: relative;
     font-family: Source Sans Pro,Open Sans,Segoe UI,sans-serif;
     font-size: 14pt;
     font-weight: 600;
     color: #ffffff;
-    border-left-style: groove;
-    margin-left: 10px;
-    padding-left: 10px;
-    top: 50%;
-    transform: translateY(-50%);
+    border-left-style: solid;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.head button.signup {
+    border-left-style: solid;
+    width: 120px;
+    float: right;
 }
 
 /* maincontent */
@@ -56,15 +75,20 @@ body {
     margin: 0px auto;
     border-radius: 10px;
     width: 350px;
-    height: 490px;
+    height: 480px;
     box-shadow: 0px 0px 20px 2px rgba(0, 0, 0, 0.75);
+}
+.login_input {
+    display: flex;
+    flex-direction: column;
 }
 .box_input {
     position: relative;
     text-align: left;
-	margin: 0em 2em 1em;
+	margin: 1em 2em 0em;
     padding: .8em 1em;
-	background: rgba(255, 255, 255, 0.94);
+    background: rgba(255, 255, 255, 0.94);
+    border-radius: 6px;
 }
 .box_input span.fa {
     color: #222;
@@ -80,11 +104,9 @@ body {
     letter-spacing: 1px;
     width: 88%;
 }
-.login_button {
+.login_box button {
     position: relative;
     font-family: Source Sans Pro,Open Sans,Segoe UI,sans-serif;
-    background-image: linear-gradient(#1bec00, #1d9e0d, #1bec00);
-    margin: 0.5em 2em 0.5em;
     color: white;
     font-weight: 600;
     user-select: none;
@@ -93,26 +115,79 @@ body {
     transition: all 0.3s ease 0s;
     outline: none;
     border: none;
+    border-radius: 6px;
     text-decoration: none;
     padding: .8em 1em;
     letter-spacing: 1px;
 }
-.login_button:hover{
-    background-image: linear-gradient(#1cec00ce, #1d9e0dce, #1cec00ce);
-    background-color: #000;
+.login_box button.login_button {
+    font-size: 1rem;
+    margin: 1.5em 2em 1.5em;
+    background-color: rgb(13, 158, 91);
+}
+.login_box button.login_git_button {
+    font-size: 1rem;
+    margin: 1.5em 2em .5em;
+    background-color: #0d9e5b;
+}
+.login_box button.login_button:hover, .login_box button.login_git_button:hover{
+    background-color: #0d9e5bbf;
+}
+.login-divider {
+    width: 100px;
+    margin: 0 auto;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    position: relative;
+}
+.login-divider .bar-top {
+    left: 66px;
+}
+.login-divider .bar-bottom {
+    right: 66px;
+}
+.login-divider .bar {
+    height: 1px;
+    width: 135px;
+    position: absolute;
+    background: #ffffff;
+}
+.login-or {
+    position: absolute;
+    display: block;
+    width: 30px;
+    height: 20px;
+    top: 50%; left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    border: 1px solid #ffffff;
+    text-align: center;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    border-radius: 4px;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    font-size: .8rem;
+    color: #ffffff;
 }
 .links p {
-    font-size: 20px;
-    color: #000;
     display: block;
     width: 50%;
     margin: 0 auto;
-    letter-spacing: 1px;
-    float: left;
+    float: right;
 }
 .links p a {
-	font-size: 8pt;
-	color: #e2e2e2;
+    font-size: 8pt;
+    letter-spacing: 1px;
+	color: #fff;
 	text-transform: uppercase;
 }
 

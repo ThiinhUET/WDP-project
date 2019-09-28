@@ -1,0 +1,53 @@
+body {
+    background-color: #1e1e1e;
+    background-size: cover;
+    background-position: center center;
+    user-select: none;
+    margin: 0 auto;
+    user-select: none;
+    overflow: hidden;
+}
+
+#background {
+    position: absolute;
+}
+
+/* head */
+.head {
+    position: relative;
+    height: 30px;
+    box-shadow: 0px 0px 10px 0px #0d9e5b;
+    padding: 10px 0px 10px 0px;
+}
+.head button {
+    position: relative;
+    text-decoration: none;
+    outline: none;
+    border-style: none;
+    background: none;
+    cursor: pointer;
+    font-size: 14pt;
+    font-family: Source Sans Pro,Open Sans,Segoe UI,sans-serif;
+    font-weight: 600;
+    top: 50%;
+    transform: translateY(-50%);
+    float: left;
+}
+.head button.home {
+    padding-right: 20px;
+}
+.head span.title {
+    position: relative;
+    font-family: Source Sans Pro,Open Sans,Segoe UI,sans-serif;
+    font-size: 14pt;
+    font-weight: 600;
+    color: #ffffff;
+    border-left-style: solid;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.head button.login {
+    border-left-style: solid;
+    width: 120px;
+    float: right;
+}
