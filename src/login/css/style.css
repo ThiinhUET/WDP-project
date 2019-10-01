@@ -6,20 +6,23 @@ body {
     background-position: center center;
     user-select: none;
     margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
 }
 
 #background {
     position: absolute;
 }
 
-/* head */
-.head {
+/* header */
+.header {
     position: relative;
     height: 30px;
     box-shadow: 0px 0px 10px 0px #0d9e5b;
     padding: 10px 0px 10px 0px;
 }
-.head button {
+.header button {
     position: relative;
     text-decoration: none;
     outline: none;
@@ -33,10 +36,10 @@ body {
     transform: translateY(-50%);
     float: left;
 }
-.head button.home {
+.header button.home {
     padding-right: 20px;
 }
-.head span.title {
+.header span.title {
     position: relative;
     font-family: Source Sans Pro,Open Sans,Segoe UI,sans-serif;
     font-size: 14pt;
@@ -45,8 +48,11 @@ body {
     border-left-style: solid;
     padding-left: 20px;
     padding-right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    float: left;
 }
-.head button.signup {
+.header button.signup {
     border-left-style: solid;
     width: 120px;
     float: right;
@@ -54,14 +60,14 @@ body {
 
 /* maincontent */
 .maincontent {
-    position: absolute;
-    text-align: center;
-    top: 25%;
-    left: 50%; top: 55%; transform: translateX(-50%) translateY(-55%);
+    display: flex;
+    flex-direction: column;
+    height: 90vh;
+    align-items: center;
+    justify-content: center;
 }
 .login_title {
-    position: relative;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     font-size: 25pt;
     color: #ffffff;
     font-weight: 600;
@@ -87,7 +93,7 @@ body {
     text-align: left;
 	margin: 1em 2em 0em;
     padding: .8em 1em;
-    background: rgba(255, 255, 255, 0.94);
+    background: rgba(255, 255, 255, 0.5);
     border-radius: 6px;
 }
 .box_input span.fa {
@@ -180,7 +186,7 @@ body {
 }
 .links p {
     display: block;
-    width: 50%;
+    width: 45%;
     margin: 0 auto;
     float: right;
 }
@@ -191,8 +197,8 @@ body {
 	text-transform: uppercase;
 }
 
-/* foot */
-.foot {
+/* footer */
+.footer {
     position: absolute;
     color: #ffffff44;
     font-family: Verdana, Geneva, Tahoma, sans-serif;

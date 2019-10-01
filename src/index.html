@@ -11,8 +11,8 @@
 <body>
     <canvas id="background"></canvas>
     <!-- content -->
-    <div class="head">
-        <button class="home">
+    <div class="header">
+        <button class="home" style="height: 42px;">
             <a style="text-decoration: none" href="./index.html"><img src="/assets/logo.png" width="40" height="40"></a>
         </button>
         <button class="login">
@@ -23,23 +23,25 @@
         </button>
     </div>
     <div class="maincontent">
-        <div class="code_editor" style="position: absolute; left: 10%; top: 40%; transform: translateY(-50%);">
+        <div class="code_editor" style="position: relative; flex: 3">
             <div class="title_code">
                 <div class="name">WEB DEVELOPMENT PLATFORM</div>
                 <div class="other_name">
                     <div>The online code editor</div>
-                    <button class="button_code">
-                        <a href="./w3c_example.html" style="text-decoration: none"><span>Start Coding</span></a>
-                    </button>
-                    <div style="font-size: 48pt">for Web</div>
+                    <div style="display: flex; align-items: center; justify-content: space-between;">
+                        <button class="button_code">
+                            <a href="./w3c_example.html" style="text-decoration: none">Start Coding</a>
+                        </button>
+                        <span style="font-size: 48pt">for Web</span>
+                    </div>
                 </div>
             </div>
         </div>
-        <div>
-            <img src="../assets/logo3D.gif" style="position: absolute; width: 300px; height: 300px; right: 5%; top: 50%; transform: translateY(-50%);">
+        <div class="logo" style="position: relative; flex:1">
+            <img src="../assets/logo3D.gif" style="width: 300px; height: 300px;">
         </div>
     </div>
-    <div class="foot">
+    <div class="footer">
         <span style="float: left">v1.0</span>
         <span style="float: right">© 2019 Web Development Platform | Develop by HoiThanhDucChuaTroi</span>
     </div>
