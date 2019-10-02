@@ -17,41 +17,52 @@
             <a style="text-decoration: none" href="../index.html"><img src="/assets/logo.png" width="40" height="40"></a>
         </button>
         <span class="title">WDP</span>
-        <button class="signup">
-            <a href="../login/login.html" style="text-decoration: none; color: #ffffff"><span>Log In</span></a>
+        <button class="signin">
+            <a href="../signin/signin.html" style="text-decoration: none; color: #ffffff"><span>Sign In</span></a>
         </button>
     </div>
     <div class="maincontent">
         <div class="signup_title">Sign up to WDP</div>
         <div class="signup_box">
             <img src="/assets/logo2.png" style="position: relative; width: 250px; margin: 0 auto; margin-top: 20px;">
-            <form class="signup_input" style="position: relative; margin-top: 30px;" action="#" method="post">
+            <form class="signup_input" style="position: relative; margin-top: 20px;" action="#" method="post">
                 <div class="item">
-                    <span>Your Name:</span>
-                    <div class="box_input">
-                        <input type="text" required=""/>
+                    <label>Your Full Name:</label>
+                    <div style="width: 70%">
+                        <div class="box_input">
+                            <input type="text" placeholder="Enter full name" required=""/>
+                        </div>
                     </div>
                 </div>
                 <div class="item">
-                    <span>Your Username:</span>
-                    <div class="box_input">
-                        <input type="text" required=""/>
+                    <label>Your Username:</label>
+                    <div style="width: 70%">
+                        <div class="box_input">
+                            <input type="text" placeholder="Enter username" required=""/>
+                        </div>
                     </div>
                 </div>
                 <div class="item">
-                    <span>Your Password:</span>
-                    <div class="box_input">
-                        <input type="password" required=""/>
+                    <label>Your Email:</label>
+                    <div style="width: 70%">
+                        <div class="box_input">
+                            <input type="email" placeholder="Enter email" required=""/>
+                        </div>
                     </div>
                 </div>
                 <div class="item">
-                    <span>Confirm Password:</span>
-                    <div class="box_input">
-                        <input type="password" required=""/>
+                    <label>Your Password:</label>
+                    <div style="display: flex; justify-content: space-between; width: 70%">
+                        <div class="box_input" style="width: 38%;">
+                            <input type="password" placeholder="Enter password" required=""/>
+                        </div>
+                        <div class="box_input" style="width: 38%;">
+                            <input type="password" placeholder="Confirm password" required=""/>
+                        </div>
                     </div>
                 </div>
                 <button class="signup_button">
-                    <a style="text-decoration: none;color: #fff;" href = "#" >Register Now</a>
+                    <a style="text-decoration: none;color: #fff;" href = "#" >Create Account</a>
                 </button>
             </form>	
         </div>
@@ -64,6 +75,6 @@
     <script src='https://www.marcoguglie.it/Codepen/AnimatedHeaderBg/demo-1/js/EasePack.min.js'></script>
     <script src='https://www.marcoguglie.it/Codepen/AnimatedHeaderBg/demo-1/js/rAF.js'></script>
     <script src='https://www.marcoguglie.it/Codepen/AnimatedHeaderBg/demo-1/js/TweenLite.min.js'></script>
-    <script  src="../script/script.js"></script>
+    <script src="../js/script.js"></script>
 </body>
 </html>

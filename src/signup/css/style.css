@@ -52,7 +52,7 @@ body {
     transform: translateY(-50%);
     float: left;
 }
-.header button.signup {
+.header button.signin {
     border-left-style: solid;
     width: 120px;
     float: right;
@@ -79,7 +79,7 @@ body {
     background-color: #ffffff2c;
     margin: 0px auto;
     border-radius: 10px;
-    width: 500px;
+    width: 550px;
     height: 480px;
     box-shadow: 0px 0px 20px 2px rgba(0, 0, 0, 0.75);
 }
@@ -89,28 +89,30 @@ body {
     color: #ffffff;
     font-weight: 500;
     margin-left: 2em; 
+    margin-right: 1.75em;
     align-items: center;
     justify-content: space-between;
 }
 .box_input {
     position: relative;
-    width: 55%;
-    display: inline-block;
+    width: -webkit-fill-available;
+    display: block;
     text-align: left;
-	margin: .5em 2em .5em 0em;
+	margin: .5em .25em;
     padding: .8em 1em;
     background: rgba(255, 255, 255, 0.5);
     border-radius: 6px;
+    float: right;
 }
 .signup_input input{
     outline: none;
-    font-size: 15px;
+    font-size: 14px;
     color: #222;
 	border:none;
-    display: inline-block;
+    display: block;
     background: transparent;
     letter-spacing: 1px;
-    width: 88%;
+    width: 100%;
 }
 .signup_box button {
     position: relative;
