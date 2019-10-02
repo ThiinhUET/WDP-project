@@ -93,7 +93,7 @@ body {
     text-align: left;
 	margin: 1em 2em 0em;
     padding: .8em 1em;
-    background: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.75);
     border-radius: 6px;
 }
 .box_input span.fa {
