@@ -2,5 +2,5 @@ src/ace
 MERN-boilerplate
 src/node_modules
 src/package-lock.json
-src/WDP_server/node_modules
-src/WDP_server/package-lock.json
+src/WDP_server/server/node_modules
+src/WDP_server/server/package-lock.json
