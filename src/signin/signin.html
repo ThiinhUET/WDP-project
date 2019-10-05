@@ -24,22 +24,26 @@
         <div class="signin_title">Sign in to WDP</div>
         <div class="signin_box">
             <img src="/assets/logo2.png" style="position: relative; width: 70%; margin: 0 auto; margin-top: 20px;">
-            <form class="signin_input" style="position: relative; margin-top: 30px;" action="#" method="post">
+            <form class="signin_input" style="position: relative; margin-top: 30px;" action="javascript: log()" method="post">
                 <div class="box_input">
                     <span class="fa fa-user"></span>
-                    <input type="email" placeholder="Username" required=""/>
+                    <input type="text" id="username" placeholder="Username" required=""/>
                 </div>
                 <div class="box_input">
                     <span class="fa fa-lock"></span>
-                    <input type="password" placeholder="Password" required=""/>
+                    <input type="password" id="password" placeholder="Password" required=""/>
                 </div>
                 <div class="links">
                     <p><a href="https://github.com/password_reset" style="text-decoration: none">Forgot Password?</a></p>
                 </div>
-                <button class="signin_button">
-                    <a style="text-decoration: none;color: #fff;" href = "#" >Sign in</a>
-                </button>
+                <button class="signin_button">Sign in</button>
             </form>	
+            <script>
+                function log() {
+                    let s = "username: " + document.getElementById("username").value + "\npassword: "  + document.getElementById("password").value;
+                    alert(s);
+                }
+            </script>
             <div class="signin-divider">
                 <div class="bar bar-top"></div>
                 <span class="signin-or">OR</span>
