@@ -2,11 +2,25 @@ import React, { Component } from 'react';
 import logo from './assets/logo.png'
 import logo3D from './assets/logo3D.gif'
 import './css/style.css';
+import './css/background_style.css';
 
 class App extends Component {
     render() {
         return (
             <div className="App">
+                <div className="night">
+                    <div className="shooting_star"></div>
+                    <div className="shooting_star"></div>
+                    <div className="shooting_star"></div>
+                    <div className="shooting_star"></div>
+                    <div className="shooting_star"></div>
+                    <div className="shooting_star"></div>
+                    <div className="shooting_star"></div>
+                    <div className="shooting_star"></div>
+                    <div className="shooting_star"></div>
+                    <div className="shooting_star"></div>
+                    <div className="shooting_star"></div>
+                </div>
                 <div className="header">
                     <button className="home" style={{height: '42px'}}>
                         <a style={{textDecoration: 'none'}} href="./index.html"><img src={logo} className="App-logo" alt="logo" width={40} height={40} /></a>
