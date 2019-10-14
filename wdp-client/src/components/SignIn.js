@@ -3,10 +3,14 @@ import '.././css/background_style.css';
 import '.././signin/css/style.css';
 import logo from '.././assets/logo.png';
 import logo2 from '.././assets/logo2.png';
+import {withRouter} from 'react-router-dom';
 
 class SignIn extends Component {
     constructor(props) {
         super(props);
+    }
+    returnHome(){
+        this.props.history.push('/home');
     }
     render() {
         return (
@@ -26,11 +30,11 @@ class SignIn extends Component {
                 </div>
                 <div className="header">
                     <button className="home" style={{height: '42px'}}>
-                        <a style={{ textDecoration: 'none' }} href="./index.html"><img src={logo} className="App-logo" alt="logo" width={40} height={40} /></a>
+                        <a style={{ textDecoration: 'none' }} onClick = {() => this.returnHome()}><img src={logo} className="App-logo" alt="logo" width={40} height={40} /></a>
                     </button>
                     <span className="title">WDP</span>
                     <button className="signup">
-                        <a href="../signup/signup.html" style={{textDecoration: 'none', color: '#ffffff'}}><span>Sign Up</span></a>
+                        <a style={{textDecoration: 'none', color: '#ffffff'}}><span>Sign Up</span></a>
                     </button>
                 </div>
                 <div className="maincontent">
@@ -75,4 +79,4 @@ class SignIn extends Component {
     }
 }
 
-export default SignIn;
+export default withRouter(SignIn);

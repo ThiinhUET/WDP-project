@@ -41,7 +41,7 @@ class HomePage extends Component {
                 </div>
                 <div className="header">
                     <button className="home" style={{ height: '42px' }} onClick={() => this.openSignIn()}>
-                        <a style={{ textDecoration: 'none' }} href="./index.html"><img src={logo} className="App-logo" alt="logo" width={40} height={40} /></a>
+                        <a style={{ textDecoration: 'none' }}><img src={logo} className="App-logo" alt="logo" width={40} height={40} /></a>
                     </button>
                     <button className="signin" onClick={() => this.openSignIn()}>
                         <a style={{ textDecoration: 'none', color: '#ffffff' }}><span>Sign In</span></a>

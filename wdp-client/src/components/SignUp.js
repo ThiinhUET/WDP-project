@@ -1,16 +1,22 @@
 import React , {Component} from 'react';
-
+import {withRouter} from 'react-router-dom';
 class SignUp extends Component {
+    constructor(props){
+        super(props)
+    }
+    returnHome(){   
+        this.props.history.push('/home');
+    }
     render() { 
         return (
             <div className="SignUp">
                 <div className="header">
                 <button className="home" style={{height: '42px'}}>
-                    <a style={{textDecoration: 'none'}} href="../index.html"><img src="../assets/logo.png" width={40} height={40} /></a>
+                    <a style={{textDecoration: 'none'}} onClick = {() => this.returnHome()}><img src="../assets/logo.png" width={40} height={40} /></a>
                 </button>
                 <span className="title">WDP</span>
                 <button className="signin">
-                    <a href="../signin/signin.html" style={{textDecoration: 'none', color: '#ffffff'}}><span>Sign In</span></a>
+                    <a style={{textDecoration: 'none', color: '#ffffff'}}><span>Sign In</span></a>
                 </button>
                 </div>
                 <div className="maincontent">
@@ -66,4 +72,4 @@ class SignUp extends Component {
     }
 }
  
-export default SignUp;
+export default withRouter(SignUp);
