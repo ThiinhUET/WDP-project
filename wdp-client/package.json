@@ -5,8 +5,10 @@
   "dependencies": {
     "font-awesome": "^4.7.0",
     "gsap": "^2.1.3",
+    "rc-menu": "^7.4.31",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
+    "react-router-dom": "^5.1.2",
     "react-scripts": "3.2.0"
   },
   "scripts": {
