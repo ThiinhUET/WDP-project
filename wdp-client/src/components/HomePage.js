@@ -13,6 +13,12 @@ class HomePage extends Component {
     openEditor() {
         this.props.history.push('/code');
     }
+    openSignIn(){
+        this.props.history.push('/signin');
+    }
+    openSignUp(){
+        this.props.history.push('/signup');
+    }
 
     render() { 
         return (
@@ -34,10 +40,10 @@ class HomePage extends Component {
                     <button className="home" style={{ height: '42px' }}>
                         <a style={{ textDecoration: 'none' }} href="./index.html"><img src={logo} className="App-logo" alt="logo" width={40} height={40} /></a>
                     </button>
-                    <button className="signin">
+                    <button className="signin" onClick={() => this.openSignIn()}>
                         <a style={{ textDecoration: 'none', color: '#ffffff' }}><span>Sign In</span></a>
                     </button>
-                    <button className="signup">
+                    <button className="signup" onClick = {() => this.openSignUp()}>
                         <a style={{ textDecoration: 'none', color: '#ffffff' }}><span>Sign Up</span></a>
                     </button>
                 </div>
