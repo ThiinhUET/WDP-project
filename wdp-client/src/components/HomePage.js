@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import '.././css/style.css';
 import '.././css/background_style.css';
 import {withRouter} from 'react-router-dom';
-import logo from '.././assets/logo.png'
-import logo3D from '.././assets/logo3D.gif'
+import logo from '.././assets/logo.png';
+import logo3D from '.././assets/logo3D.gif';
 
 class HomePage extends Component {
     constructor(props) {
