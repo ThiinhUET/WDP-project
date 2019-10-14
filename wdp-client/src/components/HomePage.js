@@ -16,7 +16,7 @@ class HomePage extends Component {
 
     render() { 
         return (
-            <div className="App">
+            <div className="Home">
                 <div className="night">
                     <div className="shooting_star"></div>
                     <div className="shooting_star"></div>
@@ -35,10 +35,10 @@ class HomePage extends Component {
                         <a style={{ textDecoration: 'none' }} href="./index.html"><img src={logo} className="App-logo" alt="logo" width={40} height={40} /></a>
                     </button>
                     <button className="signin">
-                        <a href="./signin/signin.html" style={{ textDecoration: 'none', color: '#ffffff' }}><span>Sign In</span></a>
+                        <a style={{ textDecoration: 'none', color: '#ffffff' }}><span>Sign In</span></a>
                     </button>
                     <button className="signup">
-                        <a href="./signup/signup.html" style={{ textDecoration: 'none', color: '#ffffff' }}><span>Sign Up</span></a>
+                        <a style={{ textDecoration: 'none', color: '#ffffff' }}><span>Sign Up</span></a>
                     </button>
                 </div>
                 <div className="maincontent">
