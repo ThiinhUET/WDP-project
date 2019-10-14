@@ -26,7 +26,7 @@ class HomePage extends Component {
     render() { 
         return (
             <div className="Home">
-                <div className="night">
+                <div className="background" style={{width: '70%'}}>
                     <div className="shooting_star"></div>
                     <div className="shooting_star"></div>
                     <div className="shooting_star"></div>

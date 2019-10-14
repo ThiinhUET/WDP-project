@@ -1,65 +1,5 @@
-body {
-    background-color: #1e1e1e;
-    background-size: cover;
-    background-position: center center;
-    user-select: none;
-    margin: 0 auto;
-    user-select: none;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    min-height: 100%;
-}
-
-#background {
-    position: absolute;
-}
-
-/* header */
-.header {
-    display: inline-block;
-    height: 30px;
-    box-shadow: 0px 0px 10px 0px #0d9e5b;
-    padding: 10px 0px 10px 0px;
-}
-.header button {
-    position: relative;
-    text-decoration: none;
-    outline: none;
-    border-style: none;
-    background: none;
-    cursor: pointer;
-    font-size: 14pt;
-    font-family: Source Sans Pro,Open Sans,Segoe UI,sans-serif;
-    font-weight: 600;
-    top: 50%;
-    transform: translateY(-50%);
-    float: left;
-}
-.header button.home {
-    padding-right: 20px;
-}
-.header span.title {
-    position: relative;
-    font-family: Source Sans Pro,Open Sans,Segoe UI,sans-serif;
-    font-size: 14pt;
-    font-weight: 600;
-    color: #ffffff;
-    border-left-style: solid;
-    padding-left: 20px;
-    padding-right: 20px;
-    top: 50%;
-    transform: translateY(-50%);
-    float: left;
-}
-.header button.signin {
-    border-left-style: solid;
-    width: 120px;
-    float: right;
-}
-
 /* maincontent */
-.maincontent {
+.SignUp .maincontent {
     display: flex;
     flex-direction: column;
     height: 90vh;
@@ -94,7 +34,7 @@ body {
     align-items: center;
     justify-content: space-between;
 }
-.box_input {
+.SignUp .box_input {
     position: relative;
     width: -webkit-fill-available;
     display: block;
@@ -135,16 +75,4 @@ body {
 }
 .signup_box button:hover {
     background-color: #0d9e5bbf;
-}
-
-/* footer */
-.footer {
-    position: absolute;
-    color: #ffffff44;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 10pt;
-    bottom: 10px;
-    left: 10px;
-    right: 10px;
-    text-align: center;
 }

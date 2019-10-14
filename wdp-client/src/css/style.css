@@ -9,10 +9,6 @@ body {
     flex-direction: column;
 }
 
-#background {
-    position: absolute;
-}
-
 /* header */
 .header {
     position: relative;
@@ -30,6 +26,22 @@ body {
     font-size: 14pt;
     font-family: Source Sans Pro,Open Sans,Segoe UI,sans-serif;
     font-weight: 600;
+    top: 50%;
+    transform: translateY(-50%);
+    float: left;
+}
+.header button.home {
+    padding-right: 20px;
+}
+.header span.title {
+    position: relative;
+    font-family: Source Sans Pro,Open Sans,Segoe UI,sans-serif;
+    font-size: 14pt;
+    font-weight: 600;
+    color: #ffffff;
+    border-left-style: solid;
+    padding-left: 20px;
+    padding-right: 20px;
     top: 50%;
     transform: translateY(-50%);
     float: left;
