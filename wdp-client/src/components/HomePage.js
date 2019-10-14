@@ -25,7 +25,7 @@ class HomePage extends Component {
     }
     render() { 
         return (
-            <div className="App">
+            <div className="Home">
                 <div className="night">
                     <div className="shooting_star"></div>
                     <div className="shooting_star"></div>

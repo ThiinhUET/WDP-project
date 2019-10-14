@@ -59,7 +59,7 @@ body {
 }
 
 /* maincontent */
-.maincontent {
+.SignIn .maincontent {
     display: flex;
     flex-direction: column;
     height: 90vh;
