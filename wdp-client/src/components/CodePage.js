@@ -7,7 +7,7 @@ class CodePage extends Component {
     }
     render() { 
         return (
-            <h1>Code page</h1>
+            <h1 style={{ background: 'white' }}>This is code page</h1>
         );
     }
 }
