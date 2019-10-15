@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { render } from 'react-dom';
 import logo from '.././assets/logo.png';
-import './style.css';
 import AceEditor from 'react-ace';
 import "ace-builds/src-noconflict/mode-java";
 import "ace-builds/src-noconflict/theme-github";
@@ -12,8 +11,8 @@ import Pusher from 'pusher-js';
 import pushid from 'pushid';
 import axios from 'axios';
 import '../css/codePage.css';
-import 'codemirror/lib/codemirror.css';
-import 'codemirror/theme/material.css';
+import '../css/codemirror.css';
+import 'codemirror/theme/mbo.css';
 
 import 'codemirror/mode/htmlmixed/htmlmixed';
 import 'codemirror/mode/css/css';
@@ -98,62 +97,91 @@ class CodePage extends Component {
         document.close();
     };
 
+    returnHome(){
+        this.props.history.push('/home');
+    }
+    openSignIn(){
+        this.props.history.push('/signin');
+    }
+    openSignUp(){
+        this.props.history.push('/signup');
+    }
     render() {
         const { html, js, css } = this.state;
         const codeMirrorOptions = {
-            theme: "material",
+            theme: "mbo",
             lineNumbers: true,
             scrollbarStyle: null,
             lineWrapping: true
         };
 
         return (
-           
-            <div className="App">
-                <section className="playground">
-                    <div className="code-editor html-code">
-                        <div className="editor-header">HTML</div>
-                        <CodeMirror
-                            value={html}
-                            options={{
-                                mode: "htmlmixed",
-                                ...codeMirrorOptions
-                            }}
-                            onBeforeChange={(editor, data, html) => {
-                                this.setState({ html }, () => this.syncUpdates());
-                            }}
-                        />
+            <div className="Editor">
+                <div className="header" style={{margin: '0 0 10px 0'}}>
+                    <button className="home" style={{ height: '42px' }} onClick={() => this.returnHome()}>
+                        <a style={{ textDecoration: 'none' }}><img src={logo} className="App-logo" alt="logo" width={40} height={40} /></a>
+                    </button>
+                    <button className="signin">
+                        <a style={{ textDecoration: 'none', color: '#ffffff' }} onClick={() => this.openSignIn()}><span>Sign In</span></a>
+                    </button>
+                    <button className="signup">
+                        <a style={{ textDecoration: 'none', color: '#ffffff' }} onClick = {() => this.openSignUp()}><span>Sign Up</span></a>
+                    </button>
+                </div>
+                <div className="maincontent" style={{position: 'relative', display: 'flex', flexDirection: 'row'}}>
+                    <div className="filebar">
+                        <div className="shortcut">
+                            <i class="fas fa-file" style={{width: '30px', height: '30px', color: '#1e1e1f', margin: '10px auto'}}></i>
+                            <i class="fas fa-search" style={{width: '30px', height: '30px', color: '#1e1e1f', margin: '10px auto'}}></i>
+                            <i class="fas fa-cogs" style={{width: '30px', height: '30px', color: '#1e1e1f', margin: '10px auto'}}></i>
+                            <i class="fab fa-github" style={{width: '30px', height: '30px', color: '#1e1e1f', margin: '10px auto'}}></i>
+                        </div>
                     </div>
-                    <div className="code-editor css-code">
-                        <div className="editor-header">CSS</div>
-                        <CodeMirror
-                            value={css}
-                            options={{
-                                mode: "css",
-                                ...codeMirrorOptions
-                            }}
-                            onBeforeChange={(editor, data, css) => {
-                                this.setState({ css }, () => this.syncUpdates());
-                            }}
-                        />
-                    </div>
-                    <div className="code-editor js-code">
-                        <div className="editor-header">JavaScript</div>
-                        <CodeMirror
-                            value={js}
-                            options={{
-                                mode: "javascript",
-                                ...codeMirrorOptions
-                            }}
-                            onBeforeChange={(editor, data, js) => {
-                                this.setState({ js }, () => this.syncUpdates());
-                            }}
-                        />
-                    </div>
-                </section>
-                <section className="result">
-                    <iframe title="result" className="iframe" ref="iframe" />
-                </section>
+                    <section className="playground">
+                        <div className="code-editor html-code" style={{flex: '1'}}>
+                            <div className="editor-header">HTML</div>
+                            <CodeMirror
+                                value={html}
+                                options={{
+                                    mode: "htmlmixed",
+                                    ...codeMirrorOptions
+                                }}
+                                onBeforeChange={(editor, data, html) => {
+                                    this.setState({ html }, () => this.syncUpdates());
+                                }}
+                            />
+                        </div>
+                        <div className="code-editor css-code" style={{flex: '1'}}>
+                            <div className="editor-header">CSS</div>
+                            <CodeMirror
+                                value={css}
+                                options={{
+                                    mode: "css",
+                                    ...codeMirrorOptions
+                                }}
+                                onBeforeChange={(editor, data, css) => {
+                                    this.setState({ css }, () => this.syncUpdates());
+                                }}
+                            />
+                        </div>
+                        <div className="code-editor js-code" style={{flex: '1'}}>
+                            <div className="editor-header">JavaScript</div>
+                            <CodeMirror
+                                value={js}
+                                options={{
+                                    mode: "javascript",
+                                    ...codeMirrorOptions
+                                }}
+                                onBeforeChange={(editor, data, js) => {
+                                    this.setState({ js }, () => this.syncUpdates());
+                                }}
+                            />
+                        </div>
+                    </section>
+                    <section className="result">
+                        <iframe title="result" className="iframe" ref="iframe" />
+                    </section>
+                </div>
             </div>
         );
     }
