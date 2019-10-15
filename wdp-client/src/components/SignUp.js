@@ -11,6 +11,9 @@ class SignUp extends Component {
     returnHome(){   
         this.props.history.push('/home');
     }
+    openSignIn(){
+        this.props.history.push('/signin');
+    }
     render() { 
         return (
             <div className="SignUp">
@@ -33,7 +36,7 @@ class SignUp extends Component {
                     </button>
                     <span className="title">WDP</span>
                     <button className="signin">
-                        <a style={{textDecoration: 'none', color: '#ffffff'}}><span>Sign In</span></a>
+                        <a style={{textDecoration: 'none', color: '#ffffff'}} onClick = {() => this.openSignIn()}><span>Sign In</span></a>
                     </button>
                 </div>
                 <div className="maincontent">

@@ -4,6 +4,7 @@ import '.././css/background_style.css';
 import '.././signin/css/style.css';
 import logo from '.././assets/logo.png';
 import logo2 from '.././assets/logo2.png';
+import '@fortawesome/fontawesome-free/js/all';
 
 class SignIn extends Component {
     constructor(props) {
@@ -11,6 +12,9 @@ class SignIn extends Component {
     }
     returnHome(){
         this.props.history.push('/home');
+    }
+    openSignUp(){
+        this.props.history.push('/signup');
     }
     render() {
         return (
@@ -34,7 +38,7 @@ class SignIn extends Component {
                     </button>
                     <span className="title">WDP</span>
                     <button className="signup">
-                        <a style={{textDecoration: 'none', color: '#ffffff'}}><span>Sign Up</span></a>
+                        <a style={{textDecoration: 'none', color: '#ffffff'}} onClick = {() => this.openSignUp()}><span>Sign Up</span></a>
                     </button>
                 </div>
                 <div className="maincontent">

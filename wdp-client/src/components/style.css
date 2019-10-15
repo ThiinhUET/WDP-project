@@ -1,0 +1,12 @@
+.filebar {
+    background-color: rgb(40, 40, 40);
+    width: 20%;
+    height: 100%;
+    margin-right: 10px;
+}
+.shortcut {
+    background-color: rgb(70, 70, 70);
+    width: 18%;
+    height: 100%;
+    text-align: center;
+}
