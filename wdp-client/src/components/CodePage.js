@@ -106,6 +106,14 @@ class CodePage extends Component {
     openSignUp(){
         this.props.history.push('/signup');
     }
+    abc() {
+        var x = document.getElementById("navbar");
+        if (x.className === "navbar") {
+            x.className += " responsive";
+        } else {
+            x.className = "navbar";
+        }
+    }
     render() {
         const { html, js, css } = this.state;
         const codeMirrorOptions = {
@@ -129,19 +137,19 @@ class CodePage extends Component {
                     </button>
                 </div>
                 <div className="maincontent" style={{position: 'relative', display: 'flex', flexDirection: 'row'}}>
-                    <div className="filebar">
+                    <div className="navbar" id="navbar">
                         <div className="shortcut">
-                            <div className="icon">
-                                <i className="fas fa-file" id="icon" style={{width: '30px', height: '30px', color: '#ccc', margin: '10px auto'}}></i>
+                            <div className="icon" onClick={() => this.abc()}>
+                                <i className="fas fa-file" id="icon" style={{width: '25px', height: '25px', color: '#ccc', margin: '10px auto'}}></i>
                             </div>
                             <div className="icon">
-                                <i className="fas fa-search" style={{width: '30px', height: '30px', color: '#ccc', margin: '10px auto'}}></i>
+                                <i className="fas fa-search" style={{width: '25px', height: '25px', color: '#ccc', margin: '10px auto'}}></i>
                             </div>
                             <div className="icon">
-                                <i className="fas fa-cogs" style={{width: '30px', height: '30px', color: '#ccc', margin: '10px auto'}}></i>
+                                <i className="fas fa-cogs" style={{width: '25px', height: '25px', color: '#ccc', margin: '10px auto'}}></i>
                             </div>
                             <div className="icon">
-                                <i className="fab fa-github" style={{width: '30px', height: '30px', color: '#ccc', margin: '10px auto'}}></i>
+                                <i className="fas fa-code-branch" style={{width: '25px', height: '25px', color: '#ccc', margin: '10px auto'}}></i>
                             </div>
                         </div>
                     </div>

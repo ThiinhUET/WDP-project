@@ -1,19 +1,27 @@
-.filebar {
+.navbar {
   background-color: rgb(40, 40, 40);
-  width: 3%;
+  width: 50px;
   height: 100%;
 }
 .shortcut {
   background-color: rgb(70, 70, 70);
-  width: 100%;
+  width: 50px;
   height: 100%;
   text-align: center;
 }
-.icon:hover{
-    background-color: #282828;
+.navbar.responsive{
+  background-color: rgb(40, 40, 40);
+  width: 250px;
+  height: 100%;
+}
+.icon {
+  cursor: pointer;
+}
+.icon:hover {
+  background-color: rgb(40, 40, 40);
 }
 .playground {
-  flex: 2;
+  flex: 3;
   margin: 0 0 0 5px;
   height: 100%;
   background-color: #1e1e1e;
@@ -47,14 +55,14 @@
 }
 
 .result {
-  flex: 3;
+  flex: 4;
   height: 100%;
 }
 
 .iframe {
   width: 100%;
   height: 100%;
-  background-color: rgb(70, 70, 70);
+  background-color: #f0f0f0;
   
 }
 iframe {
