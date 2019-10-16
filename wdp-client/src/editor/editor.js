@@ -35,6 +35,7 @@ class Editor extends Component {
         this.channel = this.pusher.subscribe("editor");
     }
 
+    
     componentDidUpdate() {
         this.runCode();
     }
