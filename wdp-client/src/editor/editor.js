@@ -16,7 +16,8 @@ import 'codemirror/theme/mbo.css';
 import 'codemirror/mode/htmlmixed/htmlmixed';
 import 'codemirror/mode/css/css';
 import 'codemirror/mode/javascript/javascript';
-import FileBar from './filebar';
+import FileBar from './FileBar';
+import NavBar from './NavBar';
 class Editor extends Component {
     constructor() {
         super();
@@ -105,45 +106,6 @@ class Editor extends Component {
     openSignUp(){
         this.props.history.push('/signup');
     }
-    explorer() {
-        var x = document.getElementById("eplorer");
-        if (x.className === "icon") {
-            x.className += " responsive";
-            document.getElementById("configuration").className = "icon";
-            document.getElementById("github").className = "icon";
-            document.getElementById("navbar").className += " responsive";
-        }
-        else {
-            x.className = "icon";
-            document.getElementById("navbar").className = "navbar";
-        }
-    }
-    configuration() {
-        var x = document.getElementById("configuration");
-        if (x.className === "icon") {
-            x.className += " responsive";
-            document.getElementById("eplorer").className = "icon";
-            document.getElementById("github").className = "icon";
-            document.getElementById("navbar").className += " responsive";
-        }
-        else {
-            x.className = "icon";
-            document.getElementById("navbar").className = "navbar";
-        }
-    }
-    github() {
-        var x = document.getElementById("github");
-        if (x.className === "icon") {
-            x.className += " responsive";
-            document.getElementById("eplorer").className = "icon";
-            document.getElementById("configuration").className = "icon";
-            document.getElementById("navbar").className += " responsive";
-        }
-        else {
-            x.className = "icon";
-            document.getElementById("navbar").className = "navbar";
-        }
-    }
     render() {
         const { html, js, css } = this.state;
         const codeMirrorOptions = {
@@ -168,19 +130,7 @@ class Editor extends Component {
                     </button>
                 </div>
                 <div className="maincontent" style={{position: 'relative', display: 'flex', flexDirection: 'row'}}>
-                    <div className="navbar" id="navbar">
-                        <div className="shortcut">
-                            <div className="icon" id="eplorer" onClick={() => this.explorer()}>
-                                <i className="fas fa-file" id="icon" style={{width: '25px', height: '25px', color: '#ccc', margin: '10px auto'}}></i>
-                            </div>
-                            <div className="icon" id="configuration" onClick={() => this.configuration()}>
-                                <i className="fas fa-cogs" style={{width: '25px', height: '25px', color: '#ccc', margin: '10px auto'}}></i>
-                            </div>
-                            <div className="icon" id="github" onClick={() => this.github()}>
-                                <i className="fas fa-code-branch" style={{width: '25px', height: '25px', color: '#ccc', margin: '10px auto'}}></i>
-                            </div>
-                        </div>
-                    </div>
+                    <NavBar />
                     <section className="playground">
                         <div className="code-editor html-code" style={{flex: '1'}}>
                             <div className="editor-header">HTML</div>
