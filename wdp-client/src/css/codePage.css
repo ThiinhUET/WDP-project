@@ -17,7 +17,7 @@
 .icon {
   cursor: pointer;
 }
-.icon:hover {
+.icon.responsive {
   background-color: rgb(40, 40, 40);
 }
 .playground {
