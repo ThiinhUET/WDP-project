@@ -131,10 +131,18 @@ class CodePage extends Component {
                 <div className="maincontent" style={{position: 'relative', display: 'flex', flexDirection: 'row'}}>
                     <div className="filebar">
                         <div className="shortcut">
-                            <i class="fas fa-file" style={{width: '30px', height: '30px', color: '#1e1e1f', margin: '10px auto'}}></i>
-                            <i class="fas fa-search" style={{width: '30px', height: '30px', color: '#1e1e1f', margin: '10px auto'}}></i>
-                            <i class="fas fa-cogs" style={{width: '30px', height: '30px', color: '#1e1e1f', margin: '10px auto'}}></i>
-                            <i class="fab fa-github" style={{width: '30px', height: '30px', color: '#1e1e1f', margin: '10px auto'}}></i>
+                            <div className="icon">
+                                <i className="fas fa-file" id="icon" style={{width: '30px', height: '30px', color: '#ccc', margin: '10px auto'}}></i>
+                            </div>
+                            <div className="icon">
+                                <i className="fas fa-search" style={{width: '30px', height: '30px', color: '#ccc', margin: '10px auto'}}></i>
+                            </div>
+                            <div className="icon">
+                                <i className="fas fa-cogs" style={{width: '30px', height: '30px', color: '#ccc', margin: '10px auto'}}></i>
+                            </div>
+                            <div className="icon">
+                                <i className="fab fa-github" style={{width: '30px', height: '30px', color: '#ccc', margin: '10px auto'}}></i>
+                            </div>
                         </div>
                     </div>
                     <section className="playground">
@@ -178,6 +186,7 @@ class CodePage extends Component {
                             />
                         </div>
                     </section>
+                    <div className="resizer"></div>
                     <section className="result">
                         <iframe title="result" className="iframe" ref="iframe" />
                     </section>

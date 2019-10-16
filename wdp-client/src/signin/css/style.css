@@ -36,10 +36,6 @@
     background: rgba(255, 255, 255, 0.75);
     border-radius: 6px;
 }
-.box_input span.fa {
-    color: #222;
-    width: 22px;
-}
 .signin_input input{
     outline: none;
     font-size: 15px;
