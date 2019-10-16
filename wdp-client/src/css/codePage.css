@@ -33,13 +33,14 @@
 
 .editor-header {
   background-color: rgb(40, 40, 40);
+  font-family: Source Sans Pro,Open Sans,Segoe UI,sans-serif;
   height: 30px;
   content: attr(title);
   display: flex;
   align-items: center;
-  padding-left: 20px;
+  padding-left: 30px;
   font-size: 18px;
-  color: #fafafa;
+  color: #f0f0f0;
 }
 
 .react-codemirror2 {

@@ -4,6 +4,7 @@ import HomePage from './components/Home';
 import CodePage from './components/CodePage';
 import SignIn from './components/SignIn';
 import SignUp from './components/SignUp';
+import FileBar from './components/FileBar';
 
 class App extends Component {
     constructor(props) {
@@ -25,6 +26,9 @@ class App extends Component {
                     </Route>
                     <Route exact path = '/signup'>
                         <SignUp />
+                    </Route>
+                    <Route exact path = '/test'>
+                        <FileBar />
                     </Route>
                     <Route exact path="/" render={() => <Redirect to='/home' />} />
                 </Switch>

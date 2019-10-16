@@ -13,11 +13,10 @@ import axios from 'axios';
 import '../css/codePage.css';
 import '../css/codemirror.css';
 import 'codemirror/theme/mbo.css';
-
 import 'codemirror/mode/htmlmixed/htmlmixed';
 import 'codemirror/mode/css/css';
 import 'codemirror/mode/javascript/javascript';
-
+import FileBar from './FileBar';
 class CodePage extends Component {
     constructor() {
         super();
@@ -160,6 +159,7 @@ class CodePage extends Component {
                     <button className="home" style={{ height: '42px' }} onClick={() => this.returnHome()}>
                         <a style={{ textDecoration: 'none' }}><img src={logo} className="App-logo" alt="logo" width={40} height={40} /></a>
                     </button>
+                    <FileBar />
                     <button className="signin">
                         <a style={{ textDecoration: 'none', color: '#ffffff' }} onClick={() => this.openSignIn()}><span>Sign In</span></a>
                     </button>
@@ -209,7 +209,7 @@ class CodePage extends Component {
                             />
                         </div>
                         <div className="code-editor js-code" style={{flex: '1'}}>
-                            <div className="editor-header">JavaScript</div>
+                            <div className="editor-header">JS</div>
                             <CodeMirror
                                 value={js}
                                 options={{
