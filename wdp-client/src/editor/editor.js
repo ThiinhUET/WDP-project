@@ -10,14 +10,14 @@ import { Controlled as CodeMirror } from 'react-codemirror2';
 import Pusher from 'pusher-js';
 import pushid from 'pushid';
 import axios from 'axios';
-import '../css/codePage.css';
-import '../css/codemirror.css';
+import './css/editor.css';
+import './css/codemirror.css';
 import 'codemirror/theme/mbo.css';
 import 'codemirror/mode/htmlmixed/htmlmixed';
 import 'codemirror/mode/css/css';
 import 'codemirror/mode/javascript/javascript';
-import FileBar from './FileBar';
-class CodePage extends Component {
+import FileBar from './filebar';
+class Editor extends Component {
     constructor() {
         super();
         this.state = {
@@ -232,4 +232,4 @@ class CodePage extends Component {
     }
 }
 
-export default withRouter(CodePage);
+export default withRouter(Editor);

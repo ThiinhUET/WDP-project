@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import { Link, Router, Route, Switch, BrowserRouter, Redirect } from 'react-router-dom';
-import HomePage from './components/Home';
-import CodePage from './components/CodePage';
-import SignIn from './components/SignIn';
-import SignUp from './components/SignUp';
-import FileBar from './components/FileBar';
+import Home from './home/home';
+import Editor from './editor/editor';
+import SignIn from './signin/signin';
+import SignUp from './signup/signup';
 
 class App extends Component {
     constructor(props) {
@@ -16,19 +15,16 @@ class App extends Component {
             <BrowserRouter>
                 <Switch>
                     <Route exact path="/home">
-                        <HomePage />
+                        <Home />
                     </Route>
                     <Route exact path='/code'>
-                        <CodePage />
+                        <Editor />
                     </Route>
                     <Route exact path = '/signin'>
                         <SignIn />
                     </Route>
                     <Route exact path = '/signup'>
                         <SignUp />
-                    </Route>
-                    <Route exact path = '/test'>
-                        <FileBar />
                     </Route>
                     <Route exact path="/" render={() => <Redirect to='/home' />} />
                 </Switch>

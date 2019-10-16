@@ -1,4 +1,4 @@
-.FileBar {
+.filebar {
     display: flex;
     flex-direction: row;
     height: 30px;
@@ -9,7 +9,7 @@
     border-left-style: solid;
     color: white;
 }
-.FileBar .file-item {
+.filebar .file-item {
     position: relative;
     text-decoration: none;
     outline: none;
@@ -23,6 +23,6 @@
     padding: 0 10px 0 10px;
     line-height: 30px;
 }
-.FileBar .file-item:hover {
+.filebar .file-item:hover {
     background-color: rgb(70,70,70);
 }

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {withRouter} from 'react-router-dom';
 import '.././css/background_style.css';
-import '.././signin/css/style.css';
+import './css/style.css';
 import logo from '.././assets/logo.png';
 import logo2 from '.././assets/logo2.png';
 import '@fortawesome/fontawesome-free/js/all';
@@ -18,7 +18,7 @@ class SignIn extends Component {
     }
     render() {
         return (
-            <div className="SignIn">
+            <div className="signin">
                 <div className="background">
                     <div className="shooting_star"></div>
                     <div className="shooting_star"></div>

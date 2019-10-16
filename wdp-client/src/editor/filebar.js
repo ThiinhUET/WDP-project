@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Menu, { SubMenu, MenuItem, MenuItemGroup } from 'rc-menu';
 import { withRouter } from 'react-router-dom';
-import '../css/filebar.css'
+import './css/filebar.css'
 
 class FileBar extends Component {
     constructor(props) {
@@ -9,7 +9,7 @@ class FileBar extends Component {
     }
     render() {
         return (
-            <div className="FileBar">
+            <div className="filebar">
                 <div className="file-item">File</div>
                 <div className="file-item">Edit</div>
                 <div className="file-item">Selection</div>

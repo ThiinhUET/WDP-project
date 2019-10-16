@@ -1,5 +1,5 @@
 /* maincontent */
-.SignUp .maincontent {
+.signup .maincontent {
     display: flex;
     flex-direction: column;
     height: 90vh;
@@ -34,7 +34,7 @@
     align-items: center;
     justify-content: space-between;
 }
-.SignUp .box_input {
+.signup .box_input {
     position: relative;
     width: -webkit-fill-available;
     display: block;

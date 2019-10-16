@@ -1,5 +1,5 @@
 /* maincontent */
-.SignIn .maincontent {
+.signin .maincontent {
     display: flex;
     flex-direction: column;
     height: 90vh;
@@ -28,7 +28,7 @@
     display: flex;
     flex-direction: column;
 }
-.SignIn .box_input {
+.signin .box_input {
     position: relative;
     text-align: left;
 	margin: 1em 2em 0em;

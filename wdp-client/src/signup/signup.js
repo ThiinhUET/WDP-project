@@ -1,7 +1,7 @@
 import React , {Component} from 'react';
 import {withRouter} from 'react-router-dom';
 import '.././css/background_style.css';
-import '.././signup/css/style.css';
+import './css/style.css';
 import logo from '.././assets/logo.png';
 import logo2 from '.././assets/logo2.png';
 class SignUp extends Component {
@@ -16,7 +16,7 @@ class SignUp extends Component {
     }
     render() { 
         return (
-            <div className="SignUp">
+            <div className="signup">
                 <div className="background">
                     <div className="shooting_star"></div>
                     <div className="shooting_star"></div>

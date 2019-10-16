@@ -5,7 +5,7 @@ import {withRouter} from 'react-router-dom';
 import logo from '.././assets/logo.png';
 import logo3D from '.././assets/logo3D.gif';
 
-class HomePage extends Component {
+class Home extends Component {
     constructor(props) {
         super(props);
     }
@@ -78,4 +78,4 @@ class HomePage extends Component {
     }
 }
  
-export default withRouter(HomePage);
+export default withRouter(Home);
