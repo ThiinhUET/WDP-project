@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
-import { render } from 'react-dom';
 import logo from '.././assets/logo.png';
-import AceEditor from 'react-ace';
-import "ace-builds/src-noconflict/mode-java";
-import "ace-builds/src-noconflict/theme-github";
 import '@fortawesome/fontawesome-free/js/all';
 import { Controlled as CodeMirror } from 'react-codemirror2';
 import Pusher from 'pusher-js';
@@ -17,7 +13,7 @@ import 'codemirror/mode/htmlmixed/htmlmixed';
 import 'codemirror/mode/css/css';
 import 'codemirror/mode/javascript/javascript';
 import FileBar from './FileBar';
-import NavBar from './NavBar';
+import SideBar from './SideBar';
 class Editor extends Component {
     constructor() {
         super();
@@ -131,7 +127,7 @@ class Editor extends Component {
                     </button>
                 </div>
                 <div className="maincontent" style={{position: 'relative', display: 'flex', flexDirection: 'row'}}>
-                    <NavBar />
+                    <SideBar />
                     <section className="playground">
                         <div className="code-editor html-code" style={{flex: '1'}}>
                             <div className="editor-header">HTML</div>

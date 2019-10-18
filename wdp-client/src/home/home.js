@@ -11,7 +11,7 @@ class Home extends Component {
     }
 
     openEditor() {
-        this.props.history.push('/code');
+        this.props.history.push('/editor');
     }
     openSignIn(){
         this.props.history.push('/signin');

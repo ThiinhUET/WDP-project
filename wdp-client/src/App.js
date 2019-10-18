@@ -17,7 +17,7 @@ class App extends Component {
                     <Route exact path="/home">
                         <Home />
                     </Route>
-                    <Route exact path='/code'>
+                    <Route exact path='/editor'>
                         <Editor />
                     </Route>
                     <Route exact path = '/signin'>
