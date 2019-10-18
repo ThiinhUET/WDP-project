@@ -6,12 +6,40 @@ import './css/filebar.css'
 class FileBar extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+            isFileAppear: false,
+            isEditAppear: false
+        }
+    }
+    changeFileAppearance = () => {
+        this.setState({
+            ...this.state,
+            isFileAppear: !this.state.isFileAppear,
+            isEditAppear: false
+        })
+    }
+    changeEditAppearance = () => {
+        this.setState({
+            ...this.state,
+            isEditAppear: !this.state.isEditAppear,
+            isFileAppear: false
+        })
     }
     render() {
         return (
             <div className="filebar">
-                <div className="file-item">File</div>
-                <div className="file-item">Edit</div>
+                <div className="file-item" onClick={this.changeFileAppearance}>
+                    File
+                    {this.state.isFileAppear && <div className="dropdown" style={{position: 'absolute', color: 'white', fontSize: '20pt', top: '50px',zIndex: '2', borderStyle: 'solid', backgroundColor: 'black', left: '0'}}>
+                        Hello
+                    </div>}
+                </div>
+                <div className="file-item" onClick={this.changeEditAppearance}>
+                    Edit
+                    {this.state.isEditAppear && <div className="dropdown" style={{position: 'absolute', color: 'white', fontSize: '20pt', top: '50px',zIndex: '2', borderStyle: 'solid', backgroundColor: 'black', left: '0'}}>
+                        Hello
+                    </div>}
+                </div>
                 <div className="file-item">Selection</div>
                 <div className="file-item">View</div>
                 <div className="file-item">Go</div>

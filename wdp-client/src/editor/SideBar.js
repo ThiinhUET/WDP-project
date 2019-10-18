@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 import { withRouter } from 'react-router-dom';
 import Explorer from './sidebar/Explorer';
 import Configuration from './sidebar/Configuration';
