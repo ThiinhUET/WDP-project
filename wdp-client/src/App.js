@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { Link, Router, Route, Switch, BrowserRouter, Redirect } from 'react-router-dom';
-import Home from './home/Home';
-import Editor from './editor/Editor';
-import SignIn from './signin/SignIn';
-import SignUp from './signup/SignUp';
+import Home from './home/home';
+import Editor from './editor/editor';
+import SignIn from './signin/signin';
+import SignUp from './signup/signup';
 
 class App extends Component {
     constructor(props) {
