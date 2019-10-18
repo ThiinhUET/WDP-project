@@ -46,12 +46,8 @@ class SideBar extends Component {
             x.className += " responsive";
             document.getElementById("configuration").className = "icon";
             document.getElementById("github").className = "icon";
-            document.getElementById("sidebar").className += " responsive";
         }
-        else {
-            x.className = "icon";
-            document.getElementById("sidebar").className = "sidebar";
-        }
+        else x.className = "icon";
     }
     configuration() {
         this.changeConfigurationAppearance();
@@ -60,12 +56,8 @@ class SideBar extends Component {
             x.className += " responsive";
             document.getElementById("explorer").className = "icon";
             document.getElementById("github").className = "icon";
-            document.getElementById("sidebar").className += " responsive";
         }
-        else {
-            x.className = "icon";
-            document.getElementById("sidebar").className = "sidebar";
-        }
+        else x.className = "icon";
     }
     github() {
         this.changeGithubAppearance();
@@ -74,16 +66,12 @@ class SideBar extends Component {
             x.className += " responsive";
             document.getElementById("explorer").className = "icon";
             document.getElementById("configuration").className = "icon";
-            document.getElementById("sidebar").className += " responsive";
         }
-        else {
-            x.className = "icon";
-            document.getElementById("sidebar").className = "sidebar";
-        }
+        else x.className = "icon";
     }
     render() {
         return (
-            <div className="sidebar" id="sidebar">
+            <div className="sidebar">
                 <div className="sbar_icons">
                     <div className="icon" id="explorer" onClick={() => this.explorer()}>
                         <i className="fas fa-file" id="icon" style={{width: '25px', height: '25px', color: '#ccc', margin: '10px auto'}}></i>
@@ -98,7 +86,7 @@ class SideBar extends Component {
                         <i className="fas fa-download" style={{width: '25px', height: '25px', color: '#ccc', margin: '10px auto'}}></i>
                     </div>
                 </div>
-                <div className="sbar_content" id="sbar_content">
+                <div className="sbar_content">
                     {this.state.isExplorerAppear && <Explorer />}
                     {this.state.isConfigurationAppear && <Configuration />}
                     {this.state.isGithubAppear && <Github />}
