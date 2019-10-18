@@ -31,7 +31,7 @@ class SignUp extends Component {
                     <div className="shooting_star"></div>
                 </div>
                 <div className="header">
-                    <button className="home" style={{height: '42px'}}>
+                    <button className="homebtn" title="Home" style={{height: '42px'}}>
                         <a style={{textDecoration: 'none'}} onClick = {() => this.returnHome()}><img src={logo} width={40} height={40} /></a>
                     </button>
                     <span className="title">WDP</span>

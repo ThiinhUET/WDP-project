@@ -40,7 +40,7 @@ class Home extends Component {
                     <div className="shooting_star"></div>
                 </div>
                 <div className="header">
-                    <button className="home" style={{ height: '42px' }} onClick={() => this.returnHome()}>
+                    <button className="homebtn" title="Home" style={{ height: '42px' }} onClick={() => this.returnHome()}>
                         <a style={{ textDecoration: 'none' }}><img src={logo} className="App-logo" alt="logo" width={40} height={40} /></a>
                     </button>
                     <button className="signin" onClick={() => this.openSignIn()}>

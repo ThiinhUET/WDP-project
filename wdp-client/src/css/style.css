@@ -30,7 +30,7 @@ body {
     transform: translateY(-50%);
     float: left;
 }
-.header button.home {
+.header button.homebtn {
     padding-right: 20px;
 }
 .header span.title {

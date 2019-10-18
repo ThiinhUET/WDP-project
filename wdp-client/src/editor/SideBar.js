@@ -73,16 +73,16 @@ class SideBar extends Component {
         return (
             <div className="sidebar">
                 <div className="sbar_icons">
-                    <div className="icon" id="explorer" onClick={() => this.explorer()}>
+                    <div className="icon" id="explorer" title="Explorer" onClick={() => this.explorer()}>
                         <i className="fas fa-file" id="icon" style={{width: '25px', height: '25px', color: '#ccc', margin: '10px auto'}}></i>
                     </div>
-                    <div className="icon" id="configuration" onClick={() => this.configuration()}>
+                    <div className="icon" id="configuration" title="Configuration Files" onClick={() => this.configuration()}>
                         <i className="fas fa-cogs" style={{width: '25px', height: '25px', color: '#ccc', margin: '10px auto'}}></i>
                     </div>
-                    <div className="icon" id="github" onClick={() => this.github()}>
+                    <div className="icon" id="github" title="GitHub" onClick={() => this.github()}>
                         <i className="fas fa-code-branch" style={{width: '25px', height: '25px', color: '#ccc', margin: '10px auto'}}></i>
                     </div>
-                    <div className="icon" id="export">
+                    <div className="icon" id="export" title="Export">
                         <i className="fas fa-download" style={{width: '25px', height: '25px', color: '#ccc', margin: '10px auto'}}></i>
                     </div>
                 </div>

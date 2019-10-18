@@ -115,7 +115,7 @@ class Editor extends Component {
         return (
             <div className="Editor">
                 <div className="header" style={{margin: '0 0 10px 0'}}>
-                    <button className="home" style={{ height: '42px' }} onClick={() => this.returnHome()}>
+                    <button className="homebtn" title="Home" style={{ height: '42px' }} onClick={() => this.returnHome()}>
                         <a style={{ textDecoration: 'none' }}><img src={logo} className="App-logo" alt="logo" width={40} height={40} /></a>
                     </button>
                     <FileBar />
