@@ -5,7 +5,6 @@
 /node_modules
 /.pnp
 .pnp.js
-/package-lock.json
 
 # testing
 /coverage
@@ -26,8 +25,4 @@ yarn-error.log*
 
 src/ace
 MERN-boilerplate
-src/node_modules
-src/package-lock.json
-src/WDP_server/server/node_modules
-src/WDP_server/server/package-lock.json
 .env
