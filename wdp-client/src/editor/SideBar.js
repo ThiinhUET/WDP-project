@@ -1,13 +1,46 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { withRouter } from 'react-router-dom';
-import Explorer from './sidebar/explorer'
+import Explorer from './sidebar/Explorer';
+import Configuration from './sidebar/Configuration';
+import Github from './sidebar/Github';
 import './css/sidebar.css'
 
 class SideBar extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            isExplorerAppear: false,
+            isConfigurationAppear: false,
+            isGithubAppear: false
+        }
+    }
+    changeExplorerAppearance = () => {
+        this.setState({
+            ...this.state,
+            isExplorerAppear: !this.state.isExplorerAppear,
+            isConfigurationAppear: false,
+            isGithubAppear: false
+        })
+    }
+    changeConfigurationAppearance = () => {
+        this.setState({
+            ...this.state,
+            isConfigurationAppear: !this.state.isConfigurationAppear,
+            isExplorerAppear: false,
+            isGithubAppear: false
+        })
+    }
+    changeGithubAppearance = () => {
+        this.setState({
+            ...this.state,
+            isGithubAppear: !this.state.isGithubAppear,
+            isExplorerAppear: false,
+            isConfigurationAppear: false
+        })
+    }
     explorer() {
-        let newExplorer = new Explorer();
-        newExplorer.render(<Explorer />, document.getElementById("sidebar"));
+        this.changeExplorerAppearance();
         var x = document.getElementById("explorer");
         if (x.className === "icon") {
             x.className += " responsive";
@@ -21,6 +54,7 @@ class SideBar extends Component {
         }
     }
     configuration() {
+        this.changeConfigurationAppearance();
         var x = document.getElementById("configuration");
         if (x.className === "icon") {
             x.className += " responsive";
@@ -34,6 +68,7 @@ class SideBar extends Component {
         }
     }
     github() {
+        this.changeGithubAppearance();
         var x = document.getElementById("github");
         if (x.className === "icon") {
             x.className += " responsive";
@@ -63,7 +98,11 @@ class SideBar extends Component {
                         <i className="fas fa-download" style={{width: '25px', height: '25px', color: '#ccc', margin: '10px auto'}}></i>
                     </div>
                 </div>
-                <div className="sbar_content" id="sbar_content"></div>
+                <div className="sbar_content" id="sbar_content">
+                    {this.state.isExplorerAppear && <Explorer />}
+                    {this.state.isConfigurationAppear && <Configuration />}
+                    {this.state.isGithubAppear && <Github />}
+                </div>
             </div>
         );
     }
