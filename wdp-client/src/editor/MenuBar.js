@@ -45,7 +45,7 @@ class MenuBar extends Component {
                 <div className="menu_item">Go</div>
                 <div className="menu_item">Debug</div>
                 <div className="menu_item">Terminal</div>
-                <div className="item">Help</div>
+                <div className="menu_item">Help</div>
             </div>
         );
     }
