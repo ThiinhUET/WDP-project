@@ -12,7 +12,7 @@ import 'codemirror/theme/mbo.css';
 import 'codemirror/mode/htmlmixed/htmlmixed';
 import 'codemirror/mode/css/css';
 import 'codemirror/mode/javascript/javascript';
-import FileBar from './FileBar';
+import MenuBar from './MenuBar';
 import SideBar from './SideBar';
 class Editor extends Component {
     constructor() {
@@ -118,7 +118,7 @@ class Editor extends Component {
                     <button className="homebtn" title="Home" style={{ height: '42px' }} onClick={() => this.returnHome()}>
                         <a style={{ textDecoration: 'none' }}><img src={logo} className="App-logo" alt="logo" width={40} height={40} /></a>
                     </button>
-                    <FileBar />
+                    <MenuBar />
                     <button className="signin">
                         <a style={{ textDecoration: 'none', color: '#ffffff' }} onClick={() => this.openSignIn()}><span>Sign In</span></a>
                     </button>

@@ -1,4 +1,4 @@
-.filebar {
+.menubar {
     display: flex;
     flex-direction: row;
     height: 30px;
@@ -9,7 +9,7 @@
     border-left-style: solid;
     color: white;
 }
-.filebar .file-item {
+.menu_item {
     position: relative;
     text-decoration: none;
     outline: none;
@@ -23,6 +23,18 @@
     padding: 0 10px 0 10px;
     line-height: 30px;
 }
-.filebar .file-item:hover {
+.menu_item:hover {
     background-color: rgb(70,70,70);
+}
+.item_holder {
+    position: absolute;
+    color: #f0f0f0;
+    font-size: 12pt; 
+    top: 50px;
+    left: 0;
+    width: 200px;
+    z-index: 2;
+    border-style: none;
+    background-color: #1e1e1e;
+    box-shadow: 0px 0px 10px 0px #ffffff;
 }
