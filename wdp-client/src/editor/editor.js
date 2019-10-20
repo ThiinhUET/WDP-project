@@ -12,7 +12,7 @@ import 'codemirror/theme/mbo.css';
 import 'codemirror/mode/htmlmixed/htmlmixed';
 import 'codemirror/mode/css/css';
 import 'codemirror/mode/javascript/javascript';
-import FileBar from './FileBar';
+import FileBar from './filebar';
 import SideBar from './SideBar';
 class Editor extends Component {
     constructor() {
