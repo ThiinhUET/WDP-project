@@ -9,64 +9,53 @@ class SideBar extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            isExplorerAppear: false,
-            isConfigurationAppear: false,
-            isGithubAppear: false
+            activeItem: "none"
         }
     }
-    changeExplorerAppearance = () => {
+    setActiveItem = (name) => {
         this.setState({
-            ...this.state,
-            isExplorerAppear: !this.state.isExplorerAppear,
-            isConfigurationAppear: false,
-            isGithubAppear: false
-        })
-    }
-    changeConfigurationAppearance = () => {
-        this.setState({
-            ...this.state,
-            isConfigurationAppear: !this.state.isConfigurationAppear,
-            isExplorerAppear: false,
-            isGithubAppear: false
-        })
-    }
-    changeGithubAppearance = () => {
-        this.setState({
-            ...this.state,
-            isGithubAppear: !this.state.isGithubAppear,
-            isExplorerAppear: false,
-            isConfigurationAppear: false
+            ...this.setState,
+            activeItem: name
         })
     }
     explorer() {
-        this.changeExplorerAppearance();
         var x = document.getElementById("explorer");
-        if (x.className === "icon") {
-            x.className += " responsive";
+        if (this.state.activeItem !== "explorer") {
+            this.setActiveItem("explorer");
+            x.className += " open";
             document.getElementById("configuration").className = "icon";
             document.getElementById("github").className = "icon";
         }
-        else x.className = "icon";
+        else {
+            this.setActiveItem("none");
+            x.className = "icon";
+        }
     }
     configuration() {
-        this.changeConfigurationAppearance();
         var x = document.getElementById("configuration");
-        if (x.className === "icon") {
-            x.className += " responsive";
+        if (this.state.activeItem !== "configuration") {
+            this.setActiveItem("configuration");
+            x.className += " open";
             document.getElementById("explorer").className = "icon";
             document.getElementById("github").className = "icon";
         }
-        else x.className = "icon";
+        else {
+            this.setActiveItem("none");
+            x.className = "icon";
+        }
     }
     github() {
-        this.changeGithubAppearance();
         var x = document.getElementById("github");
-        if (x.className === "icon") {
-            x.className += " responsive";
+        if (this.state.activeItem !== "github") {
+            this.setActiveItem("github");
+            x.className += " open";
             document.getElementById("explorer").className = "icon";
             document.getElementById("configuration").className = "icon";
         }
-        else x.className = "icon";
+        else {
+            this.setActiveItem("none");
+            x.className = "icon";
+        }
     }
     render() {
         return (
@@ -86,9 +75,9 @@ class SideBar extends Component {
                     </div>
                 </div>
                 <div className="sbar_content">
-                    {this.state.isExplorerAppear && <Explorer />}
-                    {this.state.isConfigurationAppear && <Configuration />}
-                    {this.state.isGithubAppear && <Github />}
+                    {this.state.activeItem === "explorer" && <Explorer />}
+                    {this.state.activeItem === "configuration" && <Configuration />}
+                    {this.state.activeItem === "github" && <Github />}
                 </div>
             </div>
         );

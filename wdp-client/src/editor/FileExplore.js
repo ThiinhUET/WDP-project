@@ -28,9 +28,7 @@ class FileExplorer extends Component {
         <TreeWrapper>
           <Tree onSelect={this.onSelect} />
         </TreeWrapper>
-        <div>
           { selectedFile && selectedFile.type === 'file' && selectedFile.content }
-        </div>
       </StyledFileExplorer>
     )
   }

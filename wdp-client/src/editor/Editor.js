@@ -131,7 +131,7 @@ class Editor extends Component {
                     <section className="playground">
                         <div className="code-editor html-code" style={{flex: '1'}}>
                             <div className="editor-header">HTML</div>
-                            <CodeMirror
+                            <CodeMirror id="html-code"
                                 value={html}
                                 options={{
                                     mode: "htmlmixed",
