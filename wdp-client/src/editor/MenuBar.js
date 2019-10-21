@@ -40,6 +40,7 @@ class MenuBar extends Component {
                     Selection
                     <div className="items_container">
                         <div className="item_holder">Select All</div>
+                        <div className="item_holder">Un Select All</div>
                     </div>
                 </div>
                 <div className="menu_items">
@@ -56,7 +57,13 @@ class MenuBar extends Component {
                             <span>
                                 <i class="fas fa-angle-right"></i>
                             </span>
+                            <div className="items_container_2">
+                                <div className="item_holder">Next Editor</div>
+                                <div className="item_holder">Previous Editor</div>
+                            </div>
                         </div>
+                        <div className="item_divider"></div>
+                        <div className="item_holder">Go to File..</div>
                     </div>
                 </div>
                 <div className="menu_items">

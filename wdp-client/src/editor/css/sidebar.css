@@ -11,10 +11,15 @@
 }
 .icon {
     cursor: pointer;
+    color: #bbb;
+}
+.icon:hover {
+    color: #f0f0f0;
 }
 .icon:active {
     background-color: rgb(40, 40, 40);
 }
 .icon.open {
     background-color: rgb(40, 40, 40);
+    color: #f0f0f0;
 }

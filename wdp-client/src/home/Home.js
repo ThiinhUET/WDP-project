@@ -40,15 +40,13 @@ class Home extends Component {
                     <div className="shooting_star"></div>
                 </div>
                 <div className="header">
-                    <button className="homebtn" title="Home" style={{ height: '42px' }} onClick={() => this.returnHome()}>
-                        <a style={{ textDecoration: 'none' }}><img src={logo} className="App-logo" alt="logo" width={40} height={40} /></a>
+                    <button className="homebtn" title="Home" style={{ height: '45px' }} onClick={() => this.returnHome()}>
+                        <img src={logo} className="App-logo" alt="logo" width={40} height={40} />
                     </button>
-                    <button className="signin" onClick={() => this.openSignIn()}>
-                        <a style={{ textDecoration: 'none', color: '#ffffff' }}><span>Sign In</span></a>
-                    </button>
-                    <button className="signup" onClick = {() => this.openSignUp()}>
-                        <a style={{ textDecoration: 'none', color: '#ffffff' }}><span>Sign Up</span></a>
-                    </button>
+                    <span className="title">WDP</span>
+                    <button className="signin" style={{marginLeft: '10px'}} onClick={() => this.openSignIn()}>Sign In</button>
+                    <div className="divider"></div>
+                    <button className="signup" style={{marginRight: '10px'}} onClick = {() => this.openSignUp()}>Sign Up</button>
                 </div>
                 <div className="maincontent">
                     <div className="code_editor" style={{ position: 'relative', flex: 3 }}>
