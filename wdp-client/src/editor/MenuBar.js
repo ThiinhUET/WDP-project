@@ -6,46 +6,80 @@ import './css/menubar.css'
 class MenuBar extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            isFileAppear: false,
-            isEditAppear: false
-        }
-    }
-    changeFileAppearance = () => {
-        this.setState({
-            ...this.state,
-            isFileAppear: !this.state.isFileAppear,
-            isEditAppear: false
-        })
-    }
-    changeEditAppearance = () => {
-        this.setState({
-            ...this.state,
-            isEditAppear: !this.state.isEditAppear,
-            isFileAppear: false
-        })
     }
     render() {
         return (
             <div className="menubar">
-                <div className="menu_item" onClick={this.changeFileAppearance}>
+                <div className="menu_items">
                     File
-                    {this.state.isFileAppear && <div className="item_holder">
-                        Hello
-                    </div>}
+                    <div className="items_container">
+                        <div className="item_holder">New File</div>
+                        <div className="item_holder">New Project</div>
+                        <div className="item_divider"></div>
+                        <div className="item_holder">Open File</div>
+                        <div className="item_holder">Open Project</div>
+                        <div className="item_divider"></div>
+                        <div className="item_holder">Save</div>
+                        <div className="item_holder">Export to zip</div>
+                    </div>
                 </div>
-                <div className="menu_item" onClick={this.changeEditAppearance}>
+                <div className="menu_items">
                     Edit
-                    {this.state.isEditAppear && <div className="item_holder">
-                        Hello
-                    </div>}
+                    <div className="items_container">
+                        <div className="item_holder">Undo</div>
+                        <div className="item_holder">Redo</div>
+                        <div className="item_divider"></div>
+                        <div className="item_holder">Cut</div>
+                        <div className="item_holder">Copy</div>
+                        <div className="item_divider"></div>
+                        <div className="item_holder">Find</div>
+                        <div className="item_holder">Replace</div>
+                    </div>
                 </div>
-                <div className="menu_item">Selection</div>
-                <div className="menu_item">View</div>
-                <div className="menu_item">Go</div>
-                <div className="menu_item">Debug</div>
-                <div className="menu_item">Terminal</div>
-                <div className="menu_item">Help</div>
+                <div className="menu_items">
+                    Selection
+                    <div className="items_container">
+                        <div className="item_holder">Select All</div>
+                        <div className="item_holder">Un Select All</div>
+                    </div>
+                </div>
+                <div className="menu_items">
+                    View
+                    <div className="items_container">
+                        <div className="item_holder">Command Palette</div>
+                    </div>
+                </div>
+                <div className="menu_items">
+                    Go
+                    <div className="items_container">
+                        <div className="item_holder">
+                            Switch Editor
+                            <span>
+                                <i class="fas fa-angle-right"></i>
+                            </span>
+                            <div className="items_container_2">
+                                <div className="item_holder">Next Editor</div>
+                                <div className="item_holder">Previous Editor</div>
+                            </div>
+                        </div>
+                        <div className="item_divider"></div>
+                        <div className="item_holder">Go to File..</div>
+                    </div>
+                </div>
+                <div className="menu_items">
+                    Terminal
+                    <div className="items_container">
+                        <div className="item_holder">New Terminal</div>
+                        <div className="item_divider"></div>
+                        <div className="item_holder">Open Terminal</div>
+                    </div>
+                </div>
+                <div className="menu_items">
+                    Help
+                    <div className="items_container">
+                        <div className="item_holder">About</div>
+                    </div>
+                </div>
             </div>
         );
     }

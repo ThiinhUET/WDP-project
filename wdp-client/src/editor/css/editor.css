@@ -7,6 +7,7 @@
 
 .code-editor {
   position: relative;
+  height: 33.33%;
 }
 
 .editor-header {
@@ -22,7 +23,8 @@
 }
 
 .react-codemirror2 {
-  max-height: calc(100% - 30px);
+  position: static;
+  height: calc(100% - 30px);
   overflow: auto;
   font-size: 10pt;
 }

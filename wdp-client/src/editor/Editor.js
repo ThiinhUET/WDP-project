@@ -114,24 +114,21 @@ class Editor extends Component {
 
         return (
             <div className="Editor">
-                <div className="header" style={{margin: '0 0 10px 0'}}>
-                    <button className="homebtn" title="Home" style={{ height: '42px' }} onClick={() => this.returnHome()}>
-                        <a style={{ textDecoration: 'none' }}><img src={logo} className="App-logo" alt="logo" width={40} height={40} /></a>
+                <div className="header" style={{margin: '0 0 7px 0'}}>
+                    <button className="homebtn" title="Home" style={{ height: '45px' }} onClick={() => this.returnHome()}>
+                        <img src={logo} className="App-logo" alt="logo" width={40} height={40} />
                     </button>
                     <MenuBar />
-                    <button className="signin">
-                        <a style={{ textDecoration: 'none', color: '#ffffff' }} onClick={() => this.openSignIn()}><span>Sign In</span></a>
-                    </button>
-                    <button className="signup">
-                        <a style={{ textDecoration: 'none', color: '#ffffff' }} onClick = {() => this.openSignUp()}><span>Sign Up</span></a>
-                    </button>
+                    <button className="signin" style={{marginLeft: '10px'}} onClick={() => this.openSignIn()}>Sign In</button>
+                    <div className="divider"></div>
+                    <button className="signup" style={{marginRight: '10px'}} onClick = {() => this.openSignUp()}>Sign Up</button>
                 </div>
                 <div className="maincontent" style={{position: 'relative', display: 'flex', flexDirection: 'row'}}>
                     <SideBar />
                     <section className="playground">
                         <div className="code-editor html-code" style={{flex: '1'}}>
                             <div className="editor-header">HTML</div>
-                            <CodeMirror
+                            <CodeMirror id="html-code"
                                 value={html}
                                 options={{
                                     mode: "htmlmixed",

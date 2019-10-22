@@ -33,13 +33,11 @@ class SignIn extends Component {
                     <div className="shooting_star"></div>
                 </div>
                 <div className="header">
-                    <button className="homebtn" title="Home" style={{height: '42px'}}>
-                        <a style={{ textDecoration: 'none' }} onClick = {() => this.returnHome()}><img src={logo} className="App-logo" alt="logo" width={40} height={40} /></a>
+                    <button className="homebtn" title="Home" style={{height: '45px'}} onClick = {() => this.returnHome()}>
+                        <img src={logo} className="App-logo" alt="logo" width={40} height={40} />
                     </button>
                     <span className="title">WDP</span>
-                    <button className="signup">
-                        <a style={{textDecoration: 'none', color: '#ffffff'}} onClick = {() => this.openSignUp()}><span>Sign Up</span></a>
-                    </button>
+                    <button className="signup" onClick = {() => this.openSignUp()}>Sign Up</button>
                 </div>
                 <div className="maincontent">
                     <div className="signin_title">Sign in to WDP</div>
