@@ -31,7 +31,7 @@ class SignUp extends Component {
                     <div className="shooting_star"></div>
                 </div>
                 <div className="header">
-                    <button className="homebtn" title="Home" style={{height: '45px'}} onClick = {() => this.returnHome()}>
+                    <button className="homebtn" title="Home" onClick = {() => this.returnHome()}>
                         <img src={logo} width={40} height={40} />
                     </button>
                     <span className="title">WDP</span>
@@ -82,8 +82,8 @@ class SignUp extends Component {
                     </div>
                 </div>
                 <div className="footer">
-                    <span style={{float: 'left'}}>v1.0</span>
-                    <span style={{float: 'right'}}>© 2019 Web Development Platform | Develop by HoiThanhDucChuaTroi</span>
+                    <span>v1.0</span>
+                    <span>© 2019 Web Development Platform | Develop by HoiThanhDucChuaTroi</span>
                 </div>
             </div>
         );
