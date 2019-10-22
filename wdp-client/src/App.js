@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link, Router, Route, Switch, BrowserRouter, Redirect } from 'react-router-dom';
 import Home from './home/Home';
-import Editor from './editor/Editor'
+import Editor from './editor/Editor';
 import SignIn from './signin/SignIn';
 import SignUp from './signup/SignUp';
 import FileExplore from './editor/FileExplore';

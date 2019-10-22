@@ -14,10 +14,10 @@ const data = {
   '/root/thinh': {
     path: '/root/thinh',
     type: 'folder',
-    children: ['/root/thinh/readme.md'],
+    children: ['/root/thinh/readme.html'],
   },
-  '/root/thinh/readme.md': {
-    path: '/root/thinh/readme.md',
+  '/root/thinh/readme.html': {
+    path: '/root/thinh/readme.html',
     type: 'file',
     content: 'Hello ban'
   },
