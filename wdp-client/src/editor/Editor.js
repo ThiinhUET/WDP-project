@@ -76,6 +76,9 @@ class Editor extends Component {
             <meta http-equiv="X-UA-Compatible" content="ie=edge">
             <title>Document</title>
             <style>
+              body {
+                  color: white;
+              }
               ${css}
             </style>
           </head>
@@ -123,7 +126,7 @@ class Editor extends Component {
                     <div className="divider"></div>
                     <button className="signup" style={{marginRight: '10px'}} onClick = {() => this.openSignUp()}>Sign Up</button>
                 </div>
-                <div className="maincontent" style={{position: 'relative', display: 'flex', flexDirection: 'row'}}>
+                <div className="maincontent" style={{position: 'relative', display: 'flex', flexDirection: 'row', height: 'calc(100vh - 62px)'}}>
                     <SideBar />
                     <section className="playground">
                         <div className="code-editor html-code" style={{flex: '1'}}>
@@ -168,7 +171,7 @@ class Editor extends Component {
                     </section>
                     <div className="resizer"></div>
                     <section className="result">
-                        <iframe title="result" className="iframe" ref="iframe" />
+                        <iframe title="result" className="iframe" ref="iframe"/>
                     </section>
                 </div>
             </div>
