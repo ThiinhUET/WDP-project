@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
-import Explorer from './sidebar/Explorer1';
+import Explorer from './sidebar/Explorer';
 import Configuration from './sidebar/Configuration';
 import Github from './sidebar/Github';
 import './css/sidebar.css'

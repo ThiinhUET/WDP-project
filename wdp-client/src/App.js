@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { Link, Router, Route, Switch, BrowserRouter, Redirect } from 'react-router-dom';
-import Home from './home/Home1';
-import Editor from './editor/Editor1';
-import SignIn from './signin/SignIn1';
-import SignUp from './signup/SignUp1';
+import Home from './home/Home';
+import Editor from './editor/Editor';
+import SignIn from './signin/SignIn';
+import SignUp from './signup/SignUp';
 import FileExplore from './editor/FileExplore';
 
 class App extends Component {
