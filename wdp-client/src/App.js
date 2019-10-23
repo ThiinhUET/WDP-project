@@ -5,7 +5,7 @@ import Editor from './editor/Editor';
 import SignIn from './signin/SignIn';
 import SignUp from './signup/SignUp';
 import FileExplore from './editor/FileExplore';
-
+import FileTest from './editor/FileTree';
 class App extends Component {
     constructor(props) {
         super(props);
@@ -28,7 +28,7 @@ class App extends Component {
                         <SignUp />
                     </Route>
                     <Route exact path = '/test'>
-                        <FileExplore />
+                        <FileTest />
                     </Route>
                     <Route exact path="/" render={() => <Redirect to='/home' />} />
                 </Switch>

@@ -5,11 +5,40 @@ import './css/style.css';
 import logo from '.././assets/logo.png';
 import logo2 from '.././assets/logo2.png';
 import '@fortawesome/fontawesome-free/js/all';
+import axios from 'axios';
+import TextField from 'material-ui/TextField';
 
 class SignIn extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+            username : '',
+            password : ''
+        }
     }
+
+    handSignIn(event){
+        var baseApi = "http://localhost:8080/users/";
+        var self = this;
+        var payload = {
+            "username" : this.state.username,
+            "password" : this.state.password
+        }
+        axios.post(baseApi + 'authenticate',payload).then(
+            function(res){
+                console.log(res);
+                
+                if(res.message == "user founded!"){
+                    this.props.history.push('/home');                   
+                }
+                else if(res.message == "Invalid username/password!!!"){
+                    this.props.history.push('/signup');
+                    
+                }
+            }
+        )
+    }
+   
     returnHome(){
         this.props.history.push('/home');
     }
@@ -43,19 +72,19 @@ class SignIn extends Component {
                     <div className="signin_title">Sign in to WDP</div>
                     <div className="signin_box">
                         <img src={logo2} style={{position: 'relative', width: '70%', margin: '0 auto', marginTop: '20px'}} />
-                        <form className="signin_input" style={{position: 'relative', marginTop: '30px'}} action="javascript: log()" method="post">
+                        <form className="signin_input" style={{position: 'relative', marginTop: '30px'}}>
                             <div className="box_input">
                                 <span className="fa fa-user" />
-                                <input type="text" id="username" placeholder="Username" required />
+                                <input type="text" id="username" placeholder="Username" required onChange = {(event) => this.setState({username : event.target.value})} />
                             </div>
                             <div className="box_input">
                                 <span className="fa fa-lock" />
-                                <input type="password" id="password" placeholder="Password" required />
+                                <input type="password" id="password" placeholder="Password" required onChange = {(event) => this.setState({password : event.target.value})}/>
                             </div>
                             <div className="links">
                                 <p><a href="https://github.com/password_reset" style={{textDecoration: 'none'}}>Forgot Password?</a></p>
                             </div>
-                            <button className="signin_button">Sign in</button>
+                            <button className="signin_button" onClick = {(event) => this.handSignIn(event)}>Sign in</button>
                         </form>	
                         <div className="signin-divider">
                             <div className="bar bar-top" />
