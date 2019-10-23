@@ -12,7 +12,7 @@ body {
 /* header */
 .header {
     position: relative;
-    height: 45px;
+    height: 6vh;
     box-shadow: 0px 0px 10px 0px #0d9e5b;
     padding: 2px 0 2px 0;
 }
@@ -68,11 +68,12 @@ body {
     border-left: 1.5px solid;
 }
 .header button:hover {
-    background-color: rgb(40, 40, 40);
+    background-color: rgb(70, 70, 70);
 }
 
 /* maincontent */
 .maincontent {
+    position: relative;
     display: flex;
     flex-direction: row;
     height: 90vh;
@@ -142,12 +143,15 @@ body {
 
 /* footer */
 .footer {
-    position: absolute;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
     color: #ffffff44;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 10pt;
-    bottom: 10px;
-    left: 10px;
-    right: 10px;
     text-align: center;
+    height: 4vh;
+    margin: 0 5px 0 5px;
 }

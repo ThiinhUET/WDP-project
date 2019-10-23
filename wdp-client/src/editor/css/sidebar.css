@@ -1,3 +1,4 @@
+/* Side Bar */
 .sidebar {
     display: inline-flex;
     background-color: rgb(40, 40, 40);
@@ -23,3 +24,24 @@
     background-color: rgb(40, 40, 40);
     color: #f0f0f0;
 }
+
+/* Explorer */
+.explorer {
+    text-align: center;
+    width: 200px;
+    height: 100%;
+    margin: 0 auto;
+    color: #f0f0f0;
+    font-family: Source Sans Pro,Open Sans,Segoe UI,sans-serif;
+    font-weight: 600;
+}
+.MuiCollapse-container.MuiTreeItem-group.MuiCollapse-entered {
+    margin-left: 15px;
+}
+.MuiTypography-root.MuiTreeItem-label.MuiTypography-body1 {
+    font-size: 10pt;
+}
+.MuiTreeItem-root:focus > .MuiTreeItem-content {
+    background-color: #64646480;
+  }
+  

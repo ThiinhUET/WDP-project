@@ -76,6 +76,9 @@ class Editor extends Component {
             <meta http-equiv="X-UA-Compatible" content="ie=edge">
             <title>Document</title>
             <style>
+              body {
+                  color: white;
+              }
               ${css}
             </style>
           </head>
@@ -115,16 +118,16 @@ class Editor extends Component {
         return (
             <div className="Editor">
                 <div className="header" style={{margin: '0 0 7px 0'}}>
-                    <button className="homebtn" title="Home" style={{ height: '45px' }} onClick={() => this.returnHome()}>
+                    <button className="homebtn" title="Home" onClick={() => this.returnHome()}>
                         <img src={logo} className="App-logo" alt="logo" width={40} height={40} />
                     </button>
                     <MenuBar />
-                    <button className="signin" style={{marginLeft: '10px'}} onClick={() => this.openSignIn()}>Sign In</button>
+                    <button className="signin" style={{marginLeft: '10px'}} onClick = {() => this.openSignIn()}>Sign In</button>
                     <div className="divider"></div>
                     <button className="signup" style={{marginRight: '10px'}} onClick = {() => this.openSignUp()}>Sign Up</button>
                 </div>
-                <div className="maincontent" style={{position: 'relative', display: 'flex', flexDirection: 'row'}}>
-                    <SideBar />
+                <div className="maincontent" style={{position: 'relative', display: 'flex', flexDirection: 'row', height: 'calc(94vh - 15px)'}}>
+                    {/* <SideBar /> */}
                     <section className="playground">
                         <div className="code-editor html-code" style={{flex: '1'}}>
                             <div className="editor-header">HTML</div>
@@ -168,7 +171,32 @@ class Editor extends Component {
                     </section>
                     <div className="resizer"></div>
                     <section className="result">
-                        <iframe title="result" className="iframe" ref="iframe" />
+                        <iframe title="result" className="iframe" ref="iframe"/>
+                        <div className="footer_bar">
+                            <button className="header_item" title="Save">
+                                <span>
+                                    <i className="fas fa-cloud" style={{width: '20px', height: '20px'}}></i>
+                                </span>
+                            </button>
+                            <button className="header_item" title="Settings">
+                                <span>
+                                    <i className="fas fa-cogs" style={{width: '20px', height: '20px'}}></i>
+                                </span>
+                            </button>
+                            <button className="header_item" title="GitHub">
+                                <span>
+                                    <i className="fab fa-github" style={{width: '20px', height: '20px'}}></i>
+                                </span>
+                            </button>
+                            <button className="header_item" title="Export to zip">
+                                <span>
+                                    <i className="fas fa-download" style={{width: '20px', height: '20px'}}></i>
+                                </span>
+                            </button>
+                            <button>
+                                Terminal
+                            </button>
+                        </div>
                     </section>
                 </div>
             </div>

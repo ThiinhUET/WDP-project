@@ -55,7 +55,7 @@ class MenuBar extends Component {
                         <div className="item_holder">
                             Switch Editor
                             <span>
-                                <i class="fas fa-angle-right"></i>
+                                <i class="fas fa-chevron-right"></i>
                             </span>
                             <div className="items_container_2">
                                 <div className="item_holder">Next Editor</div>
