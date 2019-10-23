@@ -76,6 +76,6 @@ iframe {
 }
 .footer_bar button.header_item {
   height: 100%;
-  margin: 0 5px 0 5px;
+  margin: 0 10px 0 0;
   float: left;
 }
