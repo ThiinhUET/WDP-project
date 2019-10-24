@@ -7,7 +7,7 @@ class Explorer extends Component {
             <div className="explorer">
                 <div style={{margin: '13.5px auto'}}>EXPLORER</div>
                 <ExplorerView />
-                {/* <FileExplore /> */}
+                <FileExplore />
             </div>
         );
     }

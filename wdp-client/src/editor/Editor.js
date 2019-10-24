@@ -18,6 +18,7 @@ class Editor extends Component {
     constructor() {
         super();
         this.state = {
+            openConsole: "false",
             id: "",
             html: "",
             css: "",
@@ -106,6 +107,25 @@ class Editor extends Component {
     openSignUp(){
         this.props.history.push('/signup');
     }
+    openConsole() {
+        this.setState({openConsole: !this.state.openConsole});
+        if (this.state.openConsole) {
+            document.getElementById("console_container").style.display = "block";
+            document.getElementById("footer_bar").style.marginTop = "0";
+            document.getElementById("iframe").style.height = 'calc(65% + 5px)';
+        }
+        else {
+            document.getElementById("console_container").style.display = "none";
+            document.getElementById("footer_bar").style.marginTop = "5px";
+            document.getElementById("iframe").style.height = 'calc(95% + 5px)';
+        }
+    }
+    closeConsole() {
+        this.setState({openConsole: "false"});
+        document.getElementById("console_container").style.display = "none";
+        document.getElementById("footer_bar").style.marginTop = "5px";
+        document.getElementById("iframe").style.height = 'calc(95% + 5px)';
+    }
     render() {
         const { html, js, css } = this.state;
         const codeMirrorOptions = {
@@ -127,7 +147,7 @@ class Editor extends Component {
                     <button className="signup" style={{marginRight: '10px'}} onClick = {() => this.openSignUp()}>Sign Up</button>
                 </div>
                 <div className="maincontent" style={{position: 'relative', display: 'flex', flexDirection: 'row', height: 'calc(94vh - 15px)'}}>
-                    {/* <SideBar /> */}
+                    <SideBar />
                     <section className="playground">
                         <div className="code-editor html-code" style={{flex: '1'}}>
                             <div className="editor-header">HTML</div>
@@ -171,8 +191,18 @@ class Editor extends Component {
                     </section>
                     <div className="resizer"></div>
                     <section className="result">
-                        <iframe title="result" className="iframe" ref="iframe"/>
-                        <div className="footer_bar">
+                        <iframe title="result" className="iframe" id="iframe" ref="iframe"/>
+                        <div className="console_contaniner" id="console_container">
+                            <div className="console_tab" id="console_tab">
+                                <button style={{float: 'left'}}>
+                                    <i class="fas fa-ban"></i>
+                                </button>
+                                <button style={{float: 'right'}} onClick={() => this.closeConsole()}>
+                                    <i class="fas fa-chevron-down"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div className="footer_bar" id="footer_bar">
                             <button className="header_item" title="Save">
                                 <span>
                                     <i className="fas fa-cloud" style={{width: '20px', height: '20px'}}></i>
@@ -193,8 +223,8 @@ class Editor extends Component {
                                     <i className="fas fa-download" style={{width: '20px', height: '20px'}}></i>
                                 </span>
                             </button>
-                            <button>
-                                Terminal
+                            <button onClick={() => this.openConsole()}>
+                                Console
                             </button>
                         </div>
                     </section>
