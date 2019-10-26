@@ -138,13 +138,15 @@ class Editor extends Component {
         return (
             <div className="Editor">
                 <div className="header" style={{margin: '0 0 7px 0'}}>
-                    <button className="homebtn" title="Home" onClick={() => this.returnHome()}>
-                        <img src={logo} className="App-logo" alt="logo" width={40} height={40} />
-                    </button>
-                    <MenuBar />
-                    <button className="signin" style={{marginLeft: '10px'}} onClick = {() => this.openSignIn()}>Sign In</button>
-                    <div className="divider"></div>
-                    <button className="signup" style={{marginRight: '10px'}} onClick = {() => this.openSignUp()}>Sign Up</button>
+                    <div className="header_left">
+                        <button className="homebtn" title="Home" onClick={() => this.returnHome()}>
+                            <img src={logo} className="App-logo" alt="logo" width={40} height={40} />
+                        </button>
+                        <MenuBar />
+                    </div>
+                    <div className="header_right">
+                        <button className="signin" style={{marginLeft: '10px'}} onClick = {() => this.openSignIn()}>Sign In</button>
+                    </div>
                 </div>
                 <div className="maincontent" style={{position: 'relative', display: 'flex', flexDirection: 'row', height: 'calc(94vh - 15px)'}}>
                     <SideBar />

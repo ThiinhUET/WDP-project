@@ -62,11 +62,12 @@ class SignIn extends Component {
                     <div className="shooting_star"></div>
                 </div>
                 <div className="header">
-                    <button className="homebtn" title="Home" onClick = {() => this.returnHome()}>
-                        <img src={logo} className="App-logo" alt="logo" width={40} height={40} />
-                    </button>
-                    <span className="title">WDP</span>
-                    <button className="signup" onClick = {() => this.openSignUp()}>Sign Up</button>
+                    <div className="header_left">
+                        <button className="homebtn" title="Home" onClick = {() => this.returnHome()}>
+                            <img src={logo} className="App-logo" alt="logo" width={40} height={40} />
+                        </button>
+                        <span className="title">WDP</span>
+                    </div>
                 </div>
                 <div className="maincontent">
                     <div className="signin_title">Sign in to WDP</div>

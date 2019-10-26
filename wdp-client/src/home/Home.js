@@ -8,13 +8,17 @@ import logo3D from '.././assets/logo3D.gif';
 class Home extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+            auth: false,
+            isUserDrop: false,
+        }
     }
 
     openEditor() {
         this.props.history.push('/editor');
     }
     openSignIn(){
-        this.props.history.push('/signin');
+        this.setState({auth: true});
     }
     openSignUp(){
         this.props.history.push('/signup');
@@ -22,6 +26,12 @@ class Home extends Component {
 
     returnHome(){
         this.props.history.push('/home');
+    }
+    userDrop() {
+        this.setState({isUserDrop: !this.state.isUserDrop});
+    }
+    signOut() {
+        this.setState({auth: false});
     }
     render() { 
         return (
@@ -40,13 +50,27 @@ class Home extends Component {
                     <div className="shooting_star"></div>
                 </div>
                 <div className="header">
-                    <button className="homebtn" title="Home" onClick={() => this.returnHome()}>
-                        <img src={logo} className="App-logo" alt="logo" width={40} height={40} />
-                    </button>
-                    <span className="title">WDP</span>
-                    <button className="signin" style={{marginLeft: '10px'}} onClick={() => this.openSignIn()}>Sign In</button>
-                    <div className="divider"></div>
-                    <button className="signup" style={{marginRight: '10px'}} onClick = {() => this.openSignUp()}>Sign Up</button>
+                    <div className="header_left">
+                        <button className="homebtn" title="Home" onClick={() => this.returnHome()}>
+                            <img src={logo} className="App-logo" alt="logo" width={40} height={40} />
+                        </button>
+                        <span className="title">WDP</span>
+                    </div>
+                    <div className="header_right">
+                        {!this.state.auth && <button className="signin" onClick={() => this.openSignIn()}>Sign In</button>}
+                        {this.state.auth && <span className="user" onClick={() => this.userDrop()}>
+                            <span className="username">User</span>
+                            <button className="avatar">
+                                <i class="fas fa-user-circle" style={{width: '30px', height: '30px', color: 'white'}}></i>
+                            </button>
+                            {this.state.isUserDrop && <div className="userdrop_container">
+                                <div className="signout" onClick={() => this.signOut()}>
+                                    <i class="fas fa-sign-out-alt" style={{paddingRight: '10px'}}></i>
+                                    Sign out
+                                </div>
+                            </div>}
+                        </span>}
+                    </div>
                 </div>
                 <div className="maincontent">
                     <div className="code_editor" style={{ position: 'relative', flex: 3 }}>

@@ -8,8 +8,6 @@
     float: left;
     align-items: center;
     left: 20px;
-    top: 50%;
-    transform: translateY(-50%);
     padding-left: 10px;
     border-left: 1.5px solid;
     color: white;
