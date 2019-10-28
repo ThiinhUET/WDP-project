@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Menu, { SubMenu, MenuItem, MenuItemGroup } from 'rc-menu';
 import { withRouter } from 'react-router-dom';
 import './css/menubar.css'
 
@@ -16,7 +15,10 @@ class MenuBar extends Component {
                         <div className="item_holder">New File</div>
                         <div className="item_holder">New Project</div>
                         <div className="item_divider"></div>
-                        <div className="item_holder">Open File<input type="file" style= {{opacity: "0.0", position: "absolute", top: "0", left: "0", bottom: "0", right: "0", width: "100%", height:"100%"}} webkitdirectory mozdirectory directory/></div>
+                        <div className="item_holder">
+                            Open File
+                            <input type="file" style= {{opacity: "0.0", position: "absolute", top: "0", left: "0", bottom: "0", right: "0", width: "100%", height:"100%"}} webkitdirectory mozdirectory directory/>
+                        </div>
                         <div className="item_holder">Open Project</div>
                         <div className="item_divider"></div>
                         <div className="item_holder">Save</div>
@@ -55,7 +57,7 @@ class MenuBar extends Component {
                         <div className="item_holder">
                             Switch Editor
                             <span>
-                                <i class="fas fa-chevron-right"></i>
+                                <i className="fas fa-chevron-right"></i>
                             </span>
                             <div className="items_container_2">
                                 <div className="item_holder">Next Editor</div>

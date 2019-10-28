@@ -14,6 +14,8 @@ import 'codemirror/mode/css/css';
 import 'codemirror/mode/javascript/javascript';
 import MenuBar from './MenuBar';
 import SideBar from './SideBar';
+import Auth from '../Authenticate';
+import UserAuth from '../user-auth/UserAuth';
 class Editor extends Component {
     constructor() {
         super();
@@ -145,7 +147,8 @@ class Editor extends Component {
                         <MenuBar />
                     </div>
                     <div className="header_right">
-                        <button className="signin" style={{marginLeft: '10px'}} onClick = {() => this.openSignIn()}>Sign In</button>
+                        {!Auth.isAuthenticated && <button className="signin" onClick={() => this.openSignIn()}>Sign In</button>}
+                        <UserAuth />
                     </div>
                 </div>
                 <div className="maincontent" style={{position: 'relative', display: 'flex', flexDirection: 'row', height: 'calc(94vh - 15px)'}}>
@@ -197,10 +200,10 @@ class Editor extends Component {
                         <div className="console_contaniner" id="console_container">
                             <div className="console_tab" id="console_tab">
                                 <button style={{float: 'left'}}>
-                                    <i class="fas fa-ban"></i>
+                                    <i className="fas fa-ban"></i>
                                 </button>
                                 <button style={{float: 'right'}} onClick={() => this.closeConsole()}>
-                                    <i class="fas fa-chevron-down"></i>
+                                    <i className="fas fa-chevron-down"></i>
                                 </button>
                             </div>
                         </div>

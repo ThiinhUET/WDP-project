@@ -5,8 +5,8 @@ import './css/style.css';
 import logo from '.././assets/logo.png';
 import logo2 from '.././assets/logo2.png';
 import '@fortawesome/fontawesome-free/js/all';
+import Auth from '.././Authenticate';
 import axios from 'axios';
-import TextField from 'material-ui/TextField';
 
 class SignIn extends Component {
     constructor(props) {
@@ -18,25 +18,28 @@ class SignIn extends Component {
     }
 
     handSignIn(event){
-        var baseApi = "http://localhost:8080/users/";
-        var self = this;
-        var payload = {
-            "username" : this.state.username,
-            "password" : this.state.password
-        }
-        axios.post(baseApi + 'authenticate',payload).then(
-            function(res){
-                console.log(res);
+        // var baseApi = "http://localhost:8080/users/";
+        // var self = this;
+        // var payload = {
+        //     "username" : this.state.username,
+        //     "password" : this.state.password
+        // }
+        // axios.post(baseApi + 'authenticate',payload).then(
+        //     function(res){
+        //         console.log(res);
                 
-                if(res.message == "user founded!"){
-                    this.props.history.push('/home');                   
-                }
-                else if(res.message == "Invalid username/password!!!"){
-                    this.props.history.push('/signup');
+        //         if(res.message === "user founded!"){
+        //             this.props.history.push('/home');                   
+        //         }
+        //         else if(res.message === "Invalid username/password!!!"){
+        //             this.props.history.push('/signup');
                     
-                }
-            }
-        )
+        //         }
+        //     }
+        // )
+        Auth.signin(() => {
+            this.props.history.push('/home')
+        });
     }
    
     returnHome(){
