@@ -3,6 +3,7 @@ import firebase from "firebase";
 import Login from "./login";
 import base, { firebaseApp } from "./base";
 import UserAuth from '../user-auth/UserAuth';
+import { __esModule } from "react-console-emulator";
 
 class UserInfo extends Component {
   state = {
@@ -19,9 +20,7 @@ class UserInfo extends Component {
   }
 
   authHandler = async authData => {
-    console.log(authData);
     const user = authData.user;
-    console.log(user);
     this.setState({
       photoURL: user.photoURL,
       email: user.email,
@@ -30,7 +29,6 @@ class UserInfo extends Component {
   };
   
   authenticate = provider => {
-    console.log(provider);
     const authProvider = new firebase.auth[`${provider}AuthProvider`]();
     firebaseApp
       .auth()
@@ -39,7 +37,6 @@ class UserInfo extends Component {
   };
 
   logout = async () => {
-    console.log("logout");
     await firebase.auth().signOut();
     this.setState({ email: null, displayName: null });
   };
@@ -50,26 +47,25 @@ class UserInfo extends Component {
       return <Login authenticate={this.authenticate} />;
     }
     return (
-      // <Fragment>
-      //   <div>
-      //     <img src={this.state.photoURL}></img>
-      //   </div>
-      //   <div className="user-info" style={{color: 'white'}}>
-      //     <label>User name:</label>
-      //     <span type="text" id="email">
-      //       {this.state.displayName}
-      //     </span>
-      //   </div>
-      //   <div className="user-info" style={{color: 'white'}}>
-      //     <label>Email:</label>
-      //     <span type="text" id="email">
-      //       {this.state.email}
-      //     </span>
-      //   </div>
-      //   <div>{logout}</div>
-      // </Fragment>
-        <UserAuth userName={this.state.displayName}/>
-      
+      <Fragment>
+        <div>
+          <img src={this.state.photoURL}></img>
+        </div>
+        <div className="user-info" style={{color: 'white'}}>
+          <label>User name:</label>
+          <span type="text" id="email">
+            {this.state.displayName}
+          </span>
+        </div>
+        <div className="user-info" style={{color: 'white'}}>
+          <label>Email:</label>
+          <span type="text" id="email">
+            {this.state.email}
+          </span>
+        </div>
+        <div>{logout}</div>
+        <UserAuth userName = {this.state.displayName} />
+      </Fragment>
     );
   }
 }

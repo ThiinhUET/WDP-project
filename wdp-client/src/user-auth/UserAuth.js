@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 import {withRouter} from 'react-router-dom';
 import Auth from '../Authenticate';
+import firebase from "firebase";
+import Login from '../signin/login';
+import base, { firebaseApp } from '../signin/base';
+import { __esModule } from "react-console-emulator";
+
 
 class UserAuth extends Component {
     user_container = React.createRef();
@@ -8,12 +13,40 @@ class UserAuth extends Component {
         super(props);
         this.state = {
             isUserDrop: false,
+            email: null,
+            displayName: null
         }
     }
     
     componentDidMount() {
         document.addEventListener("mousedown", this.handleClickOutside);
+        firebase.auth().onAuthStateChanged(user => {
+            if (user) {
+              this.authHandler({ user });
+            }
+        });
     }
+    authHandler = async authData => {
+        const user = authData.user;
+        this.setState({
+          photoURL: user.photoURL,
+          email: user.email,
+          displayName: user.displayName
+        });
+    };
+    authenticate = provider => {
+        const authProvider = new firebase.auth[`${provider}AuthProvider`]();
+        firebaseApp
+          .auth()
+          .signInWithPopup(authProvider)
+          .then(this.authHandler);
+      };
+    
+      logout = async () => {
+        await firebase.auth().signOut();
+        this.setState({ email: null, displayName: null });
+      };
+    
     componentWillUnmount() {
         document.removeEventListener("mousedown", this.handleClickOutside);
     }
@@ -37,9 +70,9 @@ class UserAuth extends Component {
         return (
             <div className="UserAuth">
                 {Auth.isAuthenticated && <span className="user" ref={this.user_container}>
-                    <span className="username">{this.props.userName}</span>
+                    <span className="username">{this.state.displayName}</span>
                     <button className="avatar" onClick={this.handleChange}>
-                        <i className="fas fa-user-circle" style={{width: '30px', height: '30px', color: 'white'}}></i>
+                        <img src={this.state.photoURL} style={{width: '30px', height: '30px', color: 'white'}} />
                     </button>
                     {this.state.isUserDrop && <div className="userdrop_container">
                         <div className="profile">
