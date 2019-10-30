@@ -14,6 +14,7 @@ import 'codemirror/mode/css/css';
 import 'codemirror/mode/javascript/javascript';
 import MenuBar from './MenuBar';
 import SideBar from './SideBar';
+import MyTerminal from '../terminal/Terminal';
 import Auth from '../Authenticate';
 import UserAuth from '../user-auth/UserAuth';
 class Editor extends Component {
@@ -121,6 +122,7 @@ class Editor extends Component {
             document.getElementById("footer_bar").style.marginTop = "5px";
             document.getElementById("iframe").style.height = 'calc(95% + 5px)';
         }
+        
     }
     closeConsole() {
         this.setState({openConsole: "false"});
