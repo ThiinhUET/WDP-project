@@ -15,6 +15,8 @@ import 'codemirror/mode/javascript/javascript';
 import MenuBar from './MenuBar';
 import SideBar from './SideBar';
 import MyTerminal from '../terminal/Terminal';
+import Auth from '../Authenticate';
+import UserAuth from '../user-auth/UserAuth';
 class Editor extends Component {
     constructor() {
         super();
