@@ -37,7 +37,7 @@ class UserAuth extends Component {
         return (
             <div className="UserAuth">
                 {Auth.isAuthenticated && <span className="user" ref={this.user_container}>
-                    <span className="username">User</span>
+                    <span className="username">{this.props.userName}</span>
                     <button className="avatar" onClick={this.handleChange}>
                         <i className="fas fa-user-circle" style={{width: '30px', height: '30px', color: 'white'}}></i>
                     </button>

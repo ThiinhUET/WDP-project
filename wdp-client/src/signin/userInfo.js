@@ -2,6 +2,7 @@ import React, { Component, Fragment } from "react";
 import firebase from "firebase";
 import Login from "./login";
 import base, { firebaseApp } from "./base";
+import UserAuth from '../user-auth/UserAuth';
 
 class UserInfo extends Component {
   state = {
@@ -20,12 +21,14 @@ class UserInfo extends Component {
   authHandler = async authData => {
     console.log(authData);
     const user = authData.user;
+    console.log(user);
     this.setState({
+      photoURL: user.photoURL,
       email: user.email,
       displayName: user.displayName
     });
   };
-
+  
   authenticate = provider => {
     console.log(provider);
     const authProvider = new firebase.auth[`${provider}AuthProvider`]();
@@ -47,21 +50,26 @@ class UserInfo extends Component {
       return <Login authenticate={this.authenticate} />;
     }
     return (
-      <Fragment>
-        <div className="user-info">
-          <label>User name:</label>
-          <span type="text" id="email">
-            {this.state.displayName}
-          </span>
-        </div>
-        <div className="user-info">
-          <label>Email:</label>
-          <span type="text" id="email">
-            {this.state.email}
-          </span>
-        </div>
-        <div>{logout}</div>
-      </Fragment>
+      // <Fragment>
+      //   <div>
+      //     <img src={this.state.photoURL}></img>
+      //   </div>
+      //   <div className="user-info" style={{color: 'white'}}>
+      //     <label>User name:</label>
+      //     <span type="text" id="email">
+      //       {this.state.displayName}
+      //     </span>
+      //   </div>
+      //   <div className="user-info" style={{color: 'white'}}>
+      //     <label>Email:</label>
+      //     <span type="text" id="email">
+      //       {this.state.email}
+      //     </span>
+      //   </div>
+      //   <div>{logout}</div>
+      // </Fragment>
+        <UserAuth userName={this.state.displayName}/>
+      
     );
   }
 }
