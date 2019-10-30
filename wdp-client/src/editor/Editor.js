@@ -17,8 +17,8 @@ import SideBar from './SideBar';
 import Auth from '../Authenticate';
 import UserAuth from '../user-auth/UserAuth';
 class Editor extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             openConsole: "false",
             id: "",
@@ -148,7 +148,7 @@ class Editor extends Component {
                     </div>
                     <div className="header_right">
                         {!Auth.isAuthenticated && <button className="signin" onClick={() => this.openSignIn()}>Sign In</button>}
-                        <UserAuth />
+                        <UserAuth currentPage={"editor"}/>
                     </div>
                 </div>
                 <div className="maincontent" style={{position: 'relative', display: 'flex', flexDirection: 'row', height: 'calc(94vh - 15px)'}}>

@@ -49,7 +49,7 @@ class Home extends Component {
                     </div>
                     <div className="header_right">
                         {!Auth.isAuthenticated && <button className="signin" onClick={() => this.openSignIn()}>Sign In</button>}
-                        <UserAuth />
+                        <UserAuth currentPage={"home"}/>
                     </div>
                 </div>
                 <div className="maincontent">

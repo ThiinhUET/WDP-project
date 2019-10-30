@@ -26,7 +26,7 @@ class UserAuth extends Component {
     };
     signOut = () => {
         Auth.signout(() => {
-            this.props.history.push('/home')
+            this.props.history.push('/' + this.props.currentPage);
         });
         this.setState({isUserDrop: false});
     }
