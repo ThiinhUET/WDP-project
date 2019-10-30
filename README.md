@@ -9,7 +9,7 @@
 
 - [x] Sign up
 - [x] Login
-- [ ] Coding
+- [x ] Coding
 - [ ] Running code
 - [ ] Exporting to zip
 - [ ] Auto saving code
