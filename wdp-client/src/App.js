@@ -6,10 +6,10 @@ import SignIn from './signin/SignIn';
 import SignUp from './signup/SignUp';
 import FileExplore from './editor/FileExplore';
 import FileTest from './editor/FileTree';
+import MyTerminal from './terminal/Terminal';
 class App extends Component {
     constructor(props) {
         super(props);
-
     }
     render() {
         return (
@@ -28,7 +28,7 @@ class App extends Component {
                         <SignUp />
                     </Route>
                     <Route exact path = '/test'>
-                        <FileTest />
+                        <MyTerminal />
                     </Route>
                     <Route exact path="/" render={() => <Redirect to='/home' />} />
                 </Switch>
