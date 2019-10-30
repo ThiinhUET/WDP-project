@@ -9,8 +9,8 @@
 
 - [x] Sign up
 - [x] Login
-- [x ] Coding
-- [ ] Running code
+- [x] Coding
+- [x] Running code
 - [ ] Exporting to zip
 - [ ] Auto saving code
 - [x] Login with github
