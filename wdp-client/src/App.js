@@ -4,9 +4,8 @@ import Home from './home/Home';
 import Editor from './editor/Editor';
 import SignIn from './signin/SignIn';
 import SignUp from './signup/SignUp';
-import FileExplore from './editor/FileExplore';
-import FileTest from './editor/FileTree';
-import MyTerminal from './terminal/Terminal';
+import UserInfo from './signin/userInfo';
+
 class App extends Component {
     constructor(props) {
         super(props);
@@ -28,7 +27,7 @@ class App extends Component {
                         <SignUp />
                     </Route>
                     <Route exact path = '/test'>
-                        <MyTerminal />
+                        <UserInfo />
                     </Route>
                     <Route exact path="/" render={() => <Redirect to='/home' />} />
                 </Switch>
