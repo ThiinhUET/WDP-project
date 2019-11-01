@@ -20,6 +20,12 @@ class UserAuth extends Component {
     
     componentDidMount() {
         document.addEventListener("mousedown", this.handleClickOutside);
+        let displayName = localStorage.getItem('displayName');
+        let photoURL = localStorage.getItem('photoURL');
+        this.setState({
+            displayName : displayName,
+            photoURL : photoURL
+        })
         firebase.auth().onAuthStateChanged(user => {
             if (user) {
               this.authHandler({ user });
@@ -31,8 +37,12 @@ class UserAuth extends Component {
         this.setState({
           photoURL: user.photoURL,
           email: user.email,
-          displayName: user.displayName
+          displayName: user.displayName,
         });
+        localStorage.setItem('photoURL', this.state.photoURL);
+        localStorage.setItem('displayName', this.state.displayName);
+        localStorage.setItem('isSignedIn', this.state.isSignedIn);
+
     };
     authenticate = provider => {
         const authProvider = new firebase.auth[`${provider}AuthProvider`]();
@@ -40,11 +50,11 @@ class UserAuth extends Component {
           .auth()
           .signInWithPopup(authProvider)
           .then(this.authHandler);
-      };
+    };
     
       logout = async () => {
         await firebase.auth().signOut();
-        this.setState({ email: null, displayName: null });
+        this.setState({ email: null, displayName: null,isSignedIn : false });
       };
     
     componentWillUnmount() {
@@ -59,12 +69,16 @@ class UserAuth extends Component {
     };
     signOut = () => {
         Auth.signout(() => {
-            this.props.history.push('/' + this.props.currentPage);
+            this.props.history.push('/home');
         });
         this.setState({isUserDrop: false});
     }
     handleChange = () => {
         this.setState({isUserDrop: !this.state.isUserDrop});
+    }
+
+    profileRouter =() =>{
+        this.props.history.push('/test')
     }
     render() {
         return (
@@ -75,7 +89,7 @@ class UserAuth extends Component {
                         <img src={this.state.photoURL} style={{width: '30px', height: '30px', color: 'white'}} />
                     </button>
                     {this.state.isUserDrop && <div className="userdrop_container">
-                        <div className="profile">
+                        <div className="profile" onClick={() => this.profileRouter()}>
                             <i className="fas fa-user" style={{paddingRight: '20px'}}></i>
                             My Profile
                         </div>

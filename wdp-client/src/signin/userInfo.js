@@ -8,13 +8,15 @@ import { __esModule } from "react-console-emulator";
 class UserInfo extends Component {
   state = {
     email: null,
-    displayName: null
+    displayName: null,
+    uid : null
   };
 
   componentDidMount() {
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
         this.authHandler({ user });
+        console.log(user.providerData[0].uid)
       }
     });
   }
@@ -24,7 +26,8 @@ class UserInfo extends Component {
     this.setState({
       photoURL: user.photoURL,
       email: user.email,
-      displayName: user.displayName
+      displayName: user.displayName,
+      uid: user.providerData[0].uid
     });
   };
   
@@ -52,6 +55,12 @@ class UserInfo extends Component {
           <img src={this.state.photoURL}></img>
         </div>
         <div className="user-info" style={{color: 'white'}}>
+          <label>User id:</label>
+          <span>
+            {this.state.uid}
+          </span>
+        </div>
+        <div className="user-info" style={{color: 'white'}}>
           <label>User name:</label>
           <span type="text" id="email">
             {this.state.displayName}
@@ -64,7 +73,7 @@ class UserInfo extends Component {
           </span>
         </div>
         <div>{logout}</div>
-        <UserAuth userName = {this.state.displayName} />
+        {/* <UserAuth userName = {this.state.displayName} /> */}
       </Fragment>
     );
   }
