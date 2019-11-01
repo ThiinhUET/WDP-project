@@ -17,6 +17,7 @@ import SideBar from './SideBar';
 import MyTerminal from '../terminal/Terminal';
 import Auth from '../Authenticate';
 import UserAuth from '../user-auth/UserAuth';
+import TextInput from '../terminal/inputText';
 class Editor extends Component {
     constructor(props) {
         super(props);
@@ -116,6 +117,8 @@ class Editor extends Component {
             document.getElementById("console_container").style.display = "block";
             document.getElementById("footer_bar").style.marginTop = "0";
             document.getElementById("iframe").style.height = 'calc(65% + 5px)';
+            
+            
         }
         else {
             document.getElementById("console_container").style.display = "none";
@@ -209,6 +212,7 @@ class Editor extends Component {
                                 </button>
                             </div>
                         </div>
+                        <TextInput></TextInput>
                         <div className="footer_bar" id="footer_bar">
                             <button className="header_item" title="Save">
                                 <span>
