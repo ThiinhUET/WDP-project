@@ -16,12 +16,13 @@
 .signin_box {
     position: relative;
     display: flex;
+    justify-content: center;
     flex-direction: column;
     background-color: #ffffff2c;
     margin: 0px auto;
     border-radius: 10px;
     width: 350px;
-    height: 480px;
+    height: 350px;
     box-shadow: 0px 0px 20px 2px rgba(0, 0, 0, 0.75);
 }
 .signin_input {
@@ -49,6 +50,8 @@
 }
 .signin_box button {
     position: relative;
+    display: flex;
+    justify-content: center;
     font-family: Source Sans Pro,Open Sans,Segoe UI,sans-serif;
     color: white;
     font-weight: 600;
@@ -70,7 +73,7 @@
 }
 .signin_box button.signin_git_button {
     font-size: 1rem;
-    margin: 1.5em 2em .5em;
+    margin: 0 2em;
     background-color: #0d9e5b;
 }
 .signin_box button.signin_button:hover, .signin_box button.signin_git_button:hover{

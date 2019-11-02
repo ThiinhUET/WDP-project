@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import { withRouter, BrowserRouter, Route } from 'react-router-dom';
-import '@fortawesome/fontawesome-free/js/all';
+
 import logo from '../../assets/logo.png';
 import logo2 from '../../assets/logo2.png';
+
 import Auth from '../../Authenticate';
 import axios from 'axios';
 import Home from '../home/Home';
 import Background from '../background/Background';
+import '@fortawesome/fontawesome-free/js/all';
 import './style.css';
 
 
@@ -48,14 +50,12 @@ class SignIn extends Component {
                 <div className="maincontent">
                     <div className="signin_title">Sign in to WDP</div>
                     <div className="signin_box">
-                        <img src={logo2} style={{ position: 'relative', width: '70%', margin: '0 auto', marginTop: '20px' }} />
-                        <div className="signin-divider">
-                            <div className="bar bar-top" />
-                            <span className="signin-or">OR</span>
-                            <div className="bar bar-bottom" />
-                        </div>
+                        <img src={logo2} style={{ position: 'relative', width: '70%', margin: '0 auto' }} />
+                        <div style={{height: '20%'}}></div>
                         <button className="signin_git_button" onClick={() => this.handSignIn()}>
-                            Log In With Github</button>
+                            <i className="fab fa-github" style={{width: '20px', height: '20px', paddingRight: '10px'}}></i>
+                            <span>Sign in with GitHub</span>
+                        </button>
                     </div>
                 </div>
                 <div className="footer">
