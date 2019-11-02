@@ -1,9 +1,9 @@
 import React , {Component} from 'react';
 import {withRouter} from 'react-router-dom';
-import '.././css/background_style.css';
-import './css/style.css';
-import logo from '.././assets/logo.png';
-import logo2 from '.././assets/logo2.png';
+import Background from '../background/Background';
+import logo from '../../assets/logo.png';
+import logo2 from '../../assets/logo2.png';
+import './style.css';
 class SignUp extends Component {
     constructor(props){
         super(props)
@@ -17,19 +17,7 @@ class SignUp extends Component {
     render() { 
         return (
             <div className="signup">
-                <div className="background">
-                    <div className="shooting_star"></div>
-                    <div className="shooting_star"></div>
-                    <div className="shooting_star"></div>
-                    <div className="shooting_star"></div>
-                    <div className="shooting_star"></div>
-                    <div className="shooting_star"></div>
-                    <div className="shooting_star"></div>
-                    <div className="shooting_star"></div>
-                    <div className="shooting_star"></div>
-                    <div className="shooting_star"></div>
-                    <div className="shooting_star"></div>
-                </div>
+                <Background width = '100%' />
                 <div className="header">
                     <button className="homebtn" title="Home" onClick = {() => this.returnHome()}>
                         <img src={logo} width={40} height={40} />

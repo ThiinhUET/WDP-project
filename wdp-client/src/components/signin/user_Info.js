@@ -2,10 +2,10 @@ import React, { Component, Fragment } from "react";
 import firebase from "firebase";
 import Login from "./login";
 import base, { firebaseApp } from "./base";
-import UserAuth from '../user-auth/UserAuth';
+import UserInfo from '../user-info/UserInfo';
 import { __esModule } from "react-console-emulator";
 
-class UserInfo extends Component {
+class user_Info extends Component {
   state = {
     email: null,
     displayName: null,
@@ -79,4 +79,4 @@ class UserInfo extends Component {
   }
 }
 
-export default UserInfo;
+export default user_Info;

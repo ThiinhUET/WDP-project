@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import {withRouter} from 'react-router-dom';
-import Auth from '../Authenticate';
+import Auth from '../../Authenticate';
 import firebase from "firebase";
 import Login from '../signin/login';
 import base, { firebaseApp } from '../signin/base';
 import { __esModule } from "react-console-emulator";
 
 
-class UserAuth extends Component {
+class UserInfo extends Component {
     user_container = React.createRef();
     constructor(props) {
         super(props);
@@ -110,4 +110,4 @@ class UserAuth extends Component {
     }
 }
 
-export default withRouter(UserAuth);
+export default withRouter(UserInfo);

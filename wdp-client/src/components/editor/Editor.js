@@ -1,23 +1,26 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
-import logo from '.././assets/logo.png';
-import '@fortawesome/fontawesome-free/js/all';
+
 import { Controlled as CodeMirror } from 'react-codemirror2';
 import Pusher from 'pusher-js';
 import pushid from 'pushid';
 import axios from 'axios';
-import './css/editor.css';
-import './css/codemirror.css';
 import 'codemirror/theme/mbo.css';
 import 'codemirror/mode/htmlmixed/htmlmixed';
 import 'codemirror/mode/css/css';
 import 'codemirror/mode/javascript/javascript';
+import './css/codemirror.css';
+
 import MenuBar from './MenuBar';
 import SideBar from './SideBar';
 import MyTerminal from '../terminal/Terminal';
-import Auth from '../Authenticate';
-import UserAuth from '../user-auth/UserAuth';
+import Auth from '../../Authenticate';
+import UserInfo from '../user-info/UserInfo';
 import TextInput from '../terminal/inputText';
+
+import '@fortawesome/fontawesome-free/js/all';
+import logo from '../../assets/logo.png';
+import './css/editor.css';
 class Editor extends Component {
     constructor(props) {
         super(props);
@@ -153,7 +156,7 @@ class Editor extends Component {
                     </div>
                     <div className="header_right">
                         {!Auth.isAuthenticated && <button className="signin" onClick={() => this.openSignIn()}>Sign In</button>}
-                        <UserAuth currentPage={"editor"}/>
+                        <UserInfo currentPage={"editor"}/>
                     </div>
                 </div>
                 <div className="maincontent" style={{position: 'relative', display: 'flex', flexDirection: 'row', height: 'calc(94vh - 15px)'}}>

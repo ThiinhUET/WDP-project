@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
 import { withRouter, BrowserRouter, Route } from 'react-router-dom';
-import '.././css/background_style.css';
-import './css/style.css';
-import logo from '.././assets/logo.png';
-import logo2 from '.././assets/logo2.png';
 import '@fortawesome/fontawesome-free/js/all';
-import Auth from '.././Authenticate';
+import logo from '../../assets/logo.png';
+import logo2 from '../../assets/logo2.png';
+import Auth from '../../Authenticate';
 import axios from 'axios';
 import Home from '../home/Home';
-
+import Background from '../background/Background';
+import './style.css';
 
 
 class SignIn extends Component {
@@ -37,19 +36,7 @@ class SignIn extends Component {
     render() {
         return (
             <div className="signin">
-                <div className="background">
-                    <div className="shooting_star"></div>
-                    <div className="shooting_star"></div>
-                    <div className="shooting_star"></div>
-                    <div className="shooting_star"></div>
-                    <div className="shooting_star"></div>
-                    <div className="shooting_star"></div>
-                    <div className="shooting_star"></div>
-                    <div className="shooting_star"></div>
-                    <div className="shooting_star"></div>
-                    <div className="shooting_star"></div>
-                    <div className="shooting_star"></div>
-                </div>
+                <Background width = '100%' />
                 <div className="header">
                     <div className="header_left">
                         <button className="homebtn" title="Home" onClick={() => this.returnHome()}>

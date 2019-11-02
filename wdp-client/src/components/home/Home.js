@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
-import '.././css/style.css';
-import '.././css/background_style.css';
 import {withRouter} from 'react-router-dom';
-import logo from '.././assets/logo.png';
-import logo3D from '.././assets/logo3D.gif';
-import Auth from '../Authenticate';
-import UserAuth from '../user-auth/UserAuth';
+import logo from '../../assets/logo.png';
+import logo3D from '../../assets/logo3D.gif';
+import Auth from '../../Authenticate';
+import UserInfo from '../user-info/UserInfo';
+import Background from '../background/Background';
 
 class Home extends Component {
     constructor(props) {
@@ -27,19 +26,7 @@ class Home extends Component {
     render() { 
         return (
             <div className="Home">
-                <div className="background" style={{width: '70%'}}>
-                    <div className="shooting_star"></div>
-                    <div className="shooting_star"></div>
-                    <div className="shooting_star"></div>
-                    <div className="shooting_star"></div>
-                    <div className="shooting_star"></div>
-                    <div className="shooting_star"></div>
-                    <div className="shooting_star"></div>
-                    <div className="shooting_star"></div>
-                    <div className="shooting_star"></div>
-                    <div className="shooting_star"></div>
-                    <div className="shooting_star"></div>
-                </div>
+                <Background width = '70%' />
                 <div className="header">
                     <div className="header_left">
                         <button className="homebtn" title="Home" onClick={() => this.returnHome()}>
@@ -49,7 +36,7 @@ class Home extends Component {
                     </div>
                     <div className="header_right">
                         {!Auth.isAuthenticated && <button className="signin" onClick={() => this.openSignIn()}>Sign In</button>}
-                        <UserAuth currentPage={"home"}/>
+                        <UserInfo currentPage={"home"}/>
                     </div>
                 </div>
                 <div className="maincontent">
