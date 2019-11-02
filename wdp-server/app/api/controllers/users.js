@@ -45,6 +45,6 @@ module.exports = {
 					res.status(201).json({message: "Update userpassword success"})
 				}
 			});
-		}
+		},
 
 }					

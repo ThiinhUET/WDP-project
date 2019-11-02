@@ -7,9 +7,11 @@ const mongoose = require('./config/database');
 var jwt = require('jsonwebtoken');
 const cors = require('cors');
 const Pusher = require('pusher');
-
+const axios = require('axios');
 
 const app = express();
+
+const baseURL = "https://api.github.com";
 
 const pusher = new Pusher({
   appId: process.env.PUSHER_APP_ID,
@@ -35,6 +37,15 @@ app.get('/', function(req, res){
 // public route
 app.use('/users', users);
 
+app.get('/git/getUserInfo', function(req, res){
+    let uid = req.body.uid;
+    let mydata;
+    axios.get(baseURL + "/user/" + uid).then((res1) =>{
+      mydata =  res1.data;
+      res.send({info: mydata})
+    });
+  })
+
 function validateUser(req, res, next) {
   jwt.verify(req.headers['x-access-token'], req.app.get('secretKey'), function(err, decoded) {
     if (err) {
@@ -47,12 +58,6 @@ function validateUser(req, res, next) {
   
 }
 
-
-// app.use(function(req, res, next) {
-// 	let err = new Error('Not Found');
-//     err.status = 404;
-//     next(err);
-// });
 
 app.use(function(err, req, res, next) {
 	console.log(err);
