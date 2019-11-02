@@ -4,26 +4,15 @@ const axios = require("axios");
 const fs = require('fs');
 const baseURL = "https://api.github.com";
 
-let uid = "34747967";
-let userInfo = null;
-let respos = [];
-let repo ={
-    name : null,
-    avataURL : null
-}
-axios.get(baseURL + "/user/" + uid).then((res) =>{
-    userInfo =  res.data;       
-    
-    let user = userInfo.login;
-    
-    axios.get(baseURL+"/users/"+ user +"/repos").then(
-        (res) => {
-            let data = res.data;
-            console.log(data[0].name);
-            
-            
-            })
-    
+let owner = "ThiinhUET";
+let repo = "WDP-project";
+axios.get(baseURL + "/repos/" + owner + "/" + repo + "/commits").then((res1) => {
+    let lastCommit = res1.data[0];
+    let sha = lastCommit.sha;
+    axios.get(baseURL + "/repos/" + owner + "/" + repo + "/git/trees/" + sha + "?recursive=1").then((res2) => {
+      let fileTree = res2.data;
+        console.log(fileTree);   
+    });
 });
 
 

@@ -64,10 +64,6 @@ class Editor extends Component {
 
     syncUpdates = () => {
         const data = { ...this.state };
-
-        axios
-            .post("http://localhost:8080/update-editor", data)
-            .catch(console.error);
     };
 
     runCode = () => {
