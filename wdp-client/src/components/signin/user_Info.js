@@ -9,31 +9,38 @@ class User_Info extends Component {
   state = {
     email: null,
     displayName: null,
-    uid : null
+    uid : null,
+    token : null
   };
 
   componentDidMount() {
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
         this.authHandler({ user });
-        console.log(user.providerData[0].uid)
+        // console.log(this.state.token);
       }
     });
   }
 
   authHandler = async authData => {
     const user = authData.user;
+    // var token = authData.credential.accessToken;
+    console.log(authData);
     this.setState({
       photoURL: user.photoURL,
       email: user.email,
       displayName: user.displayName,
-      uid: user.providerData[0].uid
+      uid: user.providerData[0].uid,
+      // token : token
     });
     localStorage.setItem('photoURL', this.state.photoURL);
     localStorage.setItem('displayName', this.state.displayName);
   };
   
   authenticate = provider => {
+    // provider.addScope('repo');
+    console.log(provider);
+    
     const authProvider = new firebase.auth[`${provider}AuthProvider`]();
     firebaseApp
       .auth()
