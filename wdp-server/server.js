@@ -65,7 +65,7 @@ app.get('/git/getuserrepos', function (req, res) {
 });
 
 
-app.get('/git/listfile', function(req, res){
+app.post('/git/listfile', function(req, res){
     let owner = req.body.login;
     let repo = req.body.repo;
     axios.get(baseURL + "/repos/" + owner + "/" + repo + "/commits").then((res1) => {

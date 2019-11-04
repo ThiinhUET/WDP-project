@@ -1,18 +1,45 @@
-const express = require("express");
-const route = express.Router;
-const axios = require("axios");
-const fs = require('fs');
-const baseURL = "https://api.github.com";
+const file = require('./data');
+const axios = require('axios');
+const tree = file.filetree.tree;
+var data = {
+}
 
-let owner = "ThiinhUET";
-let repo = "WDP-project";
-axios.get(baseURL + "/repos/" + owner + "/" + repo + "/commits").then((res1) => {
-    let lastCommit = res1.data[0];
-    let sha = lastCommit.sha;
-    axios.get(baseURL + "/repos/" + owner + "/" + repo + "/git/trees/" + sha + "?recursive=1").then((res2) => {
-      let fileTree = res2.data;
-        console.log(fileTree);   
+const getChildren = (url) => {
+    return new Promise((resolve, reject)=> {
+        axios.get(url).then((res) => {
+            return resolve(res.data.tree);
+        }).catch(err => {
+            return reject(err.message);
+        })
     });
-});
+}
+const tranform = async() => {
+    for(let i = 0; i < tree.length; i++){
+        let path = tree[i].path;
+        let type = tree[i].type === 'blob' ? 'file' : 'folder';
+        let content = tree[i].url;
+        let children = [];
+        if (type === 'folder') {
+            await getChildren(content)
+            children = getChildren(content);
+            data[path] = {
+                path: path,
+                type: type,
+                content: content,
+                children: children
+            };
+        } else {
+            data[path] = {
+                path: path,
+                type: type,
+                content: content,
+                children: children
+            }
+        }
+    }
+}
+
+console.log(data);
+
 
 
