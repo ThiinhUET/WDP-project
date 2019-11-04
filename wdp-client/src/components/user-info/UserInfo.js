@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import {withRouter} from 'react-router-dom';
-import Authenticate from '../../Authenticate';
-import firebase from "firebase";
-import Login from '../signin/login';
-import base, { firebaseApp } from '../signin/base';
+import Authenticate from '../authprovider/Authenticate';
 import { __esModule } from "react-console-emulator";
 
 
@@ -43,8 +40,8 @@ class UserInfo extends Component {
     render() {
         return (
             <div className="UserInfo">
-                {localStorage.isAuth && <span className="user" ref={this.user_container}>
-                    <span className="username">{localStorage.displayName}</span>
+                {localStorage.uid && <span className="user" ref={this.user_container}>
+                    <span className="username">{localStorage.username}</span>
                     <button className="avatar" onClick={this.handleChange}>
                         <img src={localStorage.photoURL} style={{width: '30px', height: '30px', color: 'white'}} />
                     </button>

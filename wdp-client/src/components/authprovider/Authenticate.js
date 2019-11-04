@@ -1,5 +1,5 @@
 import firebase from "firebase";
-import base, { firebaseApp } from "./components/signin/base";
+import base, { firebaseApp } from "./base"
 
 class Authenticate {
     componentDidMount() {
@@ -26,11 +26,18 @@ class Authenticate {
         .auth()
         .signInWithPopup(authProvider)
         .then(async function(authData) {
-          const user = authData.user;
-          console.log(authData.user);
-          localStorage.setItem('isAuth', true);
+          let user = authData.user;
+          let credential, additionalUserInfo;
+          if (authData.credential) {
+            // This gives you a GitHub Access Token. You can use it to access the GitHub API.
+            credential = authData.credential;
+            additionalUserInfo = authData.additionalUserInfo; 
+            // ...
+          }
+          localStorage.setItem('accessToken', credential.accessToken);
           localStorage.setItem('photoURL', user.photoURL);
           localStorage.setItem('email', user.email);
+          localStorage.setItem('username', additionalUserInfo.username);
           localStorage.setItem('displayName', user.displayName);
           localStorage.setItem('uid', user.providerData[0].uid);
           setTimeout(cb,100);
@@ -39,9 +46,10 @@ class Authenticate {
   
     signout = async (cb) => {
       await firebase.auth().signOut();
-      localStorage.removeItem('isAuth');
       localStorage.removeItem('photoURL');
       localStorage.removeItem('email');
+      localStorage.removeItem('accessToken');
+      localStorage.removeItem('username');
       localStorage.removeItem('displayName');
       localStorage.removeItem('uid');
       setTimeout(cb, 100);
