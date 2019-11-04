@@ -1,4 +1,3 @@
-// require('dotenv').config({ path: '.env' });
 const express = require('express');
 const logger = require('morgan');
 const users = require('./routes/users');
@@ -37,7 +36,7 @@ app.get('/', function (req, res) {
 // public route
 app.use('/users', users);
 
-app.get('/git/getuserinfo', function (req, res) {
+app.post('/git/getuserinfo', function (req, res) {
   let uid = req.body.uid;
   let mydata;
   axios.get(baseURL + "/user/" + uid).then((res1) => {
@@ -46,7 +45,7 @@ app.get('/git/getuserinfo', function (req, res) {
   });
 })
 
-app.get('/git/getuserrepos', function (req, res) {
+app.post('/git/getuserrepos', function (req, res) {
   let login = req.body.login;
   let respos = [];
   axios.get(baseURL + "/users/" + login + "/repos").then((res1) => {
