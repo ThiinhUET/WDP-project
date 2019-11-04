@@ -3,6 +3,7 @@ import values from 'lodash/values';
 import PropTypes from 'prop-types';
 
 import TreeNode from './TreeNode';
+import file from './sidebar/data';
 
 const data = {
   '/root': {
@@ -44,10 +45,12 @@ const data = {
 };
 
 export default class Tree extends Component {
-
-  state = {
-    nodes: data,
-  };
+  constructor(props){
+    super(props)
+    this.state = {
+      nodes: data,
+    };
+  }
 
   getRootNodes = () => {
     const { nodes } = this.state;
@@ -83,6 +86,8 @@ export default class Tree extends Component {
             onNodeSelect={this.onNodeSelect}
           />
         ))}
+
+        {console.log(file)}
       </div>
     )
   }

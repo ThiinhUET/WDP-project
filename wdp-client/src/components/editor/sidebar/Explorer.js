@@ -1,13 +1,29 @@
 import React, { Component } from 'react';
 import FileExplore from '../FileExplore';
 import ExplorerView from './ExplorerView';
+import axios from 'axios';
 class Explorer extends Component {
+    constructor(props){
+        super(props);
+        this.state = {
+            login : "ThiinhUET",
+            repo : "WDP-project",
+            data : "Hello Thinh"
+        }
+    }
+    // componentWillMount(){
+    //     axios.post('http://localhost:8080/git/listfile',{login : this.state.login, repo : this.state.repo}).then((res) =>{
+    //         this.setState.data = res.data.filetree;
+    //     });
+    // }
+    // shouldComponentUpdate(nextProps, nextState){
+    //     return this.state.data != nextState.data;
+    // }
     render() {
         return (
             <div className="explorer">
                 <div style={{margin: '13.5px auto'}}>EXPLORER</div>
-                <ExplorerView />
-                <FileExplore />
+                <FileExplore test = {this.state.data}/>
             </div>
         );
     }
