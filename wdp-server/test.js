@@ -9,12 +9,11 @@ tree.map((value, index) => {
     let type = value.type === 'blob' ? 'file' : 'folder';
     let content = value.url;
     let children = [];
-    axios.get(content).then((res) => {
-        let child = res.data.tree;
-        child.map((val, indx) => {
-            children.push(val.path);
-        });
         if (type === 'folder') {
+            // for(let i = 0 ; i < tree.length; i++){
+            //     let 
+            // }
+            children.push("a");
             data[path] = {
                 path: path,
                 type: type,
@@ -31,9 +30,7 @@ tree.map((value, index) => {
         }
     });
 
-});
 
 
-
-console.log(data);
+console.log(tree);
 
