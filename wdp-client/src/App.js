@@ -4,7 +4,7 @@ import Home from './components/home/Home';
 import Editor from './components/editor/Editor';
 import SignIn from './components/signin/SignIn';
 import SignUp from './components/signup/SignUp';
-import user_Info from './components/signin/user_Info';
+import User_Info from './components/signin/user_Info';
 
 class App extends Component {
     constructor(props) {
@@ -27,7 +27,7 @@ class App extends Component {
                         <SignUp />
                     </Route>
                     <Route exact path = '/test'>
-                        <userInfo />
+                        <User_Info />
                     </Route>
                     <Route exact path="/" render={() => <Redirect to='/home' />} />
                 </Switch>

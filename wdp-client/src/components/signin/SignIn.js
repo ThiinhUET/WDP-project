@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
-import { withRouter, BrowserRouter, Route } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 import logo from '../../assets/logo.png';
 import logo2 from '../../assets/logo2.png';
 
-import Auth from '../../Authenticate';
-import axios from 'axios';
-import Home from '../home/Home';
+import Authenticate from '../../Authenticate';
 import Background from '../background/Background';
 import '@fortawesome/fontawesome-free/js/all';
 import './style.css';
@@ -17,18 +15,21 @@ class SignIn extends Component {
         super(props);
         this.state = {
             isUserDrop: false,
+            isAuth: false,
             email: null,
             displayName: null,
         }
     }
-
-    handSignIn() {
-        
-        Auth.signin(() => {
-            this.props.history.push('/home');
-        });
+    
+    componentDidMount() {
+        if (localStorage.isAuth) this.props.history.push('/home');
     }
 
+    signIn() {
+        const authenticate = new Authenticate();
+        authenticate.signin(() => this.props.history.push(localStorage.currentPage));
+    }
+    
     returnHome() {
         this.props.history.push('/home');
     }
@@ -52,7 +53,7 @@ class SignIn extends Component {
                     <div className="signin_box">
                         <img src={logo2} style={{ position: 'relative', width: '70%', margin: '0 auto' }} />
                         <div style={{height: '20%'}}></div>
-                        <button className="signin_git_button" onClick={() => this.handSignIn()}>
+                        <button className="signin_git_button" onClick={() => this.signIn()}>
                             <i className="fab fa-github" style={{width: '20px', height: '20px', paddingRight: '10px'}}></i>
                             <span>Sign in with GitHub</span>
                         </button>

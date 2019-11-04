@@ -14,7 +14,7 @@ import './css/codemirror.css';
 import MenuBar from './MenuBar';
 import SideBar from './SideBar';
 import MyTerminal from '../terminal/Terminal';
-import Auth from '../../Authenticate';
+import Authenticate from '../../Authenticate';
 import UserInfo from '../user-info/UserInfo';
 import TextInput from '../terminal/inputText';
 
@@ -38,6 +38,7 @@ class Editor extends Component {
         });
 
         this.channel = this.pusher.subscribe("editor");
+        localStorage.setItem('currentPage', '/editor');
     }
 
     
@@ -151,7 +152,7 @@ class Editor extends Component {
                         <MenuBar />
                     </div>
                     <div className="header_right">
-                        {!Auth.isAuthenticated && <button className="signin" onClick={() => this.openSignIn()}>Sign In</button>}
+                        {!localStorage.isAuth && <button className="signin" onClick={() => this.openSignIn()}>Sign In</button>}
                         <UserInfo currentPage={"editor"}/>
                     </div>
                 </div>

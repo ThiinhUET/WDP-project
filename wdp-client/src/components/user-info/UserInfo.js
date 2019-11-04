@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {withRouter} from 'react-router-dom';
-import Auth from '../../Authenticate';
+import Authenticate from '../../Authenticate';
 import firebase from "firebase";
 import Login from '../signin/login';
 import base, { firebaseApp } from '../signin/base';
@@ -12,51 +12,13 @@ class UserInfo extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            isUserDrop: false,
-            email: null,
-            displayName: null
+            isUserDrop: false
         }
     }
     
     componentDidMount() {
         document.addEventListener("mousedown", this.handleClickOutside);
-        let displayName = localStorage.getItem('displayName');
-        let photoURL = localStorage.getItem('photoURL');
-        this.setState({
-            displayName : displayName,
-            photoURL : photoURL
-        })
-        firebase.auth().onAuthStateChanged(user => {
-            if (user) {
-              this.authHandler({ user });
-            }
-        });
     }
-    authHandler = async authData => {
-        const user = authData.user;
-        this.setState({
-          photoURL: user.photoURL,
-          email: user.email,
-          displayName: user.displayName,
-        });
-        localStorage.setItem('photoURL', this.state.photoURL);
-        localStorage.setItem('displayName', this.state.displayName);
-        localStorage.setItem('isSignedIn', this.state.isSignedIn);
-
-    };
-    authenticate = provider => {
-        const authProvider = new firebase.auth[`${provider}AuthProvider`]();
-        firebaseApp
-          .auth()
-          .signInWithPopup(authProvider)
-          .then(this.authHandler);
-    };
-    
-      logout = async () => {
-        await firebase.auth().signOut();
-        this.setState({ email: null, displayName: null,isSignedIn : false });
-      };
-    
     componentWillUnmount() {
         document.removeEventListener("mousedown", this.handleClickOutside);
     }
@@ -68,10 +30,8 @@ class UserInfo extends Component {
         }
     };
     signOut = () => {
-        Auth.signout(() => {
-            this.props.history.push('/home');
-        });
-        this.setState({isUserDrop: false});
+        const authenticate = new Authenticate();
+        authenticate.signout(() => this.props.history.push(localStorage.currentPage));
     }
     handleChange = () => {
         this.setState({isUserDrop: !this.state.isUserDrop});
@@ -82,11 +42,11 @@ class UserInfo extends Component {
     }
     render() {
         return (
-            <div className="UserAuth">
-                {Auth.isAuthenticated && <span className="user" ref={this.user_container}>
-                    <span className="username">{this.state.displayName}</span>
+            <div className="UserInfo">
+                {localStorage.isAuth && <span className="user" ref={this.user_container}>
+                    <span className="username">{localStorage.displayName}</span>
                     <button className="avatar" onClick={this.handleChange}>
-                        <img src={this.state.photoURL} style={{width: '30px', height: '30px', color: 'white'}} />
+                        <img src={localStorage.photoURL} style={{width: '30px', height: '30px', color: 'white'}} />
                     </button>
                     {this.state.isUserDrop && <div className="userdrop_container">
                         <div className="profile" onClick={() => this.profileRouter()}>
@@ -99,7 +59,7 @@ class UserInfo extends Component {
                             Dashboard
                         </div>
                         <div className="row_divider"></div>
-                        <div className="signout" onClick={this.signOut}>
+                        <div className="signout" onClick={() => this.signOut()}>
                             <i className="fas fa-sign-out-alt" style={{paddingRight: '20px'}}></i>
                             Sign out
                         </div>

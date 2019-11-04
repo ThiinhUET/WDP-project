@@ -5,7 +5,7 @@ import base, { firebaseApp } from "./base";
 import UserInfo from '../user-info/UserInfo';
 import { __esModule } from "react-console-emulator";
 
-class user_Info extends Component {
+class User_Info extends Component {
   state = {
     email: null,
     displayName: null,
@@ -29,6 +29,8 @@ class user_Info extends Component {
       displayName: user.displayName,
       uid: user.providerData[0].uid
     });
+    localStorage.setItem('photoURL', this.state.photoURL);
+    localStorage.setItem('displayName', this.state.displayName);
   };
   
   authenticate = provider => {
@@ -42,6 +44,7 @@ class user_Info extends Component {
   logout = async () => {
     await firebase.auth().signOut();
     this.setState({ email: null, displayName: null });
+    localStorage.clear();
   };
 
   render() {
@@ -79,4 +82,4 @@ class user_Info extends Component {
   }
 }
 
-export default user_Info;
+export default User_Info;

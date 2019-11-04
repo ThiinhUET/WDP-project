@@ -77,9 +77,6 @@ body {
 .header button.signup {
     width: 90px;
 }
-.header button.avatar {
-    border-radius: 50%;
-}
 .userdrop_container {
     position: absolute;
     z-index: 3;

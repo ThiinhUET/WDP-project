@@ -2,13 +2,14 @@ import React, { Component } from 'react';
 import {withRouter} from 'react-router-dom';
 import logo from '../../assets/logo.png';
 import logo3D from '../../assets/logo3D.gif';
-import Auth from '../../Authenticate';
+import Authenticate from '../../Authenticate';
 import UserInfo from '../user-info/UserInfo';
 import Background from '../background/Background';
 
 class Home extends Component {
     constructor(props) {
         super(props);
+        localStorage.setItem('currentPage', '/home');
     }
 
     openEditor() {
@@ -35,7 +36,7 @@ class Home extends Component {
                         <span className="title">WDP</span>
                     </div>
                     <div className="header_right">
-                        {!Auth.isAuthenticated && <button className="signin" onClick={() => this.openSignIn()}>Sign In</button>}
+                        {!localStorage.isAuth && <button className="signin" onClick={() => this.openSignIn()}>Sign In</button>}
                         <UserInfo currentPage={"home"}/>
                     </div>
                 </div>
