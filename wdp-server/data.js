@@ -1,7 +1,7 @@
 const file = {
     "filetree": {
-        "sha": "4df2f2d049da460e415384eee270d47ffe497cd6",
-        "url": "https://api.github.com/repos/ThiinhUET/WDP-project/git/trees/4df2f2d049da460e415384eee270d47ffe497cd6",
+        "sha": "89ee26f58dfaf714c815e1c8b3699d705029c935",
+        "url": "https://api.github.com/repos/ThiinhUET/WDP-project/git/trees/89ee26f58dfaf714c815e1c8b3699d705029c935",
         "tree": [
             {
                 "path": ".gitignore",
@@ -85,8 +85,8 @@ const file = {
                 "path": "wdp-client",
                 "mode": "040000",
                 "type": "tree",
-                "sha": "d99f3d77c2b5b3ad8dc98458ad2e542ca77323bb",
-                "url": "https://api.github.com/repos/ThiinhUET/WDP-project/git/trees/d99f3d77c2b5b3ad8dc98458ad2e542ca77323bb"
+                "sha": "d52f681cf8a4a3b0a2baba646cf06e62d55a0f28",
+                "url": "https://api.github.com/repos/ThiinhUET/WDP-project/git/trees/d52f681cf8a4a3b0a2baba646cf06e62d55a0f28"
             },
             {
                 "path": "wdp-client/.gitignore",
@@ -234,24 +234,24 @@ const file = {
                 "path": "wdp-client/src",
                 "mode": "040000",
                 "type": "tree",
-                "sha": "f668fd43b9547a9c1263d4e060dc89287bea2514",
-                "url": "https://api.github.com/repos/ThiinhUET/WDP-project/git/trees/f668fd43b9547a9c1263d4e060dc89287bea2514"
+                "sha": "357a2770f86517f1ec744ff5e488d542f353a471",
+                "url": "https://api.github.com/repos/ThiinhUET/WDP-project/git/trees/357a2770f86517f1ec744ff5e488d542f353a471"
             },
             {
                 "path": "wdp-client/src/App.js",
                 "mode": "100644",
                 "type": "blob",
-                "sha": "247cb7ca62f081be9b7bdcd432b9a785ec354fc7",
-                "size": 1292,
-                "url": "https://api.github.com/repos/ThiinhUET/WDP-project/git/blobs/247cb7ca62f081be9b7bdcd432b9a785ec354fc7"
+                "sha": "8590c62d91d925aedd0d40adf13ab9f49d2af865",
+                "size": 1293,
+                "url": "https://api.github.com/repos/ThiinhUET/WDP-project/git/blobs/8590c62d91d925aedd0d40adf13ab9f49d2af865"
             },
             {
                 "path": "wdp-client/src/Authenticate.js",
                 "mode": "100644",
                 "type": "blob",
-                "sha": "40a35675806eae94b5b1cf080f52298826619ac8",
-                "size": 253,
-                "url": "https://api.github.com/repos/ThiinhUET/WDP-project/git/blobs/40a35675806eae94b5b1cf080f52298826619ac8"
+                "sha": "5bcb484d90fc44d7827629870b2e69754b1557bd",
+                "size": 1430,
+                "url": "https://api.github.com/repos/ThiinhUET/WDP-project/git/blobs/5bcb484d90fc44d7827629870b2e69754b1557bd"
             },
             {
                 "path": "wdp-client/src/assets",
@@ -288,8 +288,8 @@ const file = {
                 "path": "wdp-client/src/components",
                 "mode": "040000",
                 "type": "tree",
-                "sha": "8dec854d7dac71eec9d74ae921c7b6fe7beea830",
-                "url": "https://api.github.com/repos/ThiinhUET/WDP-project/git/trees/8dec854d7dac71eec9d74ae921c7b6fe7beea830"
+                "sha": "c02ffe75ef5b8ba49493a850a9b70e14f71bb1dd",
+                "url": "https://api.github.com/repos/ThiinhUET/WDP-project/git/trees/c02ffe75ef5b8ba49493a850a9b70e14f71bb1dd"
             },
             {
                 "path": "wdp-client/src/components/background",
@@ -318,24 +318,24 @@ const file = {
                 "path": "wdp-client/src/components/editor",
                 "mode": "040000",
                 "type": "tree",
-                "sha": "f78d73f9fe604a7f8fcdf58f88687e7fe0f7b938",
-                "url": "https://api.github.com/repos/ThiinhUET/WDP-project/git/trees/f78d73f9fe604a7f8fcdf58f88687e7fe0f7b938"
+                "sha": "545ee72ecfb2d334c595cd7e15fe0fa35fdc1bfa",
+                "url": "https://api.github.com/repos/ThiinhUET/WDP-project/git/trees/545ee72ecfb2d334c595cd7e15fe0fa35fdc1bfa"
             },
             {
                 "path": "wdp-client/src/components/editor/Editor.js",
                 "mode": "100644",
                 "type": "blob",
-                "sha": "052120a9a2ebb51392030d3bf5b6d9f1ed861ba4",
-                "size": 9574,
-                "url": "https://api.github.com/repos/ThiinhUET/WDP-project/git/blobs/052120a9a2ebb51392030d3bf5b6d9f1ed861ba4"
+                "sha": "bf3c1337480b80a6ede6c06cbbf773d598bbb68d",
+                "size": 9636,
+                "url": "https://api.github.com/repos/ThiinhUET/WDP-project/git/blobs/bf3c1337480b80a6ede6c06cbbf773d598bbb68d"
             },
             {
                 "path": "wdp-client/src/components/editor/FileExplore.js",
                 "mode": "100644",
                 "type": "blob",
-                "sha": "da2a7c3196fb1b6d0877ae10802838d65a3d3c79",
-                "size": 820,
-                "url": "https://api.github.com/repos/ThiinhUET/WDP-project/git/blobs/da2a7c3196fb1b6d0877ae10802838d65a3d3c79"
+                "sha": "95e4668b9eb4069bd4ee7cdd96d78a901f9a359b",
+                "size": 912,
+                "url": "https://api.github.com/repos/ThiinhUET/WDP-project/git/blobs/95e4668b9eb4069bd4ee7cdd96d78a901f9a359b"
             },
             {
                 "path": "wdp-client/src/components/editor/FileTree.js",
@@ -373,9 +373,9 @@ const file = {
                 "path": "wdp-client/src/components/editor/TreeView.js",
                 "mode": "100644",
                 "type": "blob",
-                "sha": "9191d94ceb62834d2e8f910e9176238a75824a52",
-                "size": 1970,
-                "url": "https://api.github.com/repos/ThiinhUET/WDP-project/git/blobs/9191d94ceb62834d2e8f910e9176238a75824a52"
+                "sha": "47a71179f522ea6984bb64049e0787b83547ec69",
+                "size": 2087,
+                "url": "https://api.github.com/repos/ThiinhUET/WDP-project/git/blobs/47a71179f522ea6984bb64049e0787b83547ec69"
             },
             {
                 "path": "wdp-client/src/components/editor/css",
@@ -420,8 +420,8 @@ const file = {
                 "path": "wdp-client/src/components/editor/sidebar",
                 "mode": "040000",
                 "type": "tree",
-                "sha": "b8328d7f8364018c39b8ffaba8ef71421f9a9e9f",
-                "url": "https://api.github.com/repos/ThiinhUET/WDP-project/git/trees/b8328d7f8364018c39b8ffaba8ef71421f9a9e9f"
+                "sha": "93845cc0a2ab91852b717726a9ae7b7cd7dec629",
+                "url": "https://api.github.com/repos/ThiinhUET/WDP-project/git/trees/93845cc0a2ab91852b717726a9ae7b7cd7dec629"
             },
             {
                 "path": "wdp-client/src/components/editor/sidebar/Configuration.js",
@@ -435,9 +435,9 @@ const file = {
                 "path": "wdp-client/src/components/editor/sidebar/Explorer.js",
                 "mode": "100644",
                 "type": "blob",
-                "sha": "347059fd11bc21893d323748ac0374defff53469",
-                "size": 429,
-                "url": "https://api.github.com/repos/ThiinhUET/WDP-project/git/blobs/347059fd11bc21893d323748ac0374defff53469"
+                "sha": "d157849da812099078d90411232633d1588ffdb2",
+                "size": 980,
+                "url": "https://api.github.com/repos/ThiinhUET/WDP-project/git/blobs/d157849da812099078d90411232633d1588ffdb2"
             },
             {
                 "path": "wdp-client/src/components/editor/sidebar/ExplorerView.js",
@@ -454,6 +454,14 @@ const file = {
                 "sha": "eb359be15a0a5b606f431477b4185f9d7a5ecb78",
                 "size": 389,
                 "url": "https://api.github.com/repos/ThiinhUET/WDP-project/git/blobs/eb359be15a0a5b606f431477b4185f9d7a5ecb78"
+            },
+            {
+                "path": "wdp-client/src/components/editor/sidebar/data.js",
+                "mode": "100644",
+                "type": "blob",
+                "sha": "febcce3a973f25c9fbcd40ae7a2a8bf838fa76f4",
+                "size": 37053,
+                "url": "https://api.github.com/repos/ThiinhUET/WDP-project/git/blobs/febcce3a973f25c9fbcd40ae7a2a8bf838fa76f4"
             },
             {
                 "path": "wdp-client/src/components/github",
@@ -474,31 +482,31 @@ const file = {
                 "path": "wdp-client/src/components/home",
                 "mode": "040000",
                 "type": "tree",
-                "sha": "e20c28e6b7e03652d044e814230b5872a4b7fe7c",
-                "url": "https://api.github.com/repos/ThiinhUET/WDP-project/git/trees/e20c28e6b7e03652d044e814230b5872a4b7fe7c"
+                "sha": "7ccd68f33fef1031b5727576b89d86e9d1035fb8",
+                "url": "https://api.github.com/repos/ThiinhUET/WDP-project/git/trees/7ccd68f33fef1031b5727576b89d86e9d1035fb8"
             },
             {
                 "path": "wdp-client/src/components/home/Home.js",
                 "mode": "100644",
                 "type": "blob",
-                "sha": "8ac553d43b4740a81a8bc24da2ba97692080bfa9",
-                "size": 2974,
-                "url": "https://api.github.com/repos/ThiinhUET/WDP-project/git/blobs/8ac553d43b4740a81a8bc24da2ba97692080bfa9"
+                "sha": "53763a5c3fa14a19acffbc11737b8b82e5442056",
+                "size": 3035,
+                "url": "https://api.github.com/repos/ThiinhUET/WDP-project/git/blobs/53763a5c3fa14a19acffbc11737b8b82e5442056"
             },
             {
                 "path": "wdp-client/src/components/signin",
                 "mode": "040000",
                 "type": "tree",
-                "sha": "ac11fac8a8f20ae4a7aacaf450c9364bed64bcb2",
-                "url": "https://api.github.com/repos/ThiinhUET/WDP-project/git/trees/ac11fac8a8f20ae4a7aacaf450c9364bed64bcb2"
+                "sha": "f21034fcf2fd62ec7331cbfefa59bb1c780478a7",
+                "url": "https://api.github.com/repos/ThiinhUET/WDP-project/git/trees/f21034fcf2fd62ec7331cbfefa59bb1c780478a7"
             },
             {
                 "path": "wdp-client/src/components/signin/SignIn.js",
                 "mode": "100644",
                 "type": "blob",
-                "sha": "aa15e791f768c262a92dda66b1cef2b014f766f6",
-                "size": 2481,
-                "url": "https://api.github.com/repos/ThiinhUET/WDP-project/git/blobs/aa15e791f768c262a92dda66b1cef2b014f766f6"
+                "sha": "eafe24b270e5fa68365d2cfedf1d86e3377a1441",
+                "size": 2503,
+                "url": "https://api.github.com/repos/ThiinhUET/WDP-project/git/blobs/eafe24b270e5fa68365d2cfedf1d86e3377a1441"
             },
             {
                 "path": "wdp-client/src/components/signin/base.js",
@@ -520,17 +528,17 @@ const file = {
                 "path": "wdp-client/src/components/signin/style.css",
                 "mode": "100644",
                 "type": "blob",
-                "sha": "59c944e15a1fe4875b952137d6673e19ae7f87be",
-                "size": 2975,
-                "url": "https://api.github.com/repos/ThiinhUET/WDP-project/git/blobs/59c944e15a1fe4875b952137d6673e19ae7f87be"
+                "sha": "4e4108c6bae52063be877061db8cd98c62ec8859",
+                "size": 3043,
+                "url": "https://api.github.com/repos/ThiinhUET/WDP-project/git/blobs/4e4108c6bae52063be877061db8cd98c62ec8859"
             },
             {
                 "path": "wdp-client/src/components/signin/user_Info.js",
                 "mode": "100644",
                 "type": "blob",
-                "sha": "89799e3af56e7a2c06848072262edb9bee80e76f",
-                "size": 2134,
-                "url": "https://api.github.com/repos/ThiinhUET/WDP-project/git/blobs/89799e3af56e7a2c06848072262edb9bee80e76f"
+                "sha": "d8abd8e416afb2e1011b5b0e03ed7587eb9e850b",
+                "size": 2284,
+                "url": "https://api.github.com/repos/ThiinhUET/WDP-project/git/blobs/d8abd8e416afb2e1011b5b0e03ed7587eb9e850b"
             },
             {
                 "path": "wdp-client/src/components/signup",
@@ -582,16 +590,16 @@ const file = {
                 "path": "wdp-client/src/components/user-info",
                 "mode": "040000",
                 "type": "tree",
-                "sha": "1087be6fd385a5c14baaf6e23a5c72f257aaf878",
-                "url": "https://api.github.com/repos/ThiinhUET/WDP-project/git/trees/1087be6fd385a5c14baaf6e23a5c72f257aaf878"
+                "sha": "94615122e81ad6bd073517cd86d057b6db22b75a",
+                "url": "https://api.github.com/repos/ThiinhUET/WDP-project/git/trees/94615122e81ad6bd073517cd86d057b6db22b75a"
             },
             {
                 "path": "wdp-client/src/components/user-info/UserInfo.js",
                 "mode": "100644",
                 "type": "blob",
-                "sha": "d06b7d1d22686cb2278af69fec1611123879c035",
-                "size": 4014,
-                "url": "https://api.github.com/repos/ThiinhUET/WDP-project/git/blobs/d06b7d1d22686cb2278af69fec1611123879c035"
+                "sha": "0600f05f51f7bff2e6ca0c057a21408202676914",
+                "size": 2791,
+                "url": "https://api.github.com/repos/ThiinhUET/WDP-project/git/blobs/0600f05f51f7bff2e6ca0c057a21408202676914"
             },
             {
                 "path": "wdp-client/src/fonts",
@@ -612,9 +620,9 @@ const file = {
                 "path": "wdp-client/src/index.css",
                 "mode": "100644",
                 "type": "blob",
-                "sha": "d8e5a46b8df13161a3d53ac44fd5ec219f70668e",
-                "size": 4357,
-                "url": "https://api.github.com/repos/ThiinhUET/WDP-project/git/blobs/d8e5a46b8df13161a3d53ac44fd5ec219f70668e"
+                "sha": "de27a3c1130ca2f3f2f69f88215b72203e3d16df",
+                "size": 4307,
+                "url": "https://api.github.com/repos/ThiinhUET/WDP-project/git/blobs/de27a3c1130ca2f3f2f69f88215b72203e3d16df"
             },
             {
                 "path": "wdp-client/src/index.js",
@@ -636,8 +644,8 @@ const file = {
                 "path": "wdp-server",
                 "mode": "040000",
                 "type": "tree",
-                "sha": "685b633be46e3b2bb3e6567a79fad2ccfbb21743",
-                "url": "https://api.github.com/repos/ThiinhUET/WDP-project/git/trees/685b633be46e3b2bb3e6567a79fad2ccfbb21743"
+                "sha": "2db5ea8d303fca5118a67816f5ac3e5d26035c1a",
+                "url": "https://api.github.com/repos/ThiinhUET/WDP-project/git/trees/2db5ea8d303fca5118a67816f5ac3e5d26035c1a"
             },
             {
                 "path": "wdp-server/.env",
@@ -723,6 +731,14 @@ const file = {
                 "url": "https://api.github.com/repos/ThiinhUET/WDP-project/git/blobs/d30279f9760e4bedf683e5f25b1fe6c6d98fe03f"
             },
             {
+                "path": "wdp-server/data.js",
+                "mode": "100644",
+                "type": "blob",
+                "sha": "514e8f0f06e0aa08860f432bd3d4037aac206e39",
+                "size": 37056,
+                "url": "https://api.github.com/repos/ThiinhUET/WDP-project/git/blobs/514e8f0f06e0aa08860f432bd3d4037aac206e39"
+            },
+            {
                 "path": "wdp-server/package-lock.json",
                 "mode": "100644",
                 "type": "blob",
@@ -757,17 +773,17 @@ const file = {
                 "path": "wdp-server/server.js",
                 "mode": "100644",
                 "type": "blob",
-                "sha": "62d6022d3dfadcabd5de502801beb3362cb609ba",
-                "size": 3103,
-                "url": "https://api.github.com/repos/ThiinhUET/WDP-project/git/blobs/62d6022d3dfadcabd5de502801beb3362cb609ba"
+                "sha": "90703b82a3e614ab54139ea176f4e090d60031b5",
+                "size": 3104,
+                "url": "https://api.github.com/repos/ThiinhUET/WDP-project/git/blobs/90703b82a3e614ab54139ea176f4e090d60031b5"
             },
             {
                 "path": "wdp-server/test.js",
                 "mode": "100644",
                 "type": "blob",
-                "sha": "88f1d68757d9551e3b82b3ffbc3dadf9b2a13f9c",
-                "size": 557,
-                "url": "https://api.github.com/repos/ThiinhUET/WDP-project/git/blobs/88f1d68757d9551e3b82b3ffbc3dadf9b2a13f9c"
+                "sha": "cc685016b36cecf20143e6851894d6f2b8ecbddc",
+                "size": 1097,
+                "url": "https://api.github.com/repos/ThiinhUET/WDP-project/git/blobs/cc685016b36cecf20143e6851894d6f2b8ecbddc"
             }
         ],
         "truncated": false
