@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom';
 import logo from '../../assets/logo.png';
 import logo2 from '../../assets/logo2.png';
 
-import Authenticate from '../../Authenticate';
+import Authenticate from '../authprovider/Authenticate';
 import Background from '../background/Background';
 import '@fortawesome/fontawesome-free/js/all';
 import './style.css';
@@ -15,14 +15,12 @@ class SignIn extends Component {
         super(props);
         this.state = {
             isUserDrop: false,
-            isAuth: false,
-            email: null,
-            displayName: null,
         }
+        if (localStorage.currentPage === undefined) localStorage.setItem('currentPage', '/home');
     }
     
     componentDidMount() {
-        if (localStorage.isAuth) this.props.history.push('/home');
+        if (localStorage.uid) this.props.history.push('/home');
     }
 
     signIn() {

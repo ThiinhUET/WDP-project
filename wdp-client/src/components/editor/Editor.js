@@ -13,7 +13,7 @@ import './css/codemirror.css';
 import MenuBar from './MenuBar';
 import SideBar from './SideBar';
 import MyTerminal from '../terminal/Terminal';
-import Authenticate from '../../Authenticate';
+import Authenticate from '../authprovider/Authenticate';
 import UserInfo from '../user-info/UserInfo';
 import TextInput from '../terminal/inputText';
 
@@ -151,7 +151,7 @@ class Editor extends Component {
                         <MenuBar />
                     </div>
                     <div className="header_right">
-                        {!localStorage.isAuth && <button className="signin" onClick={() => this.openSignIn()}>Sign In</button>}
+                        {!localStorage.uid && <button className="signin" onClick={() => this.openSignIn()}>Sign In</button>}
                         <UserInfo currentPage={"editor"}/>
                     </div>
                 </div>

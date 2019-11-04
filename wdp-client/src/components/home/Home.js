@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {withRouter} from 'react-router-dom';
 import logo from '../../assets/logo.png';
 import logo3D from '../../assets/logo3D.gif';
-import Authenticate from '../../Authenticate';
+import Authenticate from '../authprovider/Authenticate';
 import UserInfo from '../user-info/UserInfo';
 import Background from '../background/Background';
 
@@ -36,7 +36,7 @@ class Home extends Component {
                         <span className="title">WDP</span>
                     </div>
                     <div className="header_right">
-                        {!localStorage.isAuth && <button className="signin" onClick={() => this.openSignIn()}>Sign In</button>}
+                        {!localStorage.uid && <button className="signin" onClick={() => this.openSignIn()}>Sign In</button>}
                         <UserInfo currentPage={"home"}/>
                     </div>
                 </div>
