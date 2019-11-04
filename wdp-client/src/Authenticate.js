@@ -27,6 +27,7 @@ class Authenticate {
         .signInWithPopup(authProvider)
         .then(async function(authData) {
           const user = authData.user;
+          console.log(authData.user);
           localStorage.setItem('isAuth', true);
           localStorage.setItem('photoURL', user.photoURL);
           localStorage.setItem('email', user.email);
@@ -38,7 +39,11 @@ class Authenticate {
   
     signout = async (cb) => {
       await firebase.auth().signOut();
-      localStorage.clear();
+      localStorage.removeItem('isAuth');
+      localStorage.removeItem('photoURL');
+      localStorage.removeItem('email');
+      localStorage.removeItem('displayName');
+      localStorage.removeItem('uid');
       setTimeout(cb, 100);
     };
 }

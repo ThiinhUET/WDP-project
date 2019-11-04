@@ -19,6 +19,7 @@ class SignIn extends Component {
             email: null,
             displayName: null,
         }
+        if (localStorage.currentPage === undefined) localStorage.setItem('currentPage', '/home');
     }
     
     componentDidMount() {
