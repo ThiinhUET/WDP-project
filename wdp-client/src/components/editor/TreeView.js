@@ -50,8 +50,6 @@ export default class Tree extends Component {
             onNodeSelect={this.onNodeSelect}
           />
         ))}
-
-        {console.log(file)}
       </div>
     )
   }
