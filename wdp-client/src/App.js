@@ -4,6 +4,25 @@ import Home from './components/home/Home';
 import Editor from './components/editor/Editor';
 import SignIn from './components/signin/SignIn';
 import SignUp from './components/signup/SignUp';
+import Profile from './components/profile/Profile';
+import Dashboard from './components/dashboard/Dashboard';
+
+function PrivateRoute({ children, ...rest }) {
+    return (
+        <Route
+            {...rest}
+            render={({ location }) =>
+            localStorage.uid ? (children) : (
+                <Redirect
+                to={{
+                    pathname: "/signin",
+                    state: { from: location }
+                }}
+                />)
+            }
+        />
+    );
+}
 
 class App extends Component {
     constructor(props) {
@@ -13,10 +32,10 @@ class App extends Component {
         return (
             <BrowserRouter>
                 <Switch>
-                    <Route exact path="/home">
+                    <Route exact path = "/home">
                         <Home />
                     </Route>
-                    <Route exact path='/editor'>
+                    <Route exact path = '/editor'>
                         <Editor />
                     </Route>
                     <Route exact path = '/signin'>
@@ -25,6 +44,12 @@ class App extends Component {
                     <Route exact path = '/signup'>
                         <SignUp />
                     </Route>
+                    <PrivateRoute path ='/profile'>
+                        <Profile />
+                    </PrivateRoute>
+                    <PrivateRoute path = '/dashboard'>
+                        <Dashboard />
+                    </PrivateRoute>
                     <Route exact path="/" render={() => <Redirect to='/home' />} />
                 </Switch>
             </BrowserRouter>

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {withRouter} from 'react-router-dom';
 import Authenticate from '../authprovider/Authenticate';
-import { __esModule } from "react-console-emulator";
+import './style.css';
 
 
 class UserInfo extends Component {
@@ -34,8 +34,11 @@ class UserInfo extends Component {
         this.setState({isUserDrop: !this.state.isUserDrop});
     }
 
-    profileRouter =() =>{
-        this.props.history.push('/test')
+    openProfile =() =>{
+        this.props.history.push('/profile');
+    }
+    openDashboard =() =>{
+        this.props.history.push('/dashboard');
     }
     render() {
         return (
@@ -43,22 +46,22 @@ class UserInfo extends Component {
                 {localStorage.uid && <span className="user" ref={this.user_container}>
                     <span className="username">{localStorage.username}</span>
                     <button className="avatar" onClick={this.handleChange}>
-                        <img src={localStorage.photoURL} style={{width: '30px', height: '30px', color: 'white'}} />
+                        <img src={localStorage.photoURL} style={{width: '30px', height: '30px', color: 'white', border: '1px solid'}} />
                     </button>
                     {this.state.isUserDrop && <div className="userdrop_container">
-                        <div className="profile" onClick={() => this.profileRouter()}>
-                            <i className="fas fa-user" style={{paddingRight: '20px'}}></i>
+                        <div className="user_item" id="profile" onClick={() => this.openProfile()}>
+                            <i className="fas fa-user" style={{paddingRight: '15px'}}></i>
                             My Profile
                         </div>
                         <div className="row_divider"></div>
-                        <div className="dashboard">
-                            <i className="fas fa-columns" style={{paddingRight: '20px'}}></i>
+                        <div className="user_item" id="dashboard" onClick={() => this.openDashboard()}>
+                            <i className="fas fa-columns" style={{paddingRight: '15px'}}></i>
                             Dashboard
                         </div>
                         <div className="row_divider"></div>
-                        <div className="signout" onClick={() => this.signOut()}>
-                            <i className="fas fa-sign-out-alt" style={{paddingRight: '20px'}}></i>
-                            Sign out
+                        <div className="user_item" id="signout" onClick={() => this.signOut()}>
+                            <i className="fas fa-sign-out-alt" style={{paddingRight: '15px'}}></i>
+                            Sign Out
                         </div>
                     </div>}
                 </span>}

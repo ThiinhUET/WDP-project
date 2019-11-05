@@ -37,7 +37,7 @@ class Editor extends Component {
         });
 
         this.channel = this.pusher.subscribe("editor");
-        localStorage.setItem('currentPage', '/editor');
+        localStorage.setItem('redirect', '/editor');
     }
 
     
@@ -152,7 +152,7 @@ class Editor extends Component {
                     </div>
                     <div className="header_right">
                         {!localStorage.uid && <button className="signin" onClick={() => this.openSignIn()}>Sign In</button>}
-                        <UserInfo currentPage={"editor"}/>
+                        <UserInfo />
                     </div>
                 </div>
                 <div className="maincontent" style={{position: 'relative', display: 'flex', flexDirection: 'row', height: 'calc(94vh - 15px)'}}>

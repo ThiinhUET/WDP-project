@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css?family=Fira+Sans:200,400&display=swap&subset=vietnamese');
+.Profile .maincontent {
+    flex-direction: column;
+    align-items: unset;
+    justify-content: unset;
+}
+.maincontent .top_content {
+    flex: 1;
+    display: flex;
+    color: #f0f0f0;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+.avatar_profile {
+    padding-right: 50px;
+}
+.displayName_profile {
+    font-size: 32pt;
+    border-right: 1.5px solid;
+    padding-right: 25px;
+}
+.username_profile {
+    font-size: 32pt;
+    padding-left: 25px;
+}
+.github_link {
+    cursor: pointer;
+}
+.created_time {
+    line-height: 50px;
+    font-size: 14pt;
+    color: gray;
+}
+.bio_profile {
+    padding-top: 15px;
+}
+.bio_title {
+    position: absolute;
+    background-color: #1e1e1e;
+    font-size: 14pt;
+    font-weight: lighter;
+    color: gray;
+    margin-top: -13px;
+    margin-left: 10px;
+}
+.bio_content {
+    text-align: center;
+    min-width: 200px;
+    max-width: fit-content;
+    font-size: 14pt;
+    font-weight: lighter;
+    line-height: 30px;
+    padding: 15px;
+    border: 1px solid gray;
+    border-radius: 5px 15px;
+    word-break: break-word;
+}
+.maincontent .bottom_content {
+    flex: 1;
+    font-size: 14pt;
+    color: #f0f0f0;
+    font-weight: lighter;
+    display: flex;
+    justify-content: center;
+}
+.profile_items {
+    position: absolute;
+    font-size: 14pt;
+    font-weight: lighter;
+    width: 630px;
+    border-left: 1px solid gray;
+}
+.profile_item {
+    padding: 15px;
+}
+.profile_item a {
+    text-decoration: none;
+    color: #f0f0f0;
+}
