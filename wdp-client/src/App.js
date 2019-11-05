@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link, Router, Route, Switch, BrowserRouter, Redirect } from 'react-router-dom';
+import {Route, Switch, BrowserRouter, Redirect } from 'react-router-dom';
 import Home from './components/home/Home';
 import Editor from './components/editor/Editor';
 import SignIn from './components/signin/SignIn';
@@ -25,9 +25,6 @@ function PrivateRoute({ children, ...rest }) {
 }
 
 class App extends Component {
-    constructor(props) {
-        super(props);
-    }
     render() {
         return (
             <BrowserRouter>
