@@ -63,25 +63,25 @@ class Profile extends Component {
                             </div>
                             <div className="bio_profile">
                                 <div className="bio_title">Bio</div>
-                                <div className="bio_content" id="bio_content">{localStorage.bio}</div>
+                                <div className="bio_content" id="bio_content">{(localStorage.bio === "null") ? "" : localStorage.bio}</div>
                             </div>
                         </div>
                     </div>
                     <div className="bottom_content">
                         <div className="profile_items">
-                            {localStorage.company && <div className="profile_item">
+                            {localStorage.company && localStorage.company !=="null" && <div className="profile_item">
                                 <i className="fas fa-users" style={{color: 'gray', width: '20px', height: '20px', paddingRight: '10px'}}></i>
                                 <span>{localStorage.company}</span>
                             </div>}
-                            {localStorage.location && <div className="profile_item">
+                            {localStorage.location && localStorage.location !=="null" && <div className="profile_item">
                                 <i className="fas fa-map-marker-alt" style={{color: 'gray', width: '20px', height: '20px', paddingRight: '10px'}}></i>
                                 <span>{localStorage.location}</span>
                             </div>}
-                            {localStorage.email && <div className="profile_item">
+                            {localStorage.email && localStorage.email !=="null" && <div className="profile_item">
                                 <i className="fas fa-envelope" style={{color: 'gray', width: '20px', height: '20px', paddingRight: '10px'}}></i>
                                 <a href="mailto: {localStorage.email}">{localStorage.email}</a>
                             </div>}
-                            {localStorage.blog && <div className="profile_item">
+                            {localStorage.blog && localStorage.blog !=="null" && <div className="profile_item">
                                 <i className="fas fa-globe-asia" style={{color: 'gray', width: '20px', height: '20px', paddingRight: '10px'}}></i>
                                 <a href={(localStorage.blog).includes("https://")? localStorage.blog : "https://" + localStorage.blog} target="_blank" rel="noopener noreferrer">{localStorage.blog}</a>
                             </div>}
