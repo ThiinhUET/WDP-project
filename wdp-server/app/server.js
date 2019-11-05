@@ -19,8 +19,6 @@ app.set('secretKey', 'nodeRestApi');
 app.use(logger('dev'));
 app.use(bodyParser.urlencoded({ extended: false }));
 
-
-
 //my route
 app.get('/', function (req, res) {
   res.json({ message: "Welcome to WDP" });
@@ -31,7 +29,7 @@ app.use('/git', gitRouters);
 
 
 app.set('port', process.env.PORT || 8080);
-const server = app.listen(app.get('port'), () => {
+const server = app.listen(app.get('port'),"0.0.0.0", () => {
   console.log(`Express running → PORT ${server.address().port}`);
 });
 

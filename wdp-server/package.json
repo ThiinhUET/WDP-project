@@ -2,8 +2,9 @@
   "name": "wdp-server",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app/server.js",
   "scripts": {
+    "start": "nodemon",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -18,5 +19,8 @@
     "mongoose": "^5.7.3",
     "morgan": "^1.9.1",
     "pusher": "^3.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.4"
   }
 }

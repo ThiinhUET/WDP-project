@@ -211,7 +211,7 @@ class Editor extends Component {
                                 </button>
                             </div>
                         </div>
-                        <TextInput></TextInput>
+                        <TextInput ></TextInput>
                         <div className="footer_bar" id="footer_bar">
                             <button className="header_item" title="Save">
                                 <span>

@@ -1,6 +1,7 @@
 const axios = require('axios');
 const baseURL = "https://api.github.com";
 
+
 module.exports = {
     getUserInfo: function (req, res) {
         let uid = req.body.uid;
@@ -42,6 +43,19 @@ module.exports = {
                 let fileTree = res2.data;
                 res.send({ filetree: fileTree });
             });
+        });
+    },
+
+    getFileContent: function(req, res){
+        let content = req.body.content;
+        let accessToken = req.body.accessToken;
+        axios.get(content, {headers : {Authorization : 'token ' + accessToken}}).then(gitResponse => {
+            let data = gitResponse.data.content;
+            let encoding = gitResponse.data.encoding;
+            let decodedData = Buffer.from(data, encoding).toString();
+            res.send({content : data, encoding : encoding});
+        }).catch(err => {
+            console.log(err);
         });
     }
 }
