@@ -7,7 +7,6 @@
 
 ###Todo
 
-- [x] Sign up
 - [x] Login
 - [x] Coding
 - [x] Running code

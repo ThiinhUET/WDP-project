@@ -1,48 +1,12 @@
 import React, { Component } from 'react';
 import values from 'lodash/values';
 import PropTypes from 'prop-types';
-
+import myTree from './myTree';
 import TreeNode from './TreeNode';
 import file from './sidebar/data';
 
-const data = {
-  '/root': {
-    path: '/root',
-    type: 'folder',
-    isRoot: true,
-    children: ['/root/thinh', '/root/thu'],
-  },
-  '/root/thinh': {
-    path: '/root/thinh',
-    type: 'folder',
-    children: ['/root/thinh/readme.html'],
-  },
-  '/root/thinh/readme.html': {
-    path: '/root/thinh/readme.html',
-    type: 'file',
-    content: 'Hello ban'
-  },
-  '/root/thu': {
-    path: '/root/thu',
-    type: 'folder',
-    children: ['/root/thu/projects', '/root/thu/111'],
-  },
-  '/root/thu/projects': {
-    path: '/root/thu/projects',
-    type: 'folder',
-    children: ['/root/thu/projects/treeview'],
-  },
-  '/root/thu/projects/treeview': {
-    path: '/root/thu/projects/treeview',
-    type: 'folder',
-    children: [],
-  },
-  '/root/thu/111': {
-    path: '/root/thu/111',
-    type: 'folder',
-    children: [],
-  },
-};
+
+var data = myTree;
 
 export default class Tree extends Component {
   constructor(props){
@@ -86,8 +50,6 @@ export default class Tree extends Component {
             onNodeSelect={this.onNodeSelect}
           />
         ))}
-
-        {console.log(file)}
       </div>
     )
   }
