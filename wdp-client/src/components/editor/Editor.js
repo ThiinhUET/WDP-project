@@ -9,17 +9,15 @@ import 'codemirror/mode/htmlmixed/htmlmixed';
 import 'codemirror/mode/css/css';
 import 'codemirror/mode/javascript/javascript';
 import './css/codemirror.css';
-
 import MenuBar from './MenuBar';
 import SideBar from './SideBar';
-import MyTerminal from '../terminal/Terminal';
-import Authenticate from '../authprovider/Authenticate';
+import NewEditor from './NewEditor';
 import UserInfo from '../user-info/UserInfo';
 import TextInput from '../terminal/inputText';
-
 import '@fortawesome/fontawesome-free/js/all';
 import logo from '../../assets/logo.png';
 import './css/editor.css';
+
 class Editor extends Component {
     constructor(props) {
         super(props);
@@ -88,7 +86,6 @@ class Editor extends Component {
           </head>
           <body>
             ${html}
-    
             <script type="text/javascript">
               ${js}
             </script>
@@ -114,10 +111,10 @@ class Editor extends Component {
         this.setState({openConsole: !this.state.openConsole});
         if (this.state.openConsole) {
             document.getElementById("console_container").style.display = "block";
+            var textInput = document.createElement("TextInput");
+            document.getElementById("console_container").appendChild(textInput);
             document.getElementById("footer_bar").style.marginTop = "0";
-            document.getElementById("iframe").style.height = 'calc(65% + 5px)';
-            
-            
+            document.getElementById("iframe").style.height = 'calc(65% + 5px)';    
         }
         else {
             document.getElementById("console_container").style.display = "none";
@@ -138,7 +135,10 @@ class Editor extends Component {
             theme: "mbo",
             lineNumbers: true,
             scrollbarStyle: null,
-            lineWrapping: true
+            lineWrapping: true,
+            extraKeys: {
+                'Tab': this.autocomplete
+            }
         };
 
         return (
@@ -157,7 +157,7 @@ class Editor extends Component {
                 </div>
                 <div className="maincontent" style={{position: 'relative', display: 'flex', flexDirection: 'row', height: 'calc(94vh - 15px)'}}>
                     <SideBar />
-                    <section className="playground">
+                    {/* <section className="playground">
                         <div className="code-editor html-code" style={{flex: '1'}}>
                             <div className="editor-header">HTML</div>
                             <CodeMirror id="html-code"
@@ -197,7 +197,8 @@ class Editor extends Component {
                                 }}
                             />
                         </div>
-                    </section>
+                    </section> */}
+                    <NewEditor />
                     <div className="resizer"></div>
                     <section className="result">
                         <iframe title="result" className="iframe" id="iframe" ref="iframe"/>
@@ -211,7 +212,7 @@ class Editor extends Component {
                                 </button>
                             </div>
                         </div>
-                        <TextInput ></TextInput>
+                        {/* <TextInput ></TextInput> */}
                         <div className="footer_bar" id="footer_bar">
                             <button className="header_item" title="Save">
                                 <span>
