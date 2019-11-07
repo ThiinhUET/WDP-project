@@ -4,7 +4,8 @@
     - ReactJS
     - Webpack
     - Docker
-
+    - React-Monaco
+    https://github.com/SurenAt93/monaco-react
 ###Todo
 
 - [x] Login
