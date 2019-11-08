@@ -157,7 +157,11 @@ class Editor extends Component {
                         <UserInfo />
                     </div>
                 </div>
-                <div className="maincontent" style={{position: 'relative', display: 'flex', flexDirection: 'row', height: 'calc(94vh - 15px)'}}>
+                <div className="maincontent" style={{
+                    position: 'relative',
+                    display: 'flex',
+                    flexDirection: 'row',
+                    height: 'calc(94vh - 10px)'}}>
                     <SideBar />
                     {/* <section className="playground">
                         <div className="code-editor html-code" style={{flex: '1'}}>
