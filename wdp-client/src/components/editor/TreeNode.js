@@ -12,19 +12,20 @@ const getPaddingLeft = (level, type) => {
 
 const StyledTreeNode = styled.div`
   display: flex;
+  color: blue;
   flex-direction: row;
   align-items: center;
-  // padding: 5px 8px;
   padding-left: ${props => getPaddingLeft(props.level, props.type)}px;
-
+  font-size : 15px;
   &:hover {
     background: lightgray;
   }
 `;
 
 const NodeIcon = styled.div`
-  font-size: 10px;
-  margin-right: ${props => props.marginRight ? props.marginRight : 5}px;
+  font-size: 15px;
+  margin-right: ${props => props.marginRight ? props.marginRight :1}px;
+  color:red;
 `;
 
 const getNodeLabel = (node) => last(node.path.split('/'));
