@@ -98,7 +98,7 @@ body {
     height: 90vh;
     width: 100%;
     align-items: center;
-    justify-content: center;
+    /* justify-content: center; */
 }
 @font-face {
     font-family: Squares;

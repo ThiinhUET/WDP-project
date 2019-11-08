@@ -34,6 +34,7 @@
     color: #f0f0f0;
     font-family: Source Sans Pro,Open Sans,Segoe UI,sans-serif;
     font-weight: 600;
+    overflow: hidden auto;
 }
 .MuiCollapse-container.MuiTreeItem-group.MuiCollapse-entered {
     margin-left: 15px;

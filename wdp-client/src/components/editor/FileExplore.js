@@ -10,9 +10,8 @@ const StyledFileExplorer = styled.div`
 `;
 
 const TreeWrapper = styled.div`
-  width: 50px;
+  width: 100%;
 `;
-
 class FileExplorer extends Component {
   constructor(props) {
     super(props)
