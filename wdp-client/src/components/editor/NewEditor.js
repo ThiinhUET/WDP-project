@@ -1,47 +1,49 @@
-// @monaco-editor/react is Monaco editor wrapper for easy/one-line integration with React
-// applications without need of webpack (or other module bundler)
-// configuration files.
-
-import React from "react";
-
+import React, { useRef } from "react";
 import Editor from "@monaco-editor/react";
-
-
+import { FillSpinner as Loader } from "react-spinners-kit";
+import MyFrame from './RenderHTML';
 class NewEditor extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
-      theme : "dark",
-      language : "javascript",
-      isEditorReady : false
+      theme: "dark",
+      language: "javascript",
+      isEditorReady: true
     }
   }
 
-
-  handleEditorDidMount() {
+  handleEditorDidMount(_valueGetter) {
     this.setState.isEditorReady = true;
+    // this.state.valueGetter.current = _valueGetter;
   }
 
-  toggleTheme(state) {
-    this.setState.theme = "dark" ;
-  }
+  // handleShowValue(){
+  //   alert(valueGetter.current());
+  // }
 
-  toggleLanguage(state) {
+  toggleLanguage() {
     this.setState.language = "javascript";
   }
-render(){
-  return (
-      <Editor
-        height="100%"
-        width = "50%"
-        theme={this.state.theme}
-        language={this.state.language}
-        // loading={<Loader />}
-        value="123"
-        editorDidMount={this.handleEditorDidMount.bind(this)}
-      />
-  );
-}
+  render() {
+    return (
+      <div style={{display:'flex', flex :'1', height :'100%'}}>
+        <div style={{ flex: '1', height :'100%'}}>
+          <Editor
+            height="100%"
+            width="100%"
+            theme={this.state.theme}
+            language={this.state.language}
+            loading={<Loader />}
+            value={this.props.value}
+            editorDidMount={this.handleEditorDidMount.bind(this)}
+          />
+        </div>
+        <div style={{ flex: '1', height :'100%'}}>
+          <MyFrame></MyFrame>
+        </div>
+      </div>
+    );
+  }
 
 }
 

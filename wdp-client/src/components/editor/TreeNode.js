@@ -14,7 +14,7 @@ const StyledTreeNode = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  padding: 5px 8px;
+  // padding: 5px 8px;
   padding-left: ${props => getPaddingLeft(props.level, props.type)}px;
 
   &:hover {
@@ -23,7 +23,7 @@ const StyledTreeNode = styled.div`
 `;
 
 const NodeIcon = styled.div`
-  font-size: 12px;
+  font-size: 10px;
   margin-right: ${props => props.marginRight ? props.marginRight : 5}px;
 `;
 

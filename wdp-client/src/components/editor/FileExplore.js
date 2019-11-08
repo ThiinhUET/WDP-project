@@ -10,7 +10,7 @@ const StyledFileExplorer = styled.div`
 `;
 
 const TreeWrapper = styled.div`
-  width: 50px;
+  width: 10px;
 `;
 
 class FileExplorer extends Component {

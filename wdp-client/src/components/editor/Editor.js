@@ -64,11 +64,12 @@ class Editor extends Component {
         const data = { ...this.state };
     };
 
+    
     runCode = () => {
         const { html, css, js } = this.state;
 
         const iframe = this.refs.iframe;
-        const document = iframe.contentDocument;
+        // const document = iframe.contentDocument;
         const documentContents = `
           <!DOCTYPE html>
           <html lang="en">
@@ -97,6 +98,7 @@ class Editor extends Component {
         document.write(documentContents);
         document.close();
     };
+    
 
     returnHome(){
         this.props.history.push('/home');
@@ -199,7 +201,10 @@ class Editor extends Component {
                         </div>
                     </section> */}
                     <NewEditor />
-                    <div className="resizer"></div>
+
+
+                    {/* renderer V1 */}
+                    {/* <div className="resizer"></div>
                     <section className="result">
                         <iframe title="result" className="iframe" id="iframe" ref="iframe"/>
                         <div className="console_contaniner" id="console_container">
@@ -212,7 +217,7 @@ class Editor extends Component {
                                 </button>
                             </div>
                         </div>
-                        {/* <TextInput ></TextInput> */}
+                        <TextInput ></TextInput>
                         <div className="footer_bar" id="footer_bar">
                             <button className="header_item" title="Save">
                                 <span>
@@ -238,7 +243,7 @@ class Editor extends Component {
                                 Console
                             </button>
                         </div>
-                    </section>
+                    </section> */}
                 </div>
             </div>
         );
