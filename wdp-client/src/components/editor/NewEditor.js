@@ -1,5 +1,5 @@
-import React, { useRef } from "react";
-import Editor from "@monaco-editor/react";
+import React from "react";
+import Editor, {monaco, ControlledEditor} from "@monaco-editor/react";
 import { FillSpinner as Loader } from "react-spinners-kit";
 import MyFrame from './RenderHTML';
 class NewEditor extends React.Component {
@@ -7,39 +7,39 @@ class NewEditor extends React.Component {
     super(props);
     this.state = {
       theme: "dark",
-      language: "javascript",
-      isEditorReady: true
+      language: "html",
+      isEditorReady: true,
+      code: null
     }
   }
 
   handleEditorDidMount(_valueGetter) {
     this.setState.isEditorReady = true;
-    // this.state.valueGetter.current = _valueGetter;
   }
-
-  // handleShowValue(){
-  //   alert(valueGetter.current());
-  // }
 
   toggleLanguage() {
     this.setState.language = "javascript";
   }
+
+  handleEditorChange = (ev, value) => {
+    this.setState({code : value});
+  };
   render() {
     return (
-      <div style={{display:'flex', flex :'1', height :'100%'}}>
-        <div style={{ flex: '1', height :'100%'}}>
-          <Editor
+      <div style={{ display: 'flex', flex: '1', height: '100%' }}>
+        <div style={{ flex: '1', height: '100%' }}>
+          <ControlledEditor
             height="100%"
             width="100%"
             theme={this.state.theme}
             language={this.state.language}
             loading={<Loader />}
-            value={this.props.value}
             editorDidMount={this.handleEditorDidMount.bind(this)}
+            onChange={this.handleEditorChange.bind(this)}
           />
         </div>
-        <div style={{ flex: '1', height :'100%'}}>
-          <MyFrame></MyFrame>
+        <div style={{ flex: '1', height: '100%' }}>
+          <MyFrame code={this.state.code}></MyFrame>
         </div>
       </div>
     );
