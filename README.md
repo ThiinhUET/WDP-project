@@ -5,9 +5,9 @@
     - Webpack
     - Docker
     - React-Monaco
-    -https://github.com/SurenAt93/monaco-react
-     https://github.com/Microsoft/monaco-editor-samples/
-
+    - https://github.com/SurenAt93/monaco-react
+    - https://github.com/Microsoft/monaco-editor-samples/
+    - https://github.com/DAB0mB/react-fs-tree
 
 ###Todo
 
