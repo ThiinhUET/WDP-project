@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import Pusher from 'pusher-js';
 import pushid from 'pushid';
-import axios from 'axios';
 import 'codemirror/theme/mbo.css';
 import 'codemirror/mode/htmlmixed/htmlmixed';
 import 'codemirror/mode/css/css';
@@ -19,83 +18,83 @@ import './css/editor.css';
 class Editor extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            openConsole: "false",
-            id: "",
-            html: "",
-            css: "",
-            js: ""
-        };
+        // this.state = {
+        //     openConsole: "false",
+        //     id: "",
+        //     html: "",
+        //     css: "",
+        //     js: ""
+        // };
 
-        this.pusher = new Pusher("18160601861a89d7f8f7", {
-            cluster: "eu",
-            forceTLS: true
-        });
+        // this.pusher = new Pusher("18160601861a89d7f8f7", {
+        //     cluster: "eu",
+        //     forceTLS: true
+        // });
 
-        this.channel = this.pusher.subscribe("editor");
+        // this.channel = this.pusher.subscribe("editor");
         localStorage.setItem('redirect', '/editor');
     }
 
     
-    componentDidUpdate() {
-        this.runCode();
-    }
+    // componentDidUpdate() {
+    //     this.runCode();
+    // }
 
-    componentDidMount() {
-        this.setState({
-            id: pushid()
-        });
+    // componentDidMount() {
+    //     this.setState({
+    //         id: pushid()
+    //     });
 
-        this.channel.bind("text-update", data => {
-            const { id } = this.state;
-            if (data.id === id) return;
+    //     this.channel.bind("text-update", data => {
+    //         const { id } = this.state;
+    //         if (data.id === id) return;
 
-            this.setState({
-                html: data.html,
-                css: data.css,
-                js: data.js
-            });
-        });
-    }
+    //         this.setState({
+    //             html: data.html,
+    //             css: data.css,
+    //             js: data.js
+    //         });
+    //     });
+    // }
 
-    syncUpdates = () => {
-        const data = { ...this.state };
-    };
+    // syncUpdates = () => {
+    //     const data = { ...this.state };
+    // };
 
     
-    runCode = () => {
-        const { html, css, js } = this.state;
+    // runCode = () => {
+    //     const { html, css, js } = this.state;
 
-        const iframe = this.refs.iframe;
-        // const document = iframe.contentDocument;
-        const documentContents = `
-          <!DOCTYPE html>
-          <html lang="en">
-          <head>
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <meta http-equiv="X-UA-Compatible" content="ie=edge">
-            <title>Document</title>
-            <style>
-              body {
-                  color: white;
-              }
-              ${css}
-            </style>
-          </head>
-          <body>
-            ${html}
-            <script type="text/javascript">
-              ${js}
-            </script>
-          </body>
-          </html>
-        `;
+    //     const iframe = this.refs.iframe;
+    //     // const document = iframe.contentDocument;
+    //     const documentContents = `
+    //       <!DOCTYPE html>
+    //       <html lang="en">
+    //       <head>
+    //         <meta charset="UTF-8">
+    //         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    //         <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    //         <title>Document</title>
+    //         <style>
+    //           body {
+    //               color: white;
+    //           }
+    //           ${css}
+    //         </style>
+    //       </head>
+    //       <body>
+    //         ${html}
+    //         <script type="text/javascript">
+    //           ${js}
+    //         </script>
+    //       </body>
+    //       </html>
+    //     `;
 
-        document.open();
-        document.write(documentContents);
-        document.close();
-    };
+    //     document.open();
+    //     document.write(documentContents);
+    //     document.close();
+    // };
     
 
     returnHome(){
@@ -107,39 +106,18 @@ class Editor extends Component {
     openSignUp(){
         this.props.history.push('/signup');
     }
-    openConsole() {
-        this.setState({openConsole: !this.state.openConsole});
-        if (this.state.openConsole) {
-            document.getElementById("console_container").style.display = "block";
-            var textInput = document.createElement("TextInput");
-            document.getElementById("console_container").appendChild(textInput);
-            document.getElementById("footer_bar").style.marginTop = "0";
-            document.getElementById("iframe").style.height = 'calc(65% + 5px)';    
-        }
-        else {
-            document.getElementById("console_container").style.display = "none";
-            document.getElementById("footer_bar").style.marginTop = "5px";
-            document.getElementById("iframe").style.height = 'calc(95% + 5px)';
-        }
-        
-    }
-    closeConsole() {
-        this.setState({openConsole: "false"});
-        document.getElementById("console_container").style.display = "none";
-        document.getElementById("footer_bar").style.marginTop = "5px";
-        document.getElementById("iframe").style.height = 'calc(95% + 5px)';
-    }
+    
     render() {
-        const { html, js, css } = this.state;
-        const codeMirrorOptions = {
-            theme: "mbo",
-            lineNumbers: true,
-            scrollbarStyle: null,
-            lineWrapping: true,
-            extraKeys: {
-                'Tab': this.autocomplete
-            }
-        };
+        // const { html, js, css } = this.state;
+        // const codeMirrorOptions = {
+        //     theme: "mbo",
+        //     lineNumbers: true,
+        //     scrollbarStyle: null,
+        //     lineWrapping: true,
+        //     extraKeys: {
+        //         'Tab': this.autocomplete
+        //     }
+        // };
 
         return (
             <div className="Editor">
