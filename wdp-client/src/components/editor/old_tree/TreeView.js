@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import values from 'lodash/values';
 import PropTypes from 'prop-types';
-import myTree from './myTree';
+import myTree from '../myTree';
 import TreeNode from './TreeNode';
-import file from './sidebar/data';
+import file from '../sidebar/data';
 
 
 var data = myTree;

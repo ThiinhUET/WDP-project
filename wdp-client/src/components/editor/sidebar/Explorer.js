@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import FileExplore from '../FileExplore';
+import FileExplore from '../old_tree/FileExplore';
 import ExplorerView from './ExplorerView';
+import Tree from '../new_tree/Tree';
 import axios from 'axios';
 class Explorer extends Component {
     constructor(props){
@@ -8,7 +9,7 @@ class Explorer extends Component {
         this.state = {
             login : "ThiinhUET",
             repo : "WDP-project",
-            data : "Hello Thinh"
+            data : "Hello"
         }
     }
     // componentWillMount(){
@@ -23,7 +24,8 @@ class Explorer extends Component {
         return (
             <div className="explorer">
                 <div style={{margin: '13.5px auto'}}>EXPLORER</div>
-                <FileExplore test = {this.state.data}/>
+                {/* <FileExplore test = {this.state.data}/> */}
+                <Tree />
             </div>
         );
     }
