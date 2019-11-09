@@ -23,7 +23,7 @@ class NewEditor extends React.Component {
   }
 
   handleEditorChange = (ev, value) => {
-    this.setState({code : value});
+    this.setState({code : value});  
   }
 
   openConsole() {

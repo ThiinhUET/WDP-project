@@ -7,6 +7,8 @@ import SignUp from './components/signup/SignUp';
 import Profile from './components/profile/Profile';
 import Dashboard from './components/dashboard/Dashboard';
 
+import NewTree from './components/editor/new_tree/Tree';
+
 function PrivateRoute({ children, ...rest }) {
     return (
         <Route
@@ -40,6 +42,9 @@ class App extends Component {
                     </Route>
                     <Route exact path = '/signup'>
                         <SignUp />
+                    </Route>
+                    <Route exact path = '/tree'>
+                        <NewTree />
                     </Route>
                     <PrivateRoute path ='/profile'>
                         <Profile />

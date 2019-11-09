@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
-import { Controlled as CodeMirror } from 'react-codemirror2';
 import Pusher from 'pusher-js';
 import pushid from 'pushid';
 import axios from 'axios';
@@ -13,7 +12,6 @@ import MenuBar from './MenuBar';
 import SideBar from './SideBar';
 import NewEditor from './NewEditor';
 import UserInfo from '../user-info/UserInfo';
-import TextInput from '../terminal/inputText';
 import '@fortawesome/fontawesome-free/js/all';
 import logo from '../../assets/logo.png';
 import './css/editor.css';
