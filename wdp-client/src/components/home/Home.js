@@ -50,7 +50,7 @@ class Home extends Component {
                                 <div>The online code editor</div>
                                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                                     <button className="button_code" onClick={() => this.openEditor()}>
-                                        <a style={{ textDecoration: 'none' }} >Start Coding</a>
+                                        <span>Start Coding</span>
                                     </button>
                                     <span style={{ fontSize: '48pt' }}>for Web</span>
                                 </div>

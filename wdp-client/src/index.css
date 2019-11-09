@@ -38,7 +38,7 @@ body {
     outline: none;
     border-style: none;
     background: none;
-    color: #ffffff;
+    color: #f0f0f0;
     cursor: pointer;
     border-radius: 4px;
     font-size: 14pt;
@@ -59,7 +59,7 @@ body {
     line-height: 30px;
     font-size: 14pt;
     font-weight: 600;
-    color: #ffffff;
+    color: #f0f0f0;
 }
 .header span.title {
     border-left: 1.5px solid;
@@ -79,7 +79,7 @@ body {
 }
 .header .divider {
     position: relative;
-    color: #fff;
+    color: #f0f0f0;
     float: right;
     height: 30px;
     top: 50%;
@@ -113,7 +113,7 @@ body {
     justify-content: center;
 }
 .title_code .name {
-    color: #fff;
+    color: #f0f0f0;
     font-family: Squares; 
     font-style: italic;
     font-size: 36pt;
@@ -145,8 +145,8 @@ body {
     background-size: 400% 400%;
     animation: Sidebar_rainbowBorder 3s ease-in-out infinite;
 }
-.button_code a{
-    color: #fff;
+.button_code span{
+    color: #f0f0f0;
     padding: 10px;
     text-align: center;
     border-radius: 4px;
@@ -167,7 +167,7 @@ body {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    color: #ffffff44;
+    color: #f0f0f044;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 10pt;
     text-align: center;

@@ -34,10 +34,13 @@ class UserInfo extends Component {
         this.setState({isUserDrop: !this.state.isUserDrop});
     }
 
-    openProfile =() =>{
+    openEditor = () => {
+        this.props.history.push('/editor');
+    }
+    openProfile = () => {
         this.props.history.push('/profile');
     }
-    openDashboard =() =>{
+    openDashboard = () => {
         this.props.history.push('/dashboard');
     }
     render() {
@@ -50,17 +53,22 @@ class UserInfo extends Component {
                     </button>
                     {this.state.isUserDrop && <div className="userdrop_container">
                         <div className="user_item" id="profile" onClick={() => this.openProfile()}>
-                            <i className="fas fa-user" style={{paddingRight: '15px'}}></i>
+                            <i className="fas fa-user" style={{width: '12px', height: '12px', paddingRight: '15px'}}></i>
                             My Profile
                         </div>
                         <div className="row_divider"></div>
                         <div className="user_item" id="dashboard" onClick={() => this.openDashboard()}>
-                            <i className="fas fa-columns" style={{paddingRight: '15px'}}></i>
+                            <i className="fas fa-columns" style={{width: '12px', height: '12px', paddingRight: '15px'}}></i>
                             Dashboard
                         </div>
                         <div className="row_divider"></div>
+                        <div className="user_item" id="new" onClick={() => this.openEditor()}>
+                            <i className="far fa-plus-square" style={{width: '12px', height: '12px', paddingRight: '15px'}}></i>
+                            New Project
+                        </div>
+                        <div className="row_divider"></div>
                         <div className="user_item" id="signout" onClick={() => this.signOut()}>
-                            <i className="fas fa-sign-out-alt" style={{paddingRight: '15px'}}></i>
+                            <i className="fas fa-sign-out-alt" style={{width: '12px', height: '12px', paddingRight: '15px'}}></i>
                             Sign Out
                         </div>
                     </div>}

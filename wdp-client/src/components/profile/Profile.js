@@ -54,7 +54,7 @@ class Profile extends Component {
                         <div style={{color: '#f0f0f0'}}>
                             <span className="displayName_profile">{localStorage.displayName}</span>
                             <span className="username_profile">{localStorage.username}</span>
-                            <a className="github_link" href={localStorage.html_url} target="_blank" rel="noopener noreferrer">
+                            <a className="github_link" title="GitHub" href={localStorage.html_url} target="_blank" rel="noopener noreferrer">
                                 <i className="fab fa-github" style={{color: 'gray', paddingLeft: '10px', width: '35px', height: '35px'}}></i>
                             </a>
                             <div className="created_time">
@@ -79,11 +79,11 @@ class Profile extends Component {
                             </div>}
                             {localStorage.email && localStorage.email !=="null" && <div className="profile_item">
                                 <i className="fas fa-envelope" style={{color: 'gray', width: '20px', height: '20px', paddingRight: '10px'}}></i>
-                                <a href="mailto: {localStorage.email}">{localStorage.email}</a>
+                                <a title="Send Mail" href={"mailto: " + localStorage.email}>{localStorage.email}</a>
                             </div>}
                             {localStorage.blog && localStorage.blog !=="null" && <div className="profile_item">
                                 <i className="fas fa-globe-asia" style={{color: 'gray', width: '20px', height: '20px', paddingRight: '10px'}}></i>
-                                <a href={(localStorage.blog).includes("https://")? localStorage.blog : "https://" + localStorage.blog} target="_blank" rel="noopener noreferrer">{localStorage.blog}</a>
+                                <a title="Website" href={(localStorage.blog.includes("https://")||localStorage.blog.includes("http://"))? localStorage.blog : "https://" + localStorage.blog} target="_blank" rel="noopener noreferrer">{localStorage.blog}</a>
                             </div>}
                         </div>
                     </div>
