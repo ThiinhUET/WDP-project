@@ -1,13 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import {Div} from './index';
+import {Div} from 'react-treebeard/dist/components/common';
 
 // Example: Customising The Header Decorator To Include Icons
 const Header = ({onSelect, style, customStyles, node}) => {
-    const iconType = node.children ? 'folder' : 'file-text';
-    const iconClass = `fa fa-${iconType}`;
-    const iconStyle = {marginRight: '2px'};
+    const iconType = node.children ? 'folder' : 'file-alt';
+    const iconClass = `fas fa-${iconType}`;
+    const iconStyle = {marginRight: '5px'};
 
     return (
         <div style={style.base} onClick={onSelect}>

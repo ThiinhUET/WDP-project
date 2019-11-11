@@ -1,15 +1,15 @@
 import React, {Fragment, PureComponent} from 'react';
 import ReactDOM from 'react-dom';
-import {Treebeard, decorators} from 'react-treebeard';
-import {withRouter} from 'react-router-dom';
-import {Div} from './index';
 import {includes} from 'lodash';
+
+import {Treebeard, decorators} from 'react-treebeard';
+import {Div} from 'react-treebeard/dist/components/common';
 import data from './data';
-import styles from './styles';
+import defaultStyles from './defaultStyles'
 import * as filters from './filter';
 import Header from './Header';
+import Toggle from './Toggle';
 import NodeViewer from './NodeViewer';
-
 
 class NewTree extends PureComponent {
     constructor(props) {
@@ -64,22 +64,27 @@ class NewTree extends PureComponent {
         const {data, cursor} = this.state;
         return (
             <Fragment>
-                <Div style={styles.searchBox}>
+                <Div style={defaultStyles.searchBox}>
                     <Div className="input-group">
+                        <span className="input-group-addon" style={{color: '#aeafad', padding: '5px'}}>
+                            <i className="fa fa-search"/>
+                        </span>
                         <input
                             className="form-control"
                             onKeyUp={this.onFilterMouseUp.bind(this)}
                             placeholder="Search the tree..."
                             type="text"
+                            style={{outline: 'none'}}
                         />
                     </Div>
                 </Div>
-                <Div style={styles.component}>
+                <Div style={defaultStyles.component}>
                     <Treebeard
+                        style={defaultStyles}
                         data={data}
                         onToggle={this.onToggle}
                         onSelect={this.onSelect}
-                        decorators={{...decorators, Header}}
+                        decorators={{...decorators, Toggle, Header}}
                         customStyles={{
                             header: {
                                 title: {
@@ -89,7 +94,7 @@ class NewTree extends PureComponent {
                         }}
                     />
                 </Div>
-                <Div style={styles.component}>
+                <Div style={defaultStyles.component}>
                     <NodeViewer node={cursor}/>
                 </Div>
             </Fragment>
@@ -97,4 +102,4 @@ class NewTree extends PureComponent {
     }
 }
 
-export default withRouter(NewTree) ;
+export default NewTree;

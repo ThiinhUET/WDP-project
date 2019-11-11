@@ -13,12 +13,12 @@ class Console extends Component {
         if (!this.state.openConsole) {
             document.getElementById("console").style.height = "30%";
             document.getElementById("console_container").style.display = "block";
-            document.getElementById("iframe").style.height = '70%';    
+            document.getElementById("iframe").style.height = 'calc(70% - 40px)';    
         }
         else {
             document.getElementById("console").style.height = "26px";
             document.getElementById("console_container").style.display = "none";
-            document.getElementById("iframe").style.height = 'calc(100% - 26px)';
+            document.getElementById("iframe").style.height = 'calc(100% - 66px)';
         }
         this.setState({openConsole: (!this.state.openConsole)});
     }
@@ -27,7 +27,7 @@ class Console extends Component {
         this.setState({openConsole: false});
         document.getElementById("console").style.height = "26px";
         document.getElementById("console_container").style.display = "none";
-        document.getElementById("iframe").style.height = 'calc(95% + 5px)';
+        document.getElementById("iframe").style.height = 'calc(100% - 66px)';
     }
 
     render() {
@@ -48,7 +48,7 @@ class Console extends Component {
                     </div>
                     <div className="console_input" style={{display: 'flex',alignItems: 'center', width: '100%', backgroundColor: '#f0f0f00d', color: '#f0f0f0'}}>
                         <i className="fas fa-chevron-right" style={{width: '10px', height: '10px', paddingLeft: '5px'}}></i>
-                        <input on style={{width: 'calc(100% - 25px)', backgroundColor: 'transparent', color: '#f0f0f0', borderStyle: 'none', outline: 'none', padding: '5px'}} />
+                        <input style={{width: 'calc(100% - 25px)', backgroundColor: 'transparent', color: '#f0f0f0', borderStyle: 'none', outline: 'none', padding: '5px'}} />
                     </div>
                 </div>
 

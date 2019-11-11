@@ -1,6 +1,6 @@
 .playground {
   flex: 1;
-  min-width: 500px;
+  min-width: 200px;
   margin: 0 0 0 5px;
   height: 100%;
   background-color: #1e1e1e;
@@ -47,9 +47,18 @@
   padding-top: 5px;
 }
 
+.url_navigation {
+  display: flex;
+  align-items: center;
+  height: 30px;
+  background-color: #f0f0f0;
+  margin-bottom: 10px;
+  padding: 0 5px;
+}
+
 .iframe {
   width: 100%;
-  height: calc(100% - 26px);
+  height: calc(100% - 66px);
   background-color: #f0f0f0;
   border-style: none;
 }

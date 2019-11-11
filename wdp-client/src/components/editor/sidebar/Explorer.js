@@ -16,7 +16,7 @@ class Explorer extends Component {
     render() {
         return (
             <div className="explorer">
-                <div style={{margin: '13.5px auto'}}>EXPLORER</div>
+                <div style={{textAlign: 'center', margin: '10px auto', color: '#f0f0f0', fontFamily: 'Source Sans Pro,Open Sans,Segoe UI,sans-serif', fontWeight: '600'}}>EXPLORER</div>
                 {/* <FileExplore test = {this.state.data}/> */}
                 <NewTree></NewTree>
             </div>
