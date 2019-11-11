@@ -60,7 +60,7 @@ class NewEditor extends React.Component {
             loading={<Loader />}
             editorDidMount={this.handleEditorDidMount.bind(this)}
             onChange={this.handleEditorChange.bind(this)}
-            value={this.props.valueCode + this.state.content}
+            value={this.state.content}
           />
         </div>
         <div className="resizer"></div>
