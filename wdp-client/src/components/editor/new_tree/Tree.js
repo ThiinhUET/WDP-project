@@ -72,7 +72,7 @@ class NewTree extends PureComponent {
                         <input
                             className="form-control"
                             onKeyUp={this.onFilterMouseUp.bind(this)}
-                            placeholder="Search the tree..."
+                            placeholder="Search the file..."
                             type="text"
                             style={{outline: 'none'}}
                         />
