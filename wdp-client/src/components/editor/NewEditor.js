@@ -1,5 +1,5 @@
 import React from "react";
-import Editor, {monaco, ControlledEditor} from "@monaco-editor/react";
+import Editor, { monaco, ControlledEditor } from "@monaco-editor/react";
 import { FillSpinner as Loader } from "react-spinners-kit";
 import MyFrame from './RenderHTML';
 class NewEditor extends React.Component {
@@ -10,40 +10,58 @@ class NewEditor extends React.Component {
       theme: "dark",
       language: "html",
       isEditorReady: true,
-      code: null
+      code: null,
+      content: localStorage.getItem('content'),
     }
   }
 
-  handleEditorDidMount(_valueGetter) {
-    this.setState.isEditorReady = true;
+
+  componentDidMount(){
+    this.interval = setInterval(() => this.setState({ content: localStorage.getItem('content') }), 100);
   }
 
-  toggleLanguage() {
-    this.setState.language = "javascript";
+
+  // onLocalStorageChange(){
+  //   setInterval(() => {
+  //     if(this.state.content !== localStorage.getItem('content')){
+  //       this.setState({content : localStorage.getItem('content')});
+  //       console.log("heelo");
+  //     }
+  //   }, 200)
+  // }
+
+
+
+  handleEditorDidMount() {
+    this.setState.isEditorReady = true;
+    window.addEventListener('storage', () => {
+      this.setState({ content: localStorage.getItem('content') });
+    })
   }
 
   handleEditorChange = (ev, value) => {
-    this.setState({code : value});  
+    this.setState({ code: value });
   }
+
 
   openConsole() {
     if (!this.state.openConsole) {
       document.getElementById("console_container").style.display = "block";
       var textInput = document.createElement("TextInput");
       document.getElementById("console_container").appendChild(textInput);
-      document.getElementById("iframe").style.height = 'calc(65% + 5px)';    
+      document.getElementById("iframe").style.height = 'calc(65% + 5px)';
     }
     else {
       document.getElementById("console_container").style.display = "none";
       document.getElementById("iframe").style.height = 'calc(95% + 5px)';
     }
-    this.setState({openConsole: !this.state.openConsole});
+    this.setState({ openConsole: !this.state.openConsole });
   }
 
   closeConsole() {
-      this.setState({openConsole: "false"});
-      document.getElementById("console_container").style.display = "none";
-      document.getElementById("iframe").style.height = 'calc(95% + 5px)';
+    this.setState({ openConsole: "false" });
+    document.getElementById("console_container").style.display = "none";
+    document.getElementById("iframe").style.height = 'calc(95% + 5px)';
   }
 
   render() {
@@ -52,7 +70,8 @@ class NewEditor extends React.Component {
         position: 'relative',
         display: 'flex',
         flexDirection: 'row',
-        height: '100%', width: '100%'}}>
+        height: '100%', width: '100%'
+      }}>
         <div className="playground">
           <ControlledEditor
             height="100%"
@@ -62,53 +81,54 @@ class NewEditor extends React.Component {
             loading={<Loader />}
             editorDidMount={this.handleEditorDidMount.bind(this)}
             onChange={this.handleEditorChange.bind(this)}
+            value={this.state.content}
           />
         </div>
         <div className="resizer"></div>
         <div className="result">
           <iframe srcDoc={this.state.code} className="iframe" id="iframe"></iframe>
           <div className="console_contaniner" id="console_container">
-              <div className="console_tab" id="console_tab">
-                  <button style={{float: 'left'}}>
-                      <i className="fas fa-ban"></i>
-                  </button>
-                  <button style={{float: 'right'}} onClick={() => this.closeConsole()}>
-                      <i className="fas fa-chevron-down"></i>
-                  </button>
-              </div>
-              <div style={{height: 'calc(100% - 54px)'}}>
-                {/* console result */}
-              </div>
-              <div style={{display: 'flex',alignItems: 'center', width: '100%', backgroundColor: '#f0f0f00d', color: '#f0f0f0'}}>
-                <i className="fas fa-chevron-right" style={{width: '10px', height: '10px', paddingLeft: '5px'}}></i>
-                <input style={{width: 'calc(100% - 25px)', backgroundColor: 'transparent', color: '#f0f0f0', borderStyle: 'none', outline: 'none', padding: '5px'}} />
-              </div>
-
-
+            <div className="console_tab" id="console_tab">
+              <button style={{ float: 'left' }}>
+                <i className="fas fa-ban"></i>
+              </button>
+              <button style={{ float: 'right' }} onClick={() => this.closeConsole()}>
+                <i className="fas fa-chevron-down"></i>
+              </button>
             </div>
-            <div className="footer_bar" id="footer_bar">
-              <button className="header_item" title="Save">
-                  <span>
-                      <i className="fas fa-cloud" style={{width: '20px', height: '20px'}}></i>
-                  </span>
-              </button>
-              <button className="header_item" title="Settings">
-                  <span>
-                      <i className="fas fa-cogs" style={{width: '20px', height: '20px'}}></i>
-                  </span>
-              </button>
-              <button className="header_item" title="GitHub">
-                  <span>
-                      <i className="fab fa-github" style={{width: '20px', height: '20px'}}></i>
-                  </span>
-              </button>
-              <button className="header_item" title="Export to zip">
-                  <span>
-                      <i className="fas fa-download" style={{width: '20px', height: '20px'}}></i>
-                  </span>
-              </button>
-              <button onClick={() => this.openConsole()}>
-                  Console
+            <div style={{ height: 'calc(100% - 54px)' }}>
+              {/* console result */}
+            </div>
+            <div style={{ display: 'flex', alignItems: 'center', width: '100%', backgroundColor: '#f0f0f00d', color: '#f0f0f0' }}>
+              <i className="fas fa-chevron-right" style={{ width: '10px', height: '10px', paddingLeft: '5px' }}></i>
+              <input style={{ width: 'calc(100% - 25px)', backgroundColor: 'transparent', color: '#f0f0f0', borderStyle: 'none', outline: 'none', padding: '5px' }} />
+            </div>
+
+
+          </div>
+          <div className="footer_bar" id="footer_bar">
+            <button className="header_item" title="Save">
+              <span>
+                <i className="fas fa-cloud" style={{ width: '20px', height: '20px' }}></i>
+              </span>
+            </button>
+            <button className="header_item" title="Settings">
+              <span>
+                <i className="fas fa-cogs" style={{ width: '20px', height: '20px' }}></i>
+              </span>
+            </button>
+            <button className="header_item" title="GitHub">
+              <span>
+                <i className="fab fa-github" style={{ width: '20px', height: '20px' }}></i>
+              </span>
+            </button>
+            <button className="header_item" title="Export to zip">
+              <span>
+                <i className="fas fa-download" style={{ width: '20px', height: '20px' }}></i>
+              </span>
+            </button>
+            <button onClick={() => this.openConsole()}>
+              Console
               </button>
           </div>
         </div>

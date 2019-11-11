@@ -12,14 +12,7 @@ class Explorer extends Component {
             data : "Hello"
         }
     }
-    // componentWillMount(){
-    //     axios.post('http://localhost:8080/git/listfile',{login : this.state.login, repo : this.state.repo}).then((res) =>{
-    //         this.setState.data = res.data.filetree;
-    //     });
-    // }
-    // shouldComponentUpdate(nextProps, nextState){
-    //     return this.state.data != nextState.data;
-    // }
+
     render() {
         return (
             <div className="explorer">

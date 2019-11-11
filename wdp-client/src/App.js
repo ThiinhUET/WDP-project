@@ -6,7 +6,6 @@ import SignIn from './components/signin/SignIn';
 import SignUp from './components/signup/SignUp';
 import Profile from './components/profile/Profile';
 import Dashboard from './components/dashboard/Dashboard';
-
 import NewTree from './components/editor/new_tree/Tree';
 
 function PrivateRoute({ children, ...rest }) {

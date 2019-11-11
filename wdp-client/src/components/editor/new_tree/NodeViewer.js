@@ -8,14 +8,14 @@ const HELP_MSG = 'Select A Node To See Its Data Structure Here...';
 
 const NodeViewer = ({node}) => {
     const style = styles.viewer;
-    console.log(style);
     let json = JSON.stringify(node, null, 4);
-
+    localStorage.removeItem('content');
+    localStorage.setItem('content', json);
     if (!json) {
         json = HELP_MSG;
     }
 
-    return <Div style={style.base}>{json}</Div>;
+    return <Div style={style.base}></Div>;
 };
 
 NodeViewer.propTypes = {
