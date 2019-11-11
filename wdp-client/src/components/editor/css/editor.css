@@ -1,5 +1,6 @@
 .playground {
   flex: 1;
+  min-width: 500px;
   margin: 0 0 0 5px;
   height: 100%;
   background-color: #1e1e1e;
@@ -48,54 +49,7 @@
 
 .iframe {
   width: 100%;
-  height: calc(95% + 5px);
+  height: calc(100% - 26px);
   background-color: #f0f0f0;
   border-style: none;
-}
-
-.console_contaniner {
-  display: none;
-  background-color: #0f0f0f;
-  height: 30%;
-}
-
-.console_tab {
-  height: 30px;
-  background-color: #2c2c2c;
-}
-
-.console_tab button {
-  position: relative;
-  background-color: transparent;
-  outline: none;
-  cursor: pointer;
-  color: #f0f0f0;
-  border-style: none;
-  border-radius: 4px;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-.footer_bar {
-  background-color: #2c2c2c;
-  height: 30px;
-}
-
-.footer_bar button {
-  background-color: transparent;
-  outline: none;
-  cursor: pointer;
-  float: right;
-  color: #f0f0f0;
-  border-style: none;
-  border-radius: 4px;
-  height: 100%;
-}
-.footer_bar button:hover {
-  background-color: rgb(70,70,70);
-}
-.footer_bar button.header_item {
-  height: 100%;
-  margin: 0 10px 0 0;
-  float: left;
 }

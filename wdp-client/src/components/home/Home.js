@@ -4,21 +4,22 @@ import {withRouter} from 'react-router-dom';
 import logo from '../../assets/logo.png';
 import logo3D from '../../assets/logo3D.gif';
 
-import Authenticate from '../authprovider/Authenticate';
 import UserInfo from '../user-info/UserInfo';
 import Background from '../background/Background';
 
 class Home extends Component {
     constructor(props) {
         super(props);
-        localStorage.setItem('redirect', '/home');
     }
 
     openEditor() {
         this.props.history.push('/editor');
     }
-    openSignIn(){
-        this.props.history.push('/signin');
+    openSignIn(redirectPage) {
+        this.props.history.push({
+            pathname: '/signin',
+            state: {redirect: redirectPage}
+        });
     }
     openSignUp(){
         this.props.history.push('/signup');
@@ -38,7 +39,7 @@ class Home extends Component {
                         <span className="title">WDP</span>
                     </div>
                     <div className="header_right">
-                        {!localStorage.uid && <button className="signin" onClick={() => this.openSignIn()}>Sign In</button>}
+                        {!localStorage.uid && <button className="signin" onClick={() => this.openSignIn('/home')}>Sign In</button>}
                         <UserInfo />
                     </div>
                 </div>

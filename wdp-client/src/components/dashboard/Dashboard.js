@@ -6,6 +6,22 @@ import logo from '../../assets/logo.png';
 import UserInfo from '../user-info/UserInfo';
 
 class Dashboard extends Component {
+    constructor(props) {
+        super(props);
+        
+    }
+
+    returnHome() {
+        this.props.history.push('/home');
+    }
+    
+    openEditor(project) {
+        this.props.history.push({
+            pathname: '/editor/' + project,
+            state: {hi: project}
+        });
+    }
+    
     render() {
         return (
             <div className="Dashboard">
@@ -17,13 +33,12 @@ class Dashboard extends Component {
                         <span className="title">Dashboard</span>
                     </div>
                     <div className="header_right">
-                        {!localStorage.uid && <button className="signin" onClick={() => this.openSignIn()}>Sign In</button>}
                         <UserInfo />
                     </div>
                 </div>
-                 <button>
-                     <a href="#">Editor</a>
-                 </button>
+                <button onClick={() => this.openEditor("hello")}>
+                    Editor
+                </button>
             </div>
         );
     }

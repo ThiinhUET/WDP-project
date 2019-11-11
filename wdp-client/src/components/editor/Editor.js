@@ -18,6 +18,11 @@ import './css/editor.css';
 class Editor extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+            ...this.props.location.state,
+            code: (this.props.location.pathname === '/editor')? "// write your code here" : this.props.location.pathname
+        }
+        console.log(this.state);
         // this.state = {
         //     openConsole: "false",
         //     id: "",
@@ -32,7 +37,6 @@ class Editor extends Component {
         // });
 
         // this.channel = this.pusher.subscribe("editor");
-        localStorage.setItem('redirect', '/editor');
     }
 
     
@@ -100,8 +104,11 @@ class Editor extends Component {
     returnHome(){
         this.props.history.push('/home');
     }
-    openSignIn(){
-        this.props.history.push('/signin');
+    openSignIn(redirectPage) {
+        this.props.history.push({
+            pathname: '/signin',
+            state: {redirect: redirectPage}
+        });
     }
     openSignUp(){
         this.props.history.push('/signup');
@@ -129,7 +136,7 @@ class Editor extends Component {
                         <MenuBar />
                     </div>
                     <div className="header_right">
-                        {!localStorage.uid && <button className="signin" onClick={() => this.openSignIn()}>Sign In</button>}
+                        {!localStorage.uid && <button className="signin" onClick={() => this.openSignIn('/editor')}>Sign In</button>}
                         <UserInfo />
                     </div>
                 </div>
@@ -180,9 +187,7 @@ class Editor extends Component {
                             />
                         </div>
                     </section> */}
-                    <NewEditor />
-
-
+                    <NewEditor valueCode = {this.state.code} />
                     {/* renderer V1 */}
                     {/* <div className="resizer"></div>
                     <section className="result">

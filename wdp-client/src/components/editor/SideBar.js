@@ -9,7 +9,7 @@ class SideBar extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            activeItem: "none"
+            activeItem: "explorer"
         }
     }
     setActiveItem = (name) => {

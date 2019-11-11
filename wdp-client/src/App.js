@@ -13,15 +13,7 @@ function PrivateRoute({ children, ...rest }) {
     return (
         <Route
             {...rest}
-            render={({ location }) =>
-            localStorage.uid ? (children) : (
-                <Redirect
-                to={{
-                    pathname: "/signin",
-                    state: { from: location }
-                }}
-                />)
-            }
+            render={() => localStorage.uid ? (children) : (<Redirect to='/signin' />)}
         />
     );
 }
@@ -34,7 +26,7 @@ class App extends Component {
                     <Route exact path = "/home">
                         <Home />
                     </Route>
-                    <Route exact path = '/editor'>
+                    <Route path = '/editor'>
                         <Editor />
                     </Route>
                     <Route exact path = '/signin'>
@@ -46,10 +38,10 @@ class App extends Component {
                     <Route exact path = '/tree'>
                         <NewTree />
                     </Route>
-                    <PrivateRoute path ='/profile'>
+                    <PrivateRoute exact path ='/profile'>
                         <Profile />
                     </PrivateRoute>
-                    <PrivateRoute path = '/dashboard'>
+                    <PrivateRoute exact path = '/dashboard'>
                         <Dashboard />
                     </PrivateRoute>
                     <Route exact path="/" render={() => <Redirect to='/home' />} />

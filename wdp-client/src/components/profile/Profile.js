@@ -42,7 +42,6 @@ class Profile extends Component {
                         <span className="title">Profile</span>
                     </div>
                     <div className="header_right">
-                        {!localStorage.uid && <button className="signin" onClick={() => this.openSignIn()}>Sign In</button>}
                         <UserInfo />
                     </div>
                 </div>

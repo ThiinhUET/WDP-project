@@ -16,7 +16,7 @@ class SignIn extends Component {
         this.state = {
             isUserDrop: false,
         }
-        if (localStorage.redirect === undefined) localStorage.setItem('redirect', '/home');
+        this.state = this.props.location.state;
     }
     
     componentDidMount() {
@@ -25,7 +25,9 @@ class SignIn extends Component {
 
     signIn() {
         const authenticate = new Authenticate();
-        authenticate.signin(() => this.props.history.push(localStorage.redirect));
+        authenticate.signin(() => this.props.history.push(
+            (this.props.location.state)? this.state.redirect : '/home'
+        ));
     }
     
     returnHome() {

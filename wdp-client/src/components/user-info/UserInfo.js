@@ -28,7 +28,7 @@ class UserInfo extends Component {
     };
     signOut = () => {
         const authenticate = new Authenticate();
-        authenticate.signout(() => this.props.history.push(localStorage.currentPage));
+        authenticate.signout(() => this.props.history.push(this.props.location.pathname));
     }
     handleChange = () => {
         this.setState({isUserDrop: !this.state.isUserDrop});
