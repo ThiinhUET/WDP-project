@@ -20,7 +20,7 @@ class Editor extends Component {
         super(props);
         this.state = {
             ...this.props.location.state,
-            code: (this.props.location.pathname === '/editor')? "// write your code here" : this.props.location.pathname
+            code: this.props.location.pathname
         }
         console.log(this.state);
         // this.state = {

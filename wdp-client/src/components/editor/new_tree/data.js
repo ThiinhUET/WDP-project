@@ -15,7 +15,6 @@ export default {
         },
         {
             name: 'node_modules',
-            loading: true,
             children: []
         },
         {
@@ -41,5 +40,6 @@ export default {
         { name: 'gulpfile.js' },
         { name: 'index.js' },
         { name: 'package.json' }
-    ]
+    ],
+    content : "hello thịnh"
 };
