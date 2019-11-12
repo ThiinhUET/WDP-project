@@ -21,7 +21,7 @@ class Terminal extends React.Component {
 
   render() {
     return (
-      <div style={{ backgroundColor: "#242424" }}>
+      <div style={{ backgroundColor: "#1e1e1e" }}>
         <Console logs={this.state.logs} variant="dark" />
       </div>
     );

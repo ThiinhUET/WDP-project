@@ -4,16 +4,62 @@
 }
 .pane.vertical.pane1 {
     flex: 1;
+    min-width: 25vh;
     margin-right: 5px;
     background-color: rgb(40,40,40);
+}
+.pane1.container {
+    position: relative;
+    top: 10vh;
+}
+.pane1.element {
+    font-family: Source Sans Pro,Open Sans,Segoe UI,sans-serif;
+    font-size: 12pt;
+    color: #f0f0f0;
+    padding: 10px 20px;
+    margin-bottom: 5px;
+}
+.pane1.element.active {
+    background-color: rgb(70,70,70);
 }
 .pane.vertical.pane2 {
     flex: 6;
 }
 .pane2.header_container {
+    display: flex;
+    align-items: center;
     height: 10vh;
     background-color: rgb(40,40,40);
 }
+.grid_title {
+    font-family: Source Sans Pro,Open Sans,Segoe UI,sans-serif;
+    font-size: 16pt;
+    color: #f0f0f0;
+    padding: 20px;
+}
 .pane2.grid_container {
     height: calc(100% - 10vh);
+    padding: 0 40px;
+    display: grid;
+    grid-column-gap: 40px;
+    grid-template-columns: auto auto auto;
+    overflow: scroll;
+}
+.grid_element {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    height: 30vh;
+    margin: 40px 0 0 0;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+}
+.grid_element.new {
+    position: relative;
+    border: 2px dashed rgb(70,70,70);
+}
+.grid_element.project {
+    background-color: rgb(70,70,70);
+    border: 2px solid rgb(70,70,70);
 }

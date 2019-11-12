@@ -20,7 +20,7 @@ class Editor extends Component {
         super(props);
         this.state = {
             ...this.props.location.state,
-            code: this.props.location.pathname
+            projectName: this.props.location.pathname
         }
         // this.state = {
         //     openConsole: "false",
