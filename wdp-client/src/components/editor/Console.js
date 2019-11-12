@@ -10,17 +10,9 @@ class Console extends Component {
             inputCommand: '',
             outputMsg: '//type your command//'
         }
-        this.scrollContainer = React.createRef();
+        
     }
-    componentDidMount () {
-        this.scrollToBottom()
-    }
-    componentDidUpdate () {
-        this.scrollToBottom()
-    }
-    scrollToBottom = () => {
-        this.scrollContainer.current.scrollIntoView({ behavior: 'smooth' })
-    }
+
     openConsole() {
         if (!this.state.openConsole) {
             document.getElementById("console").style.height = "30%";

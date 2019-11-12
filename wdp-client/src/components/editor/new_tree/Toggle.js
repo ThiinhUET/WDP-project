@@ -7,7 +7,7 @@ const Toggle = ({style, onClick}) => {
     const {height, width} = style;
 
     return (
-        <div style={style.base} onClick={onClick}>
+        <div style={style.base} onClick={onClick||(()=>0)}>
             <Div style={style.wrapper}>
                 <svg {...{height, width}}>
                     <i className="fas fa-caret-right"></i>
@@ -18,7 +18,6 @@ const Toggle = ({style, onClick}) => {
 };
 
 Toggle.propTypes = {
-    onClick: PropTypes.func.isRequired,
     style: PropTypes.object
 };
 

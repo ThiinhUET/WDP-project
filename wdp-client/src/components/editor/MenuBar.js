@@ -17,7 +17,7 @@ class MenuBar extends Component {
                         <div className="item_divider"></div>
                         <div className="item_holder">
                             Open File
-                            <input type="file" style= {{opacity: "0.0", position: "absolute", top: "0", left: "0", bottom: "0", right: "0", width: "100%", height:"100%"}} webkitdirectory mozdirectory directory/>
+                            <input type="file" style= {{opacity: "0.0", position: "absolute", top: "0", left: "0", bottom: "0", right: "0", width: "100%", height:"100%"}} webkitdirectory="true" mozdirectory="true" directory="true"/>
                         </div>
                         <div className="item_holder">Open Project</div>
                         <div className="item_divider"></div>
