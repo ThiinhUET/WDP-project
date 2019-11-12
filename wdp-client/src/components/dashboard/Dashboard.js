@@ -5,6 +5,8 @@ import logo from '../../assets/logo.png';
 
 import UserInfo from '../user-info/UserInfo';
 
+import './style.css';
+
 class Dashboard extends Component {
     constructor(props) {
         super(props);
@@ -36,9 +38,19 @@ class Dashboard extends Component {
                         <UserInfo />
                     </div>
                 </div>
-                <button onClick={() => this.openEditor("hello")}>
-                    Editor
-                </button>
+                <div className="maincontent" style={{width: '100%', height: '94vh'}}>
+                    <div className="pane vertical pane1">
+                        <i className="fas fa-th-large" style={{color: '#f0f0f0', width: '20px', height: '20px'}}></i>
+                    </div>
+                    <div className="pane vertical pane2">
+                        <div className="pane2 header_container">
+
+                        </div>
+                        <div className="pane2 grid_container">
+                            
+                        </div>
+                    </div>
+                </div>
             </div>
         );
     }

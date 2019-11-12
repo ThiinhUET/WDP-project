@@ -1,0 +1,19 @@
+.pane.vertical {
+    height: calc(100% - 5px);
+    margin-top: 10px;
+}
+.pane.vertical.pane1 {
+    flex: 1;
+    margin-right: 5px;
+    background-color: rgb(40,40,40);
+}
+.pane.vertical.pane2 {
+    flex: 6;
+}
+.pane2.header_container {
+    height: 10vh;
+    background-color: rgb(40,40,40);
+}
+.pane2.grid_container {
+    height: calc(100% - 10vh);
+}

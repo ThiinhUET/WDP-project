@@ -22,7 +22,6 @@ class Editor extends Component {
             ...this.props.location.state,
             code: this.props.location.pathname
         }
-        console.log(this.state);
         // this.state = {
         //     openConsole: "false",
         //     id: "",
@@ -133,7 +132,7 @@ class Editor extends Component {
                         <button className="homebtn" title="Home" onClick={() => this.returnHome()}>
                             <img src={logo} className="App-logo" alt="logo" width={40} height={40} />
                         </button>
-                        <MenuBar />
+                        {/* <MenuBar /> */}
                     </div>
                     <div className="header_right">
                         {!localStorage.uid && <button className="signin" onClick={() => this.openSignIn('/editor')}>Sign In</button>}
