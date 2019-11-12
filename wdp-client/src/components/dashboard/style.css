@@ -45,6 +45,9 @@
     grid-template-columns: auto auto auto;
     overflow: scroll;
 }
+#deleted_projects {
+    display: none;
+}
 .grid_element {
     display: flex;
     flex-direction: column;

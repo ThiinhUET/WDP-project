@@ -31,15 +31,19 @@ class Dashboard extends Component {
         let y = document.getElementById('trash');
         if (x.contains(target)) {
             this.state.selectedElement = 'overview';
-            this.setState({titleGrid: 'Recent Projects'});
+            this.setState({gridTitle: 'Recent Projects'});
             x.className += ' active';
             y.classList = 'pane1 element';
+            document.getElementById("recent_projects").style.display = "grid";
+            document.getElementById("deleted_projects").style.display = "none";
         }
         if (y.contains(target)) {
             this.state.selectedElement = 'trash';
-            this.setState({titleGrid: 'Deleted Projects'});
+            this.setState({gridTitle: 'Deleted Projects'});
             y.className += ' active';
             x.classList = 'pane1 element';
+            document.getElementById("recent_projects").style.display = "none";
+            document.getElementById("deleted_projects").style.display = "grid";
         }
     }
     
@@ -75,15 +79,18 @@ class Dashboard extends Component {
                         <div className="pane2 header_container">
                             <div className="grid_title">{this.state.gridTitle}</div>
                         </div>
-                        <div className="pane2 grid_container">
+                        <div className="pane2 grid_container" id="recent_projects">
                             <div className="grid_element new" onClick={() => this.openEditor('')}>
                                 <i className="fas fa-plus" style={{height: '6vh', width: '6vh', color: 'rgb(70,70,70)'}}></i>
                             </div>
                             {projects.map((name, idx) => (
-                                <div className="grid_element project" key={idx} onClick={() => this.openEditor('/' + name)}>
+                                <div className="grid_element project" key={idx} onDoubleClick={() => this.openEditor('/' + name)}>
                                     {name}
                                 </div>
                             ))}
+                        </div>
+                        <div className="pane2 grid_container" id="deleted_projects">
+
                         </div>
                     </div>
                 </div>
