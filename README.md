@@ -23,3 +23,4 @@
 - [ ] Inviting team members
 - [ ] Managing database
 - [ ] Managing user
+- [x] Terminal
