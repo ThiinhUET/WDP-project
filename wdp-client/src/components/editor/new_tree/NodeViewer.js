@@ -16,7 +16,7 @@ const NodeViewer = ({node}) => {
         // localStorage.setItem('content', '//Type your code here');
         contentFlow.next("//type your code here");
     }else{
-        contentFlow.next(node.name);
+        contentFlow.next(node.content);
     }
     if (!json) {
         json = HELP_MSG;
