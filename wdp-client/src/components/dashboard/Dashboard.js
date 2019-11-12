@@ -78,7 +78,6 @@ class Dashboard extends Component {
                         <div className="pane2 grid_container">
                             <div className="grid_element new" onClick={() => this.openEditor('')}>
                                 <i className="fas fa-plus" style={{height: '6vh', width: '6vh', color: 'rgb(70,70,70)'}}></i>
-                                <div>New project</div>
                             </div>
                             {projects.map((name, idx) => (
                                 <div className="grid_element project" key={idx} onClick={() => this.openEditor('/' + name)}>
