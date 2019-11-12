@@ -41,5 +41,5 @@ export default {
         { name: 'index.js' },
         { name: 'package.json' }
     ],
-    content : "hello thịnh"
+    content : "<h1>react-treebeard-hello</h1>"
 };

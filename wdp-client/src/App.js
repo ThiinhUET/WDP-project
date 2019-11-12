@@ -6,7 +6,7 @@ import SignIn from './components/signin/SignIn';
 import SignUp from './components/signup/SignUp';
 import Profile from './components/profile/Profile';
 import Dashboard from './components/dashboard/Dashboard';
-import NewTree from './components/editor/new_tree/Tree';
+import Terminal from './components/editor/CodeSandBoxCS'
 
 function PrivateRoute({ children, ...rest }) {
     return (
@@ -35,7 +35,7 @@ class App extends Component {
                         <SignUp />
                     </Route>
                     <Route exact path = '/tree'>
-                        <NewTree />
+                        <Terminal />
                     </Route>
                     <PrivateRoute exact path ='/profile'>
                         <Profile />

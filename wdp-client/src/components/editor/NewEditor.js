@@ -3,6 +3,7 @@ import Editor, { monaco, ControlledEditor } from "@monaco-editor/react";
 import { FillSpinner as Loader } from "react-spinners-kit";
 import MyFrame from './RenderHTML';
 import Console from './Console';
+import contentFlow from './../../service/content.service';
 class NewEditor extends React.Component {
   constructor(props) {
     super(props);
@@ -17,19 +18,17 @@ class NewEditor extends React.Component {
 
 
   componentDidMount(){
-    this.interval = setInterval(() => this.setState({ content: localStorage.getItem('content') }), 100);
+    this.contentFlowSub = contentFlow.subscribe((value)=>{
+      this.setState({ content: value});
+    });
   }
 
-
-  // onLocalStorageChange(){
-  //   setInterval(() => {
-  //     if(this.state.content !== localStorage.getItem('content')){
-  //       this.setState({content : localStorage.getItem('content')});
-  //       console.log("heelo");
-  //     }
-  //   }, 200)
-  // }
-
+  componentWillUnmount() {
+    if (this.contentFlowSub) {
+      this.contentFlowSub.unsubscribe();
+      this.contentFlowSub = null;
+    }
+  }
 
 
   handleEditorDidMount() {
