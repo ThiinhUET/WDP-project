@@ -18,6 +18,7 @@
     color: #f0f0f0;
     padding: 10px 20px;
     margin-bottom: 5px;
+    cursor: pointer;
 }
 .pane1.element.active {
     background-color: rgb(70,70,70);
