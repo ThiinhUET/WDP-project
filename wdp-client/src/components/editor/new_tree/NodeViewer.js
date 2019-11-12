@@ -4,17 +4,19 @@ import PropTypes from 'prop-types';
 import {Div} from 'react-treebeard/dist/components/common';
 import defaultStyles from './defaultStyles';
 
+import contentFlow from './../../../service/content.service';
+
 const HELP_MSG = 'Select A Node To See Its Data Structure Here...';
 
 const NodeViewer = ({node}) => {
     const style = defaultStyles.viewer;
     let json = JSON.stringify(node, null, 4);
     if(node === undefined){
-        localStorage.removeItem('content');
-        localStorage.setItem('content', '//Type your text');
+        // localStorage.removeItem('content');
+        // localStorage.setItem('content', '//Type your code here');
+        contentFlow.next("//type your code here");
     }else{
-        localStorage.removeItem('content');
-        localStorage.setItem('content', node.content);
+        contentFlow.next(node.name);
     }
     if (!json) {
         json = HELP_MSG;
