@@ -21,6 +21,4 @@
 - [ ] Pulling, pushing code
 - [ ] Create team
 - [ ] Inviting team members
-- [ ] Managing database
-- [ ] Managing user
 - [x] Terminal
