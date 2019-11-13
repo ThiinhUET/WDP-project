@@ -5,9 +5,6 @@ import logo from '../../assets/logo.png';
 import logo2 from '../../assets/logo2.png';
 import './style.css';
 class SignUp extends Component {
-    constructor(props){
-        super(props)
-    }
     returnHome(){   
         this.props.history.push('/home');
     }
@@ -20,7 +17,7 @@ class SignUp extends Component {
                 <Background width = '100%' />
                 <div className="header">
                     <button className="homebtn" title="Home" onClick = {() => this.returnHome()}>
-                        <img src={logo} width={40} height={40} />
+                        <img src={logo} alt="" width={40} height={40} />
                     </button>
                     <span className="title">WDP</span>
                     <button className="signin" onClick = {() => this.openSignIn()}>Sign In</button>
@@ -28,7 +25,7 @@ class SignUp extends Component {
                 <div className="maincontent">
                     <div className="signup_title">Sign up to WDP</div>
                     <div className="signup_box">
-                        <img src={logo2} style={{position: 'relative', width: '250px', margin: '0 auto', marginTop: '20px'}} />
+                        <img src={logo2} alt="" style={{position: 'relative', width: '250px', margin: '0 auto', marginTop: '20px'}} />
                         <form className="signup_input" style={{position: 'relative', marginTop: '30px'}} action="#" method="post">
                             <div className="item">
                                 <label>Your Full Name:</label>

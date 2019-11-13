@@ -48,7 +48,7 @@ class Profile extends Component {
                 <div className="maincontent" style={{fontFamily: 'Fira Sans, sans-serif'}}>
                     <div className="top_content">
                         <div className="avatar_profile">
-                            <img src={localStorage.photoURL} width={200} height={200} style={{border: '3px solid white'}} />
+                            <img src={localStorage.photoURL} alt="" width={200} height={200} style={{border: '3px solid white'}} />
                         </div>
                         <div style={{color: '#f0f0f0'}}>
                             <span className="displayName_profile">{localStorage.displayName}</span>

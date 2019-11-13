@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
-import Pusher from 'pusher-js';
-import pushid from 'pushid';
+// import Pusher from 'pusher-js';
+// import pushid from 'pushid';
 import 'codemirror/theme/mbo.css';
 import 'codemirror/mode/htmlmixed/htmlmixed';
 import 'codemirror/mode/css/css';
 import 'codemirror/mode/javascript/javascript';
 import './css/codemirror.css';
-import MenuBar from './MenuBar';
+// import MenuBar from './MenuBar';
 import SideBar from './SideBar';
 import NewEditor from './NewEditor';
 import UserInfo from '../user-info/UserInfo';
@@ -20,8 +20,9 @@ class Editor extends Component {
         super(props);
         this.state = {
             ...this.props.location.state,
-            projectName: this.props.location.pathname
+            projectName: this.props.location.pathname.split('/')[2]
         }
+        console.log(this.props);
         // this.state = {
         //     openConsole: "false",
         //     id: "",
@@ -99,18 +100,15 @@ class Editor extends Component {
     //     document.close();
     // };
     
-
     returnHome(){
         this.props.history.push('/home');
     }
+
     openSignIn(redirectPage) {
         this.props.history.push({
             pathname: '/signin',
             state: {redirect: redirectPage}
         });
-    }
-    openSignUp(){
-        this.props.history.push('/signup');
     }
     
     render() {
@@ -134,8 +132,20 @@ class Editor extends Component {
                         </button>
                         {/* <MenuBar /> */}
                     </div>
+                    <div className="header_center">
+                        <button style={{width: 'fit-content', padding: '0 10px', margin: '0 5px'}}>
+                            <i className="fas fa-cloud" style={{width: '30px', height: '30px', paddingRight: '10px'}}></i>
+                            Save
+                        </button>
+                        <a href="/editor">
+                            <button style={{width: 'fit-content', padding: '0 10px', margin: '0 5px'}}>
+                                <i className="far fa-plus-square" style={{width: '30px', height: '30px', paddingRight: '10px'}}></i>
+                                New
+                            </button>
+                        </a>
+                    </div>
                     <div className="header_right">
-                        {!localStorage.uid && <button className="signin" onClick={() => this.openSignIn('/editor')}>Sign In</button>}
+                    {!localStorage.uid && <button className="signin" onClick={() => this.openSignIn('/editor')}>Sign In</button>}
                         <UserInfo />
                     </div>
                 </div>

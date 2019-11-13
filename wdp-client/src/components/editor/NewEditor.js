@@ -1,7 +1,6 @@
 import React from "react";
-import Editor, { monaco, ControlledEditor } from "@monaco-editor/react";
+import { ControlledEditor } from "@monaco-editor/react";
 import { FillSpinner as Loader } from "react-spinners-kit";
-import MyFrame from './RenderHTML';
 import Console from './Console';
 import contentFlow from './../../service/content.service';
 class NewEditor extends React.Component {
@@ -68,7 +67,7 @@ class NewEditor extends React.Component {
             <i className="fas fa-globe-asia" style={{color: 'gray', width: '15px', height: '15px', paddingRight: '5px'}}></i>
             <input defaultValue="localhost:8080/index.html" style={{width: 'calc(100% - 25px)', backgroundColor: 'transparent', color: '#0f0f0f', borderStyle: 'none', outline: 'none'}} />
           </div>
-          <iframe srcDoc={this.state.code} className="iframe" id="iframe"></iframe>
+          <iframe srcDoc={this.state.code} className="iframe" title="Result" id="iframe"></iframe>
           <Console />
         </div>
       </div>

@@ -39,7 +39,6 @@ class Console extends Component {
     }
 
     LogMessage(evt) {
-        let myWindowObj = window;
         if (evt.key === 'Enter') {
             eval(this.state.inputCommand);
             this.setState({ inputCommand: ''});

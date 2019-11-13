@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
-import axios from 'axios';
 
 import logo from '../../assets/logo.png';
 import logo2 from '../../assets/logo2.png';
@@ -21,13 +20,15 @@ class SignIn extends Component {
     }
     
     componentDidMount() {
-        if (localStorage.uid) this.props.history.push(
-            (this.props.location.state)? ((this.state.redirect === '/editor')? '/editor': '/dashboard') : '/dashboard');
+        if (localStorage.uid) this.props.history.push('/home');
     }
 
     signIn() {
         const authenticate = new Authenticate();
-        authenticate.signin();
+        authenticate.signin(() => this.props.history.push(
+            (this.props.location.state)? ((this.state.redirect === '/editor')? '/editor': '/dashboard') : '/dashboard'
+            )
+        );
     }
     
     returnHome() {
@@ -51,7 +52,7 @@ class SignIn extends Component {
                 <div className="maincontent">
                     <div className="signin_title">Sign in to WDP</div>
                     <div className="signin_box">
-                        <img src={logo2} style={{ position: 'relative', width: '70%', margin: '0 auto' }} />
+                        <img src={logo2} alt="" style={{ position: 'relative', width: '70%', margin: '0 auto' }} />
                         <div style={{height: '20%'}}></div>
                         <button className="signin_git_button" onClick={() => this.signIn()}>
                             <i className="fab fa-github" style={{width: '20px', height: '20px', paddingRight: '10px'}}></i>

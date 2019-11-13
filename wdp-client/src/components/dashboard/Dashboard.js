@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
-import spinnerImage from '../../assets/spinner.gif';
 import logo from '../../assets/logo.png';
 
 import UserInfo from '../user-info/UserInfo';
@@ -34,16 +33,14 @@ class Dashboard extends Component {
         let x = document.getElementById('overview');
         let y = document.getElementById('trash');
         if (x.contains(target)) {
-            this.state.selectedElement = 'overview';
-            this.setState({gridTitle: 'Recent Projects'});
+            this.setState({gridTitle: 'Recent Projects', selectedElement: 'overview'});
             x.className += ' active';
             y.classList = 'pane1 element';
             document.getElementById("recent_projects").style.display = "grid";
             document.getElementById("deleted_projects").style.display = "none";
         }
         if (y.contains(target)) {
-            this.state.selectedElement = 'trash';
-            this.setState({gridTitle: 'Deleted Projects'});
+            this.setState({gridTitle: 'Deleted Projects', selectedElement: 'trash'});
             y.className += ' active';
             x.classList = 'pane1 element';
             document.getElementById("recent_projects").style.display = "none";
@@ -56,7 +53,7 @@ class Dashboard extends Component {
         return (
             <div className="Dashboard">
                 <div className="header">
-                    <div className="header_left">
+                <div className="header_left">
                         <button className="homebtn" title="Home" onClick={() => this.returnHome()}>
                             <img src={logo} className="App-logo" alt="logo" width={40} height={40} />
                         </button>
@@ -85,7 +82,7 @@ class Dashboard extends Component {
                         </div>
                         <div className="pane2 grid_container" id="recent_projects">
                             <div className="grid_element new" onClick={() => this.openEditor('')}>
-                                <i className="fas fa-plus" style={{height: '6vh', width: '6vh', color: 'rgb(70,70,70)'}}></i>
+                                <i className="fas fa-plus" style={{height: '6vh', width: '6vh', color: '#0d9e5bbf'}}></i>
                             </div>
                             {projects.map((name, idx) => (
                                 <div className="grid_element project" key={idx} onDoubleClick={() => this.openEditor('/' + name)}>

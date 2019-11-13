@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import ExplorerView from './ExplorerView';
 import NewTree from '../new_tree/Tree';
-import axios from 'axios';
 class Explorer extends Component {
     constructor(props){
         super(props);

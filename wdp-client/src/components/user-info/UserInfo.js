@@ -49,7 +49,7 @@ class UserInfo extends Component {
                 {localStorage.uid && <span className="user" ref={this.user_container}>
                     <span className="username">{localStorage.username}</span>
                     <button className="avatar" onClick={this.handleChange}>
-                        <img src={localStorage.photoURL} style={{width: '30px', height: '30px', color: 'white', border: '1px solid'}} />
+                        <img src={localStorage.photoURL} alt="" style={{width: '30px', height: '30px', color: 'white', border: '1px solid'}} />
                     </button>
                     {this.state.isUserDrop && <div className="userdrop_container">
                         <div className="user_item" id="profile" onClick={() => this.openProfile()}>

@@ -3,7 +3,7 @@ import {withRouter} from 'react-router-dom';
 import * as Demo from "./demo";
 import { Hook, Console } from "console-feed";
 
-class Terminal extends React.Component {
+class Terminal extends Component {
   state = {
     logs: Demo.Initial
   };

@@ -1,5 +1,5 @@
 import firebase from "firebase";
-import base, { firebaseApp } from "./base"
+import { firebaseApp } from "./base"
 import axios from 'axios';
 
 class Authenticate {
@@ -47,7 +47,7 @@ class Authenticate {
         }).then( ()=>{
           axios.post('http://localhost:8080/git/user-repos', {accessToken : localStorage.getItem('accessToken'), login : localStorage.getItem('username')}).then(res => {
             let repo = [];
-            res.data.repositories.map((value, index) =>{
+            res.data.repositories.map((value) =>{
               repo.push(value.name);
             });
             localStorage.setItem('repositories', repo);

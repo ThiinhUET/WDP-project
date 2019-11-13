@@ -9,16 +9,28 @@ body {
     flex-direction: column;
 }
 
+a {
+    text-decoration: none;
+}
+
 /* header */
 .header {
     position: relative;
     display: flex;
+    align-items: center;
     justify-content: space-between;
     height: 6vh;
     box-shadow: 0px 0px 10px 0px #0d9e5b;
     padding: 0 10px 0 10px;
 }
 .header_left {
+    flex: 2;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+.header_center {
+    flex: 1;
     display: flex;
     align-items: center;
     justify-content: flex-start;

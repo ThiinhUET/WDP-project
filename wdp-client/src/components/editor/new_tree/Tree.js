@@ -1,5 +1,4 @@
 import React, {Fragment, PureComponent} from 'react';
-import ReactDOM from 'react-dom';
 import {includes} from 'lodash';
 
 import {Treebeard, decorators} from 'react-treebeard';
@@ -65,7 +64,7 @@ class NewTree extends PureComponent {
         return (
             <Fragment>
                 <Div style={defaultStyles.searchBox}>
-                    <Div className="input-group">
+                    <Div className="input-group" style={{display: 'flex', alignItems: 'center'}}>
                         <span className="input-group-addon" style={{color: '#aeafad', padding: '5px'}}>
                             <i className="fa fa-search"/>
                         </span>
@@ -74,7 +73,7 @@ class NewTree extends PureComponent {
                             onKeyUp={this.onFilterMouseUp.bind(this)}
                             placeholder="Search the file..."
                             type="text"
-                            style={{outline: 'none'}}
+                            style={{outline: 'none', padding: '0px 5px', width: '75%'}}
                         />
                     </Div>
                 </Div>

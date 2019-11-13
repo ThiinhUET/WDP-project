@@ -8,9 +8,6 @@ import UserInfo from '../user-info/UserInfo';
 import Background from '../background/Background';
 
 class Home extends Component {
-    constructor(props) {
-        super(props);
-    }
 
     openEditor() {
         this.props.history.push('/editor');

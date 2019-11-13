@@ -61,9 +61,10 @@
 }
 .grid_element.new {
     position: relative;
-    border: 2px dashed rgb(70,70,70);
+    background-color: #0d9e5b1a;
+    border: 2px dashed #0d9e5bbf;
 }
 .grid_element.project {
-    background-color: rgb(70,70,70);
-    border: 2px solid rgb(70,70,70);
+    background-color: #f0f0f0;
+    border: 2px solid #0d9e5bbf;
 }
