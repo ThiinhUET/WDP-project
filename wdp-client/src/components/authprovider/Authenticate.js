@@ -1,5 +1,6 @@
 import firebase from "firebase";
 import base, { firebaseApp } from "./base"
+import axios from 'axios';
 
 class Authenticate {
     componentDidMount() {
@@ -41,31 +42,16 @@ class Authenticate {
       firebaseApp
         .auth()
         .signInWithPopup(authProvider)
-        .then(async function(authData) {
-          let user = authData.user;
-          let credential, additionalUserInfo;
-          if (authData.credential) {
-            // This gives you a GitHub Access Token. You can use it to access the GitHub API.
-            credential = authData.credential;
-            additionalUserInfo = authData.additionalUserInfo; 
-            // ...
-          }
-          console.log(additionalUserInfo);
-          localStorage.setItem('accessToken', credential.accessToken);
-          localStorage.setItem('photoURL', user.photoURL);
-          localStorage.setItem('email', user.email);
-          localStorage.setItem('username', additionalUserInfo.username);
-          localStorage.setItem('displayName', user.displayName);
-          localStorage.setItem('uid', user.providerData[0].uid);
-          localStorage.setItem('bio', additionalUserInfo.profile.bio);
-          localStorage.setItem('blog', additionalUserInfo.profile.blog);
-          localStorage.setItem('company', additionalUserInfo.profile.company);
-          localStorage.setItem('email', additionalUserInfo.profile.email);
-          localStorage.setItem('location', additionalUserInfo.profile.location);
-          localStorage.setItem('html_url', additionalUserInfo.profile.html_url);
-          localStorage.setItem('created_at', additionalUserInfo.profile.created_at);
-          localStorage.setItem('updated_at', additionalUserInfo.profile.updated_at);
+        .then(this.authHandler).then(() => {
           setTimeout(cb,100);
+        }).then( ()=>{
+          axios.post('http://localhost:8080/git/user-repos', {accessToken : localStorage.getItem('accessToken'), login : localStorage.getItem('username')}).then(res => {
+            let repo = [];
+            res.data.repositories.map((value, index) =>{
+              repo.push(value.name);
+            });
+            localStorage.setItem('repositories', repo);
+          });
         });
     };
   

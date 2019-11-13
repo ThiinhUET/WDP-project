@@ -12,11 +12,15 @@ class Dashboard extends Component {
         super(props);
         this.state = {
             selectedElement: 'overview',
-            gridTitle: 'Recent Projects'
+            gridTitle: 'Recent Projects',
+            repositories : []
         }
     }
 
-    
+    componentDidMount(){
+        let repos = localStorage.getItem('repositories').split(',');
+        this.setState({repositories : repos});
+    }
     returnHome() {
         this.props.history.push('/home');
     }
@@ -48,7 +52,7 @@ class Dashboard extends Component {
     }
     
     render() {
-        let projects = ['project1', 'project2', 'project3', 'project1', 'project2', 'project3', 'project1', 'project2', 'project3'];
+        let projects = this.state.repositories;
         return (
             <div className="Dashboard">
                 <div className="header">
