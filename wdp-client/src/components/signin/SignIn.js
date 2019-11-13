@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
+import axios from 'axios';
 
 import logo from '../../assets/logo.png';
 import logo2 from '../../assets/logo2.png';
@@ -20,14 +21,13 @@ class SignIn extends Component {
     }
     
     componentDidMount() {
-        if (localStorage.uid) this.props.history.push('/home');
+        if (localStorage.uid) this.props.history.push(
+            (this.props.location.state)? ((this.state.redirect === '/editor')? '/editor': '/dashboard') : '/dashboard');
     }
 
     signIn() {
         const authenticate = new Authenticate();
-        authenticate.signin(() => this.props.history.push(
-            (this.props.location.state)? this.state.redirect : '/home'
-        ));
+        authenticate.signin();
     }
     
     returnHome() {

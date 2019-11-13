@@ -12,8 +12,6 @@ const NodeViewer = ({node}) => {
     const style = defaultStyles.viewer;
     let json = JSON.stringify(node, null, 4);
     if(node === undefined){
-        // localStorage.removeItem('content');
-        // localStorage.setItem('content', '//Type your code here');
         contentFlow.next("//type your code here");
     }else{
         contentFlow.next(node.content);
