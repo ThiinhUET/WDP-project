@@ -40,6 +40,12 @@
     font-weight: 600;
     line-height: 30px;
 }
+.sidebar_element {
+    display: flex;
+    position: relative;
+    top: 5%;
+    justify-content: center;
+}
 
 .signin_git_button {
     display: flex;

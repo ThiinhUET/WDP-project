@@ -18,9 +18,11 @@ class Github extends Component {
         return (
             <div className="SidebarElement">
                 <div className="sidebar_title">GITHUB</div>
-                <div className="signin_git_button" onClick={() => this.signIn()}>
-                    <i className="fab fa-github" style={{width: '18px', height: '18px', paddingRight: '5px'}}></i>
-                    <span>Sign in with GitHub</span>
+                <div className="sidebar_element">
+                    {!localStorage.uid && <div className="signin_git_button" onClick={() => this.signIn()}>
+                        <i className="fab fa-github" style={{width: '18px', height: '18px', paddingRight: '5px'}}></i>
+                        <span>Sign in with GitHub</span>
+                    </div>}
                 </div>
             </div>
         );

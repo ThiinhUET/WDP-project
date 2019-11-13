@@ -5,14 +5,15 @@ import {Div} from 'react-treebeard/dist/components/common';
 
 // Example: Customising The Header Decorator To Include Icons
 const Header = ({onSelect, style, customStyles, node}) => {
-    const iconType = node.children ? 'folder' : 'file-alt';
-    const iconClass = `fas fa-${iconType}`;
+    const iconClass = node.children ? (node.toggled? 'fas fa-folder-open' : 'fas fa-folder') : (
+        (node.name.includes('.html\0'))? 'fas fa-code' : (((node.name.includes('.js') && !node.name.includes('.json'))? 'fab fa-js-square' : (
+            (node.name.includes('.css'))? 'fab fa-css3' : 'fas fa-file-alt'))));
     const iconStyle = node.children ? {marginRight: '5px'} : {marginRight: '5px', marginLeft: '10px'};
 
     return (
         <div style={style.base} onClick={onSelect}>
             <Div style={node.selected ? {...style.title, ...customStyles.header.title} : style.title}>
-                <i className={iconClass} style={iconStyle}/>
+                <i className={iconClass} style={{...iconStyle, width: '14px', height: '14px'}}/>
                 {node.name}
             </Div>
         </div>
