@@ -26,23 +26,34 @@
 }
 
 /* Explorer */
-.explorer {
-    /* text-align: center; */
+.SidebarElement {
     width: 200px;
     height: 100%;
     margin: 0 auto;
     color: #f0f0f0;
     font-family: Source Sans Pro,Open Sans,Segoe UI,sans-serif;
+}
+
+.sidebar_title {
+    text-align: center;
+    margin: 10px auto;
     font-weight: 600;
-    overflow: hidden auto;
+    line-height: 30px;
 }
-.MuiCollapse-container.MuiTreeItem-group.MuiCollapse-entered {
-    margin-left: 15px;
+
+.signin_git_button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    background-color: #0d9e5b;
+    border-radius: 6px;
+    padding: .5em;
+    font-size: .9em;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    cursor: pointer;
 }
-.MuiTypography-root.MuiTreeItem-label.MuiTypography-body1 {
-    font-size: 10pt;
+.signin_git_button:hover{
+    background-color: #0d9e5bbf;
 }
-.MuiTreeItem-root:focus > .MuiTreeItem-content {
-    background-color: #64646480;
-  }
-  

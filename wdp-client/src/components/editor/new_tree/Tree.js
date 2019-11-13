@@ -93,9 +93,7 @@ class NewTree extends PureComponent {
                         }}
                     />
                 </Div>
-                <Div style={defaultStyles.component}>
-                    <NodeViewer node={cursor}/>
-                </Div>
+                <NodeViewer node={cursor}/>
             </Fragment>
         );
     }

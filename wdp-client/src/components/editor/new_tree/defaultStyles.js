@@ -1,12 +1,16 @@
 export default {
     component: {
+        position: 'relative',
+        top: '30px',
+        height: 'calc(100% - 90px)',
         padding: '5px',
-        width: '100%',
+        width: 'max-content',
         display: 'inline-block',
         overflow: 'auto',
         
     },
     searchBox: {
+        position: 'fixed',
         padding: '5px'
     },
     viewer: {

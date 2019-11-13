@@ -20,7 +20,7 @@ const NodeViewer = ({node}) => {
         json = HELP_MSG;
     }
 
-    return <Div style={style.base}></Div>;
+    return <Div></Div>;
 };
 
 NodeViewer.propTypes = {

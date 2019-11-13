@@ -52,10 +52,10 @@
     position: relative;
     display: flex;
     justify-content: center;
+    align-items: center;
     font-family: Source Sans Pro,Open Sans,Segoe UI,sans-serif;
     color: white;
     font-weight: 600;
-    user-select: none;
     font-size: 0.875em;
     cursor: pointer;
     transition: all 0.3s ease 0s;
