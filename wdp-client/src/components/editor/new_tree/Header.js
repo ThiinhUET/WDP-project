@@ -7,7 +7,7 @@ import {Div} from 'react-treebeard/dist/components/common';
 const Header = ({onSelect, style, customStyles, node}) => {
     const iconType = node.children ? 'folder' : 'file-alt';
     const iconClass = `fas fa-${iconType}`;
-    const iconStyle = {marginRight: '5px'};
+    const iconStyle = node.children ? {marginRight: '5px'} : {marginRight: '5px', marginLeft: '10px'};
 
     return (
         <div style={style.base} onClick={onSelect}>
