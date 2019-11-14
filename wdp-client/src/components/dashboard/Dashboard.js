@@ -66,6 +66,7 @@ class Dashboard extends Component {
                 <div className="maincontent" style={{width: '100%', height: '94vh'}}>
                     <div className="pane vertical pane1">
                         <div className="pane1 container" href={this.pane1_container} onClick={(evt) => this.onSelect(evt)}>
+                            <div style={{width: '100%', height: '5px', backgroundColor: '#1e1e1e'}}></div>
                             <div className="pane1 element active" id="overview">
                                 <i className="fas fa-th-large" style={{width: '20px', height: '20px', paddingRight: '10px'}}></i>
                                 <span>Overview</span>
@@ -86,7 +87,13 @@ class Dashboard extends Component {
                             </div>
                             {projects.map((name, idx) => (
                                 <div className="grid_element project" key={idx} onDoubleClick={() => this.openEditor('/' + name)}>
-                                    {name}
+                                    <div className="project_image"><i class="fas fa-code" style={{width: '60px', height: '60px', color: 'gray'}}></i></div>
+                                    <div className="project_name">
+                                        {name}
+                                        <span className="project_icon">
+                                            <i className="fas fa-ellipsis-v" style={{height: '14px'}}></i>
+                                        </span>
+                                    </div>
                                 </div>
                             ))}
                         </div>

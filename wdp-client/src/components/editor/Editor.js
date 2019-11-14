@@ -59,7 +59,7 @@ class Editor extends Component {
                             <i className="fas fa-cloud" style={{width: '30px', height: '30px', paddingRight: '10px'}}></i>
                             Save
                         </button>
-                        <a href="/editor">
+                        <a href="/editor" target="_blank" rel="noopener noreferrer">
                             <button style={{width: 'fit-content', padding: '0 10px', margin: '0 5px'}}>
                                 <i className="far fa-plus-square" style={{width: '30px', height: '30px', paddingRight: '10px'}}></i>
                                 New
