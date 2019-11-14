@@ -1,8 +1,8 @@
 export default {
     component: {
         position: 'relative',
-        top: '30px',
-        height: 'calc(100% - 90px)',
+        top: '60px',
+        height: 'calc(100% - 120px)',
         padding: '5px',
         width: 'max-content',
         display: 'inline-block',

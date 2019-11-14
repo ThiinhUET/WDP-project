@@ -90,6 +90,7 @@ class NewTree extends PureComponent {
                         />
                     </Div>
                 </Div>
+                <Div style={{position: 'fixed', marginTop: '35px', height: '25px', width: '200px', backgroundColor: 'rgb(60,60,60)'}}></Div>
                 <Div style={defaultStyles.component}>
                     <Treebeard
                         style={defaultStyles}
