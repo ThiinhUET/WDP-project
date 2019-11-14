@@ -71,6 +71,8 @@ class Authenticate {
       localStorage.removeItem('html_url');
       localStorage.removeItem('created_at');
       localStorage.removeItem('updated_at');
+      localStorage.removeItem('repositories');
+      localStorage.removeItem('projectName');
       setTimeout(cb, 100);
     };
 }

@@ -2,7 +2,7 @@ import React, {Fragment, PureComponent} from 'react';
 import {includes} from 'lodash';
 import {Treebeard, decorators} from 'react-treebeard';
 import {Div} from 'react-treebeard/dist/components/common';
-// import data from './data';
+import data from './data';
 import defaultStyles from './defaultStyles'
 import * as filters from './filter';
 import Header from './Header';
@@ -14,9 +14,7 @@ class NewTree extends PureComponent {
     constructor(props) {
         super(props);
         this.state = {
-            data,
-            ...this.props.location.state,
-            projectToOpen: this.props.location.pathname.split('/')[2]
+            data
         };
         this.onToggle = this.onToggle.bind(this);
         this.onSelect = this.onSelect.bind(this);
