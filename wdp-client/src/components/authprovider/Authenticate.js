@@ -1,4 +1,5 @@
 import firebase from "firebase";
+import {RingLoader} from 'react-spinner';
 import { firebaseApp } from "./base"
 import axios from 'axios';
 
