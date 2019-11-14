@@ -1,21 +1,34 @@
 import React, {Fragment, PureComponent} from 'react';
 import {includes} from 'lodash';
-
 import {Treebeard, decorators} from 'react-treebeard';
 import {Div} from 'react-treebeard/dist/components/common';
-import data from './data';
+// import data from './data';
 import defaultStyles from './defaultStyles'
 import * as filters from './filter';
 import Header from './Header';
 import Toggle from './Toggle';
 import NodeViewer from './NodeViewer';
+import axios from 'axios';
 
 class NewTree extends PureComponent {
     constructor(props) {
         super(props);
-        this.state = {data};
+        this.state = {
+            data,
+            ...this.props.location.state,
+            projectToOpen: this.props.location.pathname.split('/')[2]
+        };
         this.onToggle = this.onToggle.bind(this);
         this.onSelect = this.onSelect.bind(this);
+    }
+
+    componentWillMount(){
+        axios.post('http://localhost:8080/git/user-listfile', {accessToken : localStorage.getItem('accessToken'), 
+        login: localStorage.getItem('username'), repo : this.state.projectToOpen
+    }).then((res) => {
+        this.setState({data: res});
+        console.log(res);
+    })
     }
 
     onToggle(node, toggled) {

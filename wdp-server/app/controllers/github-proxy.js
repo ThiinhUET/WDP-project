@@ -41,8 +41,7 @@ module.exports = {
             let lastCommit = res1.data[0];
             let sha = lastCommit.sha;
             axios.get(baseURL + "/repos/" + owner + "/" + repo + "/git/trees/" + sha + "?recursive=1").then((res2) => {
-                // let fileTree = convertTree(JSON.stringify(res2.data));
-                console.log(convertTree(JSON.stringify(res2.data)));
+                let fileTree = convertTree(res2.data) ;
                 res.send({ filetree: fileTree });
             });
         });

@@ -37,7 +37,7 @@ convertString = (input) => {
     let nodes = [];
     for (let i = 0; i < input.tree.length; i ++) {
         let pathNode = input.tree[i].path.split('/');
-        nodes[i] = new node(input.tree[i].path, input.tree[i].type, pathNode[pathNode.length - 1], false, input.tree[i].url);
+        nodes[i] = new node(input.tree[i].path, input.tree[i].type, pathNode[pathNode.length - 1], false, (input.tree[i].type === 'blob')? input.tree[i].url : '');
         if (nodes[i].type === 'blob') nodes[i] = new leafNode(nodes[i]);
         if (nodes[i].type === 'tree' || (nodes[i].type === 'blob' && nodes[i].path.includes('/')))
             addNode(rootNode, nodes[i]);
@@ -51,7 +51,7 @@ convertString = (input) => {
         if (nodes[i].type === 'blob' && !nodes[i].path.includes('/'))
             addNode(rootNode, nodes[i]);
     }
-    return JSON.stringify(rootNode);
+    return rootNode;
 }
 
 
