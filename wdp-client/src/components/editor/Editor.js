@@ -17,9 +17,6 @@ class Editor extends Component {
         }
     }
 
-    componentDidMount(){
-        localStorage.setItem("projectName", this.state.projectName);
-    }
     
     returnHome(){
         this.props.history.push('/home');

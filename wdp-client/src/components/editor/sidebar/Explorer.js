@@ -13,7 +13,7 @@ class Explorer extends Component {
             <div className="SidebarElement">
                 <div className="sidebar_title">EXPLORER</div>
                 <div style={{height: '100%', overflow: 'auto'}}>
-                    <NewTree data = {this.state.data} ></NewTree>
+                    <NewTree></NewTree>
                 </div>
             </div>
         );
