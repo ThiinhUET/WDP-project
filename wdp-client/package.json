@@ -27,12 +27,12 @@
     "react-filetree-electron": "^1.2.2",
     "react-github-login": "^1.0.3",
     "react-icons": "^3.7.0",
+    "react-promise-tracker": "^2.0.5",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.2.0",
     "react-spinner": "^0.2.7",
     "react-spinners-kit": "^1.9.0",
     "react-treebeard": "^3.2.4",
-    "react-treeview-mui": "^0.1.2",
     "rxjs": "^6.5.3",
     "styled-components": "^4.4.0",
     "terminal-in-react": "^4.3.1"

@@ -1,13 +1,6 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
-// import Pusher from 'pusher-js';
-// import pushid from 'pushid';
-import 'codemirror/theme/mbo.css';
-import 'codemirror/mode/htmlmixed/htmlmixed';
-import 'codemirror/mode/css/css';
-import 'codemirror/mode/javascript/javascript';
 import './css/codemirror.css';
-// import MenuBar from './MenuBar';
 import SideBar from './SideBar';
 import NewEditor from './NewEditor';
 import UserInfo from '../user-info/UserInfo';
@@ -26,10 +19,6 @@ class Editor extends Component {
 
     componentDidMount(){
         localStorage.setItem("projectName", this.state.projectName);
-    }
-    
-    componentWillUnmount(){
-        localStorage.removeItem("projectName");
     }
     
     returnHome(){
