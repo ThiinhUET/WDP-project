@@ -21,7 +21,7 @@
     cursor: pointer;
 }
 .pane1.element.active {
-    background-color: rgb(70,70,70);
+    background-color: #0d9e5b33;
 }
 .pane.vertical.pane2 {
     flex: 6;
@@ -39,11 +39,11 @@
     padding: 20px;
 }
 .pane2.grid_container {
-    height: calc(100% - 10vh);
-    padding: 0 40px;
+    height: calc(100% - 10vh - 40px);
+    padding: 40px 40px 0 40px;
     display: grid;
     grid-column-gap: 40px;
-    grid-template-columns: auto auto auto;
+    grid-template-columns: 1fr 1fr 1fr;
     overflow: scroll;
 }
 #deleted_projects {
@@ -54,17 +54,43 @@
     flex-direction: column;
     position: relative;
     height: 30vh;
-    margin: 40px 0 0 0;
+    margin-bottom: 40px;
     cursor: pointer;
     align-items: center;
     justify-content: center;
 }
 .grid_element.new {
-    position: relative;
     background-color: #0d9e5b1a;
     border: 2px dashed #0d9e5bbf;
 }
 .grid_element.project {
-    background-color: #f0f0f0;
     border: 2px solid #0d9e5bbf;
+}
+.project_image {
+    flex: 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: calc(100% - 1px);
+    background-color: #f0f0f0;
+}
+.project_name {
+    flex: 1;
+    display: flex;
+    width: calc(100% - 21px);
+    padding: 0 10px;
+    align-items: center;
+    justify-content: space-between;
+    color: #f0f0f0;
+    font-family: Source Sans Pro,Open Sans,Segoe UI,sans-serif;
+    font-size: 14pt;
+    font-weight: 600;
+    background-color: #0d9e5b1a;
+}
+
+.project_icon {
+    color: #f0f0f0cc;
+}
+.project_icon:hover {
+    color: #f0f0f0;
 }
