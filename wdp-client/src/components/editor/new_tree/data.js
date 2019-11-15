@@ -1,1 +1,1 @@
-export default {"path":"","type":"tree","name":"","toggled":true,"content":"","children":[]};
+export default {"path":"","type":"tree","name":"New Project","toggled":true,"content":"","children":[]};

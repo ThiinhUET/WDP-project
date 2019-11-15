@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
-import './css/codemirror.css';
 import SideBar from './SideBar';
 import NewEditor from './NewEditor';
 import UserInfo from '../user-info/UserInfo';
@@ -39,6 +38,7 @@ class Editor extends Component {
                         <button className="homebtn" title="Home" onClick={() => this.returnHome()}>
                             <img src={logo} className="App-logo" alt="logo" width={40} height={40} />
                         </button>
+                        <span className="title">Editor</span>
                     </div>
                     <div className="header_center">
                         <button style={{width: 'fit-content', padding: '0 10px', margin: '0 5px'}}>
@@ -63,7 +63,7 @@ class Editor extends Component {
                     flexDirection: 'row',
                     height: 'calc(94vh - 10px)'}}>
                     <SideBar />
-                    <NewEditor valueCode = {this.state.code} />
+                    <NewEditor/>
                     
                 </div>
             </div>
