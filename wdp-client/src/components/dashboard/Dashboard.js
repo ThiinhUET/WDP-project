@@ -87,7 +87,7 @@ class Dashboard extends Component {
                             </div>
                             {projects.map((name, idx) => (
                                 <div className="grid_element project" key={idx} onDoubleClick={() => this.openEditor('/' + name)}>
-                                    <div className="project_image"><i class="fas fa-code" style={{width: '60px', height: '60px', color: 'gray'}}></i></div>
+                                    <div className="project_image"><i className="fas fa-code" style={{width: '60px', height: '60px', color: 'gray'}}></i></div>
                                     <div className="project_name">
                                         {name}
                                         <span className="project_icon">

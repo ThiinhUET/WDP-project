@@ -1,4 +1,37 @@
 export default {
+    searchBox: {
+        position: 'fixed',
+        padding: '5px',
+    },
+    addFileBox: {
+        position: 'fixed',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'flex-end',
+        marginTop: '35px',
+        height: '25px',
+        width: '200px',
+        backgroundColor: 'rgb(60,60,60)',
+        input: {
+            margin: '0 5px',
+            backgroundColor: 'transparent',
+            color: '#aeafad',
+            border: '1px solid gray',
+            outline: 'none',
+            padding: '0px 5px',
+            width: '112px',
+        },
+        icon_holder: {
+            display: 'flex',
+            padding: '0 5px',
+            color: '#aeafad',
+            cursor: 'pointer',
+        },
+        icon: {
+            height: '12px',
+            width: '12px',
+        },
+    },
     component: {
         position: 'relative',
         top: '60px',
@@ -8,10 +41,6 @@ export default {
         display: 'inline-block',
         overflow: 'auto',
         
-    },
-    searchBox: {
-        position: 'fixed',
-        padding: '5px'
     },
     viewer: {
         base: {

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
-import './css/codemirror.css';
 import SideBar from './SideBar';
 import NewEditor from './NewEditor';
 import UserInfo from '../user-info/UserInfo';
