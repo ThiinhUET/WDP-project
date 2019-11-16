@@ -16,9 +16,6 @@
 - [ ] Auto saving code
 - [x] Login with github
 - [ ] Commiting
-- [ ] Importing
-- [ ] Sharing code
 - [ ] Pulling, pushing code
-- [ ] Create team
 - [ ] Inviting team members
 - [x] Terminal
