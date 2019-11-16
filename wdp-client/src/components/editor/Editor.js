@@ -14,6 +14,9 @@ class Editor extends Component {
             ...this.props.location.state,
             projectName: this.props.location.pathname.split('/')[2]
         }
+        if (this.props.location.pathname !== '/editor')
+            localStorage.setItem("projectName", this.state.projectName);
+        
     }
 
     

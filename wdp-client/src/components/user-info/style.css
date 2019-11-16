@@ -1,6 +1,6 @@
 .userdrop_container {
     position: absolute;
-    z-index: 3;
+    z-index: 1001;
     font-size: 10pt; 
     color: #f0f0f0;
     font-weight: normal;

@@ -45,11 +45,10 @@ class Authenticate {
         .signInWithPopup(authProvider)
         .then(this.authHandler).then( ()=>{
           axios.post('http://localhost:8080/git/user-repos', {accessToken : localStorage.getItem('accessToken'), login : localStorage.getItem('username')}).then(res => {
-            setTimeout(cb,0);
             let repo = [];
             res.data.repositories.map((value) =>{ repo.push(value.name) });
             localStorage.setItem('repositories', repo);
-          });
+          }).then(() => setTimeout(cb,0));
         });
     };
   

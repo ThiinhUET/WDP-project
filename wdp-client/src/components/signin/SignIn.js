@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
-import {usePromiseTracker} from 'react-promise-tracker';
+
 import logo from '../../assets/logo.png';
 import logo2 from '../../assets/logo2.png';
 
 import Authenticate from '../authprovider/Authenticate';
 import Background from '../background/Background';
+import Loading from '../loading/Loading'; 
 import '@fortawesome/fontawesome-free/js/all';
 import './style.css';
 
@@ -14,9 +15,10 @@ class SignIn extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            ...this.props.location.state,
             isUserDrop: false,
+            loading : false,
         }
-        this.state = this.props.location.state;
     }
     
     componentDidMount() {
@@ -25,9 +27,11 @@ class SignIn extends Component {
 
     signIn() {
         const authenticate = new Authenticate();
-        authenticate.signin(() => this.props.history.push(
-            (this.props.location.state)? ((this.state.redirect === '/editor')? '/editor': '/dashboard') : '/dashboard'
-            )
+        this.setState({loading : true});
+        authenticate.signin(() => {
+            this.props.history.push((this.props.location.state)? ((this.state.redirect === '/editor')? '/editor': '/dashboard') : '/dashboard')
+            this.setState({loading: false});
+            }
         );
     }
     
@@ -40,6 +44,7 @@ class SignIn extends Component {
     render() {
         return (
             <div className="signin">
+                {this.state.loading && <Loading />}
                 <Background width = '100%' />
                 <div className="header">
                     <div className="header_left">

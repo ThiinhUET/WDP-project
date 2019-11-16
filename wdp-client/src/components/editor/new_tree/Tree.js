@@ -9,6 +9,7 @@ import Header from './Header';
 import Toggle from './Toggle';
 import NodeViewer from './NodeViewer';
 import axios from 'axios';
+import Loading from '../../loading/Loading';
 
 class NewTree extends PureComponent {
     constructor(props) {
@@ -17,6 +18,7 @@ class NewTree extends PureComponent {
         this.state = {
             data,
             err: false,
+            loading: false,
         };
         this.onToggle = this.onToggle.bind(this);
         this.onSelect = this.onSelect.bind(this);
@@ -26,15 +28,15 @@ class NewTree extends PureComponent {
         let accessToken = localStorage.getItem('accessToken');
         let login = localStorage.getItem('username');
         let repo = localStorage.getItem('projectName');
-        console.log(accessToken, login, repo);
+        
+        if (localStorage.projectName) this.setState({loading: true});
          
         axios.post('http://localhost:8080/git/user-listfile', {
             accessToken: accessToken,
             login: login, 
             repo: repo
         }).then((res) => {
-            this.setState({ data: res.data.filetree});
-            console.log(this.state.data);
+            this.setState({ data: res.data.filetree, loading: false});
         })
     }
 
@@ -129,6 +131,7 @@ class NewTree extends PureComponent {
         const { data, cursor } = this.state;
         return (
             <Fragment>
+                {this.state.loading && <Loading />}
                 <Div style={defaultStyles.searchBox}>
                     <Div className="input-group" style={{ display: 'flex', alignItems: 'center' }}>
                         <span className="input-group-addon" style={{ color: '#aeafad', padding: '5px' }}>

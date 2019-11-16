@@ -26,8 +26,6 @@ class Dashboard extends Component {
     
     openEditor(project) {
         this.props.history.push('/editor' + project);
-        let projectName = project.replace('/', '')
-        localStorage.setItem("projectName", projectName);
     }
     
     onSelect = evt => {
