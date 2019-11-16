@@ -36,10 +36,11 @@ convertString = (input) => {
     let rootNode = new node('', 'tree', nameNode, true, '');
     let nodes = [];
     for (let i = 0; i < input.tree.length; i ++) {
+        input.tree[i].path = '/' + input.tree[i].path;
         let pathNode = input.tree[i].path.split('/');
         nodes[i] = new node(input.tree[i].path, input.tree[i].type, pathNode[pathNode.length - 1], false, (input.tree[i].type === 'blob')? input.tree[i].url : '');
         if (nodes[i].type === 'blob') nodes[i] = new leafNode(nodes[i]);
-        if (nodes[i].type === 'tree' || (nodes[i].type === 'blob' && nodes[i].path.includes('/')))
+        if (nodes[i].type === 'tree' || (nodes[i].type === 'blob' && nodes[i].path.split('/').length > 2))
             addNode(rootNode, nodes[i]);
     }
     // arrayInput[1] = arrayInput[1].split(']')[0].split('},');
@@ -48,7 +49,7 @@ convertString = (input) => {
     //     nodes[i] = new node(arrayInput[1][i][3], arrayInput[1][i][11], pathNode[pathNode.length - 1], false, (arrayInput[1][i][11] === 'blob')? arrayInput[1][i][21] : '');
     // }
     for (let i = 0; i < input.tree.length; i ++) {
-        if (nodes[i].type === 'blob' && !nodes[i].path.includes('/'))
+        if (nodes[i].type === 'blob' && nodes[i].path.split('/').length <= 2)
             addNode(rootNode, nodes[i]);
     }
     return rootNode;
