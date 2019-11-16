@@ -48,13 +48,17 @@ class Console extends Component {
         }
     }
 
+    clearConsole(){
+
+    } 
+
     render() {
         return (
             <div className="Console" id="console">
 
                 <div className="console_contaniner" id="console_container">
                     <div className="console_tab" id="console_tab">
-                        <button style={{ float: 'left' }}>
+                        <button style={{ float: 'left' }} onClick = {() => {this.clearConsole()}}>
                             <i className="fas fa-ban"></i>
                         </button>
                         <button style={{ float: 'right' }} onClick={() => this.closeConsole()}>

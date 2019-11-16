@@ -11,7 +11,7 @@ class NewEditor extends React.Component {
     super(props);
     this.state = {
       theme: "dark",
-      language: "javascript",
+      language: "html",
       isEditorReady: true,
       content: localStorage.getItem('content'),
       loading : false
@@ -21,11 +21,9 @@ class NewEditor extends React.Component {
 
   componentDidMount(){
     this.contentFlowSub = contentFlow.subscribe((value)=>{
-      this.setState({loading : true});
       let realCode ;
       axios.post('http://localhost:8080/git/get-file-content', {accessToken : localStorage.accessToken, content : value}).then(res => {
         realCode = res.data.content;
-        console.log(realCode);
         this.setState({ content: realCode, loading : false});
       }).catch(err => {
         console.log(err);
@@ -58,13 +56,13 @@ class NewEditor extends React.Component {
         height: '100%', width: '100%'
       }}>
         <div className="playground">
-        {this.state.loading && <Loading />}
+        {/* {this.state.loading && <Loading />} */}
           <ControlledEditor
             height="100%"
             width="100%"
             theme={this.state.theme}
             language={this.state.language}
-            loading={<Loader />}
+            loading={<Loading />}
             editorDidMount={this.handleEditorDidMount.bind(this)}
             onChange={this.handleEditorChange.bind(this)}
             value={this.state.content}
