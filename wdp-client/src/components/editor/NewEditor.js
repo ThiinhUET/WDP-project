@@ -3,6 +3,8 @@ import { ControlledEditor } from "@monaco-editor/react";
 import { FillSpinner as Loader } from "react-spinners-kit";
 import Console from './Console';
 import contentFlow from './../../service/content.service';
+import axios from 'axios';
+
 class NewEditor extends React.Component {
   constructor(props) {
     super(props);
@@ -18,7 +20,12 @@ class NewEditor extends React.Component {
 
   componentDidMount(){
     this.contentFlowSub = contentFlow.subscribe((value)=>{
-      this.setState({ content: value});
+      let realCode ;
+      axios.post('http://localhost:8080/git/get-file-content', {accessToken : localStorage.accessToken, content : value}).then(res => {
+        realCode = res.data.content;
+        console.log(realCode);
+        this.setState({ content: realCode});
+      })
     });
   }
 
@@ -32,9 +39,6 @@ class NewEditor extends React.Component {
 
   handleEditorDidMount() {
     this.setState.isEditorReady = true;
-    window.addEventListener('storage', () => {
-      this.setState({ content: localStorage.getItem('content') });
-    })
   }
 
   handleEditorChange = (ev, value) => {

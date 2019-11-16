@@ -41,7 +41,6 @@ module.exports = {
             let lastCommit = res1.data[0];
             let sha = lastCommit.sha;
             axios.get(baseURL + "/repos/" + owner + "/" + repo + "/git/trees/" + sha + "?recursive=1").then((res2) => {
-                console.log(res2.data);
                 let fileTree = convertTree(res2.data);              
                 res.send({ filetree: fileTree });
             });
@@ -55,9 +54,9 @@ module.exports = {
             let data = gitResponse.data.content;
             let encoding = gitResponse.data.encoding;
             let decodedData = Buffer.from(data, encoding).toString();
-            res.send({content : data, encoding : encoding});
+            res.send({content : decodedData, encoding : encoding});
         }).catch(err => {
-            console.log(err);
+            console.log("có lỗi rồi nhé", err.status);
         });
     }
 }
