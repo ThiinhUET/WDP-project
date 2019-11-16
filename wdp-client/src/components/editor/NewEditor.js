@@ -4,27 +4,31 @@ import { FillSpinner as Loader } from "react-spinners-kit";
 import Console from './Console';
 import contentFlow from './../../service/content.service';
 import axios from 'axios';
+import Loading from '../loading/Loading';
 
 class NewEditor extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       theme: "dark",
-      language: "html",
+      language: "javascript",
       isEditorReady: true,
-      code: null,
       content: localStorage.getItem('content'),
+      loading : false
     }
   }
 
 
   componentDidMount(){
     this.contentFlowSub = contentFlow.subscribe((value)=>{
+      this.setState({loading : true});
       let realCode ;
       axios.post('http://localhost:8080/git/get-file-content', {accessToken : localStorage.accessToken, content : value}).then(res => {
         realCode = res.data.content;
         console.log(realCode);
-        this.setState({ content: realCode});
+        this.setState({ content: realCode, loading : false});
+      }).catch(err => {
+        console.log(err);
       })
     });
   }
@@ -54,6 +58,7 @@ class NewEditor extends React.Component {
         height: '100%', width: '100%'
       }}>
         <div className="playground">
+        {this.state.loading && <Loading />}
           <ControlledEditor
             height="100%"
             width="100%"

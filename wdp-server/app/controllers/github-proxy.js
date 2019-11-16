@@ -56,7 +56,7 @@ module.exports = {
             let decodedData = Buffer.from(data, encoding).toString();
             res.send({content : decodedData, encoding : encoding});
         }).catch(err => {
-            console.log("có lỗi rồi nhé", err.status);
+            console.log("Just ignore this", err.status);
         });
     }
 }
