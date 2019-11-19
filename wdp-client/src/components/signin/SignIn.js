@@ -44,7 +44,7 @@ class SignIn extends Component {
     render() {
         return (
             <div className="signin">
-                {this.state.loading && <Loading />}
+                {this.state.loading && <Loading size='30' />}
                 <Background width = '100%' />
                 <div className="header">
                     <div className="header_left">

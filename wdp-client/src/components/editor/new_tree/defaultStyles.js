@@ -38,6 +38,7 @@ export default {
         height: 'calc(100% - 120px)',
         padding: '5px',
         width: 'max-content',
+        minWidth: '190px',
         display: 'inline-block',
         overflow: 'auto',
         

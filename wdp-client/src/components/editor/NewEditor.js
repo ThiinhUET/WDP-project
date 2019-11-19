@@ -63,7 +63,7 @@ class NewEditor extends React.Component {
             width="100%"
             theme={this.state.theme}
             language={this.state.language}
-            loading={<Loader />}
+            loading={<Loading size='20'/>}
             editorDidMount={this.handleEditorDidMount.bind(this)}
             onChange={this.handleEditorChange.bind(this)}
             value={this.state.content}
