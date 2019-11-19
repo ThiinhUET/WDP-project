@@ -12,23 +12,14 @@ class NewEditor extends React.Component {
     this.state = {
       theme: "dark",
       language: "html",
-      isEditorReady: true,
-      content: localStorage.getItem('content'),
-      loading : false
+      isEditorReady: true
     }
   }
 
 
   componentDidMount(){
-    this.contentFlowSub = contentFlow.subscribe((value)=>{
-      let realCode ;
-      this.setState({loading : true})
-      axios.post('http://localhost:8080/git/get-file-content', {accessToken : localStorage.accessToken, content : value}).then(res => {
-        realCode = res.data.content;
-        this.setState({ content: realCode, loading : false});
-      }).catch(err => {
-        console.log(err);
-      })
+    this.contentFlowSub = contentFlow.subscribe((content)=>{
+        this.setState({ content: content });  
     });
   }
 

@@ -21,7 +21,6 @@ class NewTree extends PureComponent {
             err: false,
             loading: false,
         };
-        console.log(this.props);
         this.onToggle = this.onToggle.bind(this);
         this.onSelect = this.onSelect.bind(this);
     }
@@ -31,21 +30,36 @@ class NewTree extends PureComponent {
         let login = localStorage.getItem('username');
         let repo = localStorage.getItem('projectName');
         
-        if (this.state.data === data) {
+        // if (this.state.data === data) {
             if (localStorage.projectName) this.setState({loading: true});
-            
+            let rootNode;
             axios.post('http://localhost:8080/git/user-listfile', {
                 accessToken: accessToken,
                 login: login, 
                 repo: repo
             }).then((res) => {
-                this.setState({ data: res.data.filetree, loading: false});
+                rootNode = res.data.filetree;
+                
+                this.setState({ data: this.getContent(rootNode) });
                 this.props.history.push({
                     pathname: this.props.location.pathname,
                     state: {data: this.state.data},
                 })
+                this.setState({loading: false});
+            })
+        // }
+    }
+
+    getContent(node) {
+        if (node.type !== 'folder') {
+            axios.post('http://localhost:8080/git/get-file-content', {accessToken : localStorage.accessToken, content : node.content}).then(res => {
+                node.content = res.data.content;
+            }).catch(err => {
+                console.log(err);
             })
         }
+        else for (let i = 0; i < node.children.length; i ++) this.getContent(node.children[i]);
+        return node;
     }
 
     onToggle(node, toggled) {
