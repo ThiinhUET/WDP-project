@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import Explorer from './sidebar/Explorer';
 import Github from './sidebar/Github';
-import './css/sidebar.css'
+import './css/sidebar.css';
+import axios from 'axios';
 
 class SideBar extends Component {
     constructor(props) {
@@ -41,6 +42,10 @@ class SideBar extends Component {
             x.className = "icon";
         }
     }
+
+    downLoadRepo(){
+        console.log("hello");
+    }
     render() {
         return (
             <div className="sidebar">
@@ -51,7 +56,7 @@ class SideBar extends Component {
                     <div className="icon" id="github" title="GitHub" onClick={() => this.github()}>
                         <i className="fas fa-code-branch" style={{width: '25px', height: '25px', margin: '10px auto'}}></i>
                     </div>
-                    <div className="icon" id="export" title="Export">
+                    <div className="icon" id="export" title="Export" onClick = {() => {this.downLoadRepo()}}>
                         <i className="fas fa-download" style={{width: '25px', height: '25px', margin: '10px auto'}}></i>
                     </div>
                 </div>

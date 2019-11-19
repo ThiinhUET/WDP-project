@@ -22,6 +22,7 @@ class NewEditor extends React.Component {
   componentDidMount(){
     this.contentFlowSub = contentFlow.subscribe((value)=>{
       let realCode ;
+      this.setState({loading : true})
       axios.post('http://localhost:8080/git/get-file-content', {accessToken : localStorage.accessToken, content : value}).then(res => {
         realCode = res.data.content;
         this.setState({ content: realCode, loading : false});
@@ -56,13 +57,13 @@ class NewEditor extends React.Component {
         height: '100%', width: '100%'
       }}>
         <div className="playground">
-        {/* {this.state.loading && <Loading />} */}
+        {this.state.loading && <Loading />}
           <ControlledEditor
             height="100%"
             width="100%"
             theme={this.state.theme}
             language={this.state.language}
-            loading={<Loading />}
+            loading={<Loader />}
             editorDidMount={this.handleEditorDidMount.bind(this)}
             onChange={this.handleEditorChange.bind(this)}
             value={this.state.content}
