@@ -57,7 +57,7 @@ class NewEditor extends React.Component {
         height: '100%', width: '100%'
       }}>
         <div className="playground">
-        {this.state.loading && <Loading />}
+        {/* {this.state.loading && <Loading />} */}
           <ControlledEditor
             height="100%"
             width="100%"

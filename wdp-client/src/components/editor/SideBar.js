@@ -43,22 +43,22 @@ class SideBar extends Component {
         }
     }
 
-    downLoadRepo(){
-        console.log("hello");
-    }
     render() {
+        let username = localStorage.getItem('username');
+        let projectName = localStorage.getItem('projectName');
+        let downloadURL = "https://github.com/" + username + "/" + projectName + "/archive/master.zip";
         return (
             <div className="sidebar">
                 <div className="sbar_icons">
-                    <div className="icon open" id="explorer" title="Explorer" onClick={() => this.explorer()}>
+                    <div className="icon open" id="explorer" title="Explorer" onClick = {() => this.explorer()}>
                         <i className="fas fa-file" id="icon" style={{width: '25px', height: '25px', margin: '10px auto'}}></i>
                     </div>
-                    <div className="icon" id="github" title="GitHub" onClick={() => this.github()}>
+                    <div className="icon" id="github" title="GitHub" onClick = {() => this.github()}>
                         <i className="fas fa-code-branch" style={{width: '25px', height: '25px', margin: '10px auto'}}></i>
                     </div>
-                    <div className="icon" id="export" title="Export" onClick = {() => {this.downLoadRepo()}}>
+                    <a className="icon" id="export" title="Export" href = {downloadURL}>
                         <i className="fas fa-download" style={{width: '25px', height: '25px', margin: '10px auto'}}></i>
-                    </div>
+                    </a>
                 </div>
                 <div className="sbar_content">
                     {this.state.activeItem === "explorer" && <Explorer />}
