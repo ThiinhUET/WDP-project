@@ -11,7 +11,7 @@ class NewEditor extends React.Component {
     super(props);
     this.state = {
       theme: "dark",
-      language: "html",
+      language: "javascript",
       isEditorReady: true,
       content: localStorage.getItem('content'),
       loading : false

@@ -40,7 +40,12 @@ class Console extends Component {
 
     LogMessage(evt) {
         if (evt.key === 'Enter') {
-            eval(this.state.inputCommand);
+            try{
+                eval(this.state.inputCommand);
+            }
+            catch{
+                
+            }
             this.setState({ inputCommand: ''});
             setTimeout(() => {
                 document.getElementsByClassName("console_result")[0].scrollTop=document.getElementsByClassName("console_result")[0].scrollHeight;
