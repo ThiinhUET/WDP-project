@@ -73,7 +73,7 @@ class NewEditor extends React.Component {
         <div className="result">
           <div className="url_navigation">
             <i className="fas fa-globe-asia" style={{color: 'gray', width: '15px', height: '15px', paddingRight: '5px'}}></i>
-            <input defaultValue="localhost:8080/index.html" style={{width: 'calc(100% - 25px)', backgroundColor: 'transparent', color: '#0f0f0f', borderStyle: 'none', outline: 'none'}} />
+            <input defaultValue={(localStorage.projectName || "New-Project") + "/index.html"} style={{width: 'calc(100% - 25px)', backgroundColor: 'transparent', color: '#0f0f0f', borderStyle: 'none', outline: 'none'}} />
           </div>
           <iframe srcDoc={this.state.code} className="iframe" title="Result" id="iframe"></iframe>
           <Console />

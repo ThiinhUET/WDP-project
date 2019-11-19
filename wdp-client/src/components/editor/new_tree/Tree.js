@@ -1,4 +1,5 @@
 import React, { Fragment, PureComponent } from 'react';
+import { withRouter } from 'react-router-dom';
 import { includes } from 'lodash';
 import { Treebeard, decorators } from 'react-treebeard';
 import { Div } from 'react-treebeard/dist/components/common';
@@ -16,10 +17,11 @@ class NewTree extends PureComponent {
         super(props);
         window.data = this.state;
         this.state = {
-            data,
+            data: (this.props.location.state)? this.props.location.state.data : data,
             err: false,
             loading: false,
         };
+        console.log(this.props);
         this.onToggle = this.onToggle.bind(this);
         this.onSelect = this.onSelect.bind(this);
     }
@@ -29,15 +31,21 @@ class NewTree extends PureComponent {
         let login = localStorage.getItem('username');
         let repo = localStorage.getItem('projectName');
         
-        if (localStorage.projectName) this.setState({loading: true});
-         
-        axios.post('http://localhost:8080/git/user-listfile', {
-            accessToken: accessToken,
-            login: login, 
-            repo: repo
-        }).then((res) => {
-            this.setState({ data: res.data.filetree, loading: false});
-        })
+        if (this.state.data === data) {
+            if (localStorage.projectName) this.setState({loading: true});
+            
+            axios.post('http://localhost:8080/git/user-listfile', {
+                accessToken: accessToken,
+                login: login, 
+                repo: repo
+            }).then((res) => {
+                this.setState({ data: res.data.filetree, loading: false});
+                this.props.history.push({
+                    pathname: this.props.location.pathname,
+                    state: {data: this.state.data},
+                })
+            })
+        }
     }
 
     onToggle(node, toggled) {
@@ -107,15 +115,21 @@ class NewTree extends PureComponent {
                                 this.addBoxClear();
                             }
                             break;
-                        case "tree":
+                        case "folder":
                             if (isExist === -1) {
                                 data.children.push({ path: path, type: type, name: name, toggled: false, content: '', children: [] });
                                 this.addBoxClear();
                             }
                             break;
-                        case "blob":
+                        case "file":
                             if (isExist === -1) {
-                                data.children.push({ path: path, type: type, name: name, toggled: false, content: '' });
+                                let newType;
+                                if (!name.includes('.')) newType = 'file';
+                                else {
+                                    let nameEx = name.split('.');
+                                    newType = nameEx[nameEx.length - 1];
+                                }
+                                data.children.push({ path: path, type: newType, name: name, toggled: false, content: '' });
                                 this.addBoxClear();
                             }
                             break;
@@ -158,7 +172,7 @@ class NewTree extends PureComponent {
                     <span title="Add file" style={defaultStyles.addFileBox.icon_holder}
                         onClick={() => {
                             this.setState({err: false});
-                            this.addData(this.state.data, document.getElementById('addFile').value, 'blob')
+                            this.addData(this.state.data, document.getElementById('addFile').value, 'file')
                             setTimeout(() => {if (!this.state.err) this.addErr()}, 10);
                         }}
                     >
@@ -168,7 +182,7 @@ class NewTree extends PureComponent {
                     <span title="Add folder" style={defaultStyles.addFileBox.icon_holder}
                         onClick={() => {
                             this.setState({err: false});
-                            this.addData(this.state.data, document.getElementById('addFile').value, 'tree');
+                            this.addData(this.state.data, document.getElementById('addFile').value, 'folder');
                             setTimeout(() => {if (!this.state.err) this.addErr()}, 10);
                         }}
                     >
@@ -208,4 +222,4 @@ class NewTree extends PureComponent {
     }
 }
 
-export default NewTree;
+export default withRouter(NewTree);

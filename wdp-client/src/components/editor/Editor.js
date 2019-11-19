@@ -16,7 +16,7 @@ class Editor extends Component {
         }
         if (this.props.location.pathname !== '/editor')
             localStorage.setItem("projectName", this.state.projectName);
-        
+        else localStorage.removeItem("projectName");
     }
 
     
