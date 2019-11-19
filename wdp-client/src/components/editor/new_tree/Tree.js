@@ -131,7 +131,6 @@ class NewTree extends PureComponent {
         const { data, cursor } = this.state;
         return (
             <Fragment>
-                {this.state.loading && <Loading />}
                 <Div style={defaultStyles.searchBox}>
                     <Div className="input-group" style={{ display: 'flex', alignItems: 'center' }}>
                         <span className="input-group-addon" style={{ color: '#aeafad', padding: '5px' }}>
@@ -187,6 +186,7 @@ class NewTree extends PureComponent {
                     </span>
                 </Div>
                 <Div style={defaultStyles.component}>
+                    {this.state.loading && <Loading size='20'/>}
                     <Treebeard
                         style={defaultStyles}
                         data={data}
