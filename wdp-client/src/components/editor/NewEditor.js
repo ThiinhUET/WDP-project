@@ -11,15 +11,10 @@ class NewEditor extends React.Component {
     super(props);
     this.state = {
       theme: "dark",
-<<<<<<< HEAD
       language: "javascript",
       isEditorReady: true,
       content: localStorage.getItem('content'),
       loading : false
-=======
-      language: "html",
-      isEditorReady: true
->>>>>>> 0f8e0a65101ea4ee850d4ab772eafd652339cbab
     }
   }
 
