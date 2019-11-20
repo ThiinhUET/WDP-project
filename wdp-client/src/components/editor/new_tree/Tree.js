@@ -30,24 +30,23 @@ class NewTree extends PureComponent {
         let login = localStorage.getItem('username');
         let repo = localStorage.getItem('projectName');
         
-        // if (this.state.data === data) {
+        if (this.state.data === data) {
             if (localStorage.projectName) this.setState({loading: true});
-            let rootNode;
             axios.post('http://localhost:8080/git/user-listfile', {
                 accessToken: accessToken,
                 login: login, 
                 repo: repo
-            }).then((res) => {
-                rootNode = res.data.filetree;
-                
-                this.setState({ data: this.getContent(rootNode) });
+            }).then((res) => res.data.filetree
+            ).then((rootNode) => this.getContent(rootNode)
+            ).then((rootNode2) => this.setState({ data: rootNode2 })
+            ).then(() => setTimeout(() => {
                 this.props.history.push({
                     pathname: this.props.location.pathname,
                     state: {data: this.state.data},
-                })
+                });
                 this.setState({loading: false});
-            })
-        // }
+            }, 3000))
+        }
     }
 
     getContent(node) {
@@ -58,7 +57,7 @@ class NewTree extends PureComponent {
                 console.log(err);
             })
         }
-        else for (let i = 0; i < node.children.length; i ++) this.getContent(node.children[i]);
+        else for (let i = 0; i < node.children.length; i ++) node.children[i] = this.getContent(node.children[i]);
         return node;
     }
 
@@ -74,6 +73,13 @@ class NewTree extends PureComponent {
         }
 
         this.setState(() => ({ cursor: node, data: Object.assign({}, data) }));
+        this.props.history.push({
+            pathname: this.props.location.pathname,
+            state: {
+                ...this.props.location.state,
+                cursor: node,
+            },
+        })
     }
 
     onSelect(node) {
