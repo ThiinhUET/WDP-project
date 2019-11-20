@@ -11,24 +11,22 @@ class NewEditor extends React.Component {
     super(props);
     this.state = {
       theme: "dark",
+<<<<<<< HEAD
       language: "javascript",
       isEditorReady: true,
       content: localStorage.getItem('content'),
       loading : false
+=======
+      language: "html",
+      isEditorReady: true
+>>>>>>> 0f8e0a65101ea4ee850d4ab772eafd652339cbab
     }
   }
 
 
   componentDidMount(){
-    this.contentFlowSub = contentFlow.subscribe((value)=>{
-      let realCode ;
-      this.setState({loading : true})
-      axios.post('http://localhost:8080/git/get-file-content', {accessToken : localStorage.accessToken, content : value}).then(res => {
-        realCode = res.data.content;
-        this.setState({ content: realCode, loading : false});
-      }).catch(err => {
-        console.log(err);
-      })
+    this.contentFlowSub = contentFlow.subscribe((content)=>{
+        this.setState({ content: content });  
     });
   }
 
