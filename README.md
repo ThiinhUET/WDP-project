@@ -12,8 +12,7 @@
 - [x] Login
 - [x] Coding
 - [x] Running code
-- [ ] Exporting to zip
-- [ ] Auto saving code
+- [x] Exporting to zip
 - [x] Login with github
 - [ ] Commiting
 - [ ] Pulling, pushing code
