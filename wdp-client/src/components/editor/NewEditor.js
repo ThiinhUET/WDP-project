@@ -13,6 +13,7 @@ class NewEditor extends React.Component {
     super(props);
     this.state = {
       data: (this.props.location.state)? this.props.location.state.data : data,
+      cursor: (this.props.location.state)? this.props.location.state.cursor : '',
       theme: "dark",
       language: "html",
       isEditorReady: true,
@@ -26,7 +27,10 @@ class NewEditor extends React.Component {
     this.contentFlowSub = contentFlow.subscribe((content)=>{
         this.setState({ content: content });  
     });
-    this.props.history.listen((location) => this.setState({data: (location.state)? location.state.data : data}))
+    this.props.history.listen((location) => this.setState({
+      data: (location.state)? location.state.data : data,
+      cursor: (location.state)? location.state.cursor : ''
+    }))
   }
 
   componentWillUnmount() {
@@ -41,8 +45,16 @@ class NewEditor extends React.Component {
     this.setState.isEditorReady = true;
   }
 
+  updateNode(rootNode, node, content) {
+    if (rootNode === node) rootNode.content = content;
+    if (node.path.includes(rootNode.path) && rootNode.children)
+      for (let i = 0; i < rootNode.children.length; i ++) rootNode.children[i] = this.updateNode(rootNode.children[i], node, content);
+      return rootNode;
+  }
+
   handleEditorChange = (ev, value) => {
     this.setState({ code: value });
+    this.setState({data: this.updateNode(this.state.data, this.state.cursor, value)});
   }
 
   urlNavigation = (ev) => {
