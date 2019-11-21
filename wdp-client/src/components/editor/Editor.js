@@ -8,13 +8,14 @@ import logo from '../../assets/logo.png';
 import data from './new_tree/data';
 import './css/editor.css';
 
+import contentFlow from '../../service/content.service';
+
 class Editor extends Component {
     constructor(props) {
         super(props);
         this.state = {
             data: (this.props.location.state && this.props.location.state.data)? this.props.location.state.data : data,
             cursor: (this.props.location.state && this.props.location.state.cursor)? this.props.location.state.cursor : {"content": "<!-- write your code here -->"},
-            code: (this.props.location.state && this.props.location.state.code)? this.props.location.state.code : '',
             projectName: this.props.location.pathname.split('/')[2]
         }
         if (this.props.location.pathname !== '/editor')
@@ -23,12 +24,21 @@ class Editor extends Component {
     }
 
     componentDidMount() {
+        this.contentFlowSub = contentFlow.subscribe((value)=>{
+            this.setState({ code: value });  
+        });
         this.props.history.listen((location) => this.setState({
             data: (location.state && location.state.data)? location.state.data : this.state.data,
             cursor: (location.state && location.state.cursor)? location.state.cursor : {"content": "<!-- Select a file to code -->"},
-            code: (location.state && location.state.code)? location.state.code : '',
         }))
     }
+
+    componentWillUnmount() {
+        if (this.contentFlowSub) {
+          this.contentFlowSub.unsubscribe();
+          this.contentFlowSub = null;
+        }
+      }
 
     updateNode(rootNode, node, content) {
         if (rootNode === node) rootNode.content = content;

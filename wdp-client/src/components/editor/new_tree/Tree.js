@@ -72,7 +72,7 @@ class NewTree extends PureComponent {
         }
 
         this.setState(() => ({ cursor: node, data: Object.assign({}, data) }));
-        this.props.history.push({
+        if (node.type !== 'folder') this.props.history.push({
             pathname: this.props.location.pathname,
             state: {
                 ...this.props.location.state,

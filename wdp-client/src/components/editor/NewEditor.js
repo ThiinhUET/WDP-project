@@ -23,22 +23,11 @@ class NewEditor extends React.Component {
 
 
   componentDidMount(){
-    this.contentFlowSub = contentFlow.subscribe((content)=>{
-        this.setState({ content: content });  
-    });
     this.props.history.listen((location) => this.setState({
       data: (location.state && location.state.data)? location.state.data : this.state.data,
       cursor: (location.state && location.state.cursor)? location.state.cursor : {"content": "<!-- Select a file to code -->"},
     }))
   }
-
-  componentWillUnmount() {
-    if (this.contentFlowSub) {
-      this.contentFlowSub.unsubscribe();
-      this.contentFlowSub = null;
-    }
-  }
-
 
   handleEditorDidMount() {
     this.setState.isEditorReady = true;
@@ -46,10 +35,7 @@ class NewEditor extends React.Component {
 
   handleEditorChange = (ev, value) => {
     this.setState({code: value});
-    this.props.history.push({
-      pathname: this.props.location.pathname,
-      state: {...this.props.location.state, code: value},
-    })
+    contentFlow.next(value);
   }
 
   urlNavigation = (ev) => {
