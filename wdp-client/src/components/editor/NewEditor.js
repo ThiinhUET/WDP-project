@@ -12,12 +12,12 @@ class NewEditor extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: (this.props.location.state)? this.props.location.state.data : data,
-      cursor: (this.props.location.state)? this.props.location.state.cursor : '',
+      data: (this.props.location.state && this.props.location.state.data)? this.props.location.state.data : data,
+      cursor: (this.props.location.state && this.props.location.state.cursor)? this.props.location.state.cursor : {"content": "<!-- write your code here -->"},
+      urlHtml: (this.props.location.state && this.props.location.state.urlHtml)? this.props.location.state.urlHtml : '/index.html',
       theme: "dark",
       language: "html",
       isEditorReady: true,
-      urlHtml: '/index.html'
     }
   }
 
@@ -28,7 +28,7 @@ class NewEditor extends React.Component {
     });
     this.props.history.listen((location) => this.setState({
       data: (location.state && location.state.data)? location.state.data : this.state.data,
-      cursor: (location.state && location.state.cursor)? location.state.cursor : ''
+      cursor: (location.state && location.state.cursor)? location.state.cursor : {"content": "<!-- Select a file to code -->"},
     }))
   }
 
@@ -52,19 +52,24 @@ class NewEditor extends React.Component {
   }
 
   handleEditorChange = (ev, value) => {
-    this.setState({ code: value });
     this.setState({data: this.updateNode(this.state.data, this.state.cursor, value)});
-    this.props.history.push({
+    setTimeout(() => this.props.history.push({
       pathname: this.props.location.pathname,
       state: {...this.props.location.state, data: this.state.data},
-    })
+    }), 1000)
   }
 
   urlNavigation = (ev) => {
     let url = document.getElementById("url_navigation").value;
     let index = url.indexOf('/');
     url = url.slice(index);
-    if (ev.keyCode === 13) this.setState({urlHtml: url});
+    if (ev.keyCode === 13) {
+      this.setState({urlHtml: url});
+      this.props.history.push({
+        pathname: this.props.location.pathname,
+        state: {...this.props.location.state, urlHtml: url},
+      })
+    }
   }
 
   getContent = (path, node) => {
@@ -97,14 +102,14 @@ class NewEditor extends React.Component {
             loading={<Loading size='20'/>}
             editorDidMount={this.handleEditorDidMount.bind(this)}
             onChange={this.handleEditorChange.bind(this)}
-            value={this.state.content}
+            value={this.state.cursor.content || ''}
           />
         </div>
         <div className="resizer"></div>
         <div className="result">
           <div className="url_navigation">
             <i className="fas fa-globe-asia" style={{color: 'gray', width: '15px', height: '15px', paddingRight: '5px'}}></i>
-            <input id="url_navigation" defaultValue={(localStorage.projectName || "New-Project") + "/index.html"} onKeyDown={(ev) => this.urlNavigation(ev)} style={{width: 'calc(100% - 25px)', backgroundColor: 'transparent', color: '#0f0f0f', borderStyle: 'none', outline: 'none'}} />
+            <input id="url_navigation" defaultValue={(localStorage.projectName || "New-Project") + this.state.urlHtml} onKeyDown={(ev) => this.urlNavigation(ev)} style={{width: 'calc(100% - 25px)', backgroundColor: 'transparent', color: '#0f0f0f', borderStyle: 'none', outline: 'none'}} />
           </div>
           <iframe srcDoc={this.getContent(this.state.urlHtml, this.state.data)} className="iframe" title="Result" id="iframe"></iframe>
           <Console />

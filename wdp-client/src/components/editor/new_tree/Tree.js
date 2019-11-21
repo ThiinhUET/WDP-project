@@ -22,7 +22,6 @@ class NewTree extends PureComponent {
             loading: false,
         };
         this.onToggle = this.onToggle.bind(this);
-        this.onSelect = this.onSelect.bind(this);
     }
 
     componentDidMount() {
@@ -80,21 +79,6 @@ class NewTree extends PureComponent {
                 cursor: node,
             },
         })
-    }
-
-    onSelect(node) {
-        const { cursor, data } = this.state;
-
-        if (cursor) {
-            this.setState(() => ({ cursor, active: false }));
-            if (!includes(cursor.children, node)) {
-                cursor.toggled = false;
-                cursor.selected = false;
-            }
-        }
-
-        node.selected = true;
-        this.setState(() => ({ cursor: node, data: Object.assign({}, data) }));
     }
 
     onFilterMouseUp({ target: { value } }) {
@@ -225,15 +209,7 @@ class NewTree extends PureComponent {
                         style={defaultStyles}
                         data={data}
                         onToggle={this.onToggle}
-                        onSelect={this.onSelect}
                         decorators={{ ...decorators, Toggle, Header }}
-                        customStyles={{
-                            header: {
-                                title: {
-                                    color: 'red'
-                                }
-                            }
-                        }}
                     />
                 </Div>
                 <NodeViewer node={cursor} />
