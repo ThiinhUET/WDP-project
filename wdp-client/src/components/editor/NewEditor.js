@@ -13,7 +13,7 @@ class NewEditor extends React.Component {
     super(props);
     this.state = {
       data: (this.props.location.state && this.props.location.state.data)? this.props.location.state.data : data,
-      cursor: (this.props.location.state && this.props.location.state.cursor)? this.props.location.state.cursor : {"content": "<!-- write your code here -->"},
+      cursor: (this.props.location.state && this.props.location.state.cursor)? this.props.location.state.cursor : {"content": "<!-- Select a file to code -->"},
       urlHtml: (this.props.location.state && this.props.location.state.urlHtml)? this.props.location.state.urlHtml : '/index.html',
       theme: "dark",
       language: "html",
@@ -44,19 +44,13 @@ class NewEditor extends React.Component {
     this.setState.isEditorReady = true;
   }
 
-  updateNode(rootNode, node, content) {
-    if (rootNode === node) rootNode.content = content;
-    if (node.path.includes(rootNode.path) && rootNode.children)
-      for (let i = 0; i < rootNode.children.length; i ++) rootNode.children[i] = this.updateNode(rootNode.children[i], node, content);
-      return rootNode;
-  }
-
   handleEditorChange = (ev, value) => {
-    this.setState({data: this.updateNode(this.state.data, this.state.cursor, value)});
-    setTimeout(() => this.props.history.push({
+    this.setState({code: value});
+    this.props.history.push({
       pathname: this.props.location.pathname,
-      state: {...this.props.location.state, data: this.state.data},
-    }), 1000)
+      state: {...this.props.location.state, code: value},
+    })
+    console.log(this.props);
   }
 
   urlNavigation = (ev) => {
@@ -73,7 +67,6 @@ class NewEditor extends React.Component {
   }
 
   getContent = (path, node) => {
-    console.log(path, node)
     let content = '';
     if (node.path === path) content = node.content;
     if (node.children && path.includes(node.path))
