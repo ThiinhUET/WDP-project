@@ -19,7 +19,6 @@ class NewEditor extends React.Component {
       isEditorReady: true,
       urlHtml: '/index.html'
     }
-    console.log(this.props);
   }
 
 
@@ -28,8 +27,8 @@ class NewEditor extends React.Component {
         this.setState({ content: content });  
     });
     this.props.history.listen((location) => this.setState({
-      data: (location.state)? location.state.data : data,
-      cursor: (location.state)? location.state.cursor : ''
+      data: (location.state && location.state.data)? location.state.data : this.state.data,
+      cursor: (location.state && location.state.cursor)? location.state.cursor : ''
     }))
   }
 
@@ -55,17 +54,21 @@ class NewEditor extends React.Component {
   handleEditorChange = (ev, value) => {
     this.setState({ code: value });
     this.setState({data: this.updateNode(this.state.data, this.state.cursor, value)});
+    this.props.history.push({
+      pathname: this.props.location.pathname,
+      state: {...this.props.location.state, data: this.state.data},
+    })
   }
 
   urlNavigation = (ev) => {
     let url = document.getElementById("url_navigation").value;
     let index = url.indexOf('/');
     url = url.slice(index);
-    console.log(url);
     if (ev.keyCode === 13) this.setState({urlHtml: url});
   }
 
   getContent = (path, node) => {
+    console.log(path, node)
     let content = '';
     if (node.path === path) content = node.content;
     if (node.children && path.includes(node.path))

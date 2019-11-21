@@ -8,7 +8,7 @@ export default {
         {
             "path": "/index.html",
             "type": "html",
-            "name": "index.hml",
+            "name": "index.html",
             "toggled": false,
             "content": `<!DOCTYPE html>\n<html lang="en">\n<head>\n\t<meta charset="UTF-8">\n\t<meta name="viewport" content="width=device-width, initial-scale=1.0">\n\t<meta http-equiv="X-UA-Compatible" content="ie=edge">\n\t<title>Document</title>\n</head>\n<body>\n\t<!-- write your code here -->\n</body>\n</html>`
         },

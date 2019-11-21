@@ -30,8 +30,8 @@ class NewTree extends PureComponent {
         let login = localStorage.getItem('username');
         let repo = localStorage.getItem('projectName');
         
-        if (this.state.data === data) {
-            if (localStorage.projectName) this.setState({loading: true});
+        if (this.state.data === data && localStorage.projectName) {
+            this.setState({loading: true});
             axios.post('http://localhost:8080/git/user-listfile', {
                 accessToken: accessToken,
                 login: login, 
@@ -42,7 +42,7 @@ class NewTree extends PureComponent {
             ).then(() => setTimeout(() => {
                 this.props.history.push({
                     pathname: this.props.location.pathname,
-                    state: {data: this.state.data},
+                    state: {...this.props.location.state, data: this.state.data},
                 });
                 this.setState({loading: false});
             }, 3000))

@@ -10,7 +10,6 @@ const NodeViewer = ({node}) => {
         contentFlow.next("<!--Happy Coding-->");
     }else if (node.type !== 'folder') {
         contentFlow.next(node.content);
-        console.log(node.path, node.type);
     }
 
     return <Div></Div>;
