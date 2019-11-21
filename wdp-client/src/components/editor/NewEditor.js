@@ -21,12 +21,21 @@ class NewEditor extends React.Component {
     }
   }
 
-
   componentDidMount(){
+    this.contentFlowSub = contentFlow.subscribe((value)=>{
+      this.setState({ code: value });  
+    });
     this.props.history.listen((location) => this.setState({
       data: (location.state && location.state.data)? location.state.data : this.state.data,
       cursor: (location.state && location.state.cursor)? location.state.cursor : {"content": "<!-- Select a file to code -->"},
     }))
+  }
+
+  componentWillUnmount() {
+    if (this.contentFlowSub) {
+      this.contentFlowSub.unsubscribe();
+      this.contentFlowSub = null;
+    }
   }
 
   handleEditorDidMount() {
@@ -34,7 +43,6 @@ class NewEditor extends React.Component {
   }
 
   handleEditorChange = (ev, value) => {
-    this.setState({code: value});
     contentFlow.next(value);
   }
 
@@ -62,6 +70,20 @@ class NewEditor extends React.Component {
     return content;
   }
 
+  updateNode(rootNode, node, content) {
+    if (rootNode === node) rootNode.content = content;
+    if (node.path.includes(rootNode.path) && rootNode.children)
+      for (let i = 0; i < rootNode.children.length; i ++) rootNode.children[i] = this.updateNode(rootNode.children[i], node, content);
+    return rootNode;
+  }
+  saveCode() {
+    this.setState({data: this.updateNode(this.state.data, this.state.cursor, this.state.code)});
+    setTimeout(() => this.props.history.push({
+      pathname: this.props.location.pathname,
+      state: {...this.props.location.state, data: this.state.data},
+    }), 1000)
+  }
+
   render() {
     return (
       <div style={{
@@ -86,8 +108,14 @@ class NewEditor extends React.Component {
         <div className="resizer"></div>
         <div className="result">
           <div className="url_navigation">
-            <i className="fas fa-globe-asia" style={{color: 'gray', width: '15px', height: '15px', paddingRight: '5px'}}></i>
-            <input id="url_navigation" defaultValue={(localStorage.projectName || "New-Project") + this.state.urlHtml} onKeyDown={(ev) => this.urlNavigation(ev)} style={{width: 'calc(100% - 25px)', backgroundColor: 'transparent', color: '#0f0f0f', borderStyle: 'none', outline: 'none'}} />
+            <span onClick={() => this.saveCode()} title="Save & Run" className="run_btn" style={{display: 'flex', alignItems: 'center', backgroundColor:'#0d9e5b', color: '#f0f0f0', padding: '3px 5px', marginRight: '5px', borderRadius: '5px', width: '50px', cursor: 'pointer'}}>
+              <span style={{fontFamily: 'Source Sans Pro,Open Sans,Segoe UI,sans-serif', fontWeight: '600'}}>Run</span>
+              <i className="fas fa-play"style={{width: '15px', height: '15px', paddingLeft: '5px'}}></i>
+            </span>
+            <span className="url_inp" style={{display: 'flex', alignItems: 'center', width: 'calc(100% - 65px)', border: '1px solid #80808080', borderRadius: '10px'}}>
+              <i className="fas fa-globe-asia" style={{color: 'gray', width: '15px', height: '15px', padding: '4px 5px'}}></i>
+              <input type="text" spellcheck="false" id="url_navigation" defaultValue={(localStorage.projectName || "New-Project") + this.state.urlHtml} onKeyDown={(ev) => this.urlNavigation(ev)} style={{width: 'calc(100% - 25px)', backgroundColor: 'transparent', color: '#0f0f0f', borderStyle: 'none', outline: 'none'}} />
+            </span>
           </div>
           <iframe srcDoc={this.getContent(this.state.urlHtml, this.state.data)} className="iframe" title="Result" id="iframe"></iframe>
           <Console />

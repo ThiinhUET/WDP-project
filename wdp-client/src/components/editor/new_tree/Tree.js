@@ -8,7 +8,6 @@ import defaultStyles from './defaultStyles'
 import * as filters from './filter';
 import Header from './Header';
 import Toggle from './Toggle';
-import NodeViewer from './NodeViewer';
 import axios from 'axios';
 import Loading from '../../loading/Loading';
 
@@ -212,7 +211,6 @@ class NewTree extends PureComponent {
                         decorators={{ ...decorators, Toggle, Header }}
                     />
                 </Div>
-                <NodeViewer node={cursor} />
             </Fragment>
         );
     }

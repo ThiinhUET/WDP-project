@@ -8,8 +8,6 @@ import logo from '../../assets/logo.png';
 import data from './new_tree/data';
 import './css/editor.css';
 
-import contentFlow from '../../service/content.service';
-
 class Editor extends Component {
     constructor(props) {
         super(props);
@@ -24,35 +22,12 @@ class Editor extends Component {
     }
 
     componentDidMount() {
-        this.contentFlowSub = contentFlow.subscribe((value)=>{
-            this.setState({ code: value });  
-        });
         this.props.history.listen((location) => this.setState({
             data: (location.state && location.state.data)? location.state.data : this.state.data,
             cursor: (location.state && location.state.cursor)? location.state.cursor : {"content": "<!-- Select a file to code -->"},
         }))
     }
 
-    componentWillUnmount() {
-        if (this.contentFlowSub) {
-          this.contentFlowSub.unsubscribe();
-          this.contentFlowSub = null;
-        }
-      }
-
-    updateNode(rootNode, node, content) {
-        if (rootNode === node) rootNode.content = content;
-        if (node.path.includes(rootNode.path) && rootNode.children)
-            for (let i = 0; i < rootNode.children.length; i ++) rootNode.children[i] = this.updateNode(rootNode.children[i], node, content);
-            return rootNode;
-    }
-    saveCode() {
-        this.setState({data: this.updateNode(this.state.data, this.state.cursor, this.state.code)});
-        setTimeout(() => this.props.history.push({
-            pathname: this.props.location.pathname,
-            state: {...this.props.location.state, data: this.state.data},
-        }), 1000)
-    }
     returnHome(){
         this.props.history.push('/home');
     }
@@ -77,7 +52,7 @@ class Editor extends Component {
                         <span className="title">Editor</span>
                     </div>
                     <div className="header_center">
-                        <button onClick={() => this.saveCode()} style={{width: 'fit-content', padding: '0 10px', margin: '0 5px'}}>
+                        <button style={{width: 'fit-content', padding: '0 10px', margin: '0 5px'}}>
                             <i className="fas fa-cloud" style={{width: '30px', height: '30px', paddingRight: '10px'}}></i>
                             Save
                         </button>
