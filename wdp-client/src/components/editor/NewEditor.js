@@ -50,7 +50,6 @@ class NewEditor extends React.Component {
       pathname: this.props.location.pathname,
       state: {...this.props.location.state, code: value},
     })
-    console.log(this.props);
   }
 
   urlNavigation = (ev) => {
