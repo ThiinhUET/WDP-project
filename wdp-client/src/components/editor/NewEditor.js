@@ -53,11 +53,9 @@ class NewEditor extends React.Component {
 
   handleEditorChange = (ev, value) => {
     this.setState({ code: value });
-    this.setState({data: this.updateNode(this.state.data, this.state.cursor, value)});
-    this.props.history.push({
-      pathname: this.props.location.pathname,
-      state: {...this.props.location.state, data: this.state.data},
-    })
+    // this.setState({data: this.updateNode(this.state.data, this.state.cursor, value)});
+    console.log(value);
+    
   }
 
   urlNavigation = (ev) => {
