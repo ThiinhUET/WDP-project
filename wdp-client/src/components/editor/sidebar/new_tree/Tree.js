@@ -134,6 +134,7 @@ class NewTree extends PureComponent {
                                 else {
                                     let nameEx = name.split('.');
                                     newType = nameEx[nameEx.length - 1];
+                                    if (newType === 'js') newType = 'javascript';
                                 }
                                 data.children.push({ path: path, type: newType, name: name, toggled: false, content: '' });
                                 this.addBoxClear();
@@ -160,7 +161,9 @@ class NewTree extends PureComponent {
                         <input
                             className="form-control"
                             onKeyUp={this.onFilterMouseUp.bind(this)}
+                            autoComplete="off"
                             placeholder="Search the file..."
+                            spellCheck="false"
                             type="text"
                             style={{ outline: 'none', padding: '0px 5px', width: '75%' }}
                         />
@@ -172,6 +175,7 @@ class NewTree extends PureComponent {
                         title="Type path of file or folder and click the button to add or delete"
                         autoComplete="off"
                         placeholder="Path start with '/'..."
+                        spellCheck="false"
                         type="text"
                         onKeyDown={() => {document.getElementById("addFile").style.borderColor = 'gray'}}
                         style={defaultStyles.addFileBox.input}

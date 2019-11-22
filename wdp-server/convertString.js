@@ -48,6 +48,7 @@ convertString = (input) => {
             else {
                 let nameEx = name.split('.');
                 type = nameEx[nameEx.length - 1];
+                if (type === 'js') type = 'javascript';
             }
         }
         nodes[i] = new node(input.tree[i].path, type, name, false, (type !== 'folder')? input.tree[i].url : '');

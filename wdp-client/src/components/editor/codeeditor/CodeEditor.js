@@ -13,7 +13,6 @@ class CodeEditor extends Component {
         this.state = {
             cursor: (location.state && location.state.cursor)? location.state.cursor : {"content": "<!-- Select a file to code -->"},
             theme: "dark",
-            language: "html",
             isEditorReady: true,
         }
     }

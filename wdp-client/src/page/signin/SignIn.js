@@ -14,8 +14,9 @@ import './style.css';
 class SignIn extends Component {
     constructor(props) {
         super(props);
+        const location = this.props.location;
         this.state = {
-            redirect: (this.props.location.state)? this.props.location.state.redirect : '/dashboard',
+            redirect: (location.state)? location.state.redirect : '/dashboard',
             isUserDrop: false,
             isLoading : true,
         }
@@ -28,7 +29,6 @@ class SignIn extends Component {
 
     signIn() {
         const { redirect } = this.state;
-        const location = this.props.location;
         const authenticate = new Authenticate();
         this.setState({isLoading : true});
         authenticate.signin(() => {

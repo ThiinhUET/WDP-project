@@ -14,7 +14,7 @@ export default {
         },
         {
             "path": "/script.js",
-            "type": "js",
+            "type": "javascript",
             "name": "script.js",
             "toggled": false,
             "content": ""
