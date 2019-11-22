@@ -53,22 +53,7 @@ class Authenticate {
   
     signout = async (cb) => {
       await firebase.auth().signOut();
-      localStorage.removeItem('photoURL');
-      localStorage.removeItem('email');
-      localStorage.removeItem('accessToken');
-      localStorage.removeItem('username');
-      localStorage.removeItem('displayName');
-      localStorage.removeItem('uid');
-      localStorage.removeItem('bio');
-      localStorage.removeItem('blog');
-      localStorage.removeItem('company');
-      localStorage.removeItem('email',);
-      localStorage.removeItem('location');
-      localStorage.removeItem('html_url');
-      localStorage.removeItem('created_at');
-      localStorage.removeItem('updated_at');
-      localStorage.removeItem('repositories');
-      localStorage.removeItem('projectName');
+      localStorage.clear();
       setTimeout(cb, 100);
     };
 }

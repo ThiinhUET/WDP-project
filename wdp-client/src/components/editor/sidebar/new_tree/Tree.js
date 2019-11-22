@@ -86,9 +86,9 @@ class NewTree extends PureComponent {
     onFilterMouseUp({ target: { value } }) {
         const filter = value.trim();
         if (!filter) {
-            return this.setState(() => ({ data }));
+            return this.setState(() => ({ data: (this.props.location.state)? this.props.location.state.data : data }));
         }
-        let filtered = filters.filterTree(data, filter);
+        let filtered = filters.filterTree(this.state.data, filter);
         filtered = filters.expandFilteredNodes(filtered, filter);
         this.setState(() => ({ data: filtered }));
     }
@@ -123,7 +123,7 @@ class NewTree extends PureComponent {
                             break;
                         case "folder":
                             if (isExist === -1) {
-                                data.children.push({ path: path, type: type, name: name, toggled: false, content: '', children: [] });
+                                data.children.push({ path: path, type: type + '/', name: name, toggled: false, content: '', children: [] });
                                 this.addBoxClear();
                             }
                             break;
