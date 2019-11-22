@@ -77,7 +77,7 @@ class Editor extends Component {
                     </div>
                 </div>
                 <div className="maincontent editor">
-                    <div className="editor_pane vertical pane1">
+                    <div className="editor_pane vertical pane1" >
                         <SideBar />
                     </div>
                     <div className="resizer vertical"></div>
@@ -86,10 +86,10 @@ class Editor extends Component {
                     </div>
                     <div className="resizer vertical"></div>
                     <div className="editor_pane vertical pane3">
-                        <div className="editor_pane horizontal pane1">
+                        <div className="editor_pane horizontal pane1" style = {{flex : '1'}}>
                             <ResultFrame />
                         </div>
-                        <div className="editor_pane horizontal pane2">
+                        <div className="editor_pane horizontal pane2" style = {{position : 'absolute', bottom : '0'}}>
                             <Console />
                         </div>
                     </div>

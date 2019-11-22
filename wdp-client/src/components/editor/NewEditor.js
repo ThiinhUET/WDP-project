@@ -26,14 +26,17 @@ class NewEditor extends React.Component {
       this.setState({ code: value });  
     });
     this.languageFlowSub = languageFlow.subscribe((value) =>{
+        console.log(value);
         if(value === "html") this.setState({language : "html"});
         if(value === "js") this.setState({language : "javascript"});
         if(value === "css") this.setState({language : "css"});
+        console.log(this.state.language);
+
     })    
     this.props.history.listen((location) => this.setState({
       // data: (location.state && location.state.data)? location.state.data : this.state.data,
       cursor: (location.state && location.state.cursor)? location.state.cursor : {"content": "<!-- Select a file to code -->"},
-    }))
+    }));    
   }
 
   componentWillUnmount() {

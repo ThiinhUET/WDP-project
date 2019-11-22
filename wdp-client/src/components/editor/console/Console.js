@@ -15,7 +15,7 @@ class Console extends Component {
 
     openConsole() {
         if (!this.state.openConsole) {
-            document.getElementById("console").style.height = "30%";
+            document.getElementById("console").style.height = "30vh";
             document.getElementById("console_container").style.display = "block";
             document.getElementById("iframe").style.height = 'calc(70% - 40px)';
         }
