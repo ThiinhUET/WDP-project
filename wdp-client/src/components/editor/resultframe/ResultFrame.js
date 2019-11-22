@@ -45,12 +45,12 @@ class ResultFrame extends Component {
       }
     
     getContent = (path, node) => {
-        let content = '';
+        let content = 'Enter the url of html file to display the web review';
         if (node.path === path) content = node.content;
         if (node.children && path.includes(node.path))
             for (let i = 0; i < node.children.length; i ++) {
                 content = this.getContent(path, node.children[i]);
-                if (content !== '') break;
+                if (content !== 'Enter the url of html file to display the web review') break;
             }
         return content;
     }

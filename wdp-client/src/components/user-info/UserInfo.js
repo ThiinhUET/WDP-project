@@ -34,6 +34,9 @@ class UserInfo extends Component {
         this.setState({isUserDrop: !this.state.isUserDrop});
     }
 
+    returnHome = () => {
+        this.props.history.push('/home');
+    }
     openEditor = () => {
         this.props.history.push('/editor');
     }
@@ -52,6 +55,11 @@ class UserInfo extends Component {
                         <img src={localStorage.photoURL} alt="" style={{width: '30px', height: '30px', color: 'white', border: '1px solid'}} />
                     </button>
                     {this.state.isUserDrop && <div className="userdrop_container">
+                        <div className="user_item" id="home" onClick={() => this.returnHome()}>
+                            <i className="fas fa-home" style={{width: '12px', height: '12px', paddingRight: '15px'}}></i>
+                            Home
+                        </div>
+                        <div className="row_divider"></div>
                         <div className="user_item" id="profile" onClick={() => this.openProfile()}>
                             <i className="fas fa-user" style={{width: '12px', height: '12px', paddingRight: '15px'}}></i>
                             My Profile
