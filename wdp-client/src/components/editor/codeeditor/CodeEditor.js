@@ -3,8 +3,6 @@ import { withRouter } from 'react-router-dom';
 import { ControlledEditor } from "@monaco-editor/react";
 
 import contentFlow from '../../../service/content.service';
-import languageFlow from '../../../service/language.service';
-import Loading from '../../loading/Loading';
 
 import './style.css';
 
