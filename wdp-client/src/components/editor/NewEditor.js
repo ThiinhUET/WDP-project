@@ -7,6 +7,8 @@ import contentFlow from './../../service/content.service';
 import axios from 'axios';
 import Loading from '../loading/Loading';
 import data from './new_tree/data';
+import languageFlow from '../../service/language.servide';
+import { Logs } from "./demo";
 
 class NewEditor extends React.Component {
   constructor(props) {
@@ -16,7 +18,7 @@ class NewEditor extends React.Component {
       cursor: (this.props.location.state && this.props.location.state.cursor)? this.props.location.state.cursor : {"content": "<!-- Select a file to code -->"},
       urlHtml: (this.props.location.state && this.props.location.state.urlHtml)? this.props.location.state.urlHtml : '/index.html',
       theme: "dark",
-      language: "html",
+      language: "",
       isEditorReady: true,
     }
   }
@@ -25,6 +27,11 @@ class NewEditor extends React.Component {
     this.contentFlowSub = contentFlow.subscribe((value)=>{
       this.setState({ code: value });  
     });
+    this.languageFlowSub = languageFlow.subscribe((value) =>{
+        if(value === "html") this.setState({language : "html"});
+        if(value === "js") this.setState({language : "javascript"});
+        if(value === "css") this.setState({language : "css"});
+    })    
     this.props.history.listen((location) => this.setState({
       data: (location.state && location.state.data)? location.state.data : this.state.data,
       cursor: (location.state && location.state.cursor)? location.state.cursor : {"content": "<!-- Select a file to code -->"},
@@ -35,6 +42,10 @@ class NewEditor extends React.Component {
     if (this.contentFlowSub) {
       this.contentFlowSub.unsubscribe();
       this.contentFlowSub = null;
+    }
+    if (this.languageFlowSub) {
+      this.languageFlowSub.unsubscribe();
+      this.languageFlowSub = null;
     }
   }
 
