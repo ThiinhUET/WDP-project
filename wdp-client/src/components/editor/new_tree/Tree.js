@@ -10,7 +10,7 @@ import Header from './Header';
 import Toggle from './Toggle';
 import axios from 'axios';
 import Loading from '../../loading/Loading';
-import languageFlow from '../../../service/language.servide';
+import languageFlow from '../../../service/language.service';
 
 class NewTree extends PureComponent {
     constructor(props) {
@@ -81,10 +81,7 @@ class NewTree extends PureComponent {
                 },
             });
 
-            let currentLanguage = '';
-            let currentNode = node.path.split('/');
-            currentLanguage = currentNode[currentNode.length -1].split('.'); 
-            languageFlow.next(currentLanguage[1]);
+            languageFlow.next(node.type);
         } 
         this.setState(() => ({ cursor: node, data: Object.assign({}, data) }));
     }

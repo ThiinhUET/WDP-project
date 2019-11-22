@@ -7,7 +7,7 @@ import contentFlow from './../../service/content.service';
 import axios from 'axios';
 import Loading from '../loading/Loading';
 import data from './new_tree/data';
-import languageFlow from '../../service/language.servide';
+import languageFlow from '../../service/language.service';
 import { Logs } from "./demo";
 
 class NewEditor extends React.Component {
