@@ -5,13 +5,15 @@ import NewEditor from './NewEditor';
 import UserInfo from '../user-info/UserInfo';
 import '@fortawesome/fontawesome-free/js/all';
 import logo from '../../assets/logo.png';
+import data from './new_tree/data';
 import './css/editor.css';
 
 class Editor extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            ...this.props.location.state,
+            data: (this.props.location.state && this.props.location.state.data)? this.props.location.state.data : data,
+            cursor: (this.props.location.state && this.props.location.state.cursor)? this.props.location.state.cursor : {"content": "<!-- write your code here -->"},
             projectName: this.props.location.pathname.split('/')[2]
         }
         if (this.props.location.pathname !== '/editor')
@@ -19,7 +21,13 @@ class Editor extends Component {
         else localStorage.removeItem("projectName");
     }
 
-    
+    componentDidMount() {
+        this.props.history.listen((location) => this.setState({
+            data: (location.state && location.state.data)? location.state.data : this.state.data,
+            cursor: (location.state && location.state.cursor)? location.state.cursor : {"content": "<!-- Select a file to code -->"},
+        }))
+    }
+
     returnHome(){
         this.props.history.push('/home');
     }
