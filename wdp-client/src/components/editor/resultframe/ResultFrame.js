@@ -71,7 +71,7 @@ class ResultFrame extends Component {
     
     render() {
         return (
-            <div className="ResultFrame">
+            <div className="ResultFrame" style = {{height : '100%'}}>
                 <div className="url_navigation">
                     <span onClick={() => this.saveCode()} title="Save & Run" className="run_btn" style={{display: 'flex', alignItems: 'center', backgroundColor:'#0d9e5b', color: '#f0f0f0', padding: '3px 5px', marginRight: '5px', borderRadius: '5px', width: '50px', cursor: 'pointer'}}>
                         <span style={{fontFamily: 'Source Sans Pro,Open Sans,Segoe UI,sans-serif', fontWeight: '600'}}>Run</span>

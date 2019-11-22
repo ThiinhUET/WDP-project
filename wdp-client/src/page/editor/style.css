@@ -17,7 +17,10 @@
     min-width: 200px;
 }
 .editor_pane.vertical.pane3 {
-    flex: 1;
+    flex : 1;
+    display: flex;
+    flex-direction: column;
+    position: relative;
 }
 .editor_pane.horizontal {
     width: 100%;
