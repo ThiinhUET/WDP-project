@@ -61,6 +61,7 @@ class NewTree extends PureComponent {
 
     onToggle(node, toggled) {
         const { cursor, data } = this.state;
+        
         if (cursor) {
             this.setState(() => ({ cursor, active: false }));
         }
@@ -70,14 +71,16 @@ class NewTree extends PureComponent {
             node.toggled = toggled;
         }
 
+        if (node.type !== 'folder'){
+            this.props.history.push({
+                pathname: this.props.location.pathname,
+                state: {
+                    ...this.props.location.state,
+                    cursor: node,
+                },
+            });
+        } 
         this.setState(() => ({ cursor: node, data: Object.assign({}, data) }));
-        if (node.type !== 'folder') this.props.history.push({
-            pathname: this.props.location.pathname,
-            state: {
-                ...this.props.location.state,
-                cursor: node,
-            },
-        })
     }
 
     onFilterMouseUp({ target: { value } }) {

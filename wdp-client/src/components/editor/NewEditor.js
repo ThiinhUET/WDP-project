@@ -4,7 +4,9 @@ import { ControlledEditor } from "@monaco-editor/react";
 import Console from './console/Console';
 import contentFlow from './../../service/content.service';
 import Loading from '../loading/Loading';
-import data from './sidebar/new_tree/data';
+import data from './new_tree/data';
+import languageFlow from './../../service/language.service';
+import { Logs } from "./demo";
 
 class NewEditor extends React.Component {
   constructor(props) {
@@ -14,27 +16,36 @@ class NewEditor extends React.Component {
       cursor: (this.props.location.state && this.props.location.state.cursor)? this.props.location.state.cursor : {"content": "<!-- Select a file to code -->"},
       // urlHtml: (this.props.location.state && this.props.location.state.urlHtml)? this.props.location.state.urlHtml : '/index.html',
       theme: "dark",
-      language: "html",
+      language: "",
       isEditorReady: true,
     }
   }
 
   componentDidMount(){
-    // this.contentFlowSub = contentFlow.subscribe((value)=>{
-    //   this.setState({ code: value });  
-    // });
+    this.contentFlowSub = contentFlow.subscribe((value)=>{
+      this.setState({ code: value });  
+    });
+    this.languageFlowSub = languageFlow.subscribe((value) =>{
+        if(value === "html") this.setState({language : "html"});
+        if(value === "js") this.setState({language : "javascript"});
+        if(value === "css") this.setState({language : "css"});
+    })    
     this.props.history.listen((location) => this.setState({
       // data: (location.state && location.state.data)? location.state.data : this.state.data,
       cursor: (location.state && location.state.cursor)? location.state.cursor : {"content": "<!-- Select a file to code -->"},
     }))
   }
 
-  // componentWillUnmount() {
-  //   if (this.contentFlowSub) {
-  //     this.contentFlowSub.unsubscribe();
-  //     this.contentFlowSub = null;
-  //   }
-  // }
+  componentWillUnmount() {
+    if (this.contentFlowSub) {
+      this.contentFlowSub.unsubscribe();
+      this.contentFlowSub = null;
+    }
+    if (this.languageFlowSub) {
+      this.languageFlowSub.unsubscribe();
+      this.languageFlowSub = null;
+    }
+  }
 
   handleEditorDidMount() {
     this.setState.isEditorReady = true;
