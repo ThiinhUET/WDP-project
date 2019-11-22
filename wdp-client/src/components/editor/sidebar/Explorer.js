@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import NewTree from '../new_tree/Tree';
+import NewTree from './new_tree/Tree';
 
 
 class Explorer extends Component {

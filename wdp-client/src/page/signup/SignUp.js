@@ -1,6 +1,6 @@
 import React , {Component} from 'react';
 import {withRouter} from 'react-router-dom';
-import Background from '../background/Background';
+import Background from '../../components/background/Background';
 import logo from '../../assets/logo.png';
 import logo2 from '../../assets/logo2.png';
 import './style.css';

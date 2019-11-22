@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import {Route, Switch, BrowserRouter, Redirect } from 'react-router-dom';
-import Home from './components/home/Home';
-import Editor from './components/editor/Editor';
-import SignIn from './components/signin/SignIn';
-import SignUp from './components/signup/SignUp';
-import Profile from './components/profile/Profile';
-import Dashboard from './components/dashboard/Dashboard';
-import Terminal from './components/editor/CodeSandBoxCS'
+import Home from './page/home/Home';
+import Editor from './page/editor/Editor';
+import SignIn from './page/signin/SignIn';
+import SignUp from './page/signup/SignUp';
+import Profile from './page/profile/Profile';
+import Dashboard from './page/dashboard/Dashboard';
+import Terminal from './components/editor/console/CodeSandBoxCS'
 
 function PrivateRoute({ children, ...rest }) {
     return (

@@ -1,6 +1,6 @@
 import React, { Fragment, PureComponent } from 'react';
 import { withRouter } from 'react-router-dom';
-import { includes } from 'lodash';
+// import { includes } from 'lodash';
 import { Treebeard, decorators } from 'react-treebeard';
 import { Div } from 'react-treebeard/dist/components/common';
 import data from './data';
@@ -9,7 +9,7 @@ import * as filters from './filter';
 import Header from './Header';
 import Toggle from './Toggle';
 import axios from 'axios';
-import Loading from '../../loading/Loading';
+import Loading from '../../../loading/Loading';
 
 class NewTree extends PureComponent {
     constructor(props) {
@@ -136,6 +136,7 @@ class NewTree extends PureComponent {
                                 this.addBoxClear();
                             }
                             break;
+                        default: break;
                     }
                 }
                 else for (let i = 0; i < data.children.length; i ++) this.addData(data.children[i], path, type);
@@ -145,7 +146,7 @@ class NewTree extends PureComponent {
     } 
 
     render() {
-        const { data, cursor } = this.state;
+        const { data } = this.state;
         return (
             <Fragment>
                 <Div style={defaultStyles.searchBox}>

@@ -3,13 +3,17 @@ import { withRouter } from 'react-router-dom';
 
 import logo from '../../assets/logo.png';
 
-import UserInfo from '../user-info/UserInfo';
+import UserInfo from '../../components/user-info/UserInfo';
+import Loading from '../../components/loading/Loading';
 import './style.css';
 
 class Profile extends Component {
     constructor(props) {
         super(props);
-        localStorage.setItem('redirect', '/home');
+        this.state = {
+            isLoading: true
+        }
+        setTimeout(() => this.setState({isLoading: false}), 500);
     }
     componentDidMount() {
         let bio_content = document.getElementById("bio_content");
@@ -32,8 +36,10 @@ class Profile extends Component {
     }
     
     render() {
+        const { isLoading } = this.state;
         return (
             <div className="Profile">
+                {isLoading && <Loading size='30' />}
                 <div className="header">
                     <div className="header_left">
                         <button className="homebtn" title="Home" onClick={() => this.returnHome()}>
@@ -45,7 +51,7 @@ class Profile extends Component {
                         <UserInfo />
                     </div>
                 </div>
-                <div className="maincontent" style={{fontFamily: 'Fira Sans, sans-serif'}}>
+                <div className="maincontent profile">
                     <div className="top_content">
                         <div className="avatar_profile">
                             <img src={localStorage.photoURL} alt="" width={200} height={200} style={{border: '3px solid white'}} />

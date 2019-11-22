@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
-import Explorer from './sidebar/Explorer';
-import Github from './sidebar/Github';
-import './css/sidebar.css';
-import axios from 'axios';
+import Explorer from './Explorer';
+import Github from './Github';
+import './sidebar.css';
 
 class SideBar extends Component {
     constructor(props) {

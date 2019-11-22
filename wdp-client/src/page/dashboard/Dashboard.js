@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import logo from '../../assets/logo.png';
 
-import UserInfo from '../user-info/UserInfo';
+import UserInfo from '../../components/user-info/UserInfo';
 
 import './style.css';
+import Loading from '../../components/loading/Loading';
 
 class Dashboard extends Component {
     constructor(props) {
@@ -12,8 +13,10 @@ class Dashboard extends Component {
         this.state = {
             selectedElement: 'overview',
             gridTitle: 'Recent Projects',
-            repositories : []
+            repositories : [],
+            isLoading: true
         }
+        setTimeout(() => this.setState({isLoading: false}), 500);
     }
 
     componentDidMount(){
@@ -35,25 +38,26 @@ class Dashboard extends Component {
         if (x.contains(target)) {
             this.setState({gridTitle: 'Recent Projects', selectedElement: 'overview'});
             x.className += ' active';
-            y.classList = 'pane1 element';
+            y.className = 'dashboard_pane1 element';
             document.getElementById("recent_projects").style.display = "grid";
             document.getElementById("deleted_projects").style.display = "none";
         }
         if (y.contains(target)) {
             this.setState({gridTitle: 'Deleted Projects', selectedElement: 'trash'});
             y.className += ' active';
-            x.classList = 'pane1 element';
+            x.className = 'dashboard_pane1 element';
             document.getElementById("recent_projects").style.display = "none";
             document.getElementById("deleted_projects").style.display = "grid";
         }
     }
     
     render() {
-        let projects = this.state.repositories;
+        const { repositories, isLoading, gridTitle } = this.state;
         return (
             <div className="Dashboard">
+                { isLoading && <Loading size='30' /> }
                 <div className="header">
-                <div className="header_left">
+                    <div className="header_left">
                         <button className="homebtn" title="Home" onClick={() => this.returnHome()}>
                             <img src={logo} className="App-logo" alt="logo" width={40} height={40} />
                         </button>
@@ -63,29 +67,29 @@ class Dashboard extends Component {
                         <UserInfo />
                     </div>
                 </div>
-                <div className="maincontent" style={{width: '100%', height: '94vh'}}>
-                    <div className="pane vertical pane1">
-                        <div className="pane1 container" href={this.pane1_container} onClick={(evt) => this.onSelect(evt)}>
+                <div className="maincontent dashboard">
+                    <div className="dashboard_pane vertical dashboard_pane1">
+                        <div className="dashboard_pane1 container" onClick={(evt) => this.onSelect(evt)}>
                             <div style={{width: '100%', height: '5px', backgroundColor: '#1e1e1e'}}></div>
-                            <div className="pane1 element active" id="overview">
+                            <div className="dashboard_pane1 element active" id="overview">
                                 <i className="fas fa-th-large" style={{width: '20px', height: '20px', paddingRight: '10px'}}></i>
                                 <span>Overview</span>
                             </div>
-                            <div className="pane1 element" id="trash">
+                            <div className="dashboard_pane1 element" id="trash">
                                 <i className="fas fa-trash" style={{width: '20px', height: '20px', paddingRight: '10px'}}></i>
                                 Trash
                             </div>
                         </div>
                     </div>
-                    <div className="pane vertical pane2">
-                        <div className="pane2 header_container">
-                            <div className="grid_title">{this.state.gridTitle}</div>
+                    <div className="dashboard_pane vertical dashboard_pane2">
+                        <div className="dashboard_pane2 header_container">
+                            <div className="grid_title">{gridTitle}</div>
                         </div>
-                        <div className="pane2 grid_container" id="recent_projects">
+                        <div className="dashboard_pane2 grid_container" id="recent_projects">
                             <div className="grid_element new" onClick={() => this.openEditor('')}>
                                 <i className="fas fa-plus" style={{height: '6vh', width: '6vh', color: '#0d9e5bbf'}}></i>
                             </div>
-                            {projects.map((name, idx) => (
+                            {repositories.map((name, idx) => (
                                 <div className="grid_element project" key={idx} onDoubleClick={() => this.openEditor('/' + name)}>
                                     <div className="project_image"><i className="fas fa-code" style={{width: '60px', height: '60px', color: 'gray'}}></i></div>
                                     <div className="project_name">
@@ -97,7 +101,7 @@ class Dashboard extends Component {
                                 </div>
                             ))}
                         </div>
-                        <div className="pane2 grid_container" id="deleted_projects">
+                        <div className="dashboard_pane2 grid_container" id="deleted_projects">
 
                         </div>
                     </div>

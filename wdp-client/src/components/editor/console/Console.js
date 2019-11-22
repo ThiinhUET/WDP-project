@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './css/console.css';
+import './console.css';
 import Terminal from './CodeSandBoxCS';
 
 class Console extends Component {

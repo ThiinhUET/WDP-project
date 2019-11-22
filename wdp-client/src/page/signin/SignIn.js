@@ -4,9 +4,9 @@ import { withRouter } from 'react-router-dom';
 import logo from '../../assets/logo.png';
 import logo2 from '../../assets/logo2.png';
 
-import Authenticate from '../authprovider/Authenticate';
-import Background from '../background/Background';
-import Loading from '../loading/Loading'; 
+import Authenticate from '../../components/authprovider/Authenticate';
+import Background from '../../components/background/Background';
+import Loading from '../../components/loading/Loading'; 
 import '@fortawesome/fontawesome-free/js/all';
 import './style.css';
 
@@ -15,10 +15,11 @@ class SignIn extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            ...this.props.location.state,
+            redirect: (this.props.location.state)? this.props.location.state.redirect : '/dashboard',
             isUserDrop: false,
-            loading : false,
+            isLoading : true,
         }
+        setTimeout(() => this.setState({isLoading: false}), 500);
     }
     
     componentDidMount() {
@@ -26,13 +27,14 @@ class SignIn extends Component {
     }
 
     signIn() {
+        const { redirect } = this.state;
+        const location = this.props.location;
         const authenticate = new Authenticate();
-        this.setState({loading : true});
+        this.setState({isLoading : true});
         authenticate.signin(() => {
-            this.props.history.push((this.props.location.state)? ((this.state.redirect === '/editor')? '/editor': '/dashboard') : '/dashboard')
-            this.setState({loading: false});
-            }
-        );
+            this.props.history.push(redirect)
+            this.setState({isLoading: false});
+        });
     }
     
     returnHome() {
@@ -42,9 +44,10 @@ class SignIn extends Component {
         this.props.history.push('/signup');
     }
     render() {
+        const { isLoading } = this.state;
         return (
             <div className="signin">
-                {this.state.loading && <Loading size='30' />}
+                { isLoading && <Loading size='30' /> }
                 <Background width = '100%' />
                 <div className="header">
                     <div className="header_left">

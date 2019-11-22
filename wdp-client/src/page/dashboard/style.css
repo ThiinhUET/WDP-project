@@ -1,18 +1,22 @@
-.pane.vertical {
+.maincontent.dashboard {
+    width: 100%;
+    height: 94vh;
+}
+.dashboard_pane.vertical {
     height: calc(100% - 5px);
     margin-top: 10px;
 }
-.pane.vertical.pane1 {
+.dashboard_pane.vertical.dashboard_pane1 {
     flex: 1;
     min-width: 25vh;
     margin-right: 5px;
     background-color: rgb(40,40,40);
 }
-.pane1.container {
+.dashboard_pane1.container {
     position: relative;
     top: 10vh;
 }
-.pane1.element {
+.dashboard_pane1.element {
     font-family: Source Sans Pro,Open Sans,Segoe UI,sans-serif;
     font-size: 12pt;
     color: #f0f0f0;
@@ -20,13 +24,13 @@
     margin-bottom: 5px;
     cursor: pointer;
 }
-.pane1.element.active {
+.dashboard_pane1.element.active {
     background-color: #0d9e5b33;
 }
-.pane.vertical.pane2 {
+.dashboard_pane.vertical.dashboard_pane2 {
     flex: 6;
 }
-.pane2.header_container {
+.dashboard_pane2.header_container {
     display: flex;
     align-items: center;
     height: 10vh;
@@ -38,7 +42,7 @@
     color: #f0f0f0;
     padding: 20px;
 }
-.pane2.grid_container {
+.dashboard_pane2.grid_container {
     height: calc(100% - 10vh - 40px);
     padding: 40px 40px 0 40px;
     display: grid;

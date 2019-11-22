@@ -4,11 +4,19 @@ import {withRouter} from 'react-router-dom';
 import logo from '../../assets/logo.png';
 import logo3D from '../../assets/logo3D.gif';
 
-import UserInfo from '../user-info/UserInfo';
-import Background from '../background/Background';
+import UserInfo from '../../components/user-info/UserInfo';
+import Background from '../../components/background/Background';
+import Loading from '../../components/loading/Loading';
 
 class Home extends Component {
-
+    constructor(props) {
+        super(props);
+        this.state = {
+            isLoading: true
+        }
+        setTimeout(() => this.setState({isLoading: false}), 500);
+    }
+    
     openEditor() {
         this.props.history.push('/editor');
     }
@@ -25,8 +33,10 @@ class Home extends Component {
         this.props.history.push('/home');
     }
     render() { 
+        const { isLoading } = this.state;
         return (
             <div className="Home">
+                {isLoading && <Loading size='30' />}
                 <Background width = '70%' />
                 <div className="header">
                     <div className="header_left">
