@@ -30,7 +30,7 @@ class NewTree extends PureComponent {
         let repo = localStorage.getItem('projectName');
         
         if (this.state.data === data && localStorage.projectName) {
-            this.setState({loading: true});
+            setTimeout(() => this.setState({loading: true}), 500);
             axios.post('http://localhost:8080/git/user-listfile', {
                 accessToken: accessToken,
                 login: login, 

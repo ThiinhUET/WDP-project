@@ -41,11 +41,10 @@ class CodeEditor extends Component {
                     height="100%"
                     width="100%"
                     theme={this.state.theme}
-                    language={this.state.cursor.type}
-                    loading={<Loading size='20'/>}
+                    language={this.state.cursor.type || 'html'}
                     editorDidMount={this.handleEditorDidMount.bind(this)}
                     onChange={this.handleEditorChange.bind(this)}
-                    value={this.state.cursor.content || ''}
+                    value={this.state.cursor.content}
                 />
             </div>
         );
