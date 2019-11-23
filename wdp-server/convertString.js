@@ -53,6 +53,7 @@ convertString = (input) => {
         }
         nodes[i] = new node(input.tree[i].path, type, name, false, (type !== 'folder')? input.tree[i].url : '');
         if (nodes[i].type !== 'folder') nodes[i] = new leafNode(nodes[i]);
+        else nodes[i].path = nodes[i].path + '/';
     }
     for (let i = 0; i < input.tree.length; i ++) {
         if (nodes[i].type === 'folder') addNode(rootNode, nodes[i]);
