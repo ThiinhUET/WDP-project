@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './console.css';
 import Terminal from './CodeSandBoxCS';
-
+import {notification} from 'antd';
 class Console extends Component {
     constructor(props) {
         super(props);
@@ -43,8 +43,8 @@ class Console extends Component {
             try{
                 eval(this.state.inputCommand);
             }
-            catch{
-                
+            catch (e){
+                console.log("Invalid Syntax");
             }
             this.setState({ inputCommand: ''});
             setTimeout(() => {
