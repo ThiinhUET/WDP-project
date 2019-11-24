@@ -23,6 +23,8 @@ class Github extends Component {
                         <i className="fab fa-github" style={{width: '18px', height: '18px', paddingRight: '5px'}}></i>
                         <span>Sign in with GitHub</span>
                     </div>}
+
+                    <button onClick = {() => {console.log("Commited!")}} style = {{background : 'green', cursor : 'pointer'}}>Commit Changes</button>
                 </div>
             </div>
         );
