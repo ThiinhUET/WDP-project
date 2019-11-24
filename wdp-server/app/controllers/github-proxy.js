@@ -40,11 +40,11 @@ module.exports = {
         axios.get(baseURL + "/repos/" + owner + "/" + repo + "/commits", { headers: { Authorization: 'token ' + accessToken } }).then((res1) => {
             let lastCommit = res1.data[0];
             let sha = lastCommit.sha;
-            axios.get(baseURL + "/repos/" + owner + "/" + repo + "/git/trees/" + sha + "?recursive=1").then((res2) => {
+            axios.get(baseURL + "/repos/" + owner + "/" + repo + "/git/trees/" + sha + "?recursive=1", { headers: { Authorization: 'token ' + accessToken } }).then((res2) => {
                 let fileTree = convertTree(res2.data);              
                 res.send({ filetree: fileTree });
             }).catch(err =>{
-                console.log();
+                console.log("");
             });
         });
     },

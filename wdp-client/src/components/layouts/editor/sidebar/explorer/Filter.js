@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
-import { Div } from 'react-treebeard/dist/components/common';
 import defaultStyles from './defaultStyles';
 import { defaultdata } from './data';
 

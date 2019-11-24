@@ -1,4 +1,4 @@
-import React, { Fragment, PureComponent } from 'react';
+import React, { PureComponent } from 'react';
 import { withRouter } from 'react-router-dom';
 // import { includes } from 'lodash';
 import { Treebeard, decorators } from 'react-treebeard';

@@ -5,13 +5,7 @@ import FileTree from './FileTree';
 import Filter from './Filter';
 import CreateFile from './CreateFile';
 
-import { defaultdata } from './data';
-import { dataFlow } from '../../../../../services';
-
 class Explorer extends Component {
-    constructor(props){
-        super(props);
-    }
     render() {
         return (
             <div className="SidebarElement">

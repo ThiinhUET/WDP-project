@@ -39,6 +39,21 @@ class Authenticate {
     
     signin = (cb) => {
       const authProvider = new firebase.auth.GithubAuthProvider();
+      authProvider.addScope('repo');
+      authProvider.addScope('user');
+      authProvider.addScope('admin:enterprise'); 
+      authProvider.addScope('admin:org');
+      authProvider.addScope('admin:org_hook')  
+      authProvider.addScope('admin:public_key');
+      authProvider.addScope('admin:repo_hook');
+      authProvider.addScope('delete:packages');
+      authProvider.addScope('delete_repo');
+      authProvider.addScope('gist');
+      authProvider.addScope('notifications');
+      authProvider.addScope('read:packages');
+      authProvider.addScope('write:discussion'); 
+      authProvider.addScope('write:packages');
+
       firebaseApp
         .auth()
         .signInWithPopup(authProvider)

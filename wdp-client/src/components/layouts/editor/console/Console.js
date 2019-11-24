@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './console.css';
 import Terminal from './CodeSandBoxCS';
-import {notification} from 'antd';
 class Console extends Component {
     constructor(props) {
         super(props);

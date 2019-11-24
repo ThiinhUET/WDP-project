@@ -1,18 +1,26 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
-import Authenticate from '../../../common/authprovider/Authenticate'
+import Authenticate from '../../../common/authprovider/Authenticate';
+import { contentFlow } from '../../../../services';
 
 class Github extends Component {
     constructor(props) {
         super(props);
         this.state = {
-
+            codeToCommit : ""
         }
     }
     
     signIn() {
         const authenticate = new Authenticate();
         authenticate.signin(() => this.props.history.push('/editor'));
+    }
+    commitCode(){
+        this.contenFlowSub = contentFlow.subscribe((value) => {
+            console.log(value);
+            this.setState({commitCode : value});
+            console.log(this.state.codeToCommit);
+        });
     }
     render() {
         return (
@@ -23,6 +31,8 @@ class Github extends Component {
                         <i className="fab fa-github" style={{width: '18px', height: '18px', paddingRight: '5px'}}></i>
                         <span>Sign in with GitHub</span>
                     </div>}
+                    <input placeholder ="Commit messages" style = {{flex : '1', display :'block'}}></input>
+                    <button onClick = {() => this.commitCode()} style = {{background : 'green', cursor : 'pointer'}}>Commit Changes</button>
                 </div>
             </div>
         );
