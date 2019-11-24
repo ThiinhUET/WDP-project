@@ -3,14 +3,14 @@ import {withRouter} from 'react-router-dom';
 import * as Demo from "./demo";
 import { Hook, Console } from "console-feed";
 
-class Terminal extends Component {
+class ConsoleElement extends Component {
   state = {
     logs: Demo.Initial
   };
 
   componentDidMount() {
     Hook(
-      window.console,
+      document.getElementById('iframe').contentWindow.console,
       log => {
         this.setState({ logs: [...this.state.logs, log] });
       },
@@ -34,4 +34,4 @@ if (console.feed) {
   });
 }
 
-export default withRouter(Terminal);
+export default withRouter(ConsoleElement);
