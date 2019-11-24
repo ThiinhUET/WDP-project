@@ -55,8 +55,11 @@ class NewTree extends PureComponent {
             });
         } 
         this.setState(() => ({ cursor: node, data: Object.assign({}, data) }));
-        this.setState({data: this.props.location.state.data});
-        document.getElementById("searchBox").value = null;
+        let dataSearch = document.getElementById("searchBox");
+        if (dataSearch.value) {
+            this.setState({data: this.props.location.state.data});
+            dataSearch.value = null;
+        }
     }
 
     render() {
