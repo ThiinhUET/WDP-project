@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import {Route, Switch, BrowserRouter, Redirect } from 'react-router-dom';
-import Home from './page/home/Home';
-import Editor from './page/editor/Editor';
-import SignIn from './page/signin/SignIn';
-import SignUp from './page/signup/SignUp';
-import Profile from './page/profile/Profile';
-import Dashboard from './page/dashboard/Dashboard';
-import Terminal from './components/editor/console/CodeSandBoxCS'
+import Home from './components/pages/home/Home';
+import Editor from './components/pages/editor/Editor';
+import SignIn from './components/pages/signin/SignIn';
+import SignUp from './components/pages/signup/SignUp';
+import Profile from './components/pages/profile/Profile';
+import Dashboard from './components/pages/dashboard/Dashboard';
 
 function PrivateRoute({ children, ...rest }) {
     return (
@@ -33,9 +32,6 @@ class App extends Component {
                     </Route>
                     <Route exact path = '/signup'>
                         <SignUp />
-                    </Route>
-                    <Route exact path = '/tree'>
-                        <Terminal />
                     </Route>
                     <PrivateRoute exact path ='/profile'>
                         <Profile />
