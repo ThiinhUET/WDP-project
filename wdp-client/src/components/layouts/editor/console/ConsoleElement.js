@@ -4,11 +4,25 @@ import * as Demo from "./demo";
 import { Hook, Console } from "console-feed";
 
 class ConsoleElement extends Component {
-  state = {
-    logs: Demo.Initial
-  };
-
+  constructor(props) {
+    super(props);
+    this.state = {
+      logs: Demo.Initial
+    };
+  }
+  
   componentDidMount() {
+    Hook(
+      window.console,
+      log => {
+        this.props.history.listen((location) => {
+          location.state.command && this.setState({ logs: [...this.state.logs,  { method: "command", data: [location.state.command] }] })
+        });
+        if (log.method !== "warn") 
+          this.setState({ logs: [...this.state.logs, log] });
+      },
+      false
+    );
     Hook(
       document.getElementById('iframe').contentWindow.console,
       log => {
@@ -16,7 +30,6 @@ class ConsoleElement extends Component {
       },
       false
     );
-    Demo.Logs();
   }
 
   render() {
