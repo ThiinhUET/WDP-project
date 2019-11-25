@@ -6,7 +6,7 @@ class Console extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            openConsole: false,
+            openConsole: true,
             inputCommand: '',
             outputMsg: '//type your command//'
         }
@@ -49,9 +49,6 @@ class Console extends Component {
                 console.log("Invalid Syntax");
             }
             this.setState({ inputCommand: ''});
-            setTimeout(() => {
-                document.getElementsByClassName("console_result")[0].scrollTop=document.getElementsByClassName("console_result")[0].scrollHeight;
-            }, 100);
         }
     }
 
@@ -74,7 +71,7 @@ class Console extends Component {
                         </button>
                     </div>
                      <div ref={this.scrollContainer} className="console_result" id="console_result" style={{ height: 'calc(100% - 52px)' , overflow : 'auto'}} >
-                        <ConsoleElement inputCommand={this.state.inputCommand}/>
+                        <ConsoleElement />
                      </div>
                     <div className="console_input" style={{ display: 'flex', alignItems: 'center', width: '100%', backgroundColor: '#f0f0f005', color: '#f0f0f0' }}>
                         <i className="fas fa-chevron-right" style={{ width: '10px', height: '10px', paddingLeft: '5px' }}></i>

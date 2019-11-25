@@ -68,7 +68,7 @@
   
 .iframe {
     width: 100%;
-    height: calc(100% - 66px);
+    height: calc(70% - 50px);
     background-color: #f0f0f0;
     border-style: none;
 }

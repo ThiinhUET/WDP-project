@@ -16,10 +16,11 @@ class ConsoleElement extends Component {
       window.console,
       log => {
         this.props.history.listen((location) => {
-          location.state.command && this.setState({ logs: [...this.state.logs,  { method: "command", data: [location.state.command] }] })
+          if (location.state.command) this.setState({ logs: [...this.state.logs,  { method: "command", data: [location.state.command] }] })
         });
-        if (log.method !== "warn") 
+        if (log.method !== "warn" && log.method !== "error") 
           this.setState({ logs: [...this.state.logs, log] });
+        document.getElementById("console_result").scrollTop=document.getElementById("console_result").scrollHeight;
       },
       false
     );
@@ -27,6 +28,7 @@ class ConsoleElement extends Component {
       document.getElementById('iframe').contentWindow.console,
       log => {
         this.setState({ logs: [...this.state.logs, log] });
+        document.getElementById("console_result").scrollTop=document.getElementById("console_result").scrollHeight;
       },
       false
     );
