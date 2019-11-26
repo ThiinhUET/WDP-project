@@ -7,6 +7,7 @@ import Loading from '../../layouts/loading/Loading';
 import ResultFrame from '../../layouts/editor/resultframe/ResultFrame';
 import CodeEditor from '../../layouts/editor/codeeditor/CodeEditor';
 import Console from '../../layouts/editor/console/Console';
+import Diff from '../../layouts/editor/difference/Diff';
 
 import logo from '../../../assets/logo.png';
 import { defaultdata } from '../../layouts/editor/sidebar/explorer/data';
@@ -81,6 +82,7 @@ class Editor extends Component {
                         <SideBar />
                     </div>
                     <div className="resizer vertical"></div>
+                    <Diff />
                     <div className="editor_pane vertical pane2">
                         <CodeEditor/>
                     </div>

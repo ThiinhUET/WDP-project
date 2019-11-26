@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
-import Explorer from './explorer/Explorer';
+import Explorer from './Explorer';
 import Github from './Github';
 import './sidebar.css';
-import Diff from '../difference/Diff';
 class SideBar extends Component {
     constructor(props) {
         super(props)
@@ -23,8 +22,13 @@ class SideBar extends Component {
             this.setActiveItem("explorer");
             x.className += " open";
             document.getElementById("github").className = "icon";
+            document.getElementsByClassName("Diff")[0].style.display = "none";
+            document.getElementsByClassName("Diff")[0].style.left = "255px";
+            document.getElementsByClassName("Diff")[0].style.width = "calc(100vw - 255px)";
         }
         else {
+            document.getElementsByClassName("Diff")[0].style.left = "55px";
+            document.getElementsByClassName("Diff")[0].style.width = "calc(100vw - 55px)";
             this.setActiveItem("none");
             x.className = "icon";
         }
@@ -35,8 +39,13 @@ class SideBar extends Component {
             this.setActiveItem("github");
             x.className += " open";
             document.getElementById("explorer").className = "icon";
+            document.getElementsByClassName("Diff")[0].style.display = "block";
+            document.getElementsByClassName("Diff")[0].style.left = "255px";
+            document.getElementsByClassName("Diff")[0].style.width = "calc(100vw - 255px)";
         }
         else {
+            document.getElementsByClassName("Diff")[0].style.left = "55px";
+            document.getElementsByClassName("Diff")[0].style.width = "calc(100vw - 55px)";
             this.setActiveItem("none");
             x.className = "icon";
         }
