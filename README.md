@@ -14,7 +14,7 @@
 - [x] Running code
 - [x] Exporting to zip
 - [x] Login with github
-- [ ] Commiting
+- [x] Commiting
 - [ ] Pulling, pushing code
 - [ ] Inviting team members
 - [x] Terminal

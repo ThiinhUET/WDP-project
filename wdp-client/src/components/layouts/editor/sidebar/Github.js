@@ -6,6 +6,7 @@ import { defaultdata } from '../sidebar/explorer/data';
 import axios from 'axios';
 import { Icon, notification} from "antd";
 
+
 class Github extends Component {
     constructor(props) {
         super(props);
@@ -23,7 +24,13 @@ class Github extends Component {
         this.props.history.listen((location) => this.setState({
             data: (location.state && location.state.data) ? location.state.data : this.state.data,
             cursor: (location.state && location.state.cursor) ? location.state.cursor : this.state.cursor,
-        }))
+        }));
+        console.log(this.state.data);
+        let children = this.state.data.children;
+        for(let i = 0 ; i < children.length; i++){
+            if(children[i].modified === true){
+            }
+        }
     }
 
     signIn() {
@@ -90,8 +97,9 @@ class Github extends Component {
                         <i className="fab fa-github" style={{ width: '18px', height: '18px', paddingRight: '5px' }}></i>
                         <span>Sign in with GitHub</span>
                     </div>}
-                    <input id="commitMsg" placeholder="Commit messages" style={{ flex: '1', display: 'block', color : 'black' }}></input>
-                    <button onClick={() => this.commitCode()} style={{ background: 'green', cursor: 'pointer' }}>Commit Changes</button>
+                    <input id="commitMsg" placeholder="Commit messages" style={{ flex: '1', display: 'block', color : 'black', marginBottom: '1vh', textAlign : 'center' }}></input>
+                    <button onClick={() => this.commitCode()} style={{ background: 'green', cursor: 'pointer', marginBottom: '1vh'}}>Commit Changes</button>
+                    <div></div>
                 </div>
             </div>
         );
