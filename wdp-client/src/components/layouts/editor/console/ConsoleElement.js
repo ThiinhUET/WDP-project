@@ -9,8 +9,6 @@ class ConsoleElement extends Component {
   };
 
   componentDidMount() {
-    let resultFrame = document.getElementById('iframe').contentWindow;
-    this.props.history.listen(() => resultFrame = document.getElementById('iframe').contentWindow);
     Hook(
       window.console,
       log => {
@@ -21,7 +19,7 @@ class ConsoleElement extends Component {
       false
     );
     Hook(
-      resultFrame.console,
+      document.getElementById('iframe').contentWindow.console,
       log => {
         this.setState({ logs: [...this.state.logs, log] });
         document.getElementById("console_result").scrollTop=document.getElementById("console_result").scrollHeight;

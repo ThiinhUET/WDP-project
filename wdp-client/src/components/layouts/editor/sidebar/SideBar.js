@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import Explorer from './Explorer';
 import Github from './Github';
-import './sidebar.css';
+import './style.css';
 class SideBar extends Component {
     constructor(props) {
         super(props)
