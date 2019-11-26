@@ -4,8 +4,7 @@ import Authenticate from '../../../common/authprovider/Authenticate';
 import { contentFlow } from '../../../../services';
 import { defaultdata } from '../sidebar/explorer/data';
 import axios from 'axios';
-import 'antd/dist/antd.css';
-import {NotificationContainer, NotificationManager} from 'react-notifications';
+import { Icon, notification} from "antd";
 
 class Github extends Component {
     constructor(props) {
@@ -18,6 +17,8 @@ class Github extends Component {
         }
     }
 
+    
+
     componentDidMount() {
         this.props.history.listen((location) => this.setState({
             data: (location.state && location.state.data) ? location.state.data : this.state.data,
@@ -29,27 +30,6 @@ class Github extends Component {
         const authenticate = new Authenticate();
         authenticate.signin(() => this.props.history.push('/editor'));
     }
-
-    createNotification = (type) => {
-        return () => {
-          switch (type) {
-            case 'info':
-              NotificationManager.info('Info message');
-              break;
-            case 'success':
-              NotificationManager.success('Success message', 'Commit Success !');
-              break;
-            case 'warning':
-              NotificationManager.warning('Warning message', 'Close after 3000ms', 3000);
-              break;
-            case 'error':
-              NotificationManager.error('Error message', 'Click me!', 5000, () => {
-                alert('callback');
-              });
-              break;
-          }
-        };
-      };
 
     commitCode() {
         this.contenFlowSub = contentFlow.subscribe((value) => {
@@ -74,10 +54,9 @@ class Github extends Component {
                             "sha": shaKey
                         }, { headers: { 'Authorization': 'token ' + accessToken } }).
                             then(res1 => {
-                                // this.createNotification('success');
-                                console.log("done !");
+                               window.alert("Commit code successfully !")
                             }).catch(err => {
-                                this.createNotification('error');
+                                this.openNotification(false);
                             });
                     }).catch(err => {
                         console.log("Lỗi ở get content");
@@ -86,7 +65,22 @@ class Github extends Component {
         });
     }
 
-
+    openNotification = succces => {
+        if (succces)
+          notification.open({
+            message: "Succces",
+            description: "Gửi action thành công",
+            icon: <Icon type="smile" style={{ color: "#108ee9" }} />
+          });
+        else {
+          notification.open({
+            message: "Error",
+            description: "Bị lỗi rồi",
+            icon: <Icon type="smile" rotate={180} style={{ color: "#108ee9" }} />
+          });
+        }
+      };
+    
     render() {
         return (
             <div className="SidebarElement">
