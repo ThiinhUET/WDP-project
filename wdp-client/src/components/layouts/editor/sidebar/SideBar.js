@@ -3,7 +3,7 @@ import { withRouter } from 'react-router-dom';
 import Explorer from './explorer/Explorer';
 import Github from './Github';
 import './sidebar.css';
-
+import Diff from '../difference/Diff';
 class SideBar extends Component {
     constructor(props) {
         super(props)
@@ -40,6 +40,7 @@ class SideBar extends Component {
             this.setActiveItem("none");
             x.className = "icon";
         }
+        
     }
 
     render() {

@@ -6,6 +6,7 @@ class node {
         this.toggled = toggled;
         this.content = content;
         this.children = [];
+        this.modified = false;
     }
 
     addChildren(childrenNode) {
@@ -19,6 +20,7 @@ class leafNode {
         this.name = node.name;
         this.toggled = node.toggled;
         this.content = node.content;
+        this.modified = node.modified;
     }
 }
 addNode = (node1, node2) => {
