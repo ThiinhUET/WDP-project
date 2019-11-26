@@ -14,7 +14,11 @@
 - [x] Running code
 - [x] Exporting to zip
 - [x] Login with github
-- [ ] Commiting
+- [x] Commiting
 - [ ] Pulling, pushing code
 - [ ] Inviting team members
 - [x] Terminal
+
+
+### if you use chrome
+### go to chrome://settings/content/cookies and uncheck block third-party cookies
