@@ -16,7 +16,7 @@ export const defaultdata = {
             "type": "html",
             "name": "index.html",
             "toggled": false,
-            "content": `<!DOCTYPE html>\n<html lang="en">\n<head>\n\t<meta charset="UTF-8">\n\t<meta name="viewport" content="width=device-width, initial-scale=1.0">\n\t<meta http-equiv="X-UA-Compatible" content="ie=edge">\n\t<title>Document</title>\n</head>\n<body>\n\t<span>Write your code into index.html to display the web review</span>\n\t<!-- write your code here -->\n</body>\n</html>`
+            "content": `<!DOCTYPE html>\n<html lang="en">\n<head>\n\t<meta charset="UTF-8">\n\t<meta name="viewport" content="width=device-width, initial-scale=1.0">\n\t<meta http-equiv="X-UA-Compatible" content="ie=edge">\n\t<title>Document</title>\n\t<script src="./script.js"></script>\n\t<link rel="stylesheet" type="text/css" href="./style.css">\n</head>\n<body>\n\t<span>Write your code into index.html to display the web review</span>\n\t<!-- write your code here -->\n</body>\n</html>`
         },
         {
             "path": "/script.js",

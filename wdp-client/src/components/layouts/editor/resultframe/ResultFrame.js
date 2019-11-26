@@ -43,7 +43,28 @@ class ResultFrame extends Component {
             state: {...this.props.location.state, urlHtml: url},
           })
         }
-      }
+    }
+
+    getHtml = (path, node) => {
+        let dataView = this.getContent(path, node);
+        let scriptPaths = dataView.split("<script");
+        let firstIndexs = [];
+        let lastIndexs = [];
+        let oldContents = [];
+        firstIndexs[0] = -7;
+        for (let i = 0; i < scriptPaths.length; i ++) {
+            firstIndexs[i + 1] = scriptPaths[i].length + firstIndexs[i] + 7;
+            scriptPaths[i] = scriptPaths[i].split("</script>")[0];
+            lastIndexs[i] = firstIndexs[i] + scriptPaths[i].length + 16;
+            scriptPaths[i] = scriptPaths[i].split(`"`)[1].trim();
+            oldContents[i] = dataView.slice(firstIndexs[i], lastIndexs[i]);
+        }
+        for (let i = 1; i < scriptPaths.length; i ++) {
+            let scriptContent = "<script>" + this.getContent(scriptPaths[i], node) + "</script>";
+            dataView = dataView.replace(oldContents[i], scriptContent);
+        }
+        return dataView;
+    }
     
     getContent = (path, node) => {
         let content = 'Enter the url of html file to display the web review';
@@ -90,7 +111,7 @@ class ResultFrame extends Component {
                         <input type="text" spellCheck="false" autoComplete="off" id="url_navigation" defaultValue={(localStorage.projectName || "New-Project") + urlHtml} onKeyDown={(ev) => this.urlNavigation(ev)} style={{width: 'calc(100% - 25px)', backgroundColor: 'transparent', color: '#0f0f0f', borderStyle: 'none', outline: 'none'}} />
                     </span>
                 </div>
-                <iframe srcDoc={this.getContent(urlHtml, data)} className="iframe" title="Result" id="iframe"></iframe>
+                <iframe srcDoc={this.getHtml(urlHtml, data)} className="iframe" title="Result" id="iframe"></iframe>
             </div>
         );
     }

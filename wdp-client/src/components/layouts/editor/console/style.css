@@ -1,9 +1,10 @@
 .Console {
-    height: 26px;
+    height: 30vh;
     margin-right: 5px;
+    user-select: auto;
 }
 .console_contaniner {
-    display: none;
+    display: block;
     background-color: #1e1e1e;
     height: calc(100% - 26px);
 }
