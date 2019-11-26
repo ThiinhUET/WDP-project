@@ -17,11 +17,11 @@ class ResultFrame extends Component {
     
     componentDidMount(){
         this.contentFlowSub = contentFlow.subscribe((value)=>{
-            this.setState({ code: value });  
+            this.setState({ code: value });
         });
         this.props.history.listen((location) => this.setState({
             data: (location.state && location.state.data)? location.state.data : this.state.data,
-            cursor: (location.state && location.state.cursor)? location.state.cursor : {"content": "<!-- Select a file to code -->"},
+            cursor: (location.state && location.state.cursor)? location.state.cursor : this.state.cursor,
         }))
     }
     
@@ -47,22 +47,48 @@ class ResultFrame extends Component {
 
     getHtml = (path, node) => {
         let dataView = this.getContent(path, node);
+
         let scriptPaths = dataView.split("<script");
-        let firstIndexs = [];
-        let lastIndexs = [];
-        let oldContents = [];
-        firstIndexs[0] = -7;
-        for (let i = 0; i < scriptPaths.length; i ++) {
-            firstIndexs[i + 1] = scriptPaths[i].length + firstIndexs[i] + 7;
-            scriptPaths[i] = scriptPaths[i].split("</script>")[0];
-            lastIndexs[i] = firstIndexs[i] + scriptPaths[i].length + 16;
-            scriptPaths[i] = scriptPaths[i].split(`"`)[1].trim();
-            oldContents[i] = dataView.slice(firstIndexs[i], lastIndexs[i]);
+        if (scriptPaths.length > 1) {
+            let firstIndexs = [];
+            let lastIndexs = [];
+            let oldScriptContents = [];
+            firstIndexs[0] = -7;
+            for (let i = 0; i < scriptPaths.length; i ++) {
+                firstIndexs[i + 1] = scriptPaths[i].length + firstIndexs[i] + 7;
+                scriptPaths[i] = scriptPaths[i].split("</script>")[0];
+                lastIndexs[i] = firstIndexs[i] + scriptPaths[i].length + 16;
+                scriptPaths[i] = (scriptPaths[i].split(`"`)[1] || "").trim();
+                oldScriptContents[i] = dataView.slice(firstIndexs[i], lastIndexs[i]);
+            }
+            for (let i = 1; i < scriptPaths.length; i ++) {
+                let newScriptContent = "<script>" + this.getContent(scriptPaths[i], node) + "</script>";
+                if (newScriptContent === "<script>Enter the url of html file to display the web review</script>") return `Invalid Syntax: Path of script file start with '/'`;
+                dataView = dataView.replace(oldScriptContents[i], newScriptContent);
+            }
         }
-        for (let i = 1; i < scriptPaths.length; i ++) {
-            let scriptContent = "<script>" + this.getContent(scriptPaths[i], node) + "</script>";
-            dataView = dataView.replace(oldContents[i], scriptContent);
+
+        let stylePaths = dataView.split("<link");
+        if (stylePaths.length > 1) {
+            let firstIndexs = [];
+            let lastIndexs = [];
+            let oldStyleContents = [];
+            firstIndexs[0] = -5;
+            for (let i = 0; i < stylePaths.length; i ++) {
+                firstIndexs[i + 1] = stylePaths[i].length + firstIndexs[i] + 5;
+                stylePaths[i] = stylePaths[i].split(">")[0];
+                lastIndexs[i] = firstIndexs[i] + stylePaths[i].length + 6;
+                stylePaths[i] = (stylePaths[i].split(`"`)[5] || "").trim();
+                oldStyleContents[i] = dataView.slice(firstIndexs[i], lastIndexs[i]);
+            }
+            for (let i = 1; i < stylePaths.length; i ++) 
+                if (oldStyleContents[i] && oldStyleContents[i].includes("stylesheet")) {
+                    let newStyleContent = "<style>" + this.getContent(stylePaths[i], node) + "</style>";
+                    if (newStyleContent === "<style>Enter the url of html file to display the web review</style>") return `Invalid Syntax: Path of style file start with '/'`;
+                    dataView = dataView.replace(oldStyleContents[i], newStyleContent);
+                }
         }
+
         return dataView;
     }
     

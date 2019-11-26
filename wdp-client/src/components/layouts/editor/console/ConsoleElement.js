@@ -4,20 +4,16 @@ import * as Demo from "./demo";
 import { Hook, Console } from "console-feed";
 
 class ConsoleElement extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      logs: Demo.Initial
-    };
-  }
-  
+  state = {
+    logs: Demo.Initial
+  };
+
   componentDidMount() {
+    let resultFrame = document.getElementById('iframe').contentWindow;
+    this.props.history.listen(() => resultFrame = document.getElementById('iframe').contentWindow);
     Hook(
       window.console,
       log => {
-        this.props.history.listen((location) => {
-          if (location.state.command) this.setState({ logs: [...this.state.logs,  { method: "command", data: [location.state.command] }] })
-        });
         if (log.method !== "warn" && log.method !== "error") 
           this.setState({ logs: [...this.state.logs, log] });
         document.getElementById("console_result").scrollTop=document.getElementById("console_result").scrollHeight;
@@ -25,13 +21,14 @@ class ConsoleElement extends Component {
       false
     );
     Hook(
-      document.getElementById('iframe').contentWindow.console,
+      resultFrame.console,
       log => {
         this.setState({ logs: [...this.state.logs, log] });
         document.getElementById("console_result").scrollTop=document.getElementById("console_result").scrollHeight;
       },
       false
     );
+    Demo.Logs();
   }
 
   render() {

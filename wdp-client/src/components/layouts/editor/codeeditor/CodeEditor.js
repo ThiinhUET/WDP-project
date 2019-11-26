@@ -16,12 +16,16 @@ class CodeEditor extends Component {
             theme: "dark",
             isEditorReady: true,
         }
+        contentFlow.next(this.state.cursor.content);
     }
 
     componentDidMount(){
-        this.props.history.listen((location) => this.setState({
-            cursor: (location.state && location.state.cursor)? location.state.cursor : {"content": "<!-- Select a file to code -->"},
-        }))
+        this.props.history.listen((location) => {
+            this.setState({
+                cursor: (location.state && location.state.cursor)? location.state.cursor : this.state.cursor,
+            });
+            contentFlow.next(this.state.cursor.content);
+        });
     }
 
     handleEditorDidMount() {

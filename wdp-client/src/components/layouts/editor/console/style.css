@@ -1,7 +1,7 @@
 .Console {
     height: 30vh;
     margin-right: 5px;
-    user-select: auto;
+    user-select: text;
 }
 .console_contaniner {
     display: block;

@@ -16,6 +16,7 @@ class NewTree extends PureComponent {
         const location = this.props.location;
         this.state = {
             data: (location.state && location.state.data)? location.state.data : defaultdata,
+            cursor: (location.state && location.state.cursor)? location.state.cursor : {"content": "<!-- Select a file to code -->"},
             isLoading: false,
         };
         this.onToggle = this.onToggle.bind(this);
@@ -27,6 +28,7 @@ class NewTree extends PureComponent {
         });
         this.props.history.listen((location) => this.setState({
             data: (location.state && location.state.data)? location.state.data : this.state.data,
+            cursor: (location.state && location.state.cursor)? location.state.cursor : this.state.cursor,
         }))
     }
 

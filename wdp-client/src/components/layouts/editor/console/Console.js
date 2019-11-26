@@ -41,9 +41,6 @@ class Console extends Component {
         if (evt.key === 'Enter') {
             try{
                 eval(this.state.inputCommand);
-                this.props.history.push({
-                    state: {...this.props.location.state, command: this.state.inputCommand}
-                })
             }
             catch (e){
                 console.log("Invalid Syntax");
