@@ -40,9 +40,12 @@ class CodeEditor extends Component {
         const { theme, cursor } = this.state;
         return (
             <div className="CodeEditor">
+                <div className="header_tab">
+                    <div className="header_tab_element">{cursor.name}</div>
+                </div>
                 <ControlledEditor
                     loading={<Loading size='20' _zIndex = '-1'/>}
-                    height="100%"
+                    height="calc(100% - 30px)"
                     width="100%"
                     theme={theme}
                     language={cursor.type || 'html'}
