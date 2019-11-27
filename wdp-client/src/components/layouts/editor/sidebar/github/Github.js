@@ -102,11 +102,6 @@ class Github extends Component {
             });
         } 
         this.setState(() => ({ cursor: node, data: Object.assign({}, data) }));
-        // let dataSearch = document.getElementById("searchBox");
-        // if (dataSearch.value) {
-        //     this.setState({data: this.props.location.state.data});
-        //     dataSearch.value = null;
-        // }
     }
     render() {
         return (

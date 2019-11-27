@@ -16,21 +16,24 @@ export const defaultdata = {
             "type": "html",
             "name": "index.html",
             "toggled": false,
-            "content": `<!DOCTYPE html>\n<html lang="en">\n<head>\n\t<meta charset="UTF-8">\n\t<meta name="viewport" content="width=device-width, initial-scale=1.0">\n\t<meta http-equiv="X-UA-Compatible" content="ie=edge">\n\t<title>Document</title>\n\t<script src="/script.js"></script>\n\t<link rel="stylesheet" type="text/css" href="/style.css">\n</head>\n<body>\n\t<span>Write your code into index.html to display the web review</span>\n\t<!-- write your code here -->\n</body>\n</html>`
+            "content": `<!DOCTYPE html>\n<html lang="en">\n<head>\n\t<meta charset="UTF-8">\n\t<meta name="viewport" content="width=device-width, initial-scale=1.0">\n\t<meta http-equiv="X-UA-Compatible" content="ie=edge">\n\t<title>Document</title>\n\t<script src="/script.js"></script>\n\t<link rel="stylesheet" type="text/css" href="/style.css">\n</head>\n<body>\n\t<span>Write your code into index.html to display the web review</span>\n\t<!-- write your code here -->\n</body>\n</html>`,
+            "oldcontent": `<!DOCTYPE html>\n<html lang="en">\n<head>\n\t<meta charset="UTF-8">\n\t<meta name="viewport" content="width=device-width, initial-scale=1.0">\n\t<meta http-equiv="X-UA-Compatible" content="ie=edge">\n\t<title>Document</title>\n\t<script src="/script.js"></script>\n\t<link rel="stylesheet" type="text/css" href="/style.css">\n</head>\n<body>\n\t<span>Write your code into index.html to display the web review</span>\n\t<!-- write your code here -->\n</body>\n</html>`
         },
         {
             "path": "/script.js",
             "type": "javascript",
             "name": "script.js",
             "toggled": false,
-            "content": ""
+            "content": "",
+            "oldcontent": ""
         },
         {
             "path": "/style.css",
             "type": "css",
             "name": "style.css",
             "toggled": false,
-            "content": ""
+            "content": "",
+            "oldcontent": ""
         }
     ]
 }
@@ -75,6 +78,7 @@ class DataLoading extends Component {
                 content : node.content
             }).then(res => {
                 node.content = res.data.content;
+                node.oldcontent = res.data.content;
             }).catch(err => {
                 console.log(err);
             })

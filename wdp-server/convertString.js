@@ -20,6 +20,7 @@ class leafNode {
         this.name = node.name;
         this.toggled = node.toggled;
         this.content = node.content;
+        this.oldcontent = node.content;
         this.modified = node.modified;
     }
 }
