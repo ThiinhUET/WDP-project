@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 
-import { defaultdata } from '../sidebar/explorer/data';
+import { defaultdata } from '../sidebar/data';
 import { contentFlow } from '../../../../services';
 
 class ResultFrame extends Component {
@@ -130,11 +130,11 @@ class ResultFrame extends Component {
         return (
             <div className="ResultFrame" style = {{height : '100%'}}>
                 <div className="url_navigation">
-                    <span onClick={() => this.saveCode()} title="Save & Run" className="run_btn" style={{display: 'flex', alignItems: 'center', backgroundColor:'#0d9e5b', color: '#f0f0f0', padding: '3px 5px', marginRight: '5px', borderRadius: '5px', width: '50px', cursor: 'pointer'}}>
-                        <span style={{fontFamily: 'Source Sans Pro,Open Sans,Segoe UI,sans-serif', fontWeight: '600'}}>Run</span>
+                    <span onClick={() => this.saveCode()} title="Save & Run" className="run_btn" style={{display: 'flex', alignItems: 'center', backgroundColor:'#0d9e5b', color: '#f0f0f0', padding: '3px 5px', marginRight: '5px', borderRadius: '5px', width: '90px', cursor: 'pointer'}}>
+                        <span style={{fontFamily: 'Source Sans Pro,Open Sans,Segoe UI,sans-serif', fontWeight: '600', fontSize: '10pt', letterSpacing: '0.5px'}}>Save & Run</span>
                         <i className="fas fa-play"style={{width: '15px', height: '15px', paddingLeft: '5px'}}></i>
                     </span>
-                    <span className="url_inp" style={{display: 'flex', alignItems: 'center', width: 'calc(100% - 75px)', border: '1px solid #80808080', borderRadius: '10px'}}>
+                    <span className="url_inp" style={{display: 'flex', alignItems: 'center', width: 'calc(100% - 115px)', border: '1px solid #80808080', borderRadius: '10px'}}>
                         <i className="fas fa-globe-asia" style={{color: 'gray', width: '15px', height: '15px', padding: '4px 5px'}}></i>
                         <input type="text" spellCheck="false" autoComplete="off" id="url_navigation" defaultValue={(localStorage.projectName || "New-Project") + urlHtml} onKeyDown={(ev) => this.urlNavigation(ev)} style={{width: 'calc(100% - 25px)', backgroundColor: 'transparent', color: '#0f0f0f', borderStyle: 'none', outline: 'none'}} />
                     </span>

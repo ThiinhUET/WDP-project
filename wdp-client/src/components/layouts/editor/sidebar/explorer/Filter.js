@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
-import defaultStyles from './defaultStyles';
-import { defaultdata } from './data';
+import defaultStyles from '../defaultStyles';
+import { defaultdata } from '../data';
 
 import { dataFlow } from '../../../../../services';
 

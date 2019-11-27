@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 
-import FileTree from './explorer/FileTree';
-import Filter from './explorer/Filter';
-import CreateFile from './explorer/CreateFile';
+import FileTree from './FileTree';
+import Filter from './Filter';
+import CreateFile from './CreateFile';
 
 class Explorer extends Component {
     render() {

@@ -7,10 +7,10 @@ import Loading from '../../layouts/loading/Loading';
 import ResultFrame from '../../layouts/editor/resultframe/ResultFrame';
 import CodeEditor from '../../layouts/editor/codeeditor/CodeEditor';
 import Console from '../../layouts/editor/console/Console';
-import Diff from '../../layouts/editor/difference/Diff';
+import Diff from '../../layouts/editor/sidebar/github/Diff';
 
 import logo from '../../../assets/logo.png';
-import { defaultdata } from '../../layouts/editor/sidebar/explorer/data';
+import { defaultdata } from '../../layouts/editor/sidebar/data';
 import '@fortawesome/fontawesome-free/js/all';
 import './style.css';
 
@@ -61,10 +61,6 @@ class Editor extends Component {
                         <span className="title">Editor</span>
                     </div>
                     <div className="header_center">
-                        <button style={{width: 'fit-content', padding: '0 10px', margin: '0 5px'}}>
-                            <i className="fas fa-cloud" style={{width: '30px', height: '30px', paddingRight: '10px'}}></i>
-                            Save
-                        </button>
                         <a href="/editor" target="_blank" rel="noopener noreferrer">
                             <button style={{width: 'fit-content', padding: '0 10px', margin: '0 5px'}}>
                                 <i className="far fa-plus-square" style={{width: '30px', height: '30px', paddingRight: '10px'}}></i>

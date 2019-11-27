@@ -6,7 +6,7 @@ import SignIn from './components/pages/signin/SignIn';
 import SignUp from './components/pages/signup/SignUp';
 import Profile from './components/pages/profile/Profile';
 import Dashboard from './components/pages/dashboard/Dashboard';
-import Diff from './components/layouts/editor/difference/Diff';
+import Diff from './components/layouts/editor/sidebar/github/Diff';
 
 function PrivateRoute({ children, ...rest }) {
     return (

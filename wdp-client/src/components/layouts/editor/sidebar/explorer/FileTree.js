@@ -2,11 +2,11 @@ import React, { PureComponent } from 'react';
 import { withRouter } from 'react-router-dom';
 // import { includes } from 'lodash';
 import { Treebeard, decorators } from 'react-treebeard';
-import defaultStyles from './defaultStyles';
-import { defaultdata } from './data';
-import Header from './Header';
-import Toggle from './Toggle';
-import DataLoading from './data'
+import defaultStyles from '../defaultStyles';
+import { defaultdata } from '../data';
+import Header from '../Header';
+import Toggle from '../Toggle';
+import DataLoading from '../data'
 
 import { dataFlow } from '../../../../../services';
 

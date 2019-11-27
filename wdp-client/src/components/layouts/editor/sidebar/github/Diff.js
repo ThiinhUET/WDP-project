@@ -3,6 +3,20 @@ import {withRouter} from 'react-router-dom';
 import {DiffEditor} from '@monaco-editor/react';
 
 class Diff extends Component{
+    constructor(props) {
+        super(props);
+        const location = this.props.location;
+        this.state = {
+            modifiedCursor: (location.state && location.state.modifiedCursor) ? location.state.modifiedCursor : ''
+        }
+    }
+
+    componentDidMount() {
+        this.props.history.listen((location) => this.setState({
+            modifiedCursor: (location.state && location.state.modifiedCursor) ? location.state.modifiedCursor : this.state.modifiedCursor
+        }))
+    }
+    
     render() {
         return (
              <div className="Diff" style = {{position: 'absolute', display: 'none', backgroundColor: '#202124', left: '255px', width: 'calc(100vw - 255px)', height: '100%', zIndex: '999'}}>

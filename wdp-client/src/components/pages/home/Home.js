@@ -20,11 +20,8 @@ class Home extends Component {
     openEditor() {
         this.props.history.push('/editor');
     }
-    openSignIn(redirectPage) {
-        this.props.history.push({
-            pathname: '/signin',
-            state: {redirect: redirectPage}
-        });
+    openSignIn() {
+        this.props.history.push('/signin');
     }
     openSignUp(){
         this.props.history.push('/signup');
@@ -46,7 +43,7 @@ class Home extends Component {
                         <span className="title">WDP</span>
                     </div>
                     <div className="header_right">
-                        {!localStorage.uid && <button className="signin" onClick={() => this.openSignIn('/home')}>Sign In</button>}
+                        {!localStorage.uid && <button className="signin" onClick={() => this.openSignIn()}>Sign In</button>}
                         <UserInfo />
                     </div>
                 </div>

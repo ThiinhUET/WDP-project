@@ -16,7 +16,7 @@ class SignIn extends Component {
         super(props);
         const location = this.props.location;
         this.state = {
-            redirect: (location.state)? location.state.redirect : '/dashboard',
+            redirect: (location.state && location.state.redirect)? location.state.redirect : '/dashboard',
             isUserDrop: false,
             isLoading : true,
         }

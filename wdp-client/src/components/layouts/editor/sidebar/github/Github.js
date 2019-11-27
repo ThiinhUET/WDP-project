@@ -1,29 +1,43 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
-import Authenticate from '../../../common/authprovider/Authenticate';
-import { contentFlow } from '../../../../services';
-import { defaultdata } from '../sidebar/explorer/data';
+import Authenticate from '../../../../common/authprovider/Authenticate';
+import { contentFlow } from '../../../../../services';
+import { defaultdata } from '../data';
 import axios from 'axios';
 import { Icon, notification} from "antd";
+
+import { Treebeard, decorators } from 'react-treebeard';
+import defaultStyles from '../defaultStyles';
+import Header from '../Header';
+import Toggle from '../Toggle';
 
 
 class Github extends Component {
     constructor(props) {
         super(props);
         const location = this.props.location;
+        let newData = (location.state && location.state.data) ? location.state.data : defaultdata;
         this.state = {
             codeToCommit: "",
-            data: (location.state && location.state.data) ? location.state.data : defaultdata,
+            data: newData,
+            modifiedData: {
+                "path": newData.path,
+                "type": newData.type,
+                "name": newData.name,
+                "toggled": true,
+                "content": "",
+                "children": []
+            },
             cursor: (location.state && location.state.cursor) ? location.state.cursor : '',
+            modifiedCursor: (location.state && location.state.modifiedCursor) ? location.state.modifiedCursor : '',
         }
     }
-
-    
 
     componentDidMount() {
         this.props.history.listen((location) => this.setState({
             data: (location.state && location.state.data) ? location.state.data : this.state.data,
             cursor: (location.state && location.state.cursor) ? location.state.cursor : this.state.cursor,
+            modifiedCursor: (location.state && location.state.modifiedCursor) ? location.state.modifiedCursor : this.state.modifiedCursor,
         }));
         console.log(this.state.data);
         let children = this.state.data.children;
@@ -86,9 +100,42 @@ class Github extends Component {
             icon: <Icon type="smile" rotate={180} style={{ color: "#108ee9" }} />
           });
         }
-      };
+    }
+
+    getModifiedData(data) {
+        let modifiedData;
+        if (data.type !== 'folder' && data.modified === true) modifiedData = data;
+        if (data.type === 'folder' && data.children) {
+            let checkModified = false;
+            for (let i = 0; i < data.children.length; i ++) {
+                if (data.children[0])
+            }
+        }
+        return modifiedData;
+    }
+
+    onToggle(node, toggled) {
+        const { modifiedCursor, modifiedData } = this.state;
+        
+        if (modifiedCursor) {
+            this.setState(() => ({ modifiedCursor, active: false }));
+        }
+
+        node.active = true;
+        if (node.children) {
+            node.toggled = toggled;
+        }
+
+        if (node.type !== 'folder'){
+            this.props.history.push({
+                state: { ...this.props.location.state, modifiedCursor: node }
+            });
+        } 
+        this.setState(() => ({ cursor: node, data: Object.assign({}, modifiedData) }));
+    }
     
     render() {
+        const { modifiedData } = this.state;
         return (
             <div className="SidebarElement">
                 <div className="sidebar_title">GITHUB</div>
@@ -99,7 +146,14 @@ class Github extends Component {
                     </div>}
                     <input id="commitMsg" placeholder="Commit messages" style={{ flex: '1', display: 'block', color : 'black', marginBottom: '1vh', textAlign : 'center' }}></input>
                     <button onClick={() => this.commitCode()} style={{ background: 'green', cursor: 'pointer', marginBottom: '1vh'}}>Commit Changes</button>
-                    <div></div>
+                    <div style={{...defaultStyles.component, top: '0'}}>
+                        <Treebeard
+                            style={defaultStyles}
+                            data={modifiedData}
+                            onToggle={this.onToggle}
+                            decorators={{ ...decorators, Toggle, Header }}
+                        />
+                    </div>
                 </div>
             </div>
         );

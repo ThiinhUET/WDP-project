@@ -14,7 +14,8 @@ class ConsoleElement extends Component {
       log => {
         if (log.method !== "warn" && log.method !== "error") 
           this.setState({ logs: [...this.state.logs, log] });
-        document.getElementById("console_result").scrollTop=document.getElementById("console_result").scrollHeight;
+        let resultFrame = document.getElementById("console_result");
+        if (resultFrame) resultFrame.scrollTop = resultFrame.scrollHeight;
       },
       false
     );
@@ -22,7 +23,8 @@ class ConsoleElement extends Component {
       document.getElementById('iframe').contentWindow.console,
       log => {
         this.setState({ logs: [...this.state.logs, log] });
-        document.getElementById("console_result").scrollTop=document.getElementById("console_result").scrollHeight;
+        let resultFrame = document.getElementById("console_result");
+        if (resultFrame) resultFrame.scrollTop = resultFrame.scrollHeight;
       },
       false
     );

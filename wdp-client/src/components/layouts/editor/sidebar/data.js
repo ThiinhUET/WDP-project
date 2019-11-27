@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import axios from 'axios';
-import Loading from '../../../loading/Loading';
-import { dataFlow } from '../../../../../services';
+import Loading from '../../loading/Loading';
+import { dataFlow } from '../../../../services';
 
 export const defaultdata = {
     "path": "",

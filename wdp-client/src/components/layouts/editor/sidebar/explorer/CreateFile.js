@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Div } from 'react-treebeard/dist/components/common'
 import { withRouter } from 'react-router-dom';
-import defaultStyles from './defaultStyles';
-import { defaultdata } from './data';
+import defaultStyles from '../defaultStyles';
+import { defaultdata } from '../data';
 import { dataFlow } from '../../../../../services';
 
 class CreateFile extends Component {

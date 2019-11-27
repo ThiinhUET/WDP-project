@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
-import Explorer from './Explorer';
-import Github from './Github';
+import Explorer from './explorer/Explorer';
+import Github from './github/Github';
 import './style.css';
 class SideBar extends Component {
     constructor(props) {
