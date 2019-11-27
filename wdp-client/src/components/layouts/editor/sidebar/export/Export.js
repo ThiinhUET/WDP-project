@@ -26,7 +26,7 @@ class Export extends Component {
                 
                 {this.state.branches.map((value, index) => (
                     <a href = {"https://github.com/" + localStorage.username + "/" + localStorage.projectName + "/archive/" + value.name + ".zip"}>
-                        <div>
+                        <div style = {{marginLeft : '30%'}}>
                             {value.name}
                         </div>
                         
