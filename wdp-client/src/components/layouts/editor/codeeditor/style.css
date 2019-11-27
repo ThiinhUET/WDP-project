@@ -2,3 +2,23 @@
     height: 100%;
     background-color: #202124;
 }
+.header_tab {
+    height: 25px;
+    width: 100%;
+    margin-bottom: 5px;
+    background-color: #2c2c2c;
+    box-shadow: 1px 3px 5px -2px #0a0a0a;
+}
+.header_tab_element {
+    display: flex;
+    align-items: center;
+    width: fit-content;
+    height: 100%;
+    padding: 0 20px;
+    background-color: #202124;
+    color: #d0d0d0;
+    box-shadow: 1px 1px 2px #0a0a0a;
+    font-family: Source Sans Pro,Open Sans,Segoe UI,sans-serif;
+    font-size: 10pt;
+    font-style: italic;
+}

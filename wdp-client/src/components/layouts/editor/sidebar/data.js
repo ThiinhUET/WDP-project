@@ -5,7 +5,7 @@ import Loading from '../../loading/Loading';
 import { dataFlow } from '../../../../services';
 
 export const defaultdata = {
-    "path": "",
+    "path": "/",
     "type": "folder",
     "name": "New-Project",
     "toggled": true,

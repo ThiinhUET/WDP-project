@@ -40,7 +40,7 @@ class CreateFile extends Component {
     addData(data, path, type) {
         if (path[0] === '/') {
             let index0 = path.lastIndexOf('/');
-            let path0 = path.slice(0, index0);
+            let path0 = path.slice(0, index0 + 1);
             let name = path.slice(index0 + 1);
             if (path.includes(data.path) && data.children) {
                 let isExist = -1;
@@ -74,7 +74,7 @@ class CreateFile extends Component {
                                     newType = nameEx[nameEx.length - 1];
                                     if (newType === 'js') newType = 'javascript';
                                 }
-                                data.children.splice(indexfile, 0, { path: path, type: newType, name: name, toggled: false, content: '', oldcontent: '' });
+                                data.children.splice(indexfile, 0, { path: path, type: newType, name: name, toggled: false, content: '', oldcontent: '', modified: true });
                                 this.addBoxClear();
                             }
                             break;

@@ -38,7 +38,7 @@ addNode = (node1, node2) => {
 }
 convertString = (input) => {
     let nameNode = input.url.split('/')[5];
-    let rootNode = new node('', 'folder', nameNode, true, '');
+    let rootNode = new node('/', 'folder', nameNode, true, '');
     let nodes = [];
     for (let i = 0; i < input.tree.length; i ++) {
         input.tree[i].path = '/' + input.tree[i].path;

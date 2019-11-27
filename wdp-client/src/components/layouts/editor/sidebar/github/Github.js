@@ -64,9 +64,10 @@ class Github extends Component {
 
     updateData(node) {
         if (node.type !== 'folder') {node.oldcontent = node.content; node.modified = false;}
-        else if (node.children)
-            for (let i = 0; i < node.children.length; i ++) node.children[i] = this.updateData(node.children[i]);
-
+        else {
+            node.modified = false;
+            if (node.children) for (let i = 0; i < node.children.length; i ++) node.children[i] = this.updateData(node.children[i]);
+        }
         return node;
     }
 
@@ -132,6 +133,7 @@ class Github extends Component {
             "toggled": true,
             "children": []
         }})
+        document.getElementById("commitMsg").value = null;
     }
 
     onToggle(node, toggled) {
