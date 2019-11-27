@@ -63,8 +63,7 @@ class ResultFrame extends Component {
             }
             for (let i = 1; i < scriptPaths.length; i ++) {
                 let newScriptContent = "<script>" + this.getContent(scriptPaths[i], node) + "</script>";
-                if (newScriptContent === "<script>Enter the url of html file to display the web review</script>") return `Invalid Syntax: Path of script file start with '/'`;
-                dataView = dataView.replace(oldScriptContents[i], newScriptContent);
+                if (newScriptContent !== "<script>Enter the url of html file to display the web review</script>") dataView = dataView.replace(oldScriptContents[i], newScriptContent);
             }
         }
 
@@ -84,8 +83,7 @@ class ResultFrame extends Component {
             for (let i = 1; i < stylePaths.length; i ++) 
                 if (oldStyleContents[i] && oldStyleContents[i].includes("stylesheet")) {
                     let newStyleContent = "<style>" + this.getContent(stylePaths[i], node) + "</style>";
-                    if (newStyleContent === "<style>Enter the url of html file to display the web review</style>") return `Invalid Syntax: Path of style file start with '/'`;
-                    dataView = dataView.replace(oldStyleContents[i], newStyleContent);
+                    if (newStyleContent !== "<style>Enter the url of html file to display the web review</style>") dataView = dataView.replace(oldStyleContents[i], newStyleContent);
                 }
         }
 
