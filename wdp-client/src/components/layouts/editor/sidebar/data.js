@@ -51,7 +51,11 @@ class DataLoading extends Component {
     
     componentDidMount() {
         const { accessToken, username, projectName } = localStorage;
-        const { data } = this.state;
+        let { data } = this.state;
+        this.props.history.listen((location) => {
+            data = (location.state && location.state.data)? location.state.data : this.state.data;
+            this.setState({data: data});
+        });
         if (data === defaultdata && projectName) {
             setTimeout(() => this.setState({isLoading: true}), 500);
             axios.post('http://localhost:8080/git/user-listfile', {

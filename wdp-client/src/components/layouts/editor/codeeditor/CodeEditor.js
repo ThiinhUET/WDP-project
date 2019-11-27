@@ -22,7 +22,7 @@ class CodeEditor extends Component {
     componentDidMount(){
         this.props.history.listen((location) => {
             this.setState({
-                cursor: (location.state && location.state.cursor)? location.state.cursor : this.state.cursor,
+                cursor: (location.state && location.state.cursor)? location.state.cursor : {"content": "<!-- Select a file to code -->"},
             });
             contentFlow.next(this.state.cursor.content);
         });

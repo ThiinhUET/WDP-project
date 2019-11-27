@@ -10,6 +10,8 @@ import defaultStyles from '../defaultStyles';
 import Header from '../Header';
 import Toggle from '../Toggle';
 
+import DataLoading from '../data';
+
 
 class Github extends Component {
     constructor(props) {
@@ -44,42 +46,43 @@ class Github extends Component {
         authenticate.signin(() => this.props.history.push('/editor'));
     }
 
-    commitCode() {
-        this.contenFlowSub = contentFlow.subscribe((value) => {
-            try{
-                let userName = localStorage.getItem('username');
-                let email = localStorage.getItem('email');
-                let project = localStorage.getItem('projectName');
-                let accessToken = localStorage.getItem('accessToken');
-                let fileName = this.state.cursor.name;
-                let message = document.getElementById('commitMsg').value;
-                if (value !== '<!--Happy Coding-->') {
-                    axios.get('https://api.github.com/repos/' + userName + '/' + project + '/contents/' + fileName, { headers: { 'Authorization': 'token ' + accessToken } }).
-                        then(res => {
-                            let shaKey = res.data.sha;
-                            let decodedValue = Buffer.from(value).toString('base64');
-                            axios.put('https://api.github.com/repos/' + userName + '/' + project + '/contents/' + fileName, {
-                                "message": message,
-                                "committer": {
-                                    "name": userName,
-                                    "email": email
-                                },
-                                "content": decodedValue,
-                                "sha": shaKey
-                            }, { headers: { 'Authorization': 'token ' + accessToken } }).
-                                then(res1 => {
-                                   window.alert("Commit code successfully !")
-                                }).catch(err => {
-                                    this.openNotification(false);
-                                });
-                        }).catch(err => {
-                            console.log("Lỗi ở get content");
-                        });
-                }
-            }catch(err){
-                console.log(err);
-            }
-        });
+    commitFile(message, modifiedCursor, userName, email, project,accessToken) {
+        try{
+            axios.get('https://api.github.com/repos/' + userName + '/' + project + '/contents/' + modifiedCursor.name, { headers: { 'Authorization': 'token ' + accessToken } }).then(res => {
+                let shaKey = res.data.sha;
+                let decodedValue = Buffer.from(modifiedCursor.content).toString('base64');
+                axios.put('https://api.github.com/repos/' + userName + '/' + project + '/contents/' + modifiedCursor.name, {
+                    "message": message,
+                    "committer": {
+                        "name": userName,
+                        "email": email
+                    },
+                    "content": decodedValue,
+                    "sha": shaKey
+                }, { headers: { 'Authorization': 'token ' + accessToken } }).
+                    catch(err => {
+                        console.log(err);
+                    });
+            }).catch(err => {
+                console.log("Lỗi ở get content");
+            });
+        }catch(err){
+            console.log(err);
+        }
+    }
+
+    async commitCode(message) {
+        for (let i = 0; i < this.state.modifiedTree.children.length; i ++) {
+            let modifiedCursor = this.state.modifiedTree.children[i];
+            let userName = localStorage.getItem('username');
+            let email = localStorage.getItem('email');
+            let project = localStorage.getItem('projectName');
+            let accessToken = localStorage.getItem('accessToken');
+            await this.commitFile(message, modifiedCursor, userName, email, project, accessToken);
+        }
+        setTimeout(() => {
+            this.setState({modifiedTree: {children: []}});
+        }, 2000);
     }
 
     onToggle(node, toggled) {
@@ -113,7 +116,7 @@ class Github extends Component {
                         <span>Sign in with GitHub</span>
                     </div>}
                     <input id="commitMsg" placeholder="Commit messages" style={{ flex: '1', display: 'block', color : 'black', marginBottom: '1vh', textAlign : 'center' }}></input>
-                    <button onClick={() => this.commitCode()} style={{ background: 'green', cursor: 'pointer', marginBottom: '1vh'}}>Commit Changes</button>
+                    <button onClick={() => this.commitCode(document.getElementById("commitMsg").value)} style={{ background: 'green', cursor: 'pointer', marginBottom: '1vh'}}>Commit Changes</button>
                     <Treebeard
                         style={defaultStyles}
                         data={this.state.modifiedTree}
