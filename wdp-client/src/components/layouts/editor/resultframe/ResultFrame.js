@@ -130,7 +130,7 @@ class ResultFrame extends Component {
         return (
             <div className="ResultFrame" style = {{height : '100%'}}>
                 <div className="url_navigation">
-                    <span onClick={() => this.saveCode()} title="Save & Run" className="run_btn" style={{display: 'flex', alignItems: 'center', backgroundColor:'#0d9e5b', color: '#f0f0f0', padding: '3px 5px', marginRight: '5px', borderRadius: '5px', width: '90px', cursor: 'pointer'}}>
+                    <span onClick={() => this.saveCode()} title="Save & Run" className="run_btn" style={{display: 'flex', alignItems: 'center', backgroundColor:'#0d9e5b', color: '#f0f0f0', padding: '3px 5px', marginRight: '5px', borderRadius: '5px', width: 'fit-content', cursor: 'pointer'}}>
                         <span style={{fontFamily: 'Source Sans Pro,Open Sans,Segoe UI,sans-serif', fontWeight: '600', fontSize: '10pt', letterSpacing: '0.5px'}}>Save & Run</span>
                         <i className="fas fa-play"style={{width: '15px', height: '15px', paddingLeft: '5px'}}></i>
                     </span>
