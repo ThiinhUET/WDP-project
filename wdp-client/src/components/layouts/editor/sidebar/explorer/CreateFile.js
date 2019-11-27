@@ -61,7 +61,7 @@ class CreateFile extends Component {
                             break;
                         case "folder":
                             if (isExist === -1) {
-                                data.children.splice(indexfolder, 0, { path: path, type: type + '/', name: name, toggled: false, content: '', children: [] });
+                                data.children.splice(indexfolder, 0, { path: path + '/', type: type, name: name, toggled: false, content: '', children: [] });
                                 this.addBoxClear();
                             }
                             break;

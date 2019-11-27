@@ -5,24 +5,21 @@ import { defaultdata } from '../data';
 
 import { dataFlow } from '../../../../../services';
 
-// Helper functions for filtering
 export const defaultMatcher = (filterText, node) => {
     return node.name.toLowerCase().indexOf(filterText.toLowerCase()) !== -1;
 };
 
 export const findNode = (node, filter, matcher) => {
-    return matcher(filter, node) || // i match
-        (node.children && // or i have decendents and one of them match
+    return matcher(filter, node) || 
+        (node.children && 
             node.children.length &&
             !!node.children.find(child => findNode(child, filter, matcher)));
 };
 
 export const filterTree = (node, filter, matcher = defaultMatcher) => {
-    // If im an exact match then all my children get to stay
     if (matcher(filter, node) || !node.children) {
         return node;
     }
-    // If not then only keep the ones that match or have matching descendants
     const filtered = node.children
         .filter(child => findNode(child, filter, matcher))
         .map(child => filterTree(child, filter, matcher));
@@ -36,7 +33,6 @@ export const expandFilteredNodes = (node, filter, matcher = defaultMatcher) => {
     }
     const childrenWithMatches = node.children.filter(child => findNode(child, filter, matcher));
     const shouldExpand = childrenWithMatches.length > 0;
-    // If im going to expand, go through all the matches and see if thier children need to expand
     if (shouldExpand) {
         children = childrenWithMatches.map(child => {
             return expandFilteredNodes(child, filter, matcher);
@@ -77,9 +73,6 @@ class Filter extends Component {
         return (
             <div style={defaultStyles.searchBox}>
                 <div className="input-group" style={{ display: 'flex', alignItems: 'center' }}>
-                    <span className="input-group-addon" style={{ color: '#aeafad', padding: '5px' }}>
-                        <i className="fa fa-search" />
-                    </span>
                     <input
                         id="searchBox"
                         className="form-control"
@@ -88,7 +81,7 @@ class Filter extends Component {
                         placeholder="Search the file..."
                         spellCheck="false"
                         type="text"
-                        style={{ outline: 'none', padding: '0px 5px', width: '75%' }}
+                        style={{ outline: 'none', padding: '0px 5px', width: '175px'}}
                     />
                 </div>
             </div>
