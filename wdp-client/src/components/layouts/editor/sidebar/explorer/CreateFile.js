@@ -74,7 +74,7 @@ class CreateFile extends Component {
                                     newType = nameEx[nameEx.length - 1];
                                     if (newType === 'js') newType = 'javascript';
                                 }
-                                data.children.splice(indexfile, 0, { path: path, type: newType, name: name, toggled: false, content: '' });
+                                data.children.splice(indexfile, 0, { path: path, type: newType, name: name, toggled: false, content: '', oldcontent: '' });
                                 this.addBoxClear();
                             }
                             break;

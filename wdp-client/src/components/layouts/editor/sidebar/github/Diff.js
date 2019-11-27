@@ -7,26 +7,27 @@ class Diff extends Component{
         super(props);
         const location = this.props.location;
         this.state = {
-            modifiedCursor: (location.state && location.state.modifiedCursor) ? location.state.modifiedCursor : ''
+            cursor: (location.state && location.state.cursor) ? location.state.cursor : ''
         }
     }
 
     componentDidMount() {
         this.props.history.listen((location) => this.setState({
-            modifiedCursor: (location.state && location.state.modifiedCursor) ? location.state.modifiedCursor : this.state.modifiedCursor
+            cursor: (location.state && location.state.cursor) ? location.state.cursor : this.state.cursor
         }))
     }
     
     render() {
+        const { cursor } = this.state;
         return (
              <div className="Diff" style = {{position: 'absolute', display: 'none', backgroundColor: '#202124', left: '255px', width: 'calc(100vw - 255px)', height: '100%', zIndex: '999'}}>
                 <div className="header_tab">
-                    <div className="header_tab_element">Test (Working Tree)</div>
+                    <div className="header_tab_element">{cursor.name + " (Working Tree)"}</div>
                 </div>
                 <DiffEditor
-                    original = "<h1>Hello Thinh</h1>"
-                    modified = "<h1>Hello Thinh modified</h1>"
-                    language = "html"
+                    original = {cursor.oldcontent}
+                    modified = {cursor.content}
+                    language = {cursor.type}
                     theme = "dark"
                     width = "100%"
                     height = "calc(100% - 30px)"
