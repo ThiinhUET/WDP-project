@@ -51,7 +51,7 @@ class CodeEditor extends Component {
                     language={cursor.type || 'html'}
                     editorDidMount={this.handleEditorDidMount.bind(this)}
                     onChange={this.handleEditorChange.bind(this)}
-                    value={cursor.content}
+                    value={(cursor.content.substring(0, 8) === "https://")? "Loading..." : cursor.content}
                 />
             </div>
         );

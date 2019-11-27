@@ -28,7 +28,10 @@ class UserInfo extends Component {
     };
     signOut = () => {
         const authenticate = new Authenticate();
-        authenticate.signout(() => this.props.history.push(this.props.location.pathname));
+        authenticate.signout(() => {
+            this.props.history.push((this.props.location.pathname.includes('/editor')? '/editor' : this.props.location.pathname));
+            document.location.reload(true);
+        });
     }
     handleChange = () => {
         this.setState({isUserDrop: !this.state.isUserDrop});

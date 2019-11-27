@@ -71,7 +71,7 @@ class DataLoading extends Component {
                 });
                 dataFlow.next(rootNode2);
                 this.setState({isLoading: false});
-            }, 5000))
+            }, 3000))
         }
     }
 
