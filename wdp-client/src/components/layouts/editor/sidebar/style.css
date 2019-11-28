@@ -38,12 +38,11 @@
     text-align: center;
     margin: 10px auto;
     font-weight: 600;
-    line-height: 30px;
+    line-height: 28px;
 }
 .sidebar_element {
     display: flex;
     position: relative;
-    top: 5%;
     justify-content: center;
 }
 

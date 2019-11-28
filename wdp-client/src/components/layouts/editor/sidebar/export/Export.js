@@ -26,7 +26,8 @@ class Export extends Component {
                 
                 {this.state.branches.map((value, index) => (
                     <a href = {"https://github.com/" + localStorage.username + "/" + localStorage.projectName + "/archive/" + value.name + ".zip"} style={{textDecoration: 'none', color: '#d0d0d0'}}>
-                        <div style = {{marginLeft : '10px'}}>
+                        <div style={{display: 'block', width: '100%', wordBreak: 'break-all'}}>
+                            <i className="fas fa-code-branch"></i>
                             {value.name}
                         </div>
                         

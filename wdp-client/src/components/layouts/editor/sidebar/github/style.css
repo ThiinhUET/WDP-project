@@ -1,0 +1,32 @@
+.commit_box {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    height: 26px;
+    width: 100%;
+    line-height: 20px;
+    color: #f0f0f0;
+    margin-bottom: 5px;
+    font-family: Source Sans Pro,Open Sans,Segoe UI,sans-serif;
+    font-size: 10pt;
+    font-weight: 600;
+}
+.commit_btn {
+    border: none;
+    outline: none;
+    flex: 1;
+    width: 100%;
+    color: #f0f0f0;
+    background: #008a4a;
+    cursor: pointer;
+    width: fit-content;
+}
+.commit_input {
+    position: relative;
+    outline: none;
+    flex: 3;
+    width: 100%;
+    padding: 1px 5px;
+    line-height: 20px;
+    color : black;
+}
