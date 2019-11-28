@@ -62,12 +62,13 @@ class Editor extends Component {
                         <span className="title">Editor</span>
                     </div>
                     <div className="header_center">
-                        <a href="/editor" target="_blank" rel="noopener noreferrer">
+                        {/* <a href="/editor" target="_blank" rel="noopener noreferrer">
                             <button style={{width: 'fit-content', padding: '0 10px', margin: '0 5px'}}>
                                 <i className="far fa-plus-square" style={{width: '30px', height: '30px', paddingRight: '10px'}}></i>
                                 New
                             </button>
-                        </a>
+                        </a> */}
+                        {/* <span>{localStorage.projectName || ''}</span> */}
                     </div>
                     <div className="header_right">
                     {!localStorage.uid && <button className="signin" onClick={() => this.openSignIn('/editor')}>Sign In</button>}

@@ -85,7 +85,7 @@ class SideBar extends Component {
                         <i className="fas fa-file" id="icon" style={{width: '25px', height: '25px', margin: '10px auto'}}></i>
                     </div>
                     <div className="icon" id="github" title="GitHub" onClick = {() => this.github()}>
-                        <i className="fas fa-code-branch" style={{width: '25px', height: '25px', margin: '10px auto'}}></i>
+                        <i className="fab fa-github" style={{width: '25px', height: '25px', margin: '10px auto'}}></i>
                     </div>
                     <div className="icon" id="export" title="Export" onClick = {() => this.download()}>
                         <i className="fas fa-download" style={{width: '25px', height: '25px', margin: '10px auto'}}></i>

@@ -23,13 +23,14 @@ class Export extends Component {
         return (
             <div className="SidebarElement">
                 <div className="sidebar_title">DOWNLOAD</div>
-                
+                <div className="horizontal_divider"></div>
                 {this.state.branches.map((value, index) => (
                     <a href = {"https://github.com/" + localStorage.username + "/" + localStorage.projectName + "/archive/" + value.name + ".zip"} style={{textDecoration: 'none', color: '#d0d0d0'}}>
-                        <div style = {{marginLeft : '10px'}}>
+                        <div className="branch_element">
+                            <i className="fas fa-code-branch" style={{marginRight: '10px'}}></i>
                             {value.name}
                         </div>
-                        
+                        <div className="horizontal_divider"></div>
                     </a>  
                 ))}
             

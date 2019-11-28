@@ -24,18 +24,18 @@ a {
     padding: 0 10px 0 10px;
 }
 .header_left {
-    flex: 2;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-}
-.header_center {
     flex: 1;
     display: flex;
     align-items: center;
     justify-content: flex-start;
 }
+.header_center {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
 .header_right {
+    flex: 1;
     display: flex;
     align-items: center;
     justify-content: flex-end;

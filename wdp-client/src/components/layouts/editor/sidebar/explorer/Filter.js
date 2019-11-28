@@ -81,7 +81,7 @@ class Filter extends Component {
                         placeholder="Search the file..."
                         spellCheck="false"
                         type="text"
-                        style={{ outline: 'none', padding: '0px 5px', width: '175px'}}
+                        style={{ display: 'block', outline: 'none', padding: '1px 5px', width: '186px', lineHeight: '20px'}}
                     />
                 </div>
             </div>

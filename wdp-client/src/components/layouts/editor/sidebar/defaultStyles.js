@@ -1,7 +1,6 @@
 export default {
     searchBox: {
         position: 'fixed',
-        padding: '5px',
     },
     addFileBox: {
         position: 'fixed',

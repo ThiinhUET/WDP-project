@@ -10,6 +10,7 @@ import defaultStyles from '../defaultStyles';
 import Header from '../Header';
 import Toggle from '../Toggle';
 
+import './style.css';
 
 class Github extends Component {
     constructor(props) {
@@ -19,7 +20,10 @@ class Github extends Component {
         this.state = {
             codeToCommit: "",
             data: newData,
-            cursor: (location.state && location.state.cursor) ? location.state.cursor : '',
+            cursor: (location.state && location.state.cursor) ? location.state.cursor : {
+                oldcontent: '',
+                content: ''
+            },
             modifiedTree : {
                 "name": newData.name,
                 "type": newData.type,
@@ -166,15 +170,19 @@ class Github extends Component {
                         <i className="fab fa-github" style={{ width: '18px', height: '18px', paddingRight: '5px' }}></i>
                         <span>Sign in with GitHub</span>
                     </div>}
-                    {localStorage.uid && <Fragment>
-                    <input id="commitMsg" spellCheck="false" autoComplete="off" placeholder="Commit messages" style={{ flex: '1', display: 'block', color : 'black', marginBottom: '1vh', textAlign : 'center' }}></input>
-                    <button onClick={() => this.commit(this.state.modifiedTree, document.getElementById("commitMsg").value)} style={{ background: 'green', cursor: 'pointer', marginBottom: '1vh'}}>Commit Changes</button>
-                    <Treebeard
-                        style={defaultStyles}
-                        data={this.state.modifiedTree}
-                        onToggle={this.onToggle}
-                        decorators={{ ...decorators, Toggle, Header }}
-                    />
+                    {localStorage.uid && <Fragment style={{fontFamily: 'Source Sans Pro,Open Sans,Segoe UI,sans-serif'}}>
+                        <div className="commit_box">
+                            <input className="commit_input" id="commitMsg" spellCheck="false" autoComplete="off" placeholder="Commit messages"></input>
+                            <button className="commit_btn" onClick={() => this.commit(this.state.modifiedTree, document.getElementById("commitMsg").value)}>Commit</button>
+                        </div>
+                        <div style={{...defaultStyles.component, top: '0'}}>
+                            <Treebeard
+                                style={defaultStyles}
+                                data={this.state.modifiedTree}
+                                onToggle={this.onToggle}
+                                decorators={{ ...decorators, Toggle, Header }}
+                            />
+                        </div>
                     </Fragment>}
                 </div>
             </div>

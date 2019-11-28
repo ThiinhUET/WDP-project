@@ -1,0 +1,19 @@
+.horizontal_divider {
+    color: rgb(70,70,70);
+    border-top: 1px solid;
+    width: 100%;
+    margin: 0 auto;
+    margin-top: -0.5px;
+}
+.branch_element {
+    display: block;
+    font-family: Source Sans Pro,Open Sans,Segoe UI,sans-serif;
+    letter-spacing: .8px;
+    font-size: 11.5pt;
+    width: calc(100% - 20px);
+    word-break: break-all;
+    padding: 10px;
+}
+.branch_element:hover {
+    background-color: rgb(70,70,70);
+}
