@@ -14,6 +14,7 @@ import { defaultdata } from '../../layouts/editor/sidebar/data';
 import '@fortawesome/fontawesome-free/js/all';
 import './style.css';
 
+
 class Editor extends Component {
     constructor(props) {
         super(props);
@@ -51,7 +52,7 @@ class Editor extends Component {
     render() {
         const { isLoading } = this.state;
         return (
-            <div className="Editor">
+                <div className="Editor">
                 { isLoading && <Loading size='30' /> }
                 <div className="header editor">
                     <div className="header_left">
