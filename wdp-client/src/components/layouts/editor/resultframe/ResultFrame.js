@@ -39,7 +39,6 @@ class ResultFrame extends Component {
         if (ev.keyCode === 13) {
           this.setState({urlHtml: url});
           this.props.history.push({
-            pathname: this.props.location.pathname,
             state: {...this.props.location.state, urlHtml: url},
           })
         }
@@ -92,6 +91,7 @@ class ResultFrame extends Component {
     
     getContent = (path, node) => {
         let content = 'Enter the url of html file to display the web review';
+        if (!node.path) return content;
         if (node.path === path) content = node.content;
         if (node.children && path.includes(node.path))
         for (let i = 0; i < node.children.length; i ++) {
@@ -102,6 +102,7 @@ class ResultFrame extends Component {
     }
     
     updateNode(rootNode, node, content) {
+        if (!node.path) return rootNode;
         if (rootNode.path === node.path) {
             rootNode.content = content;
             rootNode.modified = true;

@@ -1,7 +1,7 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component, Fragment as div } from 'react';
 import { withRouter } from 'react-router-dom';
 import Authenticate from '../../../../common/authprovider/Authenticate';
-import { contentFlow } from '../../../../../services';
+import { notification } from 'antd';
 import { defaultdata } from '../data';
 import axios from 'axios';
 
@@ -11,6 +11,7 @@ import Header from '../Header';
 import Toggle from '../Toggle';
 
 import './style.css';
+import Loading from '../../../loading/Loading';
 
 class Github extends Component {
     constructor(props) {
@@ -19,11 +20,13 @@ class Github extends Component {
         let newData = (location.state && location.state.data) ? location.state.data : defaultdata;
         this.state = {
             codeToCommit: "",
+            errMess: "",
             data: newData,
             cursor: (location.state && location.state.cursor) ? location.state.cursor : {
                 oldcontent: '',
                 content: ''
             },
+            isLoading: false,
             modifiedTree : {
                 "name": newData.name,
                 "type": newData.type,
@@ -47,18 +50,25 @@ class Github extends Component {
     }
 
     getModifiedData(node) {
-        if (node.children)
-            for (let i = 0; i < node.children.length; i ++) {
-                if (node.children[i].type === 'folder') {
-                    node.children[i] = this.getModifiedData(node.children[i]);
-                }
+        let newNode = {
+            "name": node.name,
+            "type": node.type,
+            "path": node.path,
+            "toggled": true,
+            "modified": false,
+            "children": []
+        };
+        if (node.children) for (let i = 0; i < node.children.length; i ++)
+            if (node.children[i].type !== 'folder' && (node.children[i].modified || node.children[i].modified === undefined)) {
+                newNode.modified = true;
+                newNode.children.push(node.children[i]);
             }
-        node.children = node.children.filter((value, index) => {
-            return value.modified === true;
-        });
-        if (node.children && node.children.length > 0) node.modified = true;
-
-        return node;
+            else {
+                let newChildrenNode = this.getModifiedData(node.children[i]);
+                if (newChildrenNode.modified) newNode.children.push(newChildrenNode);
+            }
+        
+        return newNode;
     }
 
     signIn() {
@@ -75,37 +85,37 @@ class Github extends Component {
         return node;
     }
 
-    commitFile(message, modifiedCursor, userName, email, project,accessToken) {
+    async commitFile(message, modifiedCursor, userName, email, project, accessToken) {
         try{
-            axios.get('https://api.github.com/repos/' + userName + '/' + project + '/contents' + modifiedCursor.path, { headers: { 'Authorization': 'token ' + accessToken } }).then(res => {
-                let shaKey = res.data.sha;
+            this.setState({isLoading: true});
+            if (modifiedCursor.modified === true) {
+                await axios.get('https://api.github.com/repos/' + userName + '/' + project + '/contents' + modifiedCursor.path, { headers: { 'Authorization': 'token ' + accessToken } }).then(async res => {
+                    let shaKey = res.data.sha;
+                    let decodedValue = Buffer.from(modifiedCursor.content).toString('base64');
+                    await axios.put('https://api.github.com/repos/' + userName + '/' + project + '/contents' + modifiedCursor.path, {
+                        "message": message,
+                        "committer": {
+                            "name": userName,
+                            "email": email
+                        },
+                        "content": decodedValue,
+                        "sha": shaKey
+                    }, { headers: { 'Authorization': 'token ' + accessToken } }
+                    ).catch((err) => console.log(err));
+                }).catch((err) => console.log(err));
+            }
+            else {
                 let decodedValue = Buffer.from(modifiedCursor.content).toString('base64');
-                axios.put('https://api.github.com/repos/' + userName + '/' + project + '/contents' + modifiedCursor.path, {
-                    "message": message,
-                    "committer": {
-                        "name": userName,
-                        "email": email
-                    },
-                    "content": decodedValue,
-                    "sha": shaKey
-                }, { headers: { 'Authorization': 'token ' + accessToken } }).
-                    catch(err => {
-                        console.log(err);
-                    });
-            }).catch(() => {
-                let decodedValue = Buffer.from(modifiedCursor.content).toString('base64');
-                axios.put('https://api.github.com/repos/' + userName + '/' + project + '/contents' + modifiedCursor.path, {
+                await axios.put('https://api.github.com/repos/' + userName + '/' + project + '/contents' + modifiedCursor.path, {
                     "message": message,
                     "committer": {
                         "name": userName,
                         "email": email
                     },
                     "content": decodedValue
-                }, { headers: { 'Authorization': 'token ' + accessToken } }).
-                    catch(err => {
-                        console.log(err);
-                    });
-            });
+                }, { headers: {'Authorization': 'token ' + accessToken } }
+                ).catch((err) => console.log(err));
+            }
         }catch(err){
             console.log(err);
         }
@@ -124,10 +134,10 @@ class Github extends Component {
         else await this.commitCode(node.children[i], message);
     }
 
-    commit(node, message) {
-        this.commitCode(node, message);
+    async commit(node, message) {
+        await this.commitCode(node, message);
         this.state.cursor.oldcontent = this.state.cursor.content;
-        this.props.history.push({
+        await this.props.history.push({
             state: {...this.props.location.state, data: this.updateData(this.state.data), cursor: this.state.cursor}
         });
         this.setState({modifiedTree : {
@@ -137,14 +147,44 @@ class Github extends Component {
             "toggled": true,
             "children": []
         }})
-        document.getElementById("commitMsg").value = null;
+        setTimeout(() => this.setState({isLoading: false}), 300);
+        try {
+            document.getElementById("commitMsg").value = null;
+        } catch(err) {
+            console.log(err);
+        }
+    }
+
+    async create() {
+        let accessToken = localStorage.accessToken;
+        let name = document.getElementById("createName").value;
+        localStorage.setItem("projectName", name);
+        let description = document.getElementById("createDescription").value;
+        let homepage = document.getElementById("createHomepage").value;
+        try {
+            if (name) {
+                axios.post('https://api.github.com/user/repos', {
+                    "name": name,
+                    "description": description,
+                    "homepage": homepage,
+                    "auto_init": true
+                },{ headers: { 'Authorization': 'token ' + accessToken } }).then(() => {
+                    console.log("Successfully!");
+                    localStorage.setItem("repositories", name + ',' + localStorage.repositories);
+                    this.commit(this.state.modifiedTree, "Initial commit");
+                }).then(() => this.props.history.push('/editor/' + name)).catch((err) => this.setState({errMess: "Name is exist !"}));
+            }
+            else {
+                this.setState({errMess: "Name is required !"});
+            }
+        } catch(err) {
+            console.log(err);
+        }
     }
 
     onToggle(node, toggled) {
-        const { cursor, data } = this.state;
+        const { cursor, modifiedTree } = this.state;
 
-        console.log(cursor);
-        
         if (cursor) {
             this.setState(() => ({ cursor, active: false }));
         }
@@ -159,7 +199,7 @@ class Github extends Component {
                 state: { ...this.props.location.state, cursor: node }
             });
         } 
-        this.setState(() => ({ cursor: node, data: Object.assign({}, data) }));
+        this.setState(() => ({ cursor: node, modifiedTree: Object.assign({}, modifiedTree) }));
     }
     render() {
         return (
@@ -170,12 +210,27 @@ class Github extends Component {
                         <i className="fab fa-github" style={{ width: '18px', height: '18px', paddingRight: '5px' }}></i>
                         <span>Sign in with GitHub</span>
                     </div>}
-                    {localStorage.uid && <Fragment style={{fontFamily: 'Source Sans Pro,Open Sans,Segoe UI,sans-serif'}}>
-                        <div className="commit_box">
+                    {localStorage.uid && <div style={{fontFamily: 'Source Sans Pro,Open Sans,Segoe UI,sans-serif'}}>
+                        {this.props.location.pathname[8] && <div className="commit_box">
                             <input className="commit_input" id="commitMsg" spellCheck="false" autoComplete="off" placeholder="Commit messages"></input>
                             <button className="commit_btn" onClick={() => this.commit(this.state.modifiedTree, document.getElementById("commitMsg").value)}>Commit</button>
-                        </div>
+                        </div>}
+                        {!this.props.location.pathname[8] && <div>
+                            <div style={{fontSize: '11pt', margin: '5px', fontStyle: 'italic'}}>Create new project:</div>
+                            {this.state.errMess !== "" && <div style={{fontSize: '10pt', margin: '5px', color: '#dd4b39'}}>{this.state.errMess}</div>}
+                            <div className="commit_box">
+                                <input className="commit_input" id="createName" spellCheck="false" autoComplete="off" placeholder="Name" onKeyDown={() => this.setState({errMess: ""})}></input>
+                            </div>
+                            <div className="commit_box">
+                                <input className="commit_input" id="createDescription" spellCheck="false" autoComplete="off" placeholder="Description" onKeyDown={() => this.setState({errMess: ""})}></input>
+                            </div>
+                            <div className="commit_box">
+                                <input className="commit_input" id="createHomepage" spellCheck="false" autoComplete="off" placeholder="Homepage" onKeyDown={() => this.setState({errMess: ""})}></input>
+                                <button className="commit_btn" onClick={() => this.create()}>Create</button>
+                            </div>
+                        </div>}
                         <div style={{...defaultStyles.component, top: '0'}}>
+                            {this.state.isLoading && <Loading size='20' />}
                             <Treebeard
                                 style={defaultStyles}
                                 data={this.state.modifiedTree}
@@ -183,7 +238,7 @@ class Github extends Component {
                                 decorators={{ ...decorators, Toggle, Header }}
                             />
                         </div>
-                    </Fragment>}
+                    </div>}
                 </div>
             </div>
         );
