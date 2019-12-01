@@ -19,6 +19,7 @@
     "console-feed": "^2.8.10",
     "firebase": "^7.5.0",
     "font-awesome": "^4.7.0",
+    "gh-pages": "^2.1.1",
     "gsap": "^2.1.3",
     "lodash": "^4.17.15",
     "monaco-editor": "^0.18.1",
@@ -49,7 +50,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -83,5 +86,5 @@
   "bugs": {
     "url": "https://github.com/ThiinhUET/WDP-project/issues"
   },
-  "homepage": "https://github.com/ThiinhUET/WDP-project#readme"
+  "homepage": "https://ThiinhUET.github.io/WDP-project/wdp-client"
 }

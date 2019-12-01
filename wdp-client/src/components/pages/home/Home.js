@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {withRouter} from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 import logo from '../../../assets/logo.png';
 import logo3D from '../../../assets/logo3D.gif';
@@ -14,27 +14,27 @@ class Home extends Component {
         this.state = {
             isLoading: true
         }
-        setTimeout(() => this.setState({isLoading: false}), 500);
+        setTimeout(() => this.setState({ isLoading: false }), 500);
     }
-    
+
     openEditor() {
         this.props.history.push('/editor');
     }
     openSignIn() {
         this.props.history.push('/signin');
     }
-    openSignUp(){
+    openSignUp() {
         this.props.history.push('/signup');
     }
-    returnHome(){
+    returnHome() {
         this.props.history.push('/home');
     }
-    render() { 
+    render() {
         const { isLoading } = this.state;
         return (
             <div className="Home">
                 {isLoading && <Loading size='30' />}
-                <Background width = '70%' />
+                <Background width='70%' />
                 <div className="header">
                     <div className="header_left">
                         <button className="homebtn" title="Home" onClick={() => this.returnHome()}>
@@ -74,5 +74,5 @@ class Home extends Component {
         );
     }
 }
- 
+
 export default withRouter(Home);
