@@ -1,7 +1,6 @@
 import React, { Component, Fragment as div } from 'react';
 import { withRouter } from 'react-router-dom';
 import Authenticate from '../../../../common/authprovider/Authenticate';
-import { notification } from 'antd';
 import { defaultdata } from '../data';
 import axios from 'axios';
 
@@ -27,6 +26,7 @@ class Github extends Component {
                 content: ''
             },
             isLoading: false,
+            isCreating: false,
             modifiedTree : {
                 "name": newData.name,
                 "type": newData.type,
@@ -87,7 +87,6 @@ class Github extends Component {
 
     async commitFile(message, modifiedCursor, userName, email, project, accessToken) {
         try{
-            this.setState({isLoading: true});
             if (modifiedCursor.modified === true) {
                 await axios.get('https://api.github.com/repos/' + userName + '/' + project + '/contents' + modifiedCursor.path, { headers: { 'Authorization': 'token ' + accessToken } }).then(async res => {
                     let shaKey = res.data.sha;
@@ -135,6 +134,7 @@ class Github extends Component {
     }
 
     async commit(node, message) {
+        this.setState({isLoading: true});
         await this.commitCode(node, message);
         this.state.cursor.oldcontent = this.state.cursor.content;
         await this.props.history.push({
@@ -146,8 +146,7 @@ class Github extends Component {
             "path": this.state.data.path,
             "toggled": true,
             "children": []
-        }})
-        setTimeout(() => this.setState({isLoading: false}), 300);
+        }, isLoading: false})
         try {
             document.getElementById("commitMsg").value = null;
         } catch(err) {
@@ -157,28 +156,32 @@ class Github extends Component {
 
     async create() {
         let accessToken = localStorage.accessToken;
-        let name = document.getElementById("createName").value;
+        let name = document.getElementById("createName").value.replace(' ', '-');
         localStorage.setItem("projectName", name);
         let description = document.getElementById("createDescription").value;
         let homepage = document.getElementById("createHomepage").value;
-        try {
-            if (name) {
-                axios.post('https://api.github.com/user/repos', {
-                    "name": name,
-                    "description": description,
-                    "homepage": homepage,
-                    "auto_init": true
-                },{ headers: { 'Authorization': 'token ' + accessToken } }).then(() => {
-                    console.log("Successfully!");
-                    localStorage.setItem("repositories", name + ',' + localStorage.repositories);
-                    this.commit(this.state.modifiedTree, "Initial commit");
-                }).then(() => this.props.history.push('/editor/' + name)).catch((err) => this.setState({errMess: "Name is exist !"}));
-            }
-            else {
-                this.setState({errMess: "Name is required !"});
-            }
-        } catch(err) {
-            console.log(err);
+        
+        if (name) {
+            this.setState({isCreating: true});
+            axios.post('https://api.github.com/user/repos', {
+                "name": name,
+                "description": description,
+                "homepage": homepage,
+                "auto_init": true
+            },{ headers: { 'Authorization': 'token ' + accessToken } }).then(() => {
+                localStorage.setItem("repositories", name + ',' + localStorage.repositories);
+                this.commit(this.state.modifiedTree, "Initial commit");
+            }).then(() => {
+                this.setState({isCreating: false});
+                this.state.data.name = name;
+                this.props.history.push({
+                    pathname: '/editor/' + name,
+                    state: {...this.props.location.state, data: this.state.data, cursor: this.state.cursor}
+                })
+            }).catch(() => this.setState({isCreating: false, errMess: "Name is exist !"}));
+        }
+        else {
+            this.setState({errMess: "Name is required !"});
         }
     }
 
@@ -216,6 +219,7 @@ class Github extends Component {
                             <button className="commit_btn" onClick={() => this.commit(this.state.modifiedTree, document.getElementById("commitMsg").value)}>Commit</button>
                         </div>}
                         {!this.props.location.pathname[8] && <div>
+                            {this.state.isCreating && <Loading size='20' />}
                             <div style={{fontSize: '11pt', margin: '5px', fontStyle: 'italic'}}>Create new project:</div>
                             {this.state.errMess !== "" && <div style={{fontSize: '10pt', margin: '5px', color: '#dd4b39'}}>{this.state.errMess}</div>}
                             <div className="commit_box">

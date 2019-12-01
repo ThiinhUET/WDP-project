@@ -72,18 +72,16 @@ class Filter extends Component {
     render() {
         return (
             <div style={defaultStyles.searchBox}>
-                <div className="input-group" style={{ display: 'flex', alignItems: 'center' }}>
-                    <input
-                        id="searchBox"
-                        className="form-control"
-                        onKeyUp={this.onFilterMouseUp.bind(this)}
-                        autoComplete="off"
-                        placeholder="Search the file..."
-                        spellCheck="false"
-                        type="text"
-                        style={{ display: 'block', outline: 'none', padding: '1px 5px', margin: '5px', width: '176px', lineHeight: '20px'}}
-                    />
-                </div>
+                <input
+                    id="searchBox"
+                    className="form-control"
+                    onKeyUp={this.onFilterMouseUp.bind(this)}
+                    autoComplete="off"
+                    placeholder="Search the file..."
+                    spellCheck="false"
+                    type="text"
+                    style={{ display: 'block', outline: 'none', padding: '1px 5px', margin: '5px', width: '100%', lineHeight: '20px'}}
+                />
             </div>
         );
     }

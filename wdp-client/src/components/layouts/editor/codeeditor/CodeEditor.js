@@ -11,20 +11,24 @@ class CodeEditor extends Component {
     constructor(props) {
         super(props);
         const location = this.props.location;
+        let newCursor = (location.state && location.state.cursor)? location.state.cursor : {"content": "<!-- Select a file to code -->"};
         this.state = {
-            cursor: (location.state && location.state.cursor)? location.state.cursor : {"content": "<!-- Select a file to code -->"},
+            cursor: newCursor,
             theme: "dark",
             isEditorReady: true,
         }
-        contentFlow.next(this.state.cursor.content);
+        contentFlow.next(newCursor.content);
     }
 
     componentDidMount(){
         this.props.history.listen((location) => {
-            this.setState({
-                cursor: (location.state && location.state.cursor)? location.state.cursor : {"content": "<!-- Select a file to code -->"},
-            });
-            contentFlow.next(this.state.cursor.content);
+            let newCursor = (location.state && location.state.cursor)? location.state.cursor : this.state.cursor;
+            try {
+                this.setState({
+                    cursor: newCursor,
+                });
+                contentFlow.next(newCursor.content);
+            } catch(err) {console.log(err)}
         });
     }
 

@@ -12,11 +12,11 @@ class Export extends Component {
             branches : [],
             isLoading: false
         };
-        setTimeout(() => this.setState({isLoading: true}), 20);
     }
     async componentDidMount(){
         let userName = localStorage.username;
         let project = localStorage.projectName;
+        if (project) this.setState({isLoading: true});
         axios.get("https://api.github.com/repos/" + userName + '/' + project + '/branches').then(res => {
             this.setState({branches : res.data});
             setTimeout(() => this.setState({isLoading: false}), 300);
@@ -26,8 +26,8 @@ class Export extends Component {
     render() {
         return (
             <div className="SidebarElement">
-                <div className="sidebar_title">DOWNLOAD</div>
-                <div className="sidebar_element" style={{ flexDirection: "column" }}>
+                <div className="sidebar_title">EXPORT</div>
+                <div className="sidebar_element" style={{ flexDirection: "column", minHeight: '100%', justifyContent: 'flex-start' }}>
                     {this.state.isLoading && <Loading size='20' />}
                     <div className="horizontal_divider"></div>
                     {this.state.branches.map((value, index) => (

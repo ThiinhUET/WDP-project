@@ -62,6 +62,7 @@ class Authenticate {
             let repo = [];
             res.data.repositories.map((value) => repo.push(value.name) );
             localStorage.setItem('repositories', repo);
+            localStorage.setItem("trashRepositories","");
             setTimeout(cb,0)
           })
         });

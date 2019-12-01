@@ -25,6 +25,10 @@
     color: #f0f0f0;
 }
 
+.sbar_content {
+    position: relative;
+}
+
 /* Explorer */
 .SidebarElement {
     width: 200px;
@@ -35,6 +39,7 @@
 }
 
 .sidebar_title {
+    position: relative;
     text-align: center;
     margin: 10px auto;
     font-weight: 600;

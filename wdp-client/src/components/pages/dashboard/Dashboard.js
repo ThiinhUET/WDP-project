@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
-import logo from '../../../assets/logo.png';
+import axios from 'axios';
 
 import UserInfo from '../../layouts/user-info/UserInfo';
-
-import './style.css';
 import Loading from '../../layouts/loading/Loading';
+
+import logo from '../../../assets/logo.png';
+import './style.css';
 
 class Dashboard extends Component {
     constructor(props) {
@@ -14,21 +15,65 @@ class Dashboard extends Component {
             selectedElement: 'overview',
             gridTitle: 'Recent Projects',
             repositories : [],
-            isLoading: true
+            trashRepositories: [],
+            isLoading: true,
+            isDeleting: false
         }
         setTimeout(() => this.setState({isLoading: false}), 500);
     }
 
     componentDidMount(){
         let repos = localStorage.getItem('repositories').split(',');
-        this.setState({repositories : repos});
+        if (repos[0] !== "") this.setState({repositories : repos});
+        let trashRepos = localStorage.getItem('trashRepositories').split(',');
+        if (trashRepos[0] !== "") this.setState({trashRepositories : trashRepos});
     }
+
     returnHome() {
         this.props.history.push('/home');
     }
-    
     openEditor(project) {
         this.props.history.push('/editor' + project);
+    }
+    openEditorInNewTab(project) {
+        window.open(
+            '/editor' + project,
+            '_blank'
+        );          
+    }
+    moveToTrash(project, idx) {
+        let newRepos = this.state.repositories;
+        newRepos.splice(idx, 1);
+        this.setState({
+            repositories: newRepos,
+            trashRepositories : [project, ...this.state.trashRepositories]
+        });
+        localStorage.setItem('repositories', newRepos);
+        localStorage.setItem('trashRepositories', [project, ...this.state.trashRepositories]);
+    }
+    restore(project, idx) {
+        let newTrashRepos = this.state.trashRepositories;
+        newTrashRepos.splice(idx, 1);
+        this.setState({
+            repositories: [project, ...this.state.repositories],
+            trashRepositories : newTrashRepos
+        });
+        localStorage.setItem('repositories', [project, ...this.state.repositories]);
+        localStorage.setItem('trashRepositories', newTrashRepos);
+    }
+    delete(name, idx) {
+        let userName = localStorage.username;
+        let accessToken = localStorage.accessToken;
+        this.setState({isDeleting: true});
+        axios.delete('https://api.github.com/repos/' + userName + '/' + name, {
+            headers: {'Authorization': 'token ' + accessToken}
+        }).then(() => {
+            let newTrashRepos = this.state.trashRepositories;
+            newTrashRepos.splice(idx, 1);
+            this.setState({ trashRepositories : newTrashRepos });
+            localStorage.setItem('trashRepositories', newTrashRepos);
+            this.setState({isDeleting: false});
+        }).catch(err => console.log(err));
     }
     
     onSelect = evt => {
@@ -50,9 +95,26 @@ class Dashboard extends Component {
             document.getElementById("deleted_projects").style.display = "grid";
         }
     }
+
+    openProjectOptions = (evt, title) => {
+        let optionsContainer = evt.currentTarget.children[1];
+        if (optionsContainer.style.display === 'none') {
+            optionsContainer.style.display = 'block';
+            let gridContainer = document.getElementById(title);
+            let gridElement = optionsContainer.offsetParent.offsetParent;
+            console.log(optionsContainer.offsetParent.offsetHeight, optionsContainer.offsetTop, optionsContainer.offsetParent.offsetTop, gridElement.offsetTop - gridContainer.scrollTop, optionsContainer.offsetHeight);
+            if (optionsContainer.offsetParent.offsetHeight + optionsContainer.offsetParent.offsetTop + gridElement.offsetTop - gridContainer.scrollTop + optionsContainer.offsetHeight > gridContainer.offsetHeight)
+                optionsContainer.style.bottom = '17px';
+            else optionsContainer.style.bottom = '';
+            if (gridElement.offsetLeft >= gridElement.offsetParent.offsetWidth * 2 / 3) optionsContainer.style.right = '0';
+        }
+        else {
+            optionsContainer.style.display = 'none';
+        }
+    }
     
     render() {
-        const { repositories, isLoading, gridTitle } = this.state;
+        const { repositories, trashRepositories, isLoading, isDeleting, gridTitle } = this.state;
         return (
             <div className="Dashboard">
                 { isLoading && <Loading size='30' /> }
@@ -94,15 +156,38 @@ class Dashboard extends Component {
                                     <div className="project_image"><i className="fas fa-code" style={{width: '60px', height: '60px', color: 'gray'}}></i></div>
                                     <div className="project_name">
                                         {name}
-                                        <span className="project_icon">
-                                            <i className="fas fa-ellipsis-v" style={{height: '14px'}}></i>
+                                        <span className="project_icon" onClick={(evt) => this.openProjectOptions(evt, "recent_projects")}>
+                                            <i className="fas fa-ellipsis-v" style={{height: '14px', width: '14px'}}></i>
+                                            <div className="projectOptions_container" style={{display: 'none'}}>
+                                                <div className="projectOptions_item" onClick={() => this.openEditor('/' + name)}>Open</div>
+                                                <div className="projectOptions_row_divider"></div>
+                                                <div className="projectOptions_item" onClick={() => this.openEditorInNewTab('/' + name)}>Open in new tab</div>
+                                                <div className="projectOptions_row_divider"></div>
+                                                <div className="projectOptions_item" onClick={() => this.moveToTrash(name, idx)}>Move to Trash</div>
+                                            </div>
                                         </span>
                                     </div>
                                 </div>
                             ))}
                         </div>
                         <div className="dashboard_pane2 grid_container" id="deleted_projects">
-
+                            {isDeleting && <Loading size='25'/>}
+                            {trashRepositories.map((name, idx) => (
+                                <div className="grid_element project" key={idx}>
+                                    <div className="project_image"><i className="fas fa-code" style={{width: '60px', height: '60px', color: 'gray'}}></i></div>
+                                    <div className="project_name">
+                                        {name}
+                                        <span className="project_icon" onClick={(evt) => this.openProjectOptions(evt, "deleted_projects")}>
+                                            <i className="fas fa-ellipsis-v" style={{height: '14px'}}></i>
+                                            <div className="projectOptions_container" style={{display: 'none'}}>
+                                                <div className="projectOptions_item" onClick={() => this.restore(name, idx)}>Restore</div>
+                                                <div className="projectOptions_row_divider"></div>
+                                                <div className="projectOptions_item" onClick={() => this.delete(name, idx)}>Delete</div>
+                                            </div>
+                                        </span>
+                                    </div>
+                                </div>
+                            ))}
                         </div>
                     </div>
                 </div>

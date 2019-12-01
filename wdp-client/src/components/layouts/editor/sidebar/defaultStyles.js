@@ -1,6 +1,7 @@
 export default {
     searchBox: {
         position: 'fixed',
+        width: '176px'
     },
     addFileBox: {
         position: 'fixed',
@@ -19,6 +20,7 @@ export default {
             outline: 'none',
             padding: '0px 5px',
             width: '112px',
+            height: '16px',
         },
         icon_holder: {
             display: 'flex',
