@@ -7,16 +7,6 @@
     - React-Monaco-sample : https://github.com/Microsoft/monaco-editor-samples/<br/>
     - Tree view : https://github.com/fiffty/react-treeview-mui
 
-###Todo
-
-- [x] Login
-- [x] Coding
-- [x] Running code
-- [x] Exporting to zip
-- [x] Login with github
-- [x] Commiting
-- [x] Terminal
-
 
 ### if you use chrome
 ### go to chrome://settings/content/cookies and uncheck block third-party cookies
