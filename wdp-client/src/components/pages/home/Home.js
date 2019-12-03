@@ -65,8 +65,8 @@ class Home extends Component {
                             <div className="people_profile">
                                 <img className="people_avt" src="https://avatars1.githubusercontent.com/u/38932674?v=4" alt="" />
                                 <div className="people_info">
-                                    <a className="info_url" href="https://www.facebook.com/quocnt.99" target="_blank" rel="noopener noreferrer">
                                     <div>Nguyễn Tuấn Quốc</div>
+                                    <a className="info_url" href="https://www.facebook.com/quocnt.99" target="_blank" rel="noopener noreferrer">
                                         <i className="fab fa-facebook" style={{width: '30px', height: '30px', padding: '10px'}}></i>
                                     </a>
                                     <a className="info_url" href="https://github.com/NTQ99" target="_blank" rel="noopener noreferrer">

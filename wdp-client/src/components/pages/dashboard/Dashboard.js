@@ -100,7 +100,7 @@ class Dashboard extends Component {
             let gridElement = optionsContainer.offsetParent.offsetParent;
             console.log(optionsContainer.offsetParent.offsetHeight, optionsContainer.offsetTop, optionsContainer.offsetParent.offsetTop, gridElement.offsetTop - gridContainer.scrollTop, optionsContainer.offsetHeight);
             if (optionsContainer.offsetParent.offsetHeight + optionsContainer.offsetParent.offsetTop + gridElement.offsetTop - gridContainer.scrollTop + optionsContainer.offsetHeight > gridContainer.offsetHeight)
-                optionsContainer.style.bottom = '17px';
+                optionsContainer.style.bottom = '18px';
             else optionsContainer.style.bottom = '';
             if (gridElement.offsetLeft >= gridElement.offsetParent.offsetWidth * 2 / 3) optionsContainer.style.right = '0';
         }

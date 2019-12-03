@@ -59,6 +59,12 @@ convertString = (input) => {
         else nodes[i].path = nodes[i].path + '/';
     }
     for (let i = 0; i < input.tree.length; i ++) {
+        if (nodes[i].name === 'README.md') {
+            nodes.push(nodes[i]);
+            nodes.splice(i, 1);
+        }
+    }
+    for (let i = 0; i < input.tree.length; i ++) {
         if (nodes[i].type === 'folder') addNode(rootNode, nodes[i]);
     }
     for (let i = 0; i < input.tree.length; i ++) {
