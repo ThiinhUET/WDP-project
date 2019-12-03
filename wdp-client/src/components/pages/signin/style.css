@@ -1,5 +1,4 @@
-/* maincontent */
-.signin .maincontent {
+.maincontent.signin {
     display: flex;
     flex-direction: column;
     height: 90vh;

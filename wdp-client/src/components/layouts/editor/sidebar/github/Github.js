@@ -209,7 +209,7 @@ class Github extends Component {
             <div className="SidebarElement">
                 <div className="sidebar_title">GITHUB</div>
                 <div className="sidebar_element" style={{ flexDirection: "column" }}>
-                    {!localStorage.uid && <div className="signin_git_button" onClick={() => this.signIn()}>
+                    {!localStorage.uid && <div className="signin_git_button" onClick={() => this.signIn()} style={{margin: '10px'}}>
                         <i className="fab fa-github" style={{ width: '18px', height: '18px', paddingRight: '5px' }}></i>
                         <span>Sign in with GitHub</span>
                     </div>}

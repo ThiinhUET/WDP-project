@@ -27,7 +27,7 @@ class Export extends Component {
         return (
             <div className="SidebarElement">
                 <div className="sidebar_title">EXPORT</div>
-                <div className="sidebar_element" style={{ flexDirection: "column", minHeight: '100%', justifyContent: 'flex-start' }}>
+                <div className="sidebar_element" style={{ flexDirection: "column", minHeight: '100%', justifyContent: 'flex-start', alignItems: 'unset' }}>
                     {this.state.isLoading && <Loading size='20' />}
                     <div className="horizontal_divider"></div>
                     {this.state.branches.map((value, index) => (

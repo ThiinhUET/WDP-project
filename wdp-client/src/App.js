@@ -4,6 +4,7 @@ import Home from './components/pages/home/Home';
 import Editor from './components/pages/editor/Editor';
 import SignIn from './components/pages/signin/SignIn';
 import SignUp from './components/pages/signup/SignUp';
+import Help from './components/pages/help/Help';
 import Profile from './components/pages/profile/Profile';
 import Dashboard from './components/pages/dashboard/Dashboard';
 
@@ -32,6 +33,9 @@ class App extends Component {
                     </Route>
                     <Route exact path = '/signup'>
                         <SignUp />
+                    </Route>
+                    <Route exact path = '/help'>
+                        <Help />
                     </Route>
                     <PrivateRoute exact path ='/profile'>
                         <Profile />

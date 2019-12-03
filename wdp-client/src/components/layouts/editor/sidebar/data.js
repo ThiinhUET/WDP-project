@@ -51,7 +51,10 @@ class DataLoading extends Component {
     
     componentDidMount() {
         const { accessToken, username, projectName, repositories } = localStorage;
-        let repos = repositories.split(',');
+        let repos = [];
+        try {
+            repos = repositories.split(',');
+        } catch {}
         let { data } = this.state;
         this.props.history.listen((location) => {
             data = (location.state && location.state.data)? location.state.data : this.state.data;

@@ -1,15 +1,14 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 
+import Header from '../../layouts/header/Header';
 import SideBar from '../../layouts/editor/sidebar/SideBar';
-import UserInfo from '../../layouts/user-info/UserInfo';
 import Loading from '../../layouts/loading/Loading';
 import ResultFrame from '../../layouts/editor/resultframe/ResultFrame';
 import CodeEditor from '../../layouts/editor/codeeditor/CodeEditor';
 import Console from '../../layouts/editor/console/Console';
 import Diff from '../../layouts/editor/sidebar/github/Diff';
 
-import logo from '../../../assets/logo.png';
 import { defaultdata } from '../../layouts/editor/sidebar/data';
 import '@fortawesome/fontawesome-free/js/all';
 import './style.css';
@@ -38,10 +37,6 @@ class Editor extends Component {
         }))
     }
 
-    returnHome(){
-        this.props.history.push('/home');
-    }
-
     openSignIn(redirectPage) {
         this.props.history.push({
             pathname: '/signin',
@@ -52,40 +47,20 @@ class Editor extends Component {
     render() {
         const { isLoading } = this.state;
         return (
-                <div className="Editor">
+            <div className="Editor">
                 { isLoading && <Loading size='30' /> }
-                <div className="header editor">
-                    <div className="header_left">
-                        <button className="homebtn" title="Home" onClick={() => this.returnHome()}>
-                            <img src={logo} className="App-logo" alt="logo" width={40} height={40} />
-                        </button>
-                        <span className="title">Editor</span>
-                    </div>
-                    <div className="header_center">
-                        {/* <a href="/editor" target="_blank" rel="noopener noreferrer">
-                            <button style={{width: 'fit-content', padding: '0 10px', margin: '0 5px'}}>
-                                <i className="far fa-plus-square" style={{width: '30px', height: '30px', paddingRight: '10px'}}></i>
-                                New
-                            </button>
-                        </a> */}
-                        {/* <span>{localStorage.projectName || ''}</span> */}
-                    </div>
-                    <div className="header_right">
-                    {!localStorage.uid && <button className="signin" onClick={() => this.openSignIn('/editor')}>Sign In</button>}
-                        <UserInfo />
-                    </div>
-                </div>
+                <Header title="Editor" />
                 <div className="maincontent editor">
                     <div className="editor_pane vertical pane1" >
                         <SideBar />
                     </div>
                     <div className="resizer vertical"></div>
-                    <Diff />
-                    <div className="editor_pane vertical pane2">
+                    <div className="editor_pane vertical pane2" id="pane2">
+                        <Diff />
                         <CodeEditor/>
                     </div>
                     <div className="resizer vertical"></div>
-                    <div className="editor_pane vertical pane3">
+                    <div className="editor_pane vertical pane3" id="pane3">
                         <div className="editor_pane horizontal pane1" style = {{flex : '1'}}>
                             <ResultFrame />
                         </div>

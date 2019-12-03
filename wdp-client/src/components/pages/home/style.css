@@ -1,0 +1,135 @@
+@font-face {
+    font-family: Squares;
+    src: url("../../../fonts/Squares Bold.otf")
+}
+.maincontent.home {
+    overflow: scroll;
+    position: absolute;
+}
+.top_maincontent {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    height: 90vh;
+    width: 100%;
+    align-items: center;
+}
+.title_code {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+.title_code .name {
+    color: #f0f0f0;
+    font-family: Squares; 
+    font-style: italic;
+    font-size: 36pt;
+    line-height: 100px;
+}
+.title_code .other_name {
+    text-align: right;
+    color: #0d9e5b;
+    font-family: Source Sans Pro,Open Sans,Segoe UI,sans-serif;
+    font-size: 32pt;
+}
+@keyframes Sidebar_rainbowBorder {
+    0% {background-position: 87% 100%;}
+    25% {background-position: 10% 0%;}
+    50% {background-position: 87% 100%;}
+    75% {background-position: 10% 0%;}
+    100% {background-position: 87% 100%;}
+}
+.button_code {
+    background-image: linear-gradient(115deg,#cf3721,#f5be41,#258039,#31a9b8);
+    padding: 3px;
+    border-radius: 6px;
+    border-style: none;
+    box-sizing: border-box;
+    cursor: pointer;
+    font-weight: 600;
+    letter-spacing: 1px;
+    font-family: Source Sans Pro,Open Sans,Segoe UI,sans-serif;
+    background-size: 400% 400%;
+    animation: Sidebar_rainbowBorder 3s ease-in-out infinite;
+}
+.button_code span{
+    color: #f0f0f0;
+    padding: 10px;
+    text-align: center;
+    border-radius: 4px;
+    background: #1e1e1e;
+    display: block;
+    font-size: 14pt;
+    align-items: center;
+    box-sizing: border-box;
+}
+.button_code:hover {
+    box-shadow: 0px 0px 15px 0px #0d9e5b;
+}
+
+.center_maincontent {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 60vh;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    font-family: Source Sans Pro,Open Sans,Segoe UI,sans-serif;
+    color: #f0f0f0;
+}
+
+.bottom_maincontent {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 90vh;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    font-family: Source Sans Pro,Open Sans,Segoe UI,sans-serif;
+    color: #f0f0f0;
+}
+.aboutUs {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    height: 80%;
+    width: 70%;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+.people_profile {
+    display: flex;
+    position: relative;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 33.33%;
+    height: 50%;
+}
+.people_avt {
+    margin: 10px;
+    width: 40%;
+    border: 5px solid #ffffff33;
+    border-radius: 50%;
+    background-position: center;
+}
+.people_info {
+    text-align: center;
+    padding: 10px;
+    font-size: 14pt;
+}
+.info_url {
+    text-decoration: none;
+    color: #f0f0f0;
+    cursor: pointer;
+}
+.info_url:hover {
+    color: #0d9e5b;
+}

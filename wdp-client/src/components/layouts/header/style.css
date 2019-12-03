@@ -1,0 +1,78 @@
+.header_left {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+.header_center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.header_right {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+.header button {
+    display: flex;
+    position: relative;
+    height: 40px;
+    width: 40px;
+    padding: 0;
+    text-decoration: none;
+    outline: none;
+    border-style: none;
+    background: none;
+    color: #f0f0f0;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 14pt;
+    font-family: Source Sans Pro,Open Sans,Segoe UI,sans-serif;
+    font-weight: 600;
+    align-items: center;
+    justify-content: center;
+}
+.header .user {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    right: 0;
+}
+.header span {
+    position: relative;
+    font-family: Source Sans Pro,Open Sans,Segoe UI,sans-serif;
+    line-height: 30px;
+    font-size: 14pt;
+    font-weight: 600;
+    color: #f0f0f0;
+}
+.header span.title {
+    border-left: 1.5px solid;
+    padding-left: 20px;
+    padding-right: 20px;
+    left: 20px;
+}
+.header span.username {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.header button.signin {
+    width: 90px;
+}
+.header button.signup {
+    width: 90px;
+}
+.header .divider {
+    position: relative;
+    color: #f0f0f0;
+    float: right;
+    height: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-left: 1.5px solid;
+}
+.header button:hover {
+    background-color: rgb(70, 70, 70);
+}

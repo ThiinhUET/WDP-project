@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Fira+Sans:200,400&display=swap&subset=vietnamese');
 .maincontent.profile {
+    display: flex;
     flex-direction: column;
     align-items: unset;
     justify-content: unset;

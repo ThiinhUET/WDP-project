@@ -11,28 +11,28 @@ class SideBar extends Component {
             activeItem: "explorer"
         }
     }
+
     setActiveItem = (name) => {
         this.setState({
             ...this.setState,
             activeItem: name
         })
     }
+
     explorer() {
         var x = document.getElementById("explorer");
         if (this.state.activeItem !== "explorer") {
             this.setActiveItem("explorer");
             x.className += " open";
-            document.getElementById("github").className = "icon";
-            document.getElementById("export").className = "icon";
+            document.getElementById("github").className = "sbar_icon";
+            document.getElementById("export").className = "sbar_icon";
             document.getElementsByClassName("Diff")[0].style.display = "none";
-            document.getElementsByClassName("Diff")[0].style.left = "255px";
-            document.getElementsByClassName("Diff")[0].style.width = "calc(100vw - 255px)";
+            document.getElementById("pane2").style.flex = "1";
+            document.getElementById("pane3").style.flex = "1";
         }
         else {
-            document.getElementsByClassName("Diff")[0].style.left = "55px";
-            document.getElementsByClassName("Diff")[0].style.width = "calc(100vw - 55px)";
             this.setActiveItem("none");
-            x.className = "icon";
+            x.className = "sbar_icon";
         }
     }
     github() {
@@ -40,55 +40,55 @@ class SideBar extends Component {
         if (this.state.activeItem !== "github") {
             this.setActiveItem("github");
             x.className += " open";
-            document.getElementById("explorer").className = "icon";
-            document.getElementById("export").className = "icon";
+            document.getElementById("explorer").className = "sbar_icon";
+            document.getElementById("export").className = "sbar_icon";
             document.getElementsByClassName("Diff")[0].style.display = "block";
-            document.getElementsByClassName("Diff")[0].style.left = "255px";
-            document.getElementsByClassName("Diff")[0].style.width = "calc(100vw - 255px)";
+            document.getElementById("pane2").style.flex = "2";
+            document.getElementById("pane3").style.flex = "1";
         }
         else {
-            document.getElementsByClassName("Diff")[0].style.left = "55px";
-            document.getElementsByClassName("Diff")[0].style.width = "calc(100vw - 55px)";
             this.setActiveItem("none");
-            x.className = "icon";
+            x.className = "sbar_icon";
         }
-        
     }
-
-    download() {
+    export() {
         var x = document.getElementById("export");
         if (this.state.activeItem !== "export") {
             this.setActiveItem("export");
             x.className += " open";
-            document.getElementById("explorer").className = "icon";
-            document.getElementById("github").className = "icon";
+            document.getElementById("explorer").className = "sbar_icon";
+            document.getElementById("github").className = "sbar_icon";
             document.getElementsByClassName("Diff")[0].style.display = "none";
-            document.getElementsByClassName("Diff")[0].style.left = "255px";
-            document.getElementsByClassName("Diff")[0].style.width = "calc(100vw - 255px)";
+            document.getElementById("pane2").style.flex = "1";
+            document.getElementById("pane3").style.flex = "1";
         }
         else {
-            document.getElementsByClassName("Diff")[0].style.left = "55px";
-            document.getElementsByClassName("Diff")[0].style.width = "calc(100vw - 55px)";
             this.setActiveItem("none");
-            x.className = "icon";
+            x.className = "sbar_icon";
         }
-        
+    }
+    help() {
+        window.open(
+            '/help',
+            'Help',
+            "width=500, height=500"
+        );          
     }
     render() {
-        let username = localStorage.getItem('username');
-        let projectName = localStorage.getItem('projectName');
-        
         return (
             <div className="sidebar">
-                <div className="sbar_icons">
-                    <div className="icon open" id="explorer" title="Explorer" onClick = {() => this.explorer()}>
+                <div className="sbar_iconContainer">
+                    <div className="sbar_icon open" id="explorer" title="Explorer" onClick = {() => this.explorer()}>
                         <i className="fas fa-file" id="icon" style={{width: '25px', height: '25px', margin: '10px auto'}}></i>
                     </div>
-                    <div className="icon" id="github" title="GitHub" onClick = {() => this.github()}>
+                    <div className="sbar_icon" id="github" title="GitHub" onClick = {() => this.github()}>
                         <i className="fab fa-github" style={{width: '25px', height: '25px', margin: '10px auto'}}></i>
                     </div>
-                    <div className="icon" id="export" title="Export" onClick = {() => this.download()}>
+                    <div className="sbar_icon" id="export" title="Export" onClick = {() => this.export()}>
                         <i className="fas fa-download" style={{width: '25px', height: '25px', margin: '10px auto'}}></i>
+                    </div>
+                    <div className="sbar_help_icon" id="help" title="Help" onClick = {() => this.help()}>
+                        <i className="fas fa-question-circle" style={{width: '25px', height: '25px', margin: '10px auto'}}></i>
                     </div>
                 </div>
                 <div className="sbar_content">

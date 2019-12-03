@@ -2,10 +2,9 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import axios from 'axios';
 
-import UserInfo from '../../layouts/user-info/UserInfo';
 import Loading from '../../layouts/loading/Loading';
+import Header from '../../layouts/header/Header';
 
-import logo from '../../../assets/logo.png';
 import './style.css';
 
 class Dashboard extends Component {
@@ -29,9 +28,6 @@ class Dashboard extends Component {
         if (trashRepos[0] !== "") this.setState({trashRepositories : trashRepos});
     }
 
-    returnHome() {
-        this.props.history.push('/home');
-    }
     openEditor(project) {
         this.props.history.push('/editor' + project);
     }
@@ -118,17 +114,7 @@ class Dashboard extends Component {
         return (
             <div className="Dashboard">
                 { isLoading && <Loading size='30' /> }
-                <div className="header">
-                    <div className="header_left">
-                        <button className="homebtn" title="Home" onClick={() => this.returnHome()}>
-                            <img src={logo} className="App-logo" alt="logo" width={40} height={40} />
-                        </button>
-                        <span className="title">Dashboard</span>
-                    </div>
-                    <div className="header_right">
-                        <UserInfo />
-                    </div>
-                </div>
+                <Header title="Dashboard" />
                 <div className="maincontent dashboard">
                     <div className="dashboard_pane vertical dashboard_pane1">
                         <div className="dashboard_pane1 container" onClick={(evt) => this.onSelect(evt)}>

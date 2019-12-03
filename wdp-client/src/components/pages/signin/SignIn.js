@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 
-import logo from '../../../assets/logo.png';
 import logo2 from '../../../assets/logo2.png';
 
 import Authenticate from '../../common/authprovider/Authenticate';
 import Background from '../../layouts/background/Background';
 import Loading from '../../layouts/loading/Loading'; 
+import Header from '../../layouts/header/Header';
+
 import '@fortawesome/fontawesome-free/js/all';
 import './style.css';
-
 
 class SignIn extends Component {
     constructor(props) {
@@ -37,27 +37,14 @@ class SignIn extends Component {
         });
     }
     
-    returnHome() {
-        this.props.history.push('/home');
-    }
-    openSignUp() {
-        this.props.history.push('/signup');
-    }
     render() {
         const { isLoading } = this.state;
         return (
-            <div className="signin">
+            <div className="Signin">
                 { isLoading && <Loading size='30' /> }
                 <Background width = '100%' />
-                <div className="header">
-                    <div className="header_left">
-                        <button className="homebtn" title="Home" onClick={() => this.returnHome()}>
-                            <img src={logo} className="App-logo" alt="logo" width={40} height={40} />
-                        </button>
-                        <span className="title">WDP</span>
-                    </div>
-                </div>
-                <div className="maincontent">
+                <Header title="Sign In" page="signin" />
+                <div className="maincontent signin">
                     <div className="signin_title">Sign in to WDP</div>
                     <div className="signin_box">
                         <img src={logo2} alt="" style={{ position: 'relative', width: '70%', margin: '0 auto' }} />

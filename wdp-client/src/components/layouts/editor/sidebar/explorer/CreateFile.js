@@ -5,6 +5,10 @@ import defaultStyles from '../defaultStyles';
 import { defaultdata } from '../data';
 import { dataFlow } from '../../../../../services';
 
+import ADD_FILE from '../../../../../assets/file_icon/add-file.svg'
+import ADD_FOLDER from '../../../../../assets/file_icon/add-folder.svg'
+import MINUS_FILE from '../../../../../assets/file_icon/negative.svg';
+
 class CreateFile extends Component {
     constructor(props) {
         super(props);
@@ -111,8 +115,7 @@ class CreateFile extends Component {
                         setTimeout(() => {if (!this.state.err) this.addErr()}, 200);
                     }}
                 >
-                    <span style={{position: 'absolute', transform: 'translateX(-50%) translateY(-60%)'}}>+</span>
-                    <i className="fas fa-file" style={defaultStyles.addFileBox.icon}></i>
+                    <img src={ADD_FILE} alt="" style={defaultStyles.addFileBox.icon} />
                 </span>
                 <span title="Add folder" style={defaultStyles.addFileBox.icon_holder}
                     onClick={() => {
@@ -121,8 +124,7 @@ class CreateFile extends Component {
                         setTimeout(() => {if (!this.state.err) this.addErr()}, 10);
                     }}
                 >
-                    <span style={{position: 'absolute', transform: 'translateX(-70%) translateY(-60%)'}}>+</span>
-                    <i className="fas fa-folder" style={defaultStyles.addFileBox.icon}></i>
+                    <img src={ADD_FOLDER} alt="" style={defaultStyles.addFileBox.icon} />
                 </span>
                 <span title="Delete file/folder" style={defaultStyles.addFileBox.icon_holder}
                     onClick={() => {
@@ -131,7 +133,7 @@ class CreateFile extends Component {
                         setTimeout(() => {if (!this.state.err) this.addErr()}, 10);
                     }}
                 >
-                    <i className="fas fa-minus-square" style={defaultStyles.addFileBox.icon}></i>
+                    <img src={MINUS_FILE} alt="" style={defaultStyles.addFileBox.icon} />
                 </span>
             </Div>
         );

@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 
-import logo from '../../../assets/logo.png';
-
-import UserInfo from '../../layouts/user-info/UserInfo';
 import Loading from '../../layouts/loading/Loading';
+import Header from '../../layouts/header/Header';
+
 import './style.css';
 
 class Profile extends Component {
@@ -31,26 +30,13 @@ class Profile extends Component {
         else if (dates !== 0) return dates.toString + ((dates > 1) ? "days" : "day");
         else return "few hours"
     }
-    returnHome() {
-        this.props.history.push('/home');
-    }
     
     render() {
         const { isLoading } = this.state;
         return (
             <div className="Profile">
                 {isLoading && <Loading size='30' />}
-                <div className="header">
-                    <div className="header_left">
-                        <button className="homebtn" title="Home" onClick={() => this.returnHome()}>
-                            <img src={logo} className="App-logo" alt="logo" width={40} height={40} />
-                        </button>
-                        <span className="title">Profile</span>
-                    </div>
-                    <div className="header_right">
-                        <UserInfo />
-                    </div>
-                </div>
+                <Header title="Profile" />
                 <div className="maincontent profile">
                     <div className="top_content">
                         <div className="avatar_profile">

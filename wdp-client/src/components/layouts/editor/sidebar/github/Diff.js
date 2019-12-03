@@ -27,7 +27,7 @@ class Diff extends Component{
     render() {
         const { cursor, isLoading } = this.state;
         return (
-             <div className="Diff" style = {{position: 'absolute', display: 'none', backgroundColor: '#202124', left: '255px', width: 'calc(100vw - 255px)', height: '100%', zIndex: '999'}}>
+             <div className="Diff" style = {{position: 'relative', display: 'none', backgroundColor: '#202124', width: '100%', height: '100%', zIndex: '999'}}>
                 <div className="header_tab">
                     <div className="header_tab_element">{cursor.name + " (Working Tree)"}</div>
                 </div>

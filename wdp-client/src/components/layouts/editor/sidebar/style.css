@@ -1,27 +1,40 @@
 /* Side Bar */
 .sidebar {
+    position: relative;
     display: inline-flex;
     background-color: rgb(40, 40, 40);
     height: 100%;
   }
-.sbar_icons {
+.sbar_iconContainer {
+    position: relative;
     background-color: rgb(70, 70, 70);
     width: 50px;
     height: 100%;
     text-align: center;
 }
-.icon {
+.sbar_icon {
     cursor: pointer;
     color: #bbb;
 }
-.icon:hover {
+.sbar_icon:hover {
     color: #f0f0f0;
 }
-.icon:active {
+.sbar_icon:active {
     background-color: rgb(40, 40, 40);
 }
-.icon.open {
+.sbar_icon.open {
     background-color: rgb(40, 40, 40);
+    color: #f0f0f0;
+}
+.sbar_help_icon {
+    position: absolute;
+    cursor: pointer;
+    color: #bbb;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0;
+}
+.sbar_help_icon:hover {
     color: #f0f0f0;
 }
 
@@ -49,6 +62,7 @@
     display: flex;
     position: relative;
     justify-content: center;
+    align-items: center;
 }
 
 .sidebar_element .signin_git_button {
