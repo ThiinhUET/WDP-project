@@ -71,7 +71,7 @@ class Authenticate {
     signout = async (cb) => {
       await firebase.auth().signOut();
       localStorage.clear();
-      setTimeout(cb, 100);
+      setTimeout(cb, 0);
     };
 }
 export default Authenticate;

@@ -29,13 +29,10 @@ class Dashboard extends Component {
     }
 
     openEditor(project) {
-        this.props.history.push('/editor' + project);
+        window.open('/editor' + project, '_self');  
     }
     openEditorInNewTab(project) {
-        window.open(
-            '/editor' + project,
-            '_blank'
-        );          
+        window.open('/editor' + project, '_blank');          
     }
     moveToTrash(project, idx) {
         let newRepos = this.state.repositories;
@@ -98,7 +95,6 @@ class Dashboard extends Component {
             optionsContainer.style.display = 'block';
             let gridContainer = document.getElementById(title);
             let gridElement = optionsContainer.offsetParent.offsetParent;
-            console.log(optionsContainer.offsetParent.offsetHeight, optionsContainer.offsetTop, optionsContainer.offsetParent.offsetTop, gridElement.offsetTop - gridContainer.scrollTop, optionsContainer.offsetHeight);
             if (optionsContainer.offsetParent.offsetHeight + optionsContainer.offsetParent.offsetTop + gridElement.offsetTop - gridContainer.scrollTop + optionsContainer.offsetHeight > gridContainer.offsetHeight)
                 optionsContainer.style.bottom = '18px';
             else optionsContainer.style.bottom = '';

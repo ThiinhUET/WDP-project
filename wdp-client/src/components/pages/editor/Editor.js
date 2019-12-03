@@ -37,13 +37,6 @@ class Editor extends Component {
         }))
     }
 
-    openSignIn(redirectPage) {
-        this.props.history.push({
-            pathname: '/signin',
-            state: {redirect: redirectPage}
-        });
-    }
-    
     render() {
         const { isLoading } = this.state;
         return (

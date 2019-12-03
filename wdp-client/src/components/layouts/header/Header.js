@@ -8,11 +8,11 @@ import './style.css';
 
 class Header extends Component {
     returnHome() {
-        this.props.history.push('/home');
+        window.open('/home', '_self');
     }
 
     openSignIn() {
-        this.props.history.push('/signin');
+        window.open('/signin', '_self');
     }
     
     render() {

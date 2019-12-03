@@ -29,8 +29,7 @@ class UserInfo extends Component {
     signOut = () => {
         const authenticate = new Authenticate();
         authenticate.signout(() => {
-            this.props.history.push((this.props.location.pathname.includes('/editor')? '/editor' : this.props.location.pathname));
-            document.location.reload(true);
+            window.open(this.props.location.pathname.includes('/editor')? '/editor' : this.props.location.pathname, '_self');
         });
     }
     handleChange = () => {
@@ -38,16 +37,16 @@ class UserInfo extends Component {
     }
 
     returnHome = () => {
-        this.props.history.push('/home');
+        window.open('/home', '_self');
     }
     openEditor = () => {
-        this.props.history.push('/editor');
+        window.open('/editor', '_self');
     }
     openProfile = () => {
-        this.props.history.push('/profile');
+        window.open('/profile', '_self');
     }
     openDashboard = () => {
-        this.props.history.push('/dashboard');
+        window.open('/dashboard', '_self');
     }
     render() {
         return (

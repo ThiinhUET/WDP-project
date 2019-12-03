@@ -105,9 +105,9 @@ class ResultFrame extends Component {
         if (!node.path) return rootNode;
         if (rootNode.path === node.path) {
             rootNode.content = content;
-            rootNode.modified = true;
+            if (rootNode.modified !== undefined) rootNode.modified = true;
             node.content = content;
-            node.modified = true;
+            if (node.modified !== undefined) node.modified = true;
             this.props.history.push({
                 state: {...this.props.location.state, cursor: node}
             })

@@ -100,7 +100,7 @@ class Github extends Component {
                         "content": decodedValue,
                         "sha": shaKey
                     }, { headers: { 'Authorization': 'token ' + accessToken } }
-                    ).catch((err) => console.log(err));
+                    ).then(() => modifiedCursor.modified === false).catch((err) => console.log(err));
                 }).catch((err) => console.log(err));
             }
             else {
@@ -113,7 +113,7 @@ class Github extends Component {
                     },
                     "content": decodedValue
                 }, { headers: {'Authorization': 'token ' + accessToken } }
-                ).catch((err) => console.log(err));
+                ).then(() => modifiedCursor.modified === false).catch((err) => console.log(err));
             }
         }catch(err){
             console.log(err);
@@ -156,29 +156,31 @@ class Github extends Component {
 
     async create() {
         let accessToken = localStorage.accessToken;
-        let name = document.getElementById("createName").value.replace(' ', '-');
+        let name = document.getElementById("createName").value;
+        for (let i = 0; i < name.length; i ++)
+            if ((name.charCodeAt(i) < 48) || (name.charCodeAt(i) > 126)) name = name.replace(name[i], '-');
         localStorage.setItem("projectName", name);
         let description = document.getElementById("createDescription").value;
         let homepage = document.getElementById("createHomepage").value;
         
         if (name) {
             this.setState({isCreating: true});
-            axios.post('https://api.github.com/user/repos', {
+            await axios.post('https://api.github.com/user/repos', {
                 "name": name,
                 "description": description,
                 "homepage": homepage,
                 "auto_init": true
-            },{ headers: { 'Authorization': 'token ' + accessToken } }).then(() => {
-                localStorage.setItem("repositories", name + ',' + localStorage.repositories);
-                this.commit(this.state.modifiedTree, "Initial commit");
-            }).then(() => {
+            },{ headers: { 'Authorization': 'token ' + accessToken } }).then(async () => {
                 this.setState({isCreating: false});
+                await this.commit(this.state.modifiedTree, "Initial commit");
+            }).then(() => {
+                localStorage.setItem("repositories", name + ',' + localStorage.repositories);
                 this.state.data.name = name;
-                this.props.history.push({
-                    pathname: '/editor/' + name,
-                    state: {...this.props.location.state, data: this.state.data, cursor: this.state.cursor}
-                })
-            }).catch(() => this.setState({isCreating: false, errMess: "Name is exist !"}));
+                window.open('/editor/' + name, '_self');
+            }).catch(() => {
+                this.setState({isCreating: false, errMess: "Name is exist !"})
+                localStorage.removeItem("projectName");
+            })
         }
         else {
             this.setState({errMess: "Name is required !"});
