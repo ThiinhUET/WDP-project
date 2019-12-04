@@ -4,8 +4,11 @@ import axios from 'axios';
 
 import Loading from '../../layouts/loading/Loading';
 import Header from '../../layouts/header/Header';
+import Database from '../../common/firebase/Database'
 
 import './style.css';
+
+const database = new Database();
 
 class Dashboard extends Component {
     constructor(props) {
@@ -18,14 +21,15 @@ class Dashboard extends Component {
             isLoading: true,
             isDeleting: false
         }
-        setTimeout(() => this.setState({isLoading: false}), 500);
     }
-
-    componentDidMount(){
-        let repos = localStorage.getItem('repositories').split(',');
-        if (repos[0] !== "") this.setState({repositories : repos});
-        let trashRepos = localStorage.getItem('trashRepositories').split(',');
-        if (trashRepos[0] !== "") this.setState({trashRepositories : trashRepos});
+    
+    async componentDidMount(){
+        let gitData = await database.readData(localStorage.username);
+        this.setState({
+            repositories : gitData.repositories,
+            trashRepositories: gitData.trashRepositories || [],
+            isLoading: false
+        });
     }
 
     openEditor(project) {
@@ -41,8 +45,12 @@ class Dashboard extends Component {
             repositories: newRepos,
             trashRepositories : [project, ...this.state.trashRepositories]
         });
+        database.writeData(localStorage.username,
+        {
+            repositories: newRepos,
+            trashRepositories: [project, ...this.state.trashRepositories]
+        });
         localStorage.setItem('repositories', newRepos);
-        localStorage.setItem('trashRepositories', [project, ...this.state.trashRepositories]);
     }
     restore(project, idx) {
         let newTrashRepos = this.state.trashRepositories;
@@ -51,8 +59,12 @@ class Dashboard extends Component {
             repositories: [project, ...this.state.repositories],
             trashRepositories : newTrashRepos
         });
+        database.writeData(localStorage.username,
+        {
+            repositories: [project, ...this.state.repositories],
+            trashRepositories: newTrashRepos
+        });
         localStorage.setItem('repositories', [project, ...this.state.repositories]);
-        localStorage.setItem('trashRepositories', newTrashRepos);
     }
     delete(name, idx) {
         let userName = localStorage.username;
@@ -64,7 +76,7 @@ class Dashboard extends Component {
             let newTrashRepos = this.state.trashRepositories;
             newTrashRepos.splice(idx, 1);
             this.setState({ trashRepositories : newTrashRepos });
-            localStorage.setItem('trashRepositories', newTrashRepos);
+            database.writeData(userName, {trashRepositories: newTrashRepos});
             this.setState({isDeleting: false});
         }).catch(err => console.log(err));
     }

@@ -63,7 +63,8 @@ class DataLoading extends Component {
             data = (location.state && location.state.data)? location.state.data : this.state.data;
             this.setState({data: data});
         });
-        if (data === defaultdata && projectName && repos.includes(projectName)) {
+        if (projectName && !repos.includes(projectName)) window.open('/editor', '_self');
+        if (projectName && data === defaultdata) {
             setTimeout(() => this.setState({isLoading: true}), 500);
             axios.post('http://localhost:8080/git/user-listfile', {
                 accessToken: accessToken,

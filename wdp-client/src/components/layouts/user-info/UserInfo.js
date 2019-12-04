@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {withRouter} from 'react-router-dom';
-import Authenticate from '../../common/authprovider/Authenticate';
+import Authenticate from '../../common/firebase/Authenticate';
 import './style.css';
 
 

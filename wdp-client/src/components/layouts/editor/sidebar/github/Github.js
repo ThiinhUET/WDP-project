@@ -1,6 +1,6 @@
 import React, { Component, Fragment as div } from 'react';
 import { withRouter } from 'react-router-dom';
-import Authenticate from '../../../../common/authprovider/Authenticate';
+import Authenticate from '../../../../common/firebase/Authenticate';
 import { defaultdata } from '../data';
 import axios from 'axios';
 

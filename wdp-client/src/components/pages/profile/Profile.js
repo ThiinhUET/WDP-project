@@ -5,6 +5,7 @@ import Loading from '../../layouts/loading/Loading';
 import Header from '../../layouts/header/Header';
 
 import './style.css';
+import Database from '../../common/firebase/Database';
 
 class Profile extends Component {
     constructor(props) {
@@ -12,16 +13,20 @@ class Profile extends Component {
         this.state = {
             isLoading: true
         }
-        setTimeout(() => this.setState({isLoading: false}), 500);
     }
-    componentDidMount() {
+    async componentDidMount() {
+        const database = new Database();
+        let gitData = await database.readData(localStorage.username);
+        this.setState({profile: gitData.profile, isLoading: false})
         let bio_content = document.getElementById("bio_content");
         if (bio_content.offsetWidth > 232) bio_content.style.textAlign = "left";
+        console.log(gitData)
     }
     
     getCreatedTime() {
-        let update = new Date(localStorage.updated_at);
-        let create = new Date(localStorage.created_at);
+        const { profile } = this.state;
+        let update = new Date(profile.updated_at);
+        let create = new Date(profile.created_at);
         let years = update.getFullYear() - create.getFullYear();
         let months = update.getMonth() - update.getMonth();
         let dates = update.getDate() - update.getDate();
@@ -32,20 +37,20 @@ class Profile extends Component {
     }
     
     render() {
-        const { isLoading } = this.state;
+        const { isLoading, profile } = this.state;
         return (
             <div className="Profile">
                 {isLoading && <Loading size='30' />}
                 <Header title="Profile" />
-                <div className="maincontent profile">
+                {!isLoading && <div className="maincontent profile">
                     <div className="top_content">
                         <div className="avatar_profile">
                             <img src={localStorage.photoURL} alt="" width={200} height={200} style={{border: '3px solid white'}} />
                         </div>
                         <div style={{color: '#f0f0f0'}}>
-                            <span className="displayName_profile">{localStorage.displayName}</span>
+                            <span className="displayName_profile">{profile.name}</span>
                             <span className="username_profile">{localStorage.username}</span>
-                            <a className="github_link" title="GitHub" href={localStorage.html_url} target="_blank" rel="noopener noreferrer">
+                            <a className="github_link" title="GitHub" href={profile.html_url} target="_blank" rel="noopener noreferrer">
                                 <i className="fab fa-github" style={{color: '#0d9e5b', paddingLeft: '10px', width: '35px', height: '35px'}}></i>
                             </a>
                             <div className="created_time">
@@ -54,31 +59,31 @@ class Profile extends Component {
                             </div>
                             <div className="bio_profile">
                                 <div className="bio_title">Bio</div>
-                                <div className="bio_content" id="bio_content">{(localStorage.bio === "null") ? "" : localStorage.bio}</div>
+                                <div className="bio_content" id="bio_content">{(profile.bio === "null") ? "" : profile.bio}</div>
                             </div>
                         </div>
                     </div>
                     <div className="bottom_content">
                         <div className="profile_items">
-                            {localStorage.company && localStorage.company !=="null" && <div className="profile_item">
+                            {profile.company && profile.company !=="null" && <div className="profile_item">
                                 <i className="fas fa-users" style={{color: '#0d9e5b', width: '20px', height: '20px', paddingRight: '10px'}}></i>
-                                <span>{localStorage.company}</span>
+                                <span>{profile.company}</span>
                             </div>}
-                            {localStorage.location && localStorage.location !=="null" && <div className="profile_item">
+                            {profile.location && profile.location !=="null" && <div className="profile_item">
                                 <i className="fas fa-map-marker-alt" style={{color: '#0d9e5b', width: '20px', height: '20px', paddingRight: '10px'}}></i>
-                                <span>{localStorage.location}</span>
+                                <span>{profile.location}</span>
                             </div>}
-                            {localStorage.email_info && localStorage.email_info !=="null" && <div className="profile_item">
+                            {profile.email && profile.email !=="null" && <div className="profile_item">
                                 <i className="fas fa-envelope" style={{color: '#0d9e5b', width: '20px', height: '20px', paddingRight: '10px'}}></i>
-                                <a title="Send Mail" href={"mailto: " + localStorage.email_info}>{localStorage.email_info}</a>
+                                <a title="Send Mail" href={"mailto: " + profile.email}>{profile.email}</a>
                             </div>}
-                            {localStorage.blog && localStorage.blog !=="null" && <div className="profile_item">
+                            {profile.blog && profile.blog !=="null" && <div className="profile_item">
                                 <i className="fas fa-globe-asia" style={{color: '#0d9e5b', width: '20px', height: '20px', paddingRight: '10px'}}></i>
-                                <a title="Website" href={(localStorage.blog.includes("https://")||localStorage.blog.includes("http://"))? localStorage.blog : "https://" + localStorage.blog} target="_blank" rel="noopener noreferrer">{localStorage.blog}</a>
+                                <a title="Website" href={(profile.blog.includes("https://")||profile.blog.includes("http://"))? profile.blog : "https://" + profile.blog} target="_blank" rel="noopener noreferrer">{profile.blog}</a>
                             </div>}
                         </div>
                     </div>
-                </div>
+                </div>}
                 <div className="footer">
                     <span>v1.0</span>
                     <span>© 2019 Web Development Platform | Develop by HoiThanhDucChuaTroi</span>

@@ -3,7 +3,7 @@ import { withRouter } from 'react-router-dom';
 
 import logo2 from '../../../assets/logo2.png';
 
-import Authenticate from '../../common/authprovider/Authenticate';
+import Authenticate from '../../common/firebase/Authenticate';
 import Background from '../../layouts/background/Background';
 import Loading from '../../layouts/loading/Loading'; 
 import Header from '../../layouts/header/Header';

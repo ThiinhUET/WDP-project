@@ -2,6 +2,10 @@ import firebase from "firebase";
 import { firebaseApp } from "./base"
 import axios from 'axios';
 
+import Database from './Database';
+
+const database = new Database();
+
 class Authenticate {
     componentDidMount() {
       firebase.auth().onAuthStateChanged(user => {
@@ -22,19 +26,12 @@ class Authenticate {
         // ...
       }
       localStorage.setItem('accessToken', credential.accessToken);
-      localStorage.setItem('photoURL', user.photoURL);
+      localStorage.setItem('uid', user.providerData[0].uid);
       localStorage.setItem('email', user.email);
       localStorage.setItem('username', additionalUserInfo.username);
-      localStorage.setItem('displayName', additionalUserInfo.profile.name);
-      localStorage.setItem('uid', user.providerData[0].uid);
-      localStorage.setItem('bio', additionalUserInfo.profile.bio);
-      localStorage.setItem('blog', additionalUserInfo.profile.blog);
-      localStorage.setItem('company', additionalUserInfo.profile.company);
-      localStorage.setItem('email_info', additionalUserInfo.profile.email);
-      localStorage.setItem('location', additionalUserInfo.profile.location);
-      localStorage.setItem('html_url', additionalUserInfo.profile.html_url);
-      localStorage.setItem('created_at', additionalUserInfo.profile.created_at);
-      localStorage.setItem('updated_at', additionalUserInfo.profile.updated_at);
+      localStorage.setItem('photoURL', user.photoURL);
+
+      database.writeData(additionalUserInfo.username, {profile: additionalUserInfo.profile})
     };
     
     signin = (cb) => {
@@ -57,12 +54,32 @@ class Authenticate {
       firebaseApp
         .auth()
         .signInWithPopup(authProvider)
-        .then(this.authHandler).then( ()=>{
-          axios.post('http://localhost:8080/git/user-repos', {accessToken : localStorage.getItem('accessToken'), login : localStorage.getItem('username')}).then(res => {
+        .then(this.authHandler).then(async ()=>{
+          await axios.post('http://localhost:8080/git/user-repos', {accessToken : localStorage.accessToken, login : localStorage.username}).then(async res => {
             let repo = [];
-            res.data.repositories.map((value) => repo.push(value.name) );
-            localStorage.setItem('repositories', repo);
-            localStorage.setItem("trashRepositories","");
+            await res.data.repositories.map((value) => repo.push(value.name) );
+            let gitData = await database.readData(localStorage.username);
+            if (gitData) {
+              let i = 0;
+              while (i < repo.length && gitData.trashRepositories) {
+                if (gitData.trashRepositories.includes(repo[i])) await repo.splice(i, 1);
+                else i ++;
+              }
+              database.writeData(localStorage.username, 
+              {
+                repositories: repo,
+                trashRepositories: gitData.trashRepositories
+              });
+              localStorage.setItem('repositories', repo)
+            }
+            else {
+              database.writeData(localStorage.username, 
+              {
+                repositories: repo,
+                trashRepositories: ''
+              });
+              localStorage.setItem('repositories', repo)
+            }
             setTimeout(cb,0)
           })
         });
