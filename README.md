@@ -7,20 +7,21 @@
  ````
 
 ## Content
-1. Overview
-2. Main feature
-    * Home page
-    * Main editor
-    * Menu
-    * Github
-3. How to use
+1. [Overview](#overview)
+2. [Main features](#main-features)
+    * [Home page](#home-page)
+    * [Main editor](#main-editor)
+    * [Menu](#menu)
+    * [Github](#github-repository)
 
-### 1. Overview
+
+##  Overview
 Wep development platform(WDP) is an editor that's build for web development. Web application development is a growing field, and with all new configuration options it becomes harder and harder to focus on writing code. We make this easier by doing most configuration for you.<br/>
 This focus on web application development allows us to do many more optimizations. We can analyze npm dependencies, we can show custom error messages for known errors, we can make projects easily searchable by npm dependency. The possibilities are endless!
 
-### 2. Main features
-### Home page
+## Main features
+
+### Home page 
 ![Home page](assets/home.jpg)
 This is our home page when you first see our project. <br/>
 On the left corner, this is a shortcut `WDP` to quickly return home page. <br/> 
