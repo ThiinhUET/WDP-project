@@ -32,7 +32,7 @@
 .created_time {
     line-height: 50px;
     font-size: 14pt;
-    color: gray;
+    color: #0d9e5b;
 }
 .bio_profile {
     padding-top: 15px;
@@ -42,7 +42,7 @@
     background-color: #1e1e1e;
     font-size: 14pt;
     font-weight: lighter;
-    color: gray;
+    color: #0d9e5b;
     margin-top: -13px;
     margin-left: 10px;
 }
@@ -54,7 +54,7 @@
     font-weight: lighter;
     line-height: 30px;
     padding: 15px;
-    border: 1px solid gray;
+    border: 1px solid #0d9e5b;
     border-radius: 5px 15px;
     word-break: break-word;
 }
@@ -71,7 +71,7 @@
     font-size: 14pt;
     font-weight: lighter;
     width: 630px;
-    border-left: 1px solid gray;
+    border-left: 1px solid #0d9e5b;
 }
 .profile_item {
     padding: 15px;

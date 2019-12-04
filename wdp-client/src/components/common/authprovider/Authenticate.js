@@ -18,19 +18,19 @@ class Authenticate {
       if (authData.credential) {
         // This gives you a GitHub Access Token. You can use it to access the GitHub API.
         credential = authData.credential;
-        additionalUserInfo = authData.additionalUserInfo; 
+        additionalUserInfo = authData.additionalUserInfo;
         // ...
       }
       localStorage.setItem('accessToken', credential.accessToken);
       localStorage.setItem('photoURL', user.photoURL);
       localStorage.setItem('email', user.email);
       localStorage.setItem('username', additionalUserInfo.username);
-      localStorage.setItem('displayName', user.displayName);
+      localStorage.setItem('displayName', additionalUserInfo.profile.name);
       localStorage.setItem('uid', user.providerData[0].uid);
       localStorage.setItem('bio', additionalUserInfo.profile.bio);
       localStorage.setItem('blog', additionalUserInfo.profile.blog);
       localStorage.setItem('company', additionalUserInfo.profile.company);
-      localStorage.setItem('email', additionalUserInfo.profile.email);
+      localStorage.setItem('email_info', additionalUserInfo.profile.email);
       localStorage.setItem('location', additionalUserInfo.profile.location);
       localStorage.setItem('html_url', additionalUserInfo.profile.html_url);
       localStorage.setItem('created_at', additionalUserInfo.profile.created_at);
