@@ -16,7 +16,7 @@ class Profile extends Component {
     }
     async componentDidMount() {
         const database = new Database();
-        let gitData = await database.readData(localStorage.username);
+        let gitData = await database.readData(localStorage.uid);
         this.setState({profile: gitData.profile, isLoading: false})
         let bio_content = document.getElementById("bio_content");
         if (bio_content.offsetWidth > 232) bio_content.style.textAlign = "left";

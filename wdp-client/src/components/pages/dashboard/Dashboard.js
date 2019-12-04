@@ -24,7 +24,7 @@ class Dashboard extends Component {
     }
     
     async componentDidMount(){
-        let gitData = await database.readData(localStorage.username);
+        let gitData = await database.readData(localStorage.uid);
         this.setState({
             repositories : gitData.repositories || [],
             trashRepositories: gitData.trashRepositories || [],
@@ -45,7 +45,7 @@ class Dashboard extends Component {
             repositories: newRepos,
             trashRepositories : [project, ...this.state.trashRepositories]
         });
-        database.writeData(localStorage.username,
+        database.writeData(localStorage.uid,
         {
             repositories: newRepos,
             trashRepositories: [project, ...this.state.trashRepositories]
@@ -59,7 +59,7 @@ class Dashboard extends Component {
             repositories: [project, ...this.state.repositories],
             trashRepositories : newTrashRepos
         });
-        database.writeData(localStorage.username,
+        database.writeData(localStorage.uid,
         {
             repositories: [project, ...this.state.repositories],
             trashRepositories: newTrashRepos
@@ -76,7 +76,7 @@ class Dashboard extends Component {
             let newTrashRepos = this.state.trashRepositories;
             newTrashRepos.splice(idx, 1);
             this.setState({ trashRepositories : newTrashRepos });
-            database.writeData(userName, {trashRepositories: newTrashRepos});
+            database.writeData(localStorage.uid, {trashRepositories: newTrashRepos});
             this.setState({isDeleting: false});
         }).catch(err => console.log(err));
     }

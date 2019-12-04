@@ -11,7 +11,6 @@ class Authenticate {
       firebase.auth().onAuthStateChanged(user => {
         if (user) {
           this.authHandler({ user });
-          console.log(user.providerData[0].uid)
         }
       });
     }
@@ -26,12 +25,12 @@ class Authenticate {
         // ...
       }
       localStorage.setItem('accessToken', credential.accessToken);
-      localStorage.setItem('uid', user.providerData[0].uid);
+      localStorage.setItem('uid', user.uid);
       localStorage.setItem('email', user.email);
       localStorage.setItem('username', additionalUserInfo.username);
       localStorage.setItem('photoURL', user.photoURL);
 
-      database.writeData(additionalUserInfo.username, {profile: additionalUserInfo.profile})
+      database.writeData(user.uid, {profile: additionalUserInfo.profile})
     };
     
     signin = (cb) => {
@@ -58,14 +57,14 @@ class Authenticate {
           await axios.post('http://localhost:8080/git/user-repos', {accessToken : localStorage.accessToken, login : localStorage.username}).then(async res => {
             let repo = [];
             await res.data.repositories.map((value) => repo.push(value.name) );
-            let gitData = await database.readData(localStorage.username);
+            let gitData = await database.readData(localStorage.uid);
             if (gitData.repositories && gitData.trashRepositories) {
               let i = 0;
               while (i < repo.length && gitData.trashRepositories) {
                 if (gitData.trashRepositories.includes(repo[i])) await repo.splice(i, 1);
                 else i ++;
               }
-              database.writeData(localStorage.username, 
+              database.writeData(localStorage.uid, 
               {
                 repositories: repo,
                 trashRepositories: gitData.trashRepositories
@@ -73,7 +72,7 @@ class Authenticate {
               localStorage.setItem('repositories', repo)
             }
             else {
-              await database.writeData(localStorage.username, 
+              await database.writeData(localStorage.uid, 
               {
                 repositories: repo,
                 trashRepositories: ''
