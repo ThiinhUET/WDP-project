@@ -1,4 +1,10 @@
 ﻿# Documentation
+ 
+ -danger-
+ If you are using Chrome Browser, please go to :<br/>
+       `chrome://settings/content/cookies`<br/>
+ uncheck block third-party cookies
+ -danger-
 
 ## Content
 1. Overview
@@ -25,5 +31,4 @@ This focus on web application development allows us to do many more optimization
     - Tree view : https://github.com/fiffty/react-treeview-mui
 
 
-### if you use chrome
-### go to chrome://settings/content/cookies and uncheck block third-party cookies
+
