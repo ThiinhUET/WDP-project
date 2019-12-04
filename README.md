@@ -1,4 +1,10 @@
 ﻿# Documentation
+ 
+ ````
+ If you are using Chrome Browser, please go to :
+       chrome://settings/content/cookies
+ then uncheck block third-party cookies
+ ````
 
 ## Content
 1. Overview
@@ -34,11 +40,10 @@ On the right side, there have `web preview` and your `console log`.
 
 
 # WDP-project
-# Webpack<br/>
+<br/>
     - React-monaco-reference : https://github.com/SurenAt93/monaco-react<br/>
     - React-Monaco-sample : https://github.com/Microsoft/monaco-editor-samples/<br/>
     - Tree view : https://github.com/fiffty/react-treeview-mui
 
 
-### if you use chrome
-### go to chrome://settings/content/cookies and uncheck block third-party cookies
+
