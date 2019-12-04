@@ -1,10 +1,10 @@
 ﻿# Documentation
  
- -danger-
+ ````
  If you are using Chrome Browser, please go to :<br/>
        `chrome://settings/content/cookies`<br/>
  uncheck block third-party cookies
- -danger-
+ ````
 
 ## Content
 1. Overview
