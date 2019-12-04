@@ -46,7 +46,7 @@ class Profile extends Component {
                             <span className="displayName_profile">{localStorage.displayName}</span>
                             <span className="username_profile">{localStorage.username}</span>
                             <a className="github_link" title="GitHub" href={localStorage.html_url} target="_blank" rel="noopener noreferrer">
-                                <i className="fab fa-github" style={{color: 'gray', paddingLeft: '10px', width: '35px', height: '35px'}}></i>
+                                <i className="fab fa-github" style={{color: '#0d9e5b', paddingLeft: '10px', width: '35px', height: '35px'}}></i>
                             </a>
                             <div className="created_time">
                                 <i className="fas fa-clock" style={{paddingRight: '10px'}}></i>
@@ -61,19 +61,19 @@ class Profile extends Component {
                     <div className="bottom_content">
                         <div className="profile_items">
                             {localStorage.company && localStorage.company !=="null" && <div className="profile_item">
-                                <i className="fas fa-users" style={{color: 'gray', width: '20px', height: '20px', paddingRight: '10px'}}></i>
+                                <i className="fas fa-users" style={{color: '#0d9e5b', width: '20px', height: '20px', paddingRight: '10px'}}></i>
                                 <span>{localStorage.company}</span>
                             </div>}
                             {localStorage.location && localStorage.location !=="null" && <div className="profile_item">
-                                <i className="fas fa-map-marker-alt" style={{color: 'gray', width: '20px', height: '20px', paddingRight: '10px'}}></i>
+                                <i className="fas fa-map-marker-alt" style={{color: '#0d9e5b', width: '20px', height: '20px', paddingRight: '10px'}}></i>
                                 <span>{localStorage.location}</span>
                             </div>}
-                            {localStorage.email && localStorage.email !=="null" && <div className="profile_item">
-                                <i className="fas fa-envelope" style={{color: 'gray', width: '20px', height: '20px', paddingRight: '10px'}}></i>
-                                <a title="Send Mail" href={"mailto: " + localStorage.email}>{localStorage.email}</a>
+                            {localStorage.email_info && localStorage.email_info !=="null" && <div className="profile_item">
+                                <i className="fas fa-envelope" style={{color: '#0d9e5b', width: '20px', height: '20px', paddingRight: '10px'}}></i>
+                                <a title="Send Mail" href={"mailto: " + localStorage.email_info}>{localStorage.email_info}</a>
                             </div>}
                             {localStorage.blog && localStorage.blog !=="null" && <div className="profile_item">
-                                <i className="fas fa-globe-asia" style={{color: 'gray', width: '20px', height: '20px', paddingRight: '10px'}}></i>
+                                <i className="fas fa-globe-asia" style={{color: '#0d9e5b', width: '20px', height: '20px', paddingRight: '10px'}}></i>
                                 <a title="Website" href={(localStorage.blog.includes("https://")||localStorage.blog.includes("http://"))? localStorage.blog : "https://" + localStorage.blog} target="_blank" rel="noopener noreferrer">{localStorage.blog}</a>
                             </div>}
                         </div>

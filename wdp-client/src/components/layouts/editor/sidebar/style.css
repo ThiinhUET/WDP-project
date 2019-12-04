@@ -17,14 +17,14 @@
     color: #bbb;
 }
 .sbar_icon:hover {
-    color: #f0f0f0;
+    color: #0d9e5b;
 }
 .sbar_icon:active {
     background-color: rgb(40, 40, 40);
 }
 .sbar_icon.open {
     background-color: rgb(40, 40, 40);
-    color: #f0f0f0;
+    color: #0d9e5b;
 }
 .sbar_help_icon {
     position: absolute;
@@ -35,7 +35,7 @@
     bottom: 0;
 }
 .sbar_help_icon:hover {
-    color: #f0f0f0;
+    color: #0d9e5b;
 }
 
 .sbar_content {
