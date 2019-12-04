@@ -59,7 +59,7 @@ class Authenticate {
             let repo = [];
             await res.data.repositories.map((value) => repo.push(value.name) );
             let gitData = await database.readData(localStorage.username);
-            if (gitData) {
+            if (gitData.repositories && gitData.trashRepositories) {
               let i = 0;
               while (i < repo.length && gitData.trashRepositories) {
                 if (gitData.trashRepositories.includes(repo[i])) await repo.splice(i, 1);
@@ -73,7 +73,7 @@ class Authenticate {
               localStorage.setItem('repositories', repo)
             }
             else {
-              database.writeData(localStorage.username, 
+              await database.writeData(localStorage.username, 
               {
                 repositories: repo,
                 trashRepositories: ''

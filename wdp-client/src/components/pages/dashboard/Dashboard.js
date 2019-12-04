@@ -26,7 +26,7 @@ class Dashboard extends Component {
     async componentDidMount(){
         let gitData = await database.readData(localStorage.username);
         this.setState({
-            repositories : gitData.repositories,
+            repositories : gitData.repositories || [],
             trashRepositories: gitData.trashRepositories || [],
             isLoading: false
         });
