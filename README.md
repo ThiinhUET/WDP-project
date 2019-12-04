@@ -1,9 +1,9 @@
 ﻿# Documentation
  
  ````
- If you are using Chrome Browser, please go to :<br/>
-       `chrome://settings/content/cookies`<br/>
- uncheck block third-party cookies
+ If you are using Chrome Browser, please go to :
+       chrome://settings/content/cookies
+ then uncheck block third-party cookies
  ````
 
 ## Content
