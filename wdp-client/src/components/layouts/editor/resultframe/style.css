@@ -1,0 +1,41 @@
+.url_navigation {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    height: 30px;
+    background-color: #f0f0f0;
+    margin: 5px 0;
+    padding: 0 2.5px;
+}
+.run_btn {
+    display: flex;
+    align-items: center;
+    background-color: #0d9e5b;
+    color: #f0f0f0;
+    padding: 0 5px;
+    margin-right: 2.5px;
+    border-radius: 5px;
+    width: fit-content;
+    height: 25px;
+    cursor: pointer;
+}
+.run_btn_title {
+    font-family: Source Sans Pro,Open Sans,Segoe UI,sans-serif;
+    font-weight: 600;
+    font-size: 10pt;
+    letter-spacing: 0.5px;
+}
+.url_inp_container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    border: 1px solid #80808080;
+    border-radius: 10px;
+}
+.url_inp {
+    width: calc(100% - 25px);
+    background-color: transparent;
+    color: #0f0f0f;
+    border-style: none;
+    outline: none;
+}
