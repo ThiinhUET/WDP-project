@@ -20,7 +20,6 @@ class Profile extends Component {
         this.setState({profile: gitData.profile, isLoading: false})
         let bio_content = document.getElementById("bio_content");
         if (bio_content.offsetWidth > 232) bio_content.style.textAlign = "left";
-        console.log(gitData)
     }
     
     getCreatedTime() {

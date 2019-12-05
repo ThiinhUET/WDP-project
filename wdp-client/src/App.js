@@ -43,7 +43,7 @@ class App extends Component {
                     <PrivateRoute exact path = '/dashboard'>
                         <Dashboard />
                     </PrivateRoute>
-                    <Route exact path="/" render={() => <Redirect to='/home' />} />
+                    <Route path="/" render={() => <Redirect to='/home' />} />
                 </Switch>
             </BrowserRouter>
 
