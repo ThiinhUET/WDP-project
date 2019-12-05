@@ -1,4 +1,4 @@
-﻿# Documentation
+﻿# WDP Documentation
  
  ````
  If you are using Chrome Browser, please go to :
@@ -43,10 +43,9 @@ When you loged in with github, this will automatically list all your github's re
 
 
 
-# WDP-project
+### Reference component
 <br/>
     - React-monaco-reference : https://github.com/SurenAt93/monaco-react<br/>
-    - React-Monaco-sample : https://github.com/Microsoft/monaco-editor-samples/<br/>
     - Tree view : https://github.com/fiffty/react-treeview-mui
 
 
