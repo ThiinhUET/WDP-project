@@ -67,10 +67,10 @@ class Home extends Component {
                                 <div className="people_info">
                                     <div>Nguyễn Tuấn Quốc</div>
                                     <a className="info_url" href="https://www.facebook.com/quocnt.99" target="_blank" rel="noopener noreferrer">
-                                        <i className="fab fa-facebook" style={{width: '30px', height: '30px', padding: '10px'}}></i>
+                                        <i className="fab fa-facebook" style={{width: '35px', height: '35px', padding: '10px'}}></i>
                                     </a>
                                     <a className="info_url" href="https://github.com/NTQ99" target="_blank" rel="noopener noreferrer">
-                                        <i className="fab fa-github" style={{width: '30px', height: '30px', padding: '10px'}}></i>
+                                        <i className="fab fa-github" style={{width: '35px', height: '35px', padding: '10px'}}></i>
                                     </a>
                                 </div>
                             </div>
@@ -79,10 +79,10 @@ class Home extends Component {
                                 <div className="people_info">
                                     <div>Nguyễn Minh Quân</div>
                                     <a className="info_url" href="https://www.facebook.com/minhquan.nguyen.54772" target="_blank" rel="noopener noreferrer">
-                                        <i className="fab fa-facebook" style={{width: '30px', height: '30px', padding: '10px'}}></i>
+                                        <i className="fab fa-facebook" style={{width: '35px', height: '35px', padding: '10px'}}></i>
                                     </a>
                                     <a className="info_url" href="https://github.com/minhquan54772" target="_blank" rel="noopener noreferrer">
-                                        <i className="fab fa-github" style={{width: '30px', height: '30px', padding: '10px'}}></i>
+                                        <i className="fab fa-github" style={{width: '35px', height: '35px', padding: '10px'}}></i>
                                     </a>
                                 </div>
                             </div>
@@ -91,10 +91,10 @@ class Home extends Component {
                                 <div className="people_info">
                                     <div>Lê Văn Thịnh</div>
                                     <a className="info_url" href="https://www.facebook.com/thinhlv0812" target="_blank" rel="noopener noreferrer">
-                                        <i className="fab fa-facebook" style={{width: '30px', height: '30px', padding: '10px'}}></i>
+                                        <i className="fab fa-facebook" style={{width: '35px', height: '35px', padding: '10px'}}></i>
                                     </a>
                                     <a className="info_url" href="https://github.com/ThiinhUET" target="_blank" rel="noopener noreferrer">
-                                        <i className="fab fa-github" style={{width: '30px', height: '30px', padding: '10px'}}></i>
+                                        <i className="fab fa-github" style={{width: '35px', height: '35px', padding: '10px'}}></i>
                                     </a>
                                 </div>
                             </div>
@@ -103,10 +103,10 @@ class Home extends Component {
                                 <div className="people_info">
                                     <div>Trần Thu Phương</div>
                                     <a className="info_url" href="https://www.facebook.com/profile.php?id=100011265369020" target="_blank" rel="noopener noreferrer">
-                                        <i className="fab fa-facebook" style={{width: '30px', height: '30px', padding: '10px'}}></i>
+                                        <i className="fab fa-facebook" style={{width: '35px', height: '35px', padding: '10px'}}></i>
                                     </a>
                                     <a className="info_url" href="https://github.com/tranphuongtb99" target="_blank" rel="noopener noreferrer">
-                                        <i className="fab fa-github" style={{width: '30px', height: '30px', padding: '10px'}}></i>
+                                        <i className="fab fa-github" style={{width: '35px', height: '35px', padding: '10px'}}></i>
                                     </a>
                                 </div>
                             </div>
@@ -115,10 +115,10 @@ class Home extends Component {
                                 <div className="people_info">
                                     <div>Lê Thanh Tùng</div>
                                     <a className="info_url" href="https://www.facebook.com/lethanh.tung.547" target="_blank" rel="noopener noreferrer">
-                                        <i className="fab fa-facebook" style={{width: '30px', height: '30px', padding: '10px'}}></i>
+                                        <i className="fab fa-facebook" style={{width: '35px', height: '35px', padding: '10px'}}></i>
                                     </a>
                                     <a className="info_url" href="https://github.com/Tungthanhlee" target="_blank" rel="noopener noreferrer">
-                                        <i className="fab fa-github" style={{width: '30px', height: '30px', padding: '10px'}}></i>
+                                        <i className="fab fa-github" style={{width: '35px', height: '35px', padding: '10px'}}></i>
                                     </a>
                                 </div>
                             </div>

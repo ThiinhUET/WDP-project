@@ -51,7 +51,7 @@ class Profile extends Component {
                             <span className="displayName_profile">{profile.name}</span>
                             <span className="username_profile">{localStorage.username}</span>
                             <a className="github_link" title="GitHub" href={profile.html_url} target="_blank" rel="noopener noreferrer">
-                                <i className="fab fa-github" style={{color: '#0d9e5b', paddingLeft: '10px', width: '35px', height: '35px'}}></i>
+                                <i className="fab fa-github" style={{color: '#0d9e5bbf', paddingLeft: '10px', width: '35px', height: '35px'}}></i>
                             </a>
                             <div className="created_time">
                                 <i className="fas fa-clock" style={{paddingRight: '10px'}}></i>
@@ -66,19 +66,19 @@ class Profile extends Component {
                     <div className="bottom_content">
                         <div className="profile_items">
                             {profile.company && profile.company !=="null" && <div className="profile_item">
-                                <i className="fas fa-users" style={{color: '#0d9e5b', width: '20px', height: '20px', paddingRight: '10px'}}></i>
+                                <i className="fas fa-users" style={{color: '#0d9e5bbf', width: '20px', height: '20px', paddingRight: '10px'}}></i>
                                 <span>{profile.company}</span>
                             </div>}
                             {profile.location && profile.location !=="null" && <div className="profile_item">
-                                <i className="fas fa-map-marker-alt" style={{color: '#0d9e5b', width: '20px', height: '20px', paddingRight: '10px'}}></i>
+                                <i className="fas fa-map-marker-alt" style={{color: '#0d9e5bbf', width: '20px', height: '20px', paddingRight: '10px'}}></i>
                                 <span>{profile.location}</span>
                             </div>}
                             {profile.email && profile.email !=="null" && <div className="profile_item">
-                                <i className="fas fa-envelope" style={{color: '#0d9e5b', width: '20px', height: '20px', paddingRight: '10px'}}></i>
+                                <i className="fas fa-envelope" style={{color: '#0d9e5bbf', width: '20px', height: '20px', paddingRight: '10px'}}></i>
                                 <a title="Send Mail" href={"mailto: " + profile.email}>{profile.email}</a>
                             </div>}
                             {profile.blog && profile.blog !=="null" && <div className="profile_item">
-                                <i className="fas fa-globe-asia" style={{color: '#0d9e5b', width: '20px', height: '20px', paddingRight: '10px'}}></i>
+                                <i className="fas fa-globe-asia" style={{color: '#0d9e5bbf', width: '20px', height: '20px', paddingRight: '10px'}}></i>
                                 <a title="Website" href={(profile.blog.includes("https://")||profile.blog.includes("http://"))? profile.blog : "https://" + profile.blog} target="_blank" rel="noopener noreferrer">{profile.blog}</a>
                             </div>}
                         </div>
