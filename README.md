@@ -1,10 +1,12 @@
-﻿# Documentation
+﻿# WDP Documentation
  
  ````
  If you are using Chrome Browser, please go to :
        chrome://settings/content/cookies
  then uncheck block third-party cookies
  ````
+ 
+## Demo Hosting https://wdp-2019.web.app
 
 ## Content
 1. [Overview](#overview)
@@ -43,10 +45,9 @@ When you loged in with github, this will automatically list all your github's re
 
 
 
-# WDP-project
+### Reference component
 <br/>
     - React-monaco-reference : https://github.com/SurenAt93/monaco-react<br/>
-    - React-Monaco-sample : https://github.com/Microsoft/monaco-editor-samples/<br/>
     - Tree view : https://github.com/fiffty/react-treeview-mui
 
 

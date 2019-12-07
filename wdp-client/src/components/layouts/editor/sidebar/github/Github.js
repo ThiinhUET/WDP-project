@@ -11,6 +11,9 @@ import Toggle from '../Toggle';
 
 import './style.css';
 import Loading from '../../../loading/Loading';
+import Database from '../../../../common/firebase/Database';
+
+const datbase = new Database();
 
 class Github extends Component {
     constructor(props) {
@@ -149,9 +152,7 @@ class Github extends Component {
         }, isLoading: false})
         try {
             document.getElementById("commitMsg").value = null;
-        } catch(err) {
-            console.log(err);
-        }
+        } catch {}
     }
 
     async create() {
@@ -173,8 +174,9 @@ class Github extends Component {
             },{ headers: { 'Authorization': 'token ' + accessToken } }).then(async () => {
                 this.setState({isCreating: false});
                 await this.commit(this.state.modifiedTree, "Initial commit");
-            }).then(() => {
+            }).then(async () => {
                 localStorage.setItem("repositories", name + ',' + localStorage.repositories);
+                await datbase.writeData(localStorage.uid, {repositories: localStorage.repositories.split(',')})
                 this.state.data.name = name;
                 window.open('/editor/' + name, '_self');
             }).catch(() => {

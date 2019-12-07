@@ -1,9 +1,9 @@
 const express = require('express');
 const logger = require('morgan');
-const users = require('./routes/users');
-const gitRouters = require('./routes/github-proxy');
+const users = require('./app/routes/users');
+const gitRouters = require('./app/routes/github-proxy');
 const bodyParser = require('body-parser');
-const mongoose = require('../config/database');
+const mongoose = require('./config/database');
 var jwt = require('jsonwebtoken');
 const cors = require('cors');
 const Pusher = require('pusher');
@@ -12,6 +12,10 @@ const app = express();
 
 mongoose.connection.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  next();
+})
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());

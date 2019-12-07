@@ -3,6 +3,7 @@ import { firebaseApp } from "./base"
 import axios from 'axios';
 
 import Database from './Database';
+import baseAPI from "../../../utils/baseAPI";
 
 const database = new Database();
 
@@ -54,29 +55,21 @@ class Authenticate {
         .auth()
         .signInWithPopup(authProvider)
         .then(this.authHandler).then(async ()=>{
-          await axios.post('http://localhost:8080/git/user-repos', {accessToken : localStorage.accessToken, login : localStorage.username}).then(async res => {
+          await axios.post(baseAPI.baseURL + '/git/user-repos', {accessToken : localStorage.accessToken, login : localStorage.username}).then(async res => {
             let repo = [];
             await res.data.repositories.map((value) => repo.push(value.name) );
             let gitData = await database.readData(localStorage.uid);
-            if (gitData.repositories && gitData.trashRepositories) {
+            if (gitData.repositories) {
               let i = 0;
               while (i < repo.length && gitData.trashRepositories) {
                 if (gitData.trashRepositories.includes(repo[i])) await repo.splice(i, 1);
                 else i ++;
               }
-              database.writeData(localStorage.uid, 
-              {
-                repositories: repo,
-                trashRepositories: gitData.trashRepositories
-              });
+              database.writeData(localStorage.uid, {repositories: repo});
               localStorage.setItem('repositories', repo)
             }
             else {
-              await database.writeData(localStorage.uid, 
-              {
-                repositories: repo,
-                trashRepositories: ''
-              });
+              await database.writeData(localStorage.uid, {repositories: repo});
               localStorage.setItem('repositories', repo)
             }
             setTimeout(cb,0)
