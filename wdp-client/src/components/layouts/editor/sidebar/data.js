@@ -3,6 +3,7 @@ import { withRouter } from 'react-router-dom';
 import axios from 'axios';
 import Loading from '../../loading/Loading';
 import { dataFlow } from '../../../../services';
+import baseAPI from '../../../../utils/baseAPI';
 
 export const defaultdata = {
     "path": "/",
@@ -66,7 +67,7 @@ class DataLoading extends Component {
         if (projectName && !repos.includes(projectName)) window.open('/editor', '_self');
         if (projectName && data === defaultdata) {
             setTimeout(() => this.setState({isLoading: true}), 500);
-            axios.post('http://localhost:8080/git/user-listfile', {
+            axios.post(baseAPI.baseURL + '/git/user-listfile', {
                 accessToken: accessToken,
                 login: username, 
                 repo: projectName
@@ -85,7 +86,7 @@ class DataLoading extends Component {
 
     getContent(node) {
         if (node.type !== 'folder') {
-            axios.post('http://localhost:8080/git/get-file-content', {
+            axios.post(baseAPI.baseURL + '/git/get-file-content', {
                 accessToken : localStorage.accessToken, 
                 content : node.content
             }).then(res => {
