@@ -1,6 +1,5 @@
 const axios = require('axios');
 const baseURL = "https://api.github.com";
-const convertTree = require('../../convertString');
 
 
 module.exports = {
@@ -40,9 +39,8 @@ module.exports = {
         axios.get(baseURL + "/repos/" + owner + "/" + repo + "/commits", { headers: { Authorization: 'token ' + accessToken } }).then((res1) => {
             let lastCommit = res1.data[0];
             let sha = lastCommit.sha;
-            axios.get(baseURL + "/repos/" + owner + "/" + repo + "/git/trees/" + sha + "?recursive=1", { headers: { Authorization: 'token ' + accessToken } }).then((res2) => {
-                let fileTree = convertTree(res2.data);              
-                res.send({ filetree: fileTree });
+            axios.get(baseURL + "/repos/" + owner + "/" + repo + "/git/trees/" + sha + "?recursive=1", { headers: { Authorization: 'token ' + accessToken } }).then((res2) => {            
+                res.send({ filetree: res2.data });
             }).catch(err =>{
                 console.log("");
             });

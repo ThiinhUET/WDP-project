@@ -4,6 +4,9 @@ import axios from 'axios';
 import Loading from '../../loading/Loading';
 import { dataFlow } from '../../../../services';
 import baseAPI from '../../../../utils/baseAPI';
+import convertTree from '../../../../utils/convertString';
+
+const converttree = new convertTree();
 
 export const defaultdata = {
     "path": "/",
@@ -71,7 +74,7 @@ class DataLoading extends Component {
                 accessToken: accessToken,
                 login: username, 
                 repo: projectName
-            }).then((res) => res.data.filetree
+            }).then((res) => converttree.convertString(res.data.filetree)
             ).then((rootNode) => this.getContent(rootNode)
             ).then((rootNode2) => setTimeout(() => {
                 this.setState({ data: rootNode2 });
