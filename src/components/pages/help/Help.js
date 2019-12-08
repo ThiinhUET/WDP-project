@@ -22,7 +22,7 @@ class Help extends Component {
                     </li>
                     <li><h3>Github:</h3>
                         <ul>
-                            <img src={require('./assets/Diff.png')} alt="" width="400px"/>
+                            <img src={require('./assets/Diff.png')} alt="" width="350px"/>
                             <li>When you are in Github tab, your coding panel will be splited in two columns which allow you to compare 2 code versions.</li>
                             <img src={require('./assets/Github_create.png')} alt="" width="200px"/>
                             

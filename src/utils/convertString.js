@@ -26,16 +26,18 @@ class leafNode {
 }
 class convertTree {
     addNode = (node1, node2) => {
-        if (node1.type !== 'folder') return;
-        let isExist = false;
-        for (let i = 0; i < node1.children.length; i ++) {
-            let node3 = node1.children[i];
-            if (node2.path.includes(node3.path)) {
-                isExist = true;
-                this.addNode(node3, node2);
+        try {
+            if (node1.type !== 'folder') return;
+            let isExist = false;
+            for (let i = 0; i < node1.children.length; i ++) {
+                let node11 = node1.children[i];
+                if (node11.type === 'folder' && node2.path.substring(0, node11.path.length) === node11.path) {
+                    isExist = true;
+                    this.addNode(node11, node2);
+                }
             }
-        }
-        if (!isExist) node1.addChildren(node2);
+            if (!isExist) node1.addChildren(node2);
+        } catch{}
     }
     convertString = (input) => {
         let nameNode = input.url.split('/')[5];
