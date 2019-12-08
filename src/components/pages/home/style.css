@@ -47,6 +47,7 @@
     padding: 3px;
     border-radius: 6px;
     border-style: none;
+    outline: none;
     box-sizing: border-box;
     cursor: pointer;
     font-weight: 600;
