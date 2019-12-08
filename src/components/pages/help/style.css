@@ -1,0 +1,14 @@
+.Help {
+    width: calc(100vw - 40px);
+    height: calc(100vh - 40px);
+    font-family: Source Sans Pro,Open Sans,Segoe UI,sans-serif;
+    color: #f0f0f0;
+    padding: 20px;
+    overflow: scroll;
+}
+.Help ul li h3 {
+    font-weight: normal
+}
+.Help li {
+    margin-bottom: 5px;
+}
