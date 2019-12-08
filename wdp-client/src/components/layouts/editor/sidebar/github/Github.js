@@ -12,6 +12,7 @@ import Toggle from '../Toggle';
 import './style.css';
 import Loading from '../../../loading/Loading';
 import Database from '../../../../common/firebase/Database';
+import baseAPI from '../../../../../utils/baseAPI';
 
 const datbase = new Database();
 
@@ -91,10 +92,10 @@ class Github extends Component {
     async commitFile(message, modifiedCursor, userName, email, project, accessToken) {
         try{
             if (modifiedCursor.modified === true) {
-                await axios.get('https://api.github.com/repos/' + userName + '/' + project + '/contents' + modifiedCursor.path, { headers: { 'Authorization': 'token ' + accessToken } }).then(async res => {
+                await axios.get(baseAPI.gitURL + '/repos/' + userName + '/' + project + '/contents' + modifiedCursor.path, { headers: { 'Authorization': 'token ' + accessToken } }).then(async res => {
                     let shaKey = res.data.sha;
                     let decodedValue = Buffer.from(modifiedCursor.content).toString('base64');
-                    await axios.put('https://api.github.com/repos/' + userName + '/' + project + '/contents' + modifiedCursor.path, {
+                    await axios.put(baseAPI.gitURL + '/repos/' + userName + '/' + project + '/contents' + modifiedCursor.path, {
                         "message": message,
                         "committer": {
                             "name": userName,
@@ -108,7 +109,7 @@ class Github extends Component {
             }
             else {
                 let decodedValue = Buffer.from(modifiedCursor.content).toString('base64');
-                await axios.put('https://api.github.com/repos/' + userName + '/' + project + '/contents' + modifiedCursor.path, {
+                await axios.put(baseAPI.gitURL + '/repos/' + userName + '/' + project + '/contents' + modifiedCursor.path, {
                     "message": message,
                     "committer": {
                         "name": userName,
@@ -166,7 +167,7 @@ class Github extends Component {
         
         if (name) {
             this.setState({isCreating: true});
-            await axios.post('https://api.github.com/user/repos', {
+            await axios.post(baseAPI.gitURL + '/user/repos', {
                 "name": name,
                 "description": description,
                 "homepage": homepage,

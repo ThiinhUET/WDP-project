@@ -4,6 +4,7 @@ import axios from 'axios';
 
 import './style.css';
 import Loading from '../../../loading/Loading';
+import baseAPI from '../../../../../utils/baseAPI';
 
 class Export extends Component {
     constructor(props){
@@ -17,7 +18,7 @@ class Export extends Component {
         let userName = localStorage.username;
         let project = localStorage.projectName;
         if (project) this.setState({isLoading: true});
-        axios.get("https://api.github.com/repos/" + userName + '/' + project + '/branches').then(res => {
+        axios.get(baseAPI.gitURL + "/repos/" + userName + '/' + project + '/branches').then(res => {
             this.setState({branches : res.data});
             setTimeout(() => this.setState({isLoading: false}), 300);
         }).catch();

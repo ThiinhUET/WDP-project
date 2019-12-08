@@ -7,6 +7,7 @@ import Header from '../../layouts/header/Header';
 import Database from '../../common/firebase/Database'
 
 import './style.css';
+import baseAPI from '../../../utils/baseAPI';
 
 const database = new Database();
 
@@ -70,7 +71,7 @@ class Dashboard extends Component {
         let userName = localStorage.username;
         let accessToken = localStorage.accessToken;
         this.setState({isDeleting: true});
-        axios.delete('https://api.github.com/repos/' + userName + '/' + name, {
+        axios.delete(baseAPI.gitURL + '/repos/' + userName + '/' + name, {
             headers: {'Authorization': 'token ' + accessToken}
         }).then(() => {
             let newTrashRepos = this.state.trashRepositories;
