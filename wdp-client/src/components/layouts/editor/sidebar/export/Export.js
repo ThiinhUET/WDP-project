@@ -32,7 +32,7 @@ class Export extends Component {
                     {this.state.isLoading && <Loading size='20' />}
                     <div className="horizontal_divider"></div>
                     {this.state.branches.map((value, index) => (
-                        <a href = {"https://github.com/" + localStorage.username + "/" + localStorage.projectName + "/archive/" + value.name + ".zip"} style={{textDecoration: 'none', color: '#d0d0d0'}}>
+                        <a key={index} href = {"https://github.com/" + localStorage.username + "/" + localStorage.projectName + "/archive/" + value.name + ".zip"} style={{textDecoration: 'none', color: '#d0d0d0'}}>
                             <div className="branch_element">
                                 <i className="fas fa-code-branch" style={{marginRight: '10px'}}></i>
                                 {value.name}
