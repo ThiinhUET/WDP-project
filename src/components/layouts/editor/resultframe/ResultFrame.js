@@ -100,7 +100,8 @@ class ResultFrame extends Component {
             content = this.getContent(path, node.children[i]);
             if (content !== 'Enter the url of html file to display the web review') break;
         }
-        return content;
+        
+        return (content.substring(0, 8) === "https://")? "Loading..." : content;
     }
     
     updateNode(rootNode, node, content) {
