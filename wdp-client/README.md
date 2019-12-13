@@ -2,7 +2,7 @@
 
 This project was created by create-react-app. 
 
-##Folder Structure
+## Folder Structure
 
 ```
 ├── README.md
