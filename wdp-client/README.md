@@ -38,17 +38,15 @@ TODO
 ```
 
 ## Development server
-
-Run :</br>
-`npm install` </br>
-`npm start` </br>
-for a dev server.</br> 
+```
+npm install
+npm start
+``` 
 Navigate to 
 `http://localhost:3000/`.
 The app will automatically reload if you change any of the source files.
 
 ## Build product
-
-Run:  
-`npm build` </br>
-to build the project.
+```
+npm build
+```
