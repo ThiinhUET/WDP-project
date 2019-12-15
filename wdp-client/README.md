@@ -33,8 +33,10 @@ https://firebase.google.com/docs/auth
 ```
 
 ## Database
+In this application, to make things esier, we decided to use Firebase Realtime Database and Hosting. <br/>
+You can find out more at :
 ```
-TODO
+https://firebase.google.com/docs/database
 ```
 
 ## Development server
