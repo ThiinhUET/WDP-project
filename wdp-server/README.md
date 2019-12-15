@@ -13,6 +13,10 @@
 ├── package-lock.json
 └── package.json
 ```
+## Environment Requirement
+
+[Nodejs](https://nodejs.org/en/)
+
 ## Run Server
 ```
 npm install
