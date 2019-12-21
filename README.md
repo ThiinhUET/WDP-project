@@ -1,12 +1,14 @@
 ﻿# WDP Documentation
  
- ````
+ ### Notice
  If you are using Chrome Browser, please go to :
-       chrome://settings/content/cookies
- then uncheck block third-party cookies
- ````
+ ```
+ chrome://settings/content/cookies
+ ```
+ and uncheck block third-party cookies
  
-## Demo Hosting https://wdp-2019.web.app
+ 
+## You can find demo of this app at [DEMO](https://wdp-2019.web.app)
 
 ## Content
 1. [Overview](#overview)
@@ -41,8 +43,6 @@ On the right side, there have `web preview` and your `console log`. <br/>
 ### Github repository
 ![Github](assets/github_monitor.jpg)
 When you loged in with github, this will automatically list all your github's repositories. You can create new repo by click to big plus. Also, you can quickly access to this dashboard by click to menu on the right cornor.
-
-
 
 
 ### Reference component
