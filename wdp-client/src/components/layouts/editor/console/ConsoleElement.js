@@ -4,46 +4,49 @@ import * as Demo from "./demo";
 import { Hook, Console } from "console-feed";
 
 class ConsoleElement extends Component {
-  state = {
-    logs: Demo.Initial
-  };
+    constructor(props) {
+        super(props);
+        this.state = {
+            logs: Demo.Initial
+        };
+    }
 
-  componentDidMount() {
-    Hook(
-      window.console,
-      log => {
-        if (log.method !== "warn" && log.method !== "error") 
-          this.setState({ logs: [...this.state.logs, log] });
-        let resultFrame = document.getElementById("console_result");
-        if (resultFrame) resultFrame.scrollTop = resultFrame.scrollHeight;
-      },
-      false
-    );
-    Hook(
-      document.getElementById('iframe').contentWindow.console,
-      log => {
-        this.setState({ logs: [...this.state.logs, log] });
-        let resultFrame = document.getElementById("console_result");
-        if (resultFrame) resultFrame.scrollTop = resultFrame.scrollHeight;
-      },
-      false
-    );
-    Demo.Logs();
-  }
+    componentDidMount() {
+        Hook(
+            window.console,
+            log => {
+                if (log.method !== "warn" && log.method !== "error") 
+                    this.setState({ logs: [...this.state.logs, log] });
+                let resultFrame = document.getElementById("console_result");
+                if (resultFrame) resultFrame.scrollTop = resultFrame.scrollHeight;
+            },
+            false
+        );
+        Hook(
+            document.getElementById('iframe').contentWindow.console,
+            log => {
+                this.setState({ logs: [...this.state.logs, log] });
+                let resultFrame = document.getElementById("console_result");
+                if (resultFrame) resultFrame.scrollTop = resultFrame.scrollHeight;
+            },
+            false
+        );
+        Demo.Logs();
+    }
 
-  render() {
-    return (
-      <div style={{ backgroundColor: "#1e1e1e" }}>
-        <Console logs={this.state.logs} variant="dark" />
-      </div>
-    );
-  }
+    render() {
+        return (
+            <div style={{ backgroundColor: "#1e1e1e" }}>
+                <Console logs={this.state.logs} variant="dark" />
+            </div>
+        );
+    }
 }
 
 if (console.feed) {
-  Object.keys(console.feed.pointers).forEach(key => {
-    console[key] = console.feed.pointers[key];
-  });
+    Object.keys(console.feed.pointers).forEach(key => {
+        console[key] = console.feed.pointers[key];
+    });
 }
 
 export default withRouter(ConsoleElement);
