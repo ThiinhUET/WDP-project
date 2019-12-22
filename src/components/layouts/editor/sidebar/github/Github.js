@@ -77,7 +77,7 @@ class Github extends Component {
 
     signIn() {
         const authenticate = new Authenticate();
-        authenticate.signin(() => this.props.history.push('/editor'));
+        authenticate.signin(() => this.props.history.push({ state: this.props.location.state }));
     }
 
     updateData(node) {
