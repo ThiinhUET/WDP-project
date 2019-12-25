@@ -1,15 +1,11 @@
 ﻿# WDP Documentation
  
  ### Notice
-
-<div class="warning">
-    <p class="first admonition-title">Notice</p>
-    <p class="last">If you are using Chrome Browser, please go to: chrome://settings/content/cookies and and uncheck block third-party cookies</p>
-    <p>
-</div>
-
-
- 
+If you are using Chrome Browser, please go to: 
+```
+chrome://settings/content/cookies  
+```
+uncheck block third-party cookies
  
 ## You can find demo of this app at [DEMO](https://wdp-2019.web.app)
 
