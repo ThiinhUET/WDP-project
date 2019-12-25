@@ -2,13 +2,12 @@
  
  ### Notice
 
-<aside class="warning">
-If you are using Chrome Browser, please go to :
- ```
- chrome://settings/content/cookies
- ```
- and uncheck block third-party cookies
-</aside>
+<div class="warning">
+    <p class="first admonition-title">Notice</p>
+    <p class="last">If you are using Chrome Browser, please go to: chrome://settings/content/cookies and and uncheck block third-party cookies</p>
+    <p>
+</div>
+
 
  
  
