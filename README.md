@@ -1,7 +1,9 @@
 ﻿# WDP Documentation
  
  ### Notice
- If you are using Chrome Browser, please go to :
+<aside class="notice">
+If you are using Chrome Browser, please go to :
+</aside>
  ```
  chrome://settings/content/cookies
  ```
