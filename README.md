@@ -1,7 +1,8 @@
 ﻿# WDP Documentation
  
  ### Notice
-<aside class="notice">
+
+<aside class="warning">
 If you are using Chrome Browser, please go to :
 </aside>
  ```
