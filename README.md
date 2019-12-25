@@ -4,11 +4,12 @@
 
 <aside class="warning">
 If you are using Chrome Browser, please go to :
-</aside>
  ```
  chrome://settings/content/cookies
  ```
  and uncheck block third-party cookies
+</aside>
+
  
  
 ## You can find demo of this app at [DEMO](https://wdp-2019.web.app)
